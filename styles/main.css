@@ -1,0 +1,37 @@
+/* For Debugging Only */
+/* @import "helpers/debugging.css";  */
+/* @import "helpers/htmllinting.css"; */
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+::selection {
+	background-color: theme('colors.orange');
+	color: #fff;
+}
+
+body {
+	@apply font-sans text-lg text-gray-800 dark:bg-gray-800 dark:text-gray-200;
+}
+
+p {
+	@apply mb-2;
+}
+
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose p,
+.prose li,
+.prose td,
+.prose th,
+.prose code,
+.prose em,
+.prose a {
+	@apply dark:text-gray-200 !important;
+}
