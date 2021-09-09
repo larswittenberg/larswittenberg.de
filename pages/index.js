@@ -1,8 +1,4 @@
-// import Image from 'next/image'
-// import Link from 'next/link'
 import LayoutDefault from '../components/LayoutDefault'
-
-
 
 export default function IndexPage() {
 	return (
@@ -12,9 +8,7 @@ export default function IndexPage() {
 					Hi
 				</h1>
 			</div>
-
-
-
 		</LayoutDefault>
 	)
 }
+
