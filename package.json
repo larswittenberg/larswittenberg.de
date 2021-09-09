@@ -1,8 +1,7 @@
 {
-  "name": "nextjs-tailwindcss-kickstarter",
-  "description": "Basic template setup with Next.js + Tailwind CSS and some helpers.",
+  "name": "larswittenberg.de",
+  "description": "My personal website built with Next.js & TailwindCSS",
   "version": "1.0.0",
-  "homepage": "https://nextjs-tailwindcss-kickstarter.vercel.app/",
   "author": {
     "name": "Lars Wittenberg",
     "url": "https://larswittenberg.de"
@@ -10,7 +9,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/larswittenberg/nextjs-tailwindcss-kickstarter.git"
+    "url": "https://github.com/larswittenberg/larswittenberg.de"
   },
   "scripts": {
     "dev": "next",
