@@ -8,7 +8,7 @@
 @tailwind utilities;
 
 .otl {
-	outline: 1px solid white;
+	outline: 1px solid red;
 }
 
 ::selection {
@@ -17,7 +17,7 @@
 }
 
 body {
-	@apply font-sans text-lg text-gray-800 dark:bg-gray-800 dark:text-gray-200;
+	@apply font-sans text-lg text-gray-800 dark:bg-darkblue dark:text-gray-200;
 }
 
 p {
@@ -30,11 +30,35 @@ p {
 .prose h3,
 .prose h4,
 .prose p,
+.prose strong,
 .prose li,
 .prose td,
 .prose th,
 .prose code,
+.prose figcaption,
 .prose em,
 .prose a {
 	@apply dark:text-gray-200 !important;
+}
+
+.prose a {
+	text-decoration-color: theme('colors.orange');
+}
+
+.prose blockquote {
+	border-left-color: theme('colors.orange');
+}
+
+.prose strong {
+	font-weight: 700;
+}
+
+
+
+.prose .footnotes {
+	@apply text-base;
+}
+
+.prose .footnotes hr {
+	border-color: theme('colors.orange');
 }

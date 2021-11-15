@@ -11,14 +11,17 @@ import components from '../../components/MDXComponents'
 export default function PostPage({ source, frontMatter }) {
 	return (
 		<LayoutDefault>
-			<div className="prose prose-sm sm:prose lg:prose-lg mx-auto">
+			<article className="prose prose-sm sm:prose-base lg:prose-lg xl:prose-xl 2xl:prose-2xl mx-auto">
 				<h1>{frontMatter.title}</h1>
-				{frontMatter.desc && (
-					<p className="">{frontMatter.desc}</p>
-				)}
+				<p className="text-base mb-12">
+					Veröffentlich am: {new Intl.DateTimeFormat('de-DE', { year: 'numeric', month: 'long', day: '2-digit' }).format(Date.parse(frontMatter.date))}
+				</p>
+				{/* {frontMatter.desc && (
+					<p className="lead">{frontMatter.desc}</p>
+				)} */}
 
 				<MDXRemote {...source} components={components} />
-			</div>
+			</article>
 		</LayoutDefault>
 	)
 }
