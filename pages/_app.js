@@ -3,7 +3,7 @@ import { DefaultSeo } from 'next-seo'
 
 import SEO from '../next-seo.config'
 
-function MyApp({ Component, pageProps }) {
+export default function App({ Component, pageProps }) {
 	return (
 		<>
 			{/* Here we call NextSeo and pass our default configuration to it */}
@@ -12,5 +12,3 @@ function MyApp({ Component, pageProps }) {
 		</>
 	)
 }
-
-export default MyApp
