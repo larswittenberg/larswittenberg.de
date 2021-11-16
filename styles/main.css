@@ -41,6 +41,10 @@ p {
 	@apply dark:text-gray-200 !important;
 }
 
+.prose h1 {
+	@apply dark:text-orange;
+}
+
 .prose a {
 	text-decoration-color: theme('colors.orange');
 }
