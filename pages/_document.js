@@ -6,7 +6,7 @@ export default function Document(props) {
 			<Head>
 				<link href="/favicon.svg" rel="shortcut icon" />
 			</Head>
-			<body>
+			<body className="">
 				<Main />
 				<NextScript />
 			</body>

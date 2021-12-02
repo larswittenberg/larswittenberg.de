@@ -9,7 +9,7 @@ export default function Header({ className }) {
 	]
 
 	return (
-		<header className={`lg:w-2/3 mx-4 lg:mx-auto lg:mt-16 lg:mb-12 ${className}`}>
+		<header className={`lg:w-11/12 mx-4 lg:mx-auto lg:my-12 ${className}`}>
 			<nav>
 				<ul className="flex items-center justify-between py-8">
 					<li>
