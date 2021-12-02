@@ -53,6 +53,10 @@ p {
 	border-left-color: theme('colors.orange');
 }
 
+.prose blockquote cite {
+	@apply dark:bg-darkblue dark:text-gray-200;
+}
+
 .prose strong {
 	font-weight: 700;
 }
