@@ -45,6 +45,12 @@ p {
 	@apply dark:text-orange;
 }
 
+.prose h1,
+.prose h2,
+.prose h3 {
+	@apply font-serif;
+}
+
 .prose a {
 	text-decoration-color: theme('colors.orange');
 }
