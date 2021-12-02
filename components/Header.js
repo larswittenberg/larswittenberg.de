@@ -14,7 +14,9 @@ export default function Header({ className }) {
 				<ul className="flex items-center justify-between py-8">
 					<li>
 						<NextLink href="/">
-							<a className="no-underline font-bold text-xl py-1 px-6 tracking-wider">larswittenberg.de</a>
+							<a className="no-underline font-medium text-2xl py-1 px-6 tracking-wider font-mono">
+								&lt;larswittenberg.de /&gt;
+							</a>
 						</NextLink>
 					</li>
 					<li>
