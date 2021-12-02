@@ -20,6 +20,10 @@ body {
 	@apply font-sans text-lg text-gray-800 dark:bg-darkblue dark:text-gray-200;
 }
 
+.layoutwrapper {
+	min-height: calc(100vh - 16px);
+}
+
 p {
 	@apply mb-2;
 }

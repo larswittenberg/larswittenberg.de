@@ -11,7 +11,7 @@ export default function LayoutDefault({ children, fullWidth, centerVertical }) {
 	})
 
 	return (
-		<div className="min-h-screen flex flex-col">
+		<div className="layoutwrapper flex flex-col">
 			<Header />
 			<main className={ClassNames}>
 				{children}
