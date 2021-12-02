@@ -1,5 +1,5 @@
-import NextImage from 'next/image'
 import LayoutDefault from '../components/LayoutDefault'
+import SocialIcons from '../components/SocialIcons'
 
 export default function IndexPage() {
 	return (
@@ -12,6 +12,7 @@ export default function IndexPage() {
 					Ich bin Lars Wittenberg.<br />
 					<small className="text-6xl ">Frontend Web Developer aus Stuttgart.</small>
 				</h1>
+				<SocialIcons />
 			</div>
 		</LayoutDefault>
 	)
