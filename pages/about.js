@@ -4,7 +4,7 @@ import LayoutDefault from '../components/LayoutDefault'
 const list = ['HTML / (S)CSS', 'JavaScript', 'React', 'PHP & MySQL', 'Responsive Webdesign', 'Styleguides', 'Browserkompatibilität', 'Barrierefreiheit', 'Git Versionsverwaltung', 'Konzeption', 'UI / UX', 'Projektmanagement', 'Kundenbetreuung', 'Datenschutz']
 
 
-export default function IndexPage() {
+export default function AboutPage() {
 	return (
 		<LayoutDefault>
 			<article className="prose prose-sm sm:prose-base lg:prose-lg xl:prose-xl 2xl:prose-2xl mx-auto">
