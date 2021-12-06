@@ -1,6 +1,6 @@
-export default function SocialIcons(){
+export default function SocialIcons({ size }){
 	return (
-		<div>
+		<div className={`socialicons ${size}`}>
 			<ul className="flex">
 				<li className="mr-6">
 					<a href="https://twitter.com/larswittenberg" className="block">

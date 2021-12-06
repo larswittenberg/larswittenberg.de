@@ -1,5 +1,7 @@
+import NextLink from 'next/link'
 import NextImage from 'next/image'
 import LayoutDefault from '../components/LayoutDefault'
+import SocialIcons from '../components/SocialIcons'
 
 const list = ['HTML / (S)CSS', 'JavaScript', 'React', 'PHP & MySQL', 'Responsive Webdesign', 'Styleguides', 'Browserkompatibilität', 'Barrierefreiheit', 'Git Versionsverwaltung', 'Konzeption', 'UI / UX', 'Projektmanagement', 'Kundenbetreuung', 'Datenschutz']
 
@@ -19,8 +21,10 @@ export default function AboutPage() {
 						<p>
 							Macht was in diesem Internet.<br />Pixelschubser. Coder. Nerd.<br />Fahrradfahrer. Hobby-Fotograf.<br /> Und mehr.
 						</p>
-						<p><a href="https://twitter.com/larswittenberg"><span>Twittter Profil</span></a></p>
-						<p><a href="https://instagram.com/larswittenberg"><span>Instagram Profil</span></a></p>
+						<p>
+							<NextLink href="/uses" passHref><a className="underline">Meine /uses Seite</a></NextLink>
+						</p>
+						<SocialIcons size="small" />
 					</div>
 				</div>
 
