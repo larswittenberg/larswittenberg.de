@@ -15,7 +15,6 @@ export default function ImpressumPage({ source, frontMatter }) {
 }
 
 export async function getStaticProps() {
-	// MDX text - can be from a local file, database, anywhere
 	const source = `---
 title: 'Impressum'
 date: '2020-06-03'
