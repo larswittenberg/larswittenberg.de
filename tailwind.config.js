@@ -1,10 +1,8 @@
 module.exports = {
-	mode: 'jit',
 	content: [
 		'./pages/**/*.{js,jsx,ts,tsx}',
 		'./components/**/*.{js,jsx,ts,tsx}',
 	],
-	darkMode: 'media', // or 'media' or 'class'
 	theme: {
 		extend: {
 			colors: {
@@ -23,9 +21,6 @@ module.exports = {
 				'linkhover': 'inset 0 -1.1em 0 0 #ef7c17',
 			}
 		},
-	},
-	variants: {
-		extend: {},
 	},
 	plugins: [
 		require('@tailwindcss/typography'),
