@@ -30,6 +30,7 @@ export default function BlogPage({ posts }) {
 					<NextLink
 						as={`/blog/${post.filePath.replace(/\.mdx?$/, '')}`}
 						href={`/blog/[slug]`}
+						passHref
 					>
 						<h2 className="font-bold text-4xl mb-2">
 							<a className="shadow-link hover:shadow-linkhover hover:text-black hover:cursor-pointer transition-all">{post.data.title}</a>
