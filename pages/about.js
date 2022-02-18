@@ -3,7 +3,7 @@ import NextImage from 'next/image'
 import LayoutDefault from '../components/LayoutDefault'
 import SocialIcons from '../components/SocialIcons'
 
-const list = ['HTML / (S)CSS', 'JavaScript', 'React', 'PHP & MySQL', 'Responsive Webdesign', 'Styleguides', 'Browserkompatibilität', 'Barrierefreiheit', 'Git Versionsverwaltung', 'Konzeption', 'UI / UX', 'Projektmanagement', 'Kundenbetreuung', 'Datenschutz']
+const list = ['HTML / (S)CSS', 'JavaScript', 'React', 'Responsive Webdesign', 'Styleguides', 'Browserkompatibilität', 'Barrierefreiheit', 'PHP & MySQL', 'Git Versionsverwaltung', 'Konzeption', 'UI / UX', 'Projektmanagement', 'Kundenbetreuung', 'Datenschutz']
 
 
 export default function AboutPage() {
@@ -15,14 +15,14 @@ export default function AboutPage() {
 				</h1>
 
 				<div className="md:flex justify-between md:mb-20">
-					<NextImage src="/images/lars-wittenberg-pixelart.png" alt="Lars Wittenberg" width="512" height="512" />
+					<NextImage src="/images/lars-wittenberg.jpg" alt="Lars Wittenberg" width="500" height="500" className="rounded-full" />
 					<div>
 						<h2>Lars Wittenberg</h2>
 						<p>
-							Macht was in diesem Internet.<br />Pixelschubser. Coder. Nerd.<br />Fahrradfahrer. Hobby-Fotograf.<br /> Und mehr.
+							Macht was in diesem Internet.<br />Pixelschubser. Coder. Nerd.<br />Fahrradfahrer.
 						</p>
 						<p>
-							<NextLink href="/uses" passHref><a className="underline">Meine /uses Seite</a></NextLink>
+							<NextLink href="/uses" passHref><a className="underline">/uses</a></NextLink>
 						</p>
 						<SocialIcons size="small" />
 					</div>
@@ -31,8 +31,8 @@ export default function AboutPage() {
 
 				<h2>Zusammenfassung</h2>
 
-				<p>Meine Expertise als Web Developer mit dem Schwerpunkt Frontend-Entwicklung beruht auf über 10 Jahren Erfahrung. In dieser Zeit habe ich für viele Webseiten das Frontend umgesetzt, Styleguides erstellt, WebApps und Mircosites entwickelt, mit verschiedenen Content Management Systemen gearbeitet aber auch Erfahrungen in Kundenbetreuung und Projektmanagement gesammelt. Mit großem Interesse verfolge ich zudem die Weiterentwicklungen rund um neue Internet-Technologien und Trends.</p>
-				<p>Wenn ich nicht am Mac arbeite, trifft man mich zumeist auf meinem Rennrad oder mit meiner Kamera in der Natur beim wandern an.</p>
+				<p>Meine Expertise als Web Developer mit dem Schwerpunkt Frontend-Entwicklung beruht auf über 15 Jahren Erfahrung. In dieser Zeit habe ich für viele Webseiten das Frontend umgesetzt, Styleguides erstellt, Web-Apps und Mircosites entwickelt, mit verschiedenen Content Management Systemen gearbeitet aber auch Erfahrungen in Kundenbetreuung und Projektmanagement gesammelt. Mit großem Interesse verfolge ich zudem die Weiterentwicklungen rund um neue Internet-Technologien und Trends.</p>
+				<p>Wenn ich nicht am Mac arbeite, trifft man mich zumeist auf meinem Rennrad, auf meinem Gravel-Bike oder in der Natur beim wandern an.</p>
 
 
 				<h2>Kompetenzen</h2>

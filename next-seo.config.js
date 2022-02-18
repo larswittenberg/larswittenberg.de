@@ -1,5 +1,5 @@
 const title = 'Lars Wittenberg - Frontend Web Developer aus Stuttgart';
-const description = 'Frontend Web Developer. Pixelschubser. Coder. Nerd. Fahrradfahrer. Hobby-Fotograf. Fußball-Fan. Und mehr. Aus Stuttgart. Geborener Niedersache.';
+const description = 'Frontend Web Developer. Pixelschubser. Coder. Nerd. Fahrradfahrer. Aus Stuttgart.';
 
 const SEO = {
 	title,

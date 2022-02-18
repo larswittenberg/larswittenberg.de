@@ -22,7 +22,7 @@ export async function getStaticProps() {
 	const source = `---
 title: 'Uses'
 date: '2020-06-03'
-update: '2021-12-07'
+update: '2022-02-18'
 desc: ''
 ---
 
@@ -39,9 +39,13 @@ Auf Github habe ich ein [Repository mit meinem macOS-Setup](https://github.com/l
 ### Privat
 - ~~iMac 27" 5K (3,4GHz i5, 24GB, 1TB Fusion Drive)~~
 - ~~Apple Wireless Keyboard (ohne Ziffernblock)~~
+- [LG 4K Monitor 27" mit USB-C](https://www.amazon.de/gp/product/B07MKT1W65)
+- [Logitech MX Keys Tastatur](https://www.amazon.de/Logitech-Keys-fortschrittliche-Batterielebensdauer-Metallaufbau/dp/B07W7LMCF9/)
 - [Logitech MX Master Maus](https://www.amazon.de/Logitech-MX-Master-AMZ-Kabellose-Bluetooth-Windows-schwarz/dp/B0761YL588/) (Version 1, kabellos)
 - [USB-C Hub von Novoo](https://www.amazon.de/gp/product/B075FGQ988/)
+- Synology NAS DS216play
 - Externe SSD mit 512GB [WD My Passport SSD](https://www.amazon.de/Passport-Festplatte-Kennwortschutz-automatische-Datensicherung/dp/B07C5BG857/ref=sr_1_1_sspa)
+- Nest Wifi-Router
 - [Steh-Schreibtisch "Skarsta"](https://www.ikea.com/de/de/p/skarsta-schreibtisch-sitz-steh-weiss-s59324818/) von Ikea in der Größe 120x70 cm
 - Büro-Stuhl: Keiner. Der Steh-Schreibtisch bleibt immer oben.
 
@@ -71,7 +75,7 @@ Auf Github habe ich ein [Repository mit meinem macOS-Setup](https://github.com/l
 Hier nur ein paar als Empfehlung die sich in meinem Alltag bewährt haben.
 
 - [Evernote](https://evernote.com/intl/de/) als digitales Notizbuch für alles
-- [Monosnap](https://monosnap.com/) für mehr Screenshot Funktionen
+- [Shottr](https://shottr.cc/) für mehr Screenshot Funktionen
 - [Clippy](https://clipy-app.com/) als erweiterte Zwischenablage
 - [Tiles](https://www.sempliva.com/tiles/) für Fenster-Management
 - [Hidden Bar](https://github.com/dwarvesf/hidden) um Menü-Bar Icons zu verstecken
@@ -104,7 +108,9 @@ Hier nur ein paar als Empfehlung die sich in meinem Alltag bewährt haben.
 - Android Smartphone OnePlus 8T
 - Bluetooth Kopfhörer Anker Soundcore Liberty Air 2
 - Apple iPad Air (4. Gen)
+- iPad Air Tastatur [Logitech Combo Touch](https://www.amazon.de/gp/product/B07W6HP8ZG/)
 - Als täglicher Rucksack begleitet mich ein [Ortlieb Commuter Daypack Urban](https://www.ortlieb.com/de/commuter-daypack-urban-line+R4155). Wasserdicht, Roll-Schnell-Verschluss, mit Laptop-Fach.
+- LED Schreibtischlampe von [Eyocean](https://www.amazon.de/gp/product/B07RKQMX15/)
 
 	`
 
