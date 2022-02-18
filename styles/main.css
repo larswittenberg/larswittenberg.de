@@ -29,63 +29,43 @@ p {
 }
 
 
-.prose h1,
-.prose h2,
-.prose h3,
-.prose h4,
-.prose p,
-.prose strong,
-.prose li,
-.prose td,
-.prose th,
-.prose code,
-.prose figcaption,
-.prose em,
-.prose a {
-	@apply dark:text-gray-200 !important;
+
+/* @tailwindcss/typography custom styles */
+.prose {
+	h1,
+	h2,
+	h3 {
+		@apply font-serif;
+	}
+
+	a {
+		text-decoration-color: theme('colors.orange');
+	}
+
+	strong {
+		font-weight: 700;
+	}
+
+	blockquote {
+		border-left-color: theme('colors.orange');
+	}
+
+	blockquote cite {
+		@apply dark:bg-darkblue dark:text-gray-200;
+	}
+
+	footnotes {
+		@apply text-base;
+	}
+
+	footnotes hr {
+		border-color: theme('colors.orange');
+	}
 }
 
-.prose h1 {
-	@apply dark:text-orange;
-}
 
-.prose h1,
-.prose h2,
-.prose h3 {
-	@apply font-serif;
-}
 
-.prose a {
-	text-decoration-color: theme('colors.orange');
-}
 
-.prose blockquote {
-	border-left-color: theme('colors.orange');
-}
-
-.prose blockquote cite {
-	@apply dark:bg-darkblue dark:text-gray-200;
-}
-
-.prose strong {
-	font-weight: 700;
-}
-
-.prose .socialicons ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-
-.prose .socialicons li {
-	margin-top: 0;
-	margin-bottom: 0;
-	padding: 0;
-}
-
-.prose .socialicons li::before {
-	display: none;
-}
 
 .socialicons.small svg {
 	width: 2rem;
@@ -94,11 +74,3 @@ p {
 
 
 
-
-.prose .footnotes {
-	@apply text-base;
-}
-
-.prose .footnotes hr {
-	border-color: theme('colors.orange');
-}

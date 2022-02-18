@@ -13,6 +13,7 @@ module.exports = {
 				DEFAULT: {
 					css: {
 						// color: '#ff0',
+						'--tw-prose-invert-headings': 'text-gray-200',
 					},
 				},
 			},

@@ -9,7 +9,7 @@ const list = ['HTML / (S)CSS', 'JavaScript', 'React', 'Responsive Webdesign', 'S
 export default function AboutPage() {
 	return (
 		<LayoutDefault>
-			<article className="prose prose-sm sm:prose-base lg:prose-lg xl:prose-xl 2xl:prose-2xl mx-auto">
+			<article className="prose dark:prose-invert prose-sm sm:prose-base lg:prose-lg xl:prose-xl 2xl:prose-2xl mx-auto">
 				<h1 className="">
 					About
 				</h1>
