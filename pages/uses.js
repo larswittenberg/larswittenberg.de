@@ -38,7 +38,6 @@ Auf Github habe ich ein [Repository mit meinem macOS-Setup](https://github.com/l
 
 ### Privat
 - ~~iMac 27" 5K (3,4GHz i5, 24GB, 1TB Fusion Drive)~~
-- ~~Apple Wireless Keyboard (ohne Ziffernblock)~~
 - [LG 4K Monitor 27" mit USB-C](https://www.amazon.de/gp/product/B07MKT1W65)
 - [Logitech MX Keys Tastatur](https://www.amazon.de/Logitech-Keys-fortschrittliche-Batterielebensdauer-Metallaufbau/dp/B07W7LMCF9/)
 - [Logitech MX Master Maus](https://www.amazon.de/Logitech-MX-Master-AMZ-Kabellose-Bluetooth-Windows-schwarz/dp/B0761YL588/) (Version 1, kabellos)
