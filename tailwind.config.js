@@ -22,7 +22,7 @@ module.exports = {
 			},
 			boxShadow: {
 				'link': 'inset 0 -2px 0 0 #ef7c17',
-				'linkhover': 'inset 0 -1.1em 0 0 #ef7c17',
+				'linkhover': 'inset 0 -1.6em 0 0 #ef7c17',
 			}
 		},
 	},

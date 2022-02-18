@@ -33,7 +33,7 @@ export default function BlogPage({ posts }) {
 							href={`/blog/[slug]`}
 							passHref
 						>
-							<a className="border-orange border-b-2 hover:border-b-4 hover:cursor-pointer transition-all">{post.data.title}</a>
+							<a className="link">{post.data.title}</a>
 						</NextLink>
 					</h2>
 					<ul className="flex">

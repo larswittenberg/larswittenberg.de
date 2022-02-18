@@ -24,6 +24,10 @@ body {
 	min-height: calc(100vh - 16px);
 }
 
+p {
+	@apply mb-2;
+}
+
 a {
 	&:focus-visible {
 		outline: 3px solid theme('colors.orange');
@@ -31,8 +35,23 @@ a {
 	}
 }
 
-p {
-	@apply mb-2;
+
+.link,
+.prose a {
+	@apply shadow-link no-underline dark:text-gray-200 transition-all duration-150 ease-linear;
+
+	&:hover {
+		@apply shadow-linkhover dark:text-darkblue;
+	}
+}
+
+
+.not-prose a {
+	box-shadow: none;
+
+	&:hover {
+		box-shadow: none;
+	}
 }
 
 
@@ -45,10 +64,6 @@ p {
 	h2,
 	h3 {
 		@apply font-serif;
-	}
-
-	a {
-		@apply no-underline dark:text-gray-200 border-b-2 hover:border-b-4 border-orange transition-all;
 	}
 
 	strong {
@@ -77,9 +92,7 @@ p {
 
 }
 
-.not-prose a {
-	@apply border-0 hover:border-0;
-}
+
 
 
 

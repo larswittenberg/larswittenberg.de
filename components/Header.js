@@ -24,7 +24,7 @@ export default function Header({ className }) {
 						{links.map(({ href, label }) => (
 							<li key={`${href}${label}`}>
 								<NextLink href={href} passHref>
-									<a className="font-bold text-xl py-1 px-6 tracking-wider">{label}</a>
+									<a className="font-bold text-xl py-1 px-6 tracking-wider hover:shadow-linkhover hover:dark:text-darkblue transition-all duration-150 ease-linear">{label}</a>
 								</NextLink>
 							</li>
 						))}
