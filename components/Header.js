@@ -14,7 +14,7 @@ export default function Header({ className }) {
 				<ul className="flex items-center justify-between py-8">
 					<li>
 						<NextLink href="/">
-							<a className="no-underline font-medium text-2xl py-1 px-6 tracking-wider font-mono">
+							<a className="font-medium text-2xl py-1 px-6 tracking-wider font-mono">
 								&lt;larswittenberg.de /&gt;
 							</a>
 						</NextLink>
@@ -24,7 +24,7 @@ export default function Header({ className }) {
 						{links.map(({ href, label }) => (
 							<li key={`${href}${label}`}>
 								<NextLink href={href} passHref>
-									<a className="no-underline font-bold text-xl py-1 px-6 tracking-wider">{label}</a>
+									<a className="font-bold text-xl py-1 px-6 tracking-wider">{label}</a>
 								</NextLink>
 							</li>
 						))}

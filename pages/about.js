@@ -22,7 +22,7 @@ export default function AboutPage() {
 							Macht was in diesem Internet.<br />Pixelschubser. Coder. Nerd.<br />Fahrradfahrer.
 						</p>
 						<p>
-							<NextLink href="/uses" passHref><a className="underline">/uses</a></NextLink>
+							<NextLink href="/uses" passHref><a>/uses</a></NextLink>
 						</p>
 						<SocialIcons size="small" />
 					</div>

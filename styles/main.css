@@ -24,6 +24,13 @@ body {
 	min-height: calc(100vh - 16px);
 }
 
+a {
+	&:focus-visible {
+		outline: 3px solid theme('colors.orange');
+		border: 0;
+	}
+}
+
 p {
 	@apply mb-2;
 }
@@ -32,6 +39,8 @@ p {
 
 /* @tailwindcss/typography custom styles */
 .prose {
+	@apply dark:text-gray-200;
+
 	h1,
 	h2,
 	h3 {
@@ -39,7 +48,7 @@ p {
 	}
 
 	a {
-		text-decoration-color: theme('colors.orange');
+		@apply no-underline dark:text-gray-200 border-b-2 hover:border-b-4 border-orange transition-all;
 	}
 
 	strong {
@@ -47,20 +56,29 @@ p {
 	}
 
 	blockquote {
-		border-left-color: theme('colors.orange');
+		@apply border-l-orange;
 	}
 
 	blockquote cite {
 		@apply dark:bg-darkblue dark:text-gray-200;
 	}
 
-	footnotes {
+	.footnotes {
 		@apply text-base;
+
+		hr {
+			@apply border-orange;
+		}
+
+		a {
+			@apply border-0 ml-2;
+		}
 	}
 
-	footnotes hr {
-		border-color: theme('colors.orange');
-	}
+}
+
+.not-prose a {
+	@apply border-0 hover:border-0;
 }
 
 

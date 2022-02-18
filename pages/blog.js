@@ -5,7 +5,7 @@ import path from 'path'
 import matter from 'gray-matter'
 import { postFilePaths, POSTS_PATH } from '../utils/mdxUtils'
 import LayoutDefault from '../components/LayoutDefault'
-import { urlToHttpOptions } from 'url'
+// import { urlToHttpOptions } from 'url'
 
 
 export default function BlogPage({ posts }) {
@@ -27,15 +27,15 @@ export default function BlogPage({ posts }) {
 							{new Intl.DateTimeFormat('de-DE', { year: 'numeric', month: 'long', day: '2-digit' }).format(Date.parse(post.data.date))}
 						</p>
 					)}
-					<NextLink
-						as={`/blog/${post.filePath.replace(/\.mdx?$/, '')}`}
-						href={`/blog/[slug]`}
-						passHref
-					>
-						<h2 className="font-bold text-4xl mb-2">
-							<a className="shadow-link hover:shadow-linkhover hover:text-black hover:cursor-pointer transition-all">{post.data.title}</a>
-						</h2>
-					</NextLink>
+					<h2 className="font-bold text-4xl mb-2">
+						<NextLink
+							as={`/blog/${post.filePath.replace(/\.mdx?$/, '')}`}
+							href={`/blog/[slug]`}
+							passHref
+						>
+							<a className="border-orange border-b-2 hover:border-b-4 hover:cursor-pointer transition-all">{post.data.title}</a>
+						</NextLink>
+					</h2>
 					<ul className="flex">
 						{post.data.tags && post.data.tags.map((tag, index) => (
 							<li key={index} className="text-base pr-4">#{(tag)}</li>

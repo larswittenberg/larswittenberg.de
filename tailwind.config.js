@@ -17,6 +17,9 @@ module.exports = {
 					},
 				},
 			},
+			borderWidth: {
+				'1': '1px',
+			},
 			boxShadow: {
 				'link': 'inset 0 -2px 0 0 #ef7c17',
 				'linkhover': 'inset 0 -1.1em 0 0 #ef7c17',
