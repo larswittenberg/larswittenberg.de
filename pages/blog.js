@@ -32,7 +32,7 @@ export default function BlogPage({ posts }) {
 										}).format(Date.parse(post.data.date))}
 									</p>
 								)}
-								<h2 className="font-bold text-2xl md:text-3xl lg:text-4xl xl:text-5xl  mb-2">
+								<h2 className="font-bold text-2xl md:text-3xl lg:text-4xl xl:text-5xl xl:leading-tight mb-2">
 									<NextLink
 										as={`/blog/${post.filePath.replace(
 											/\.mdx?$/,
