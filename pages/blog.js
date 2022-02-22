@@ -15,8 +15,8 @@ export default function BlogPage({ posts }) {
 	// console.log(filteredBlogPosts)
 
 	return (
-		<LayoutDefault className="">
-			<section className="prose dark:prose-invert prose-sm sm:prose-base lg:prose-lg xl:prose-xl 2xl:prose-2xl mx-auto">
+		<LayoutDefault prose>
+			<section>
 				<h1>Blog-Artikel</h1>
 
 				<div className="not-prose">

@@ -5,8 +5,8 @@ import LayoutDefault from '../components/LayoutDefault'
 
 export default function ImpressumPage({ source, frontMatter }) {
 	return (
-		<LayoutDefault>
-			<article className="prose dark:prose-invert prose-sm sm:prose-base lg:prose-lg xl:prose-xl 2xl:prose-2xl mx-auto">
+		<LayoutDefault prose>
+			<article>
 				<h1>{frontMatter.title}</h1>
 				<MDXRemote {...source} />
 			</article>

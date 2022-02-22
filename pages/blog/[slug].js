@@ -9,8 +9,8 @@ import components from '../../components/MDXComponents'
 
 export default function PostPage({ source, frontMatter }) {
 	return (
-		<LayoutDefault>
-			<article className="prose dark:prose-invert prose-sm sm:prose-base lg:prose-lg xl:prose-xl 2xl:prose-2xl mx-auto">
+		<LayoutDefault prose>
+			<article>
 				<h1>{frontMatter.title}</h1>
 				<p className="text-base mb-12">
 					Veröffentlich am:{' '}

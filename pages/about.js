@@ -22,8 +22,8 @@ const list = [
 
 export default function AboutPage() {
 	return (
-		<LayoutDefault>
-			<article className="prose dark:prose-invert prose-sm sm:prose-base lg:prose-lg xl:prose-xl 2xl:prose-2xl mx-auto">
+		<LayoutDefault prose>
+			<article>
 				<h1>About</h1>
 
 				<div className="md:flex justify-between md:mb-20">
