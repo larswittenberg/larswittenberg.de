@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/image'
 import CustomLink from './atoms/CustomLink'
 import CustomFigure from './atoms/CustomFigure'
 import FlexWrapper from './atoms/FlexWrapper'

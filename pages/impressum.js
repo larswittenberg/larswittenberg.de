@@ -56,7 +56,7 @@ Die Social Media Icons stammen von [https://simpleicons.org/](https://simpleicon
 	return {
 		props: {
 			source: mdxSource,
-			frontMatter: data
-		}
+			frontMatter: data,
+		},
 	}
 }

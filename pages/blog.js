@@ -7,11 +7,10 @@ import { postFilePaths, POSTS_PATH } from '../utils/mdxUtils'
 import LayoutDefault from '../components/LayoutDefault'
 // import { urlToHttpOptions } from 'url'
 
-
 export default function BlogPage({ posts }) {
-	let filteredBlogPosts = posts.filter(i => i.data.draft === false)
+	let filteredBlogPosts = posts.filter((i) => i.data.draft === false)
 	filteredBlogPosts.sort(
-		(a, b) => Number(new Date(b.data.date)) - Number(new Date(a.data.date))
+		(a, b) => Number(new Date(b.data.date)) - Number(new Date(a.data.date)),
 	)
 	// console.log(filteredBlogPosts)
 
@@ -21,34 +20,42 @@ export default function BlogPage({ posts }) {
 
 			<ul className="list-none">
 				{filteredBlogPosts.map((post) => (
-				<li key={post.filePath} className="mb-16 pl-0">
-					{post.data.date && (
-						<p className="text-base">
-							{new Intl.DateTimeFormat('de-DE', { year: 'numeric', month: 'long', day: '2-digit' }).format(Date.parse(post.data.date))}
-						</p>
-					)}
-					<h2 className="font-bold text-4xl mb-2">
-						<NextLink
-							as={`/blog/${post.filePath.replace(/\.mdx?$/, '')}`}
-							href={`/blog/[slug]`}
-							passHref
-						>
-							<a className="link">{post.data.title}</a>
-						</NextLink>
-					</h2>
-					<ul className="flex">
-						{post.data.tags && post.data.tags.map((tag, index) => (
-							<li key={index} className="text-base pr-4">#{(tag)}</li>
-						))}
-					</ul>
-				</li>
+					<li key={post.filePath} className="mb-16 pl-0">
+						{post.data.date && (
+							<p className="text-base">
+								{new Intl.DateTimeFormat('de-DE', {
+									year: 'numeric',
+									month: 'long',
+									day: '2-digit',
+								}).format(Date.parse(post.data.date))}
+							</p>
+						)}
+						<h2 className="font-bold text-4xl mb-2">
+							<NextLink
+								as={`/blog/${post.filePath.replace(
+									/\.mdx?$/,
+									'',
+								)}`}
+								href={`/blog/[slug]`}
+								passHref
+							>
+								<a className="link">{post.data.title}</a>
+							</NextLink>
+						</h2>
+						<ul className="flex">
+							{post.data.tags &&
+								post.data.tags.map((tag, index) => (
+									<li key={index} className="text-base pr-4">
+										#{tag}
+									</li>
+								))}
+						</ul>
+					</li>
 				))}
 			</ul>
 		</LayoutDefault>
 	)
 }
-
-
 
 export function getStaticProps() {
 	const posts = postFilePaths.map((filePath) => {

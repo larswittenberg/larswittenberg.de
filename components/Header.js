@@ -1,7 +1,6 @@
 import NextLink from 'next/link'
 
 export default function Header({ className }) {
-
 	const links = [
 		{ href: '/', label: 'Home' },
 		{ href: '/about', label: 'About' },
@@ -21,13 +20,15 @@ export default function Header({ className }) {
 					</li>
 					<li>
 						<ul className="m-auto flex flex-wrap items-center justify-between">
-						{links.map(({ href, label }) => (
-							<li key={`${href}${label}`}>
-								<NextLink href={href} passHref>
-									<a className="font-bold text-xl py-1 px-6 tracking-wider hover:shadow-linkhover hover:dark:text-darkblue transition-all duration-150 ease-linear">{label}</a>
-								</NextLink>
-							</li>
-						))}
+							{links.map(({ href, label }) => (
+								<li key={`${href}${label}`}>
+									<NextLink href={href} passHref>
+										<a className="font-bold text-xl py-1 px-6 tracking-wider hover:shadow-linkhover hover:dark:text-darkblue transition-all duration-150 ease-linear">
+											{label}
+										</a>
+									</NextLink>
+								</li>
+							))}
 						</ul>
 					</li>
 				</ul>

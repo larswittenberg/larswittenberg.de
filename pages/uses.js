@@ -10,7 +10,22 @@ export default function UsesPage({ source, frontMatter }) {
 			<article className="prose dark:prose-invert prose-sm sm:prose-base lg:prose-lg xl:prose-xl 2xl:prose-2xl mx-auto">
 				<h1>{frontMatter.title}</h1>
 				<p className="text-base mb-12">
-					Veröffentlich am: {new Intl.DateTimeFormat('de-DE', { year: 'numeric', month: 'long', day: '2-digit' }).format(Date.parse(frontMatter.date))} {frontMatter.update ? ` // Letztes Update: ${new Intl.DateTimeFormat('de-DE', { year: 'numeric', month: 'long', day: '2-digit' }).format(Date.parse(frontMatter.update))}` : ''}
+					Veröffentlich am:{' '}
+					{new Intl.DateTimeFormat('de-DE', {
+						year: 'numeric',
+						month: 'long',
+						day: '2-digit',
+					}).format(Date.parse(frontMatter.date))}{' '}
+					{frontMatter.update
+						? ` // Letztes Update: ${new Intl.DateTimeFormat(
+								'de-DE',
+								{
+									year: 'numeric',
+									month: 'long',
+									day: '2-digit',
+								},
+						  ).format(Date.parse(frontMatter.update))}`
+						: ''}
 				</p>
 				<MDXRemote {...source} components={components} />
 			</article>
@@ -118,7 +133,7 @@ Hier nur ein paar als Empfehlung die sich in meinem Alltag bewährt haben.
 	return {
 		props: {
 			source: mdxSource,
-			frontMatter: data
-		}
+			frontMatter: data,
+		},
 	}
 }
