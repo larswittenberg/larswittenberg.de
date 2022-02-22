@@ -16,43 +16,52 @@ export default function BlogPage({ posts }) {
 
 	return (
 		<LayoutDefault className="">
-			<h1 className="font-bold text-6xl mb-16">Blog-Artikel</h1>
+			<section className="prose dark:prose-invert prose-sm sm:prose-base lg:prose-lg xl:prose-xl 2xl:prose-2xl mx-auto">
+				<h1>Blog-Artikel</h1>
 
-			<ul className="list-none">
-				{filteredBlogPosts.map((post) => (
-					<li key={post.filePath} className="mb-16 pl-0">
-						{post.data.date && (
-							<p className="text-base">
-								{new Intl.DateTimeFormat('de-DE', {
-									year: 'numeric',
-									month: 'long',
-									day: '2-digit',
-								}).format(Date.parse(post.data.date))}
-							</p>
-						)}
-						<h2 className="font-bold text-4xl mb-2">
-							<NextLink
-								as={`/blog/${post.filePath.replace(
-									/\.mdx?$/,
-									'',
-								)}`}
-								href={`/blog/[slug]`}
-								passHref
-							>
-								<a className="link">{post.data.title}</a>
-							</NextLink>
-						</h2>
-						<ul className="flex">
-							{post.data.tags &&
-								post.data.tags.map((tag, index) => (
-									<li key={index} className="text-base pr-4">
-										#{tag}
-									</li>
-								))}
-						</ul>
-					</li>
-				))}
-			</ul>
+				<div className="not-prose">
+					<ul className="list-none">
+						{filteredBlogPosts.map((post) => (
+							<li key={post.filePath} className="mb-16 pl-0">
+								{post.data.date && (
+									<p className="text-base mt-0 mb-2">
+										{new Intl.DateTimeFormat('de-DE', {
+											year: 'numeric',
+											month: 'long',
+											day: '2-digit',
+										}).format(Date.parse(post.data.date))}
+									</p>
+								)}
+								<h2 className="font-bold text-2xl md:text-3xl lg:text-4xl xl:text-5xl  mb-2">
+									<NextLink
+										as={`/blog/${post.filePath.replace(
+											/\.mdx?$/,
+											'',
+										)}`}
+										href={`/blog/[slug]`}
+										passHref
+									>
+										<a className="link">
+											{post.data.title}
+										</a>
+									</NextLink>
+								</h2>
+								<ul className="flex">
+									{post.data.tags &&
+										post.data.tags.map((tag, index) => (
+											<li
+												key={index}
+												className="text-base pr-4"
+											>
+												#{tag}
+											</li>
+										))}
+								</ul>
+							</li>
+						))}
+					</ul>
+				</div>
+			</section>
 		</LayoutDefault>
 	)
 }

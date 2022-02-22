@@ -2,8 +2,8 @@ import cn from 'classnames'
 
 export default function SocialIcons({ size }) {
 	let svgClass = cn({
-		'w-16 h-16 fill-current text-gray-400 hover:text-white transition-all': true,
-		'w-8 h-8': size === 'small',
+		'w-8 h-8 lg:w-16 lg:h-16 fill-current text-gray-400 hover:text-white transition-all': true,
+		'w-8 h-8 lg:w-8 lg:h-8': size === 'small',
 	})
 
 	return (

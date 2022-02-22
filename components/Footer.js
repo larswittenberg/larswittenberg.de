@@ -7,7 +7,7 @@ export default function Footer() {
 	})
 
 	return (
-		<footer className="lg:w-11/12 mt-16 mx-4 lg:mx-auto py-8 border-t border-solid border-gray-700 text-center">
+		<footer className="lg:w-11/12 mt-16 mx-4 md:mx-10 lg:mx-auto py-8 border-t border-solid border-gray-700 text-center">
 			<div>
 				<p className="text-base text-gray-500">
 					© {new Date().getFullYear()} Lars Wittenberg · Built with{' '}

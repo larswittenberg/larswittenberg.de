@@ -2,7 +2,6 @@
 /* @import "helpers/debugging.css";  */
 /* @import "helpers/htmllinting.css"; */
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,8 +34,7 @@ a {
 	}
 }
 
-
-.link,
+a.link,
 .prose a {
 	@apply shadow-link no-underline dark:text-gray-200 transition-all duration-150 ease-linear;
 
@@ -45,16 +43,13 @@ a {
 	}
 }
 
-
-.not-prose a {
+.not-prose a:not(.link) {
 	box-shadow: none;
 
 	&:hover {
 		box-shadow: none;
 	}
 }
-
-
 
 /* @tailwindcss/typography custom styles */
 .prose {
@@ -89,10 +84,4 @@ a {
 			@apply border-0 ml-2;
 		}
 	}
-
 }
-
-
-
-
-

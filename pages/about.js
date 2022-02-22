@@ -24,7 +24,7 @@ export default function AboutPage() {
 	return (
 		<LayoutDefault>
 			<article className="prose dark:prose-invert prose-sm sm:prose-base lg:prose-lg xl:prose-xl 2xl:prose-2xl mx-auto">
-				<h1 className="">About</h1>
+				<h1>About</h1>
 
 				<div className="md:flex justify-between md:mb-20">
 					<NextImage
@@ -34,7 +34,7 @@ export default function AboutPage() {
 						height="500"
 						className="rounded-full"
 					/>
-					<div>
+					<div className="md:ml-8">
 						<h2>Lars Wittenberg</h2>
 						<p>
 							Macht was in diesem Internet.
