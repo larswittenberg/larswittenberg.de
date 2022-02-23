@@ -52,11 +52,9 @@ Auf Github habe ich ein [Repository mit meinem macOS-Setup](https://github.com/l
 ## Hardware
 
 ### Privat
-- ~~iMac 27" 5K (3,4GHz i5, 24GB, 1TB Fusion Drive)~~
 - [LG 4K Monitor 27" mit USB-C](https://www.amazon.de/gp/product/B07MKT1W65)
 - [Logitech MX Keys Tastatur](https://www.amazon.de/Logitech-Keys-fortschrittliche-Batterielebensdauer-Metallaufbau/dp/B07W7LMCF9/)
-- [Logitech MX Master Maus](https://www.amazon.de/Logitech-MX-Master-AMZ-Kabellose-Bluetooth-Windows-schwarz/dp/B0761YL588/) (Version 1, kabellos)
-- [USB-C Hub von Novoo](https://www.amazon.de/gp/product/B075FGQ988/)
+- [Logitech MX Master Maus](https://www.amazon.de/Logitech-MX-Master-AMZ-Kabellose-Bluetooth-Windows-schwarz/dp/B0761YL588/)
 - Synology NAS DS216play
 - Externe SSD mit 512GB [WD My Passport SSD](https://www.amazon.de/Passport-Festplatte-Kennwortschutz-automatische-Datensicherung/dp/B07C5BG857/ref=sr_1_1_sspa)
 - Nest Wifi-Router
@@ -68,7 +66,7 @@ Auf Github habe ich ein [Repository mit meinem macOS-Setup](https://github.com/l
 - MacBook Pro 13" von 2017 (3,1GHz i5, 16GB, 500GB SSD)
 - Dell UltraSharp 34" Curved Monitor
 - Apple Wireless Keyboard (ohne Ziffernblock)
-- Logitech MX Master Maus (ich nutze das gleiche Modell im Büro und privat)
+- Logitech MX Master Maus (ich nutze das gleiche Model im Büro und privat)
 - Monitor-Standfuß aus Holz von [Samdi](https://www.amazon.de/Samdi-H%C3%B6lzerne-Universal-Elegante-Halterung-Schwarze-Walnuss/dp/B0753DCGX1?ref_=ast_bbp_dp)
 
 
@@ -76,7 +74,7 @@ Auf Github habe ich ein [Repository mit meinem macOS-Setup](https://github.com/l
 ## Software
 
 ### Entwicklung
-- [Visual Studio Code](https://code.visualstudio.com/) als Code-Editor (nach ~~Sublime Text~~ & ~~Atom~~)
+- [Visual Studio Code](https://code.visualstudio.com/) (nach ~~Sublime Text~~ & ~~Atom~~)
 - VS Code Theme: [Cobalt 2](https://marketplace.visualstudio.com/items?itemName=wesbos.theme-cobalt2)
 - VS Code Font: [Hack](https://sourcefoundry.org/hack/)
 - [Tower](https://www.git-tower.com/mac) als Git Client
@@ -95,7 +93,6 @@ Hier nur ein paar als Empfehlung die sich in meinem Alltag bewährt haben.
 - [Hidden Bar](https://github.com/dwarvesf/hidden) um Menü-Bar Icons zu verstecken
 - [NameChanger](https://mrrsoftware.com/namechanger/) schnelle Umbenennung von Dateien
 - [Alfred](https://www.alfredapp.com/) das bessere Spotlight
-- [LastPass](https://www.lastpass.com/de) speichert meine kryptischen Kennwörter
 
 
 ### Chrome Browser Erweiterungen
@@ -120,10 +117,10 @@ Hier nur ein paar als Empfehlung die sich in meinem Alltag bewährt haben.
 ## Weiteres
 
 - Android Smartphone OnePlus 8T
-- Bluetooth Kopfhörer Anker Soundcore Liberty Air 2
 - Apple iPad Air (4. Gen)
 - iPad Air Tastatur [Logitech Combo Touch](https://www.amazon.de/gp/product/B07W6HP8ZG/)
-- Als täglicher Rucksack begleitet mich ein [Ortlieb Commuter Daypack Urban](https://www.ortlieb.com/de/commuter-daypack-urban-line+R4155). Wasserdicht, Roll-Schnell-Verschluss, mit Laptop-Fach.
+- Bluetooth Kopfhörer Anker Soundcore Liberty Air 2
+- [Ortlieb Commuter Daypack Urban](https://www.ortlieb.com/de/commuter-daypack-urban-line+R4155) Rucksack. Wasserdicht, Roll-Schnell-Verschluss, mit Laptop-Fach.
 - LED Schreibtischlampe von [Eyocean](https://www.amazon.de/gp/product/B07RKQMX15/)
 
 	`
