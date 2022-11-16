@@ -4,9 +4,11 @@ coverage
 
 # Ignore all HTML files
 *.html
+*.md
 
 # Basics
 package.json
+.eslintrc.json
 
 # Next.js specific
 node_modules
