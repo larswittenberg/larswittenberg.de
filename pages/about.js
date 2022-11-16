@@ -7,13 +7,20 @@ const list = [
 	'HTML / (S)CSS',
 	'JavaScript',
 	'React',
-	'Responsive Webdesign',
+	'Next.js',
+	'Tailwind CSS',
 	'Styleguides',
+	'Storybook.js',
+	'Responsive Webdesign',
 	'Browserkompatibilität',
 	'Barrierefreiheit',
+	'Frontend Workflow',
 	'PHP & MySQL',
 	'Git Versionsverwaltung',
 	'Konzeption',
+	'Teamwork',
+	'Landingpages',
+	'Newsletter',
 	'UI / UX',
 	'Projektmanagement',
 	'Kundenbetreuung',
@@ -30,8 +37,8 @@ export default function AboutPage() {
 					<NextImage
 						src="/images/lars-wittenberg.jpg"
 						alt="Lars Wittenberg"
-						width="500"
-						height="500"
+						width="400"
+						height="400"
 						className="rounded-full"
 					/>
 					<div className="md:ml-8">
@@ -41,7 +48,9 @@ export default function AboutPage() {
 							<br />
 							Pixelschubser. Coder. Nerd.
 							<br />
-							Fahrradfahrer.
+							Rennradfahrer. Gravelbikefahrer.
+							<br />
+							#frontend #effzeh #cyclinglife
 						</p>
 						<p>
 							<NextLink href="/uses" passHref>

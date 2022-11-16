@@ -12,7 +12,7 @@ export default function Footer() {
 				<p className="text-base text-gray-400">
 					© {new Date().getFullYear()} Lars Wittenberg · Built with{' '}
 					<a href="https://nextjs.org/" className={linkClass}>
-						next.js
+						next.js 13
 					</a>{' '}
 					· Deployed on{' '}
 					<a href="https://vercel.com/" className={linkClass}>
