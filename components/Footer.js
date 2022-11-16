@@ -19,8 +19,8 @@ export default function Footer() {
 						vercel.com
 					</a>{' '}
 					·{' '}
-					<NextLink href="/impressum" passHref>
-						<a className={linkClass}>Impressum</a>
+					<NextLink href="/impressum" passHref className={linkClass}>
+						Impressum
 					</NextLink>
 				</p>
 			</div>

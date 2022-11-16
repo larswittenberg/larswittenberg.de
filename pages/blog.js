@@ -40,10 +40,9 @@ export default function BlogPage({ posts }) {
 										)}`}
 										href={`/blog/[slug]`}
 										passHref
+										className="link"
 									>
-										<a className="link">
-											{post.data.title}
-										</a>
+										{post.data.title}
 									</NextLink>
 								</h2>
 								<ul className="flex">

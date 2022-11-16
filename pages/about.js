@@ -45,7 +45,7 @@ export default function AboutPage() {
 						</p>
 						<p>
 							<NextLink href="/uses" passHref>
-								<a>/uses</a>
+								/uses
 							</NextLink>
 						</p>
 						<SocialIcons size="small" />
