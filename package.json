@@ -1,7 +1,7 @@
 {
   "name": "larswittenberg.de",
   "description": "My personal website built with Next.js & TailwindCSS",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": {
     "name": "Lars Wittenberg",
     "url": "https://larswittenberg.de"
@@ -16,6 +16,8 @@
     "build": "next build",
     "start": "next start",
     "clean": "npx rimraf .next",
+    "lint": "next lint",
+    "format": "npx prettier --write .",
     "export": "npx rimraf .next && next build && next export"
   },
   "dependencies": {
@@ -35,6 +37,7 @@
     "@fullhuman/postcss-purgecss": "^5.0.0",
     "eslint": "8.27.0",
     "eslint-config-next": "13.0.3",
-    "eslint-config-prettier": "^8.5.0"
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "2.7.1"
   }
 }
