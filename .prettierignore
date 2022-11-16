@@ -4,7 +4,9 @@ coverage
 
 # Ignore all HTML files
 *.html
+*.css
 *.md
+*.mdx
 
 # Basics
 package.json
