@@ -75,7 +75,7 @@ Auf Github habe ich ein [Repository mit meinem macOS-Setup](https://github.com/l
 ## Software
 
 ### Entwicklung
-- [Visual Studio Code](https://code.visualstudio.com/) (nach ~~Sublime Text~~ & ~~Atom~~)
+- [Visual Studio Code](https://code.visualstudio.com/) (~~Sublime Text~~, ~~Atom~~)
 - VS Code Theme: [Cobalt 2](https://marketplace.visualstudio.com/items?itemName=wesbos.theme-cobalt2)
 - VS Code Font: [Hack](https://sourcefoundry.org/hack/)
 - [iTerm2](https://iterm2.com/) als Terminal
