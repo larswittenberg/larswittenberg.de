@@ -11,15 +11,15 @@ export default function PostPage({ source, frontMatter }) {
 	return (
 		<LayoutDefault prose>
 			<article>
-				<h1>{frontMatter.title}</h1>
-				<p className="text-base mb-12">
-					Veröffentlich am:{' '}
+				<p className="not-prose text-base mt-0 mb-1">
+					Datum:{' '}
 					{new Intl.DateTimeFormat('de-DE', {
 						year: 'numeric',
 						month: 'long',
 						day: '2-digit',
 					}).format(Date.parse(frontMatter.date))}
 				</p>
+				<h1 className="mb-12">{frontMatter.title}</h1>
 				{/* {frontMatter.desc && (
 					<p className="lead">{frontMatter.desc}</p>
 				)} */}
