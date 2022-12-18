@@ -2,6 +2,7 @@ module.exports = {
 	content: [
 		'./pages/**/*.{js,jsx,ts,tsx,mdx}',
 		'./components/**/*.{js,jsx,ts,tsx,mdx}',
+		'./blogposts/**/*.{js,jsx,ts,tsx,mdx}',
 	],
 	theme: {
 		extend: {
