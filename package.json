@@ -1,7 +1,7 @@
 {
   "name": "larswittenberg.de",
   "description": "My personal website built with Next.js & TailwindCSS",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": {
     "name": "Lars Wittenberg",
     "url": "https://larswittenberg.de"
@@ -19,26 +19,27 @@
     "clean": "npx rimraf .next",
     "lint": "next lint",
     "format": "prettier --write .",
-    "export": "npx rimraf .next && next build && next export"
+    "export": "npx rimraf .next && npx rimraf out && next build && next export"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.10",
-    "autoprefixer": "^10.4.16",
     "classnames": "^2.5.1",
     "gray-matter": "^4.0.3",
-    "next": "^13.0.7",
-    "next-mdx-remote": "^3.0.8",
-    "next-seo": "^5.15.0",
-    "postcss": "^8.4.33",
+    "next": "^14.0.4",
+    "next-mdx-remote": "^4.4.1",
+    "next-seo": "^6.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwindcss": "^3.4.1"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^5.0.0",
-    "eslint": "8.30.0",
-    "eslint-config-next": "13.0.7",
-    "eslint-config-prettier": "^8.5.0",
-    "prettier": "3.1.1"
+    "autoprefixer": "^10.4.16",
+    "eslint": "8.56.0",
+    "eslint-config-next": "14.0.4",
+    "eslint-config-prettier": "^9.1.0",
+    "postcss": "^8.4.33",
+    "prettier": "3.1.1",
+    "prettier-plugin-tailwindcss": "^0.5.11"
   }
 }
