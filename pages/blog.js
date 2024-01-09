@@ -44,17 +44,6 @@ export default function BlogPage({ posts }) {
 										{post.data.title}
 									</Link>
 								</h2>
-								<ul className="flex">
-									{post.data.tags &&
-										post.data.tags.map((tag, index) => (
-											<li
-												key={index}
-												className="text-base pr-4"
-											>
-												#{tag}
-											</li>
-										))}
-								</ul>
 							</li>
 						))}
 					</ul>
