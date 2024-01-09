@@ -26,7 +26,7 @@ desc: ''
 Lars Wittenberg<br />
 Vaihinger Str. 124b<br />
 70567 Stuttgart<br />
-larswittenberg+website {at} googlemail [punkt] com
+larswittenberg+website [at] googlemail [punkt] com
 
 ### Haftung für Inhalte
 
