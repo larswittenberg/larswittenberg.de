@@ -1,4 +1,4 @@
-import NextLink from 'next/link'
+import Link from 'next/link'
 import cn from 'classnames'
 
 export default function Footer() {
@@ -11,17 +11,17 @@ export default function Footer() {
 			<div>
 				<p className="text-base text-gray-400">
 					© {new Date().getFullYear()} Lars Wittenberg · Built with{' '}
-					<a href="https://nextjs.org/" className={linkClass}>
+					<Link href="https://nextjs.org/" className={linkClass}>
 						next.js 13
-					</a>{' '}
+					</Link>{' '}
 					· Deployed on{' '}
-					<a href="https://vercel.com/" className={linkClass}>
+					<Link href="https://vercel.com/" className={linkClass}>
 						vercel.com
-					</a>{' '}
+					</Link>{' '}
 					·{' '}
-					<NextLink href="/impressum" passHref className={linkClass}>
+					<Link href="/impressum" className={linkClass}>
 						Impressum
-					</NextLink>
+					</Link>
 				</p>
 			</div>
 		</footer>

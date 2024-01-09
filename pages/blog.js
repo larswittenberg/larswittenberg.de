@@ -1,5 +1,5 @@
 // import Image from 'next/image'
-import NextLink from 'next/link'
+import Link from 'next/link'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
@@ -33,17 +33,16 @@ export default function BlogPage({ posts }) {
 									</p>
 								)}
 								<h2 className="font-bold text-2xl md:text-3xl lg:text-4xl xl:text-5xl xl:leading-tight mb-2">
-									<NextLink
+									<Link
 										as={`/blog/${post.filePath.replace(
 											/\.mdx?$/,
 											'',
 										)}`}
 										href={`/blog/[slug]`}
-										passHref
 										className="link"
 									>
 										{post.data.title}
-									</NextLink>
+									</Link>
 								</h2>
 								<ul className="flex">
 									{post.data.tags &&

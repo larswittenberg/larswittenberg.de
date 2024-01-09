@@ -1,4 +1,4 @@
-import NextLink from 'next/link'
+import Link from 'next/link'
 import NextImage from 'next/image'
 import LayoutDefault from '../components/LayoutDefault'
 import SocialIcons from '../components/SocialIcons'
@@ -53,9 +53,9 @@ export default function AboutPage() {
 							#frontend #effzeh #cyclinglife
 						</p>
 						<p>
-							<NextLink href="/uses" passHref>
+							<Link href="/uses">
 								/uses
-							</NextLink>
+							</Link>
 						</p>
 						<SocialIcons size="small" />
 					</div>
