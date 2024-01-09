@@ -4,19 +4,19 @@ import LayoutDefault from '../components/LayoutDefault'
 import SocialIcons from '../components/SocialIcons'
 
 const list = [
-	'HTML / (S)CSS',
-	'JavaScript',
+	'HTML / (S)CSS / JavaScript',
 	'React',
 	'Next.js',
 	'Tailwind CSS',
+	'MUI',
 	'Styleguides',
 	'Storybook.js',
 	'Responsive Webdesign',
 	'Browserkompatibilität',
 	'Barrierefreiheit',
 	'Frontend Workflow',
-	'PHP & MySQL',
 	'Git Versionsverwaltung',
+	'PHP & MySQL',
 	'Konzeption',
 	'Teamwork',
 	'Landingpages',
@@ -65,7 +65,7 @@ export default function AboutPage() {
 
 				<p>
 					Meine Expertise als Web Developer mit dem Schwerpunkt
-					Frontend-Entwicklung beruht auf über 15 Jahren Erfahrung. In
+					Frontend-Entwicklung beruht auf über 16 Jahren Erfahrung. In
 					dieser Zeit habe ich für viele Webseiten das Frontend
 					umgesetzt, Styleguides erstellt, Web-Apps und Mircosites
 					entwickelt, mit verschiedenen Content Management Systemen
