@@ -87,6 +87,7 @@ Auf Github habe ich ein [Repository mit meinem macOS-Setup](https://github.com/l
 - [Hack](https://sourcefoundry.org/hack/) VS Code Font
 - [iTerm2](https://iterm2.com/) als Terminal
 - [Tower](https://www.git-tower.com/mac) als Git Client
+- [SnippetsLab](https://www.renfei.org/snippets-lab/) zur Code Snippet Verwaltung
 - [Github Desktop](https://desktop.github.com/) als Git Client
 - [FileZilla](https://filezilla-project.org/) als FTP-Client
 - [Sequel Ace](https://sequel-ace.com/) als MySQL Datenbanken Client
@@ -96,14 +97,13 @@ Auf Github habe ich ein [Repository mit meinem macOS-Setup](https://github.com/l
 
 Hier nur ein paar als Empfehlung die sich in meinem Alltag bewährt haben.
 
-- [Evernote](https://evernote.com/intl/de/) als digitales Notizbuch für alles
 - [Shottr](https://shottr.cc/) für mehr Screenshot Funktionen
 - [Maccy](https://maccy.app/) Clipboard manager for macOS which does one job
+- [Raycast](https://www.raycast.com/) das bessere Spotlight und besser als Alfred
+- [Rocket Typist - Snippet-Editor](https://www.witt-software.com/rockettypist/)
 - [Tiles](https://www.sempliva.com/tiles/) für Fenster-Management
 - [MarkEdit for Markdown - Text-Editor](https://apps.apple.com/us/app/markedit-for-markdown/id1669953820?mt=12)
 - [NameChanger](https://mrrsoftware.com/namechanger/) schnelle Umbenennung von Dateien
-- [Raycast](https://www.raycast.com/) das bessere Spotlight und besser als Alfred
-- [Rocket Typist - Snippet-Editor](https://www.witt-software.com/rockettypist/)
 
 
 ### Chrome Browser Erweiterungen
@@ -118,7 +118,6 @@ Hier nur ein paar als Empfehlung die sich in meinem Alltag bewährt haben.
 - Smartphone Google Pixel 7 Pro
 - Apple iPad Air (4. Gen)
 - iPad Air Tastatur [Logitech Combo Touch](https://www.amazon.de/gp/product/B07W6HP8ZG/)
-- [Bluetooth Noise Cancelling Kopfhörer Sony WH-1000XM3](https://www.amazon.de/gp/product/B07GDR2LYK)
 - [Bluetooth Kopfhörer Google Pixel Buds Pro 2](https://store.google.com/product/pixel_buds_pro_2?hl=de)
 - [Ortlieb Commuter Daypack Urban](https://www.ortlieb.com/de/commuter-daypack-urban-line+R4155) Rucksack.
 
