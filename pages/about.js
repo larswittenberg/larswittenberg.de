@@ -53,9 +53,7 @@ export default function AboutPage() {
 							#frontend #effzeh #cyclinglife
 						</p>
 						<p>
-							<Link href="/uses">
-								/uses
-							</Link>
+							<Link href="/uses">/uses</Link>
 						</p>
 						<SocialIcons size="small" />
 					</div>

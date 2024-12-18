@@ -24,7 +24,7 @@ export default function UsesPage({ source, frontMatter }) {
 									month: 'long',
 									day: '2-digit',
 								},
-						  ).format(Date.parse(frontMatter.update))}`
+							).format(Date.parse(frontMatter.update))}`
 						: ''}
 				</p>
 				<MDXRemote {...source} components={components} />
@@ -34,7 +34,7 @@ export default function UsesPage({ source, frontMatter }) {
 }
 
 export async function getStaticProps() {
-const source = `---
+	const source = `---
 title: 'Uses'
 date: '2020-06-03'
 update: '2024-10-17'
