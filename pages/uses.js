@@ -49,7 +49,7 @@ Inspiriert von [Wes Bos](https://wesbos.com/uses/) und durch sein [uses.tech Pro
 Auf Github habe ich ein [Repository mit meinem macOS-Setup](https://github.com/larswittenberg/mac-setup) samt detailierten Einstellungen und Programmen veröffentlicht.
 
 <Figure>
-	<Image src="/images/schreibtisch.jpg" width="1920" height="1464" alt="Mein Homeoffice Schreibtisch-Setup" />
+	<Image src="/images/schreibtisch.jpg" width="1920" height="1464" alt="Mein Homeoffice Schreibtisch-Setup" priority />
 </Figure>
 
 ## Hardware
@@ -111,17 +111,6 @@ Hier nur ein paar als Empfehlung die sich in meinem Alltag bewährt haben.
 - [Validity](https://chrome.google.com/webstore/detail/validity/bbicmjjbohdfglopkidebfccilipgeif) HTML Validierung direkt auf der geöffneten Website
 - [Pesticide](https://chrome.google.com/webstore/detail/pesticide-for-chrome/bblbgcheenepgnnajgfpiicnbbdmmooh) zum aufspüren von Layout-Fehlern auf einer Website
 - [Full Page Screen Capture](https://chrome.google.com/webstore/detail/full-page-screen-capture/fdpohaocaechififmbbbbbknoalclacl) scrollt automatisch die Website runter und macht einen großen Screenshot davon
-
-
-## Fotografie
-
-- Sony Alpha 6000 Systemkamera mit APS-C Sensor
-- Objektiv Sony SELP18105G 18-105mm F4
-- Objektiv Sigma 30mm F1.4
-- Objektiv Samyang 12mm f2.0
-- [Rollei Stativ C4i](https://www.amazon.de/Rollei-C4i-Panorama-Kugelkopf-Stativtasche-kompatibel/dp/B01A8QUK50)
-- [Kamerarucksack von K&F Concept](https://www.amazon.de/gp/product/B06XKNYQX4/)
-- [Cosyspeed CAMSLINGER Outdoor](https://www.cosyspeed.com/en/products/camslinger-outdoor-mk-ii?variant=28586813227086) Hüfttasche für Wanderungen
 
 
 ## Weiteres
