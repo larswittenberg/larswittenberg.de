@@ -1,31 +1,10 @@
-/* For Debugging Only */
-/* @import "helpers/debugging.css";  */
-/* @import "helpers/htmllinting.css"; */
-
 @import 'tailwindcss';
-
-@config '../tailwind.config.js';
-
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
-  }
-}
-
-.otl {
-	outline: 1px solid red;
+@plugin '@tailwindcss/typography';
+@theme {
+	--color-orange: #ef7c17;
+	--color-darkblue: #1c2532;
+	--shadow-link: inset 0 -2px 0 0 #ef7c17;
+	--shadow-link-hover: inset 0 -1.6em 0 0 #ef7c17;
 }
 
 ::selection {
@@ -34,7 +13,7 @@
 }
 
 body {
-	@apply font-sans text-lg bg-slate-50 text-slate-800  dark:bg-darkblue dark:text-gray-200;
+	@apply font-sans text-lg bg-slate-50 text-slate-800 dark:bg-darkblue dark:text-gray-200;
 }
 
 .layoutwrapper {
@@ -57,7 +36,7 @@ a.link,
 	@apply shadow-link no-underline dark:text-gray-200 transition-all duration-150 ease-linear;
 
 	&:hover {
-		@apply shadow-linkhover dark:text-darkblue;
+		@apply shadow-link-hover dark:text-darkblue;
 	}
 }
 
@@ -103,3 +82,8 @@ a.link,
 		}
 	}
 }
+
+
+/* For Debugging Only */
+/* @import "helpers/debugging.css";  */
+/* @import "helpers/htmllinting.css"; */
