@@ -19,14 +19,22 @@
 		],
 		// Absolute Imports and Module Path Aliases
 		// https://nextjs.org/docs/app/building-your-application/configuring/absolute-imports-and-module-aliases
+		// "baseUrl": "src/",
+		// "paths": {
+		// 	"@/components/*": ["./src/components/*"],
+		// 	"@/src/*": ["./src/*"],
+		// 	"@/scss/*": ["./src/scss/*"]
+		// },
 		"paths": {
-			"@/components/*": ["./src/components/*"],
-			"@/src/*": ["./src/*"],
-			"@/scss/*": ["./src/scss/*"]
+			"@/*": ["./src/*"]
 		},
+		// "paths": {
+		// 	"@/components/*": ["./src/components/*"],
+		// 	"@/src/*": ["./src/*"]
+		// },
 		"strictNullChecks": true,
 		"target": "ES2017"
 	},
-	"include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"],
+	"include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx", "next.config.mjs"],
 	"exclude": ["node_modules"]
 }
