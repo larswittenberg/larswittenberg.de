@@ -1,0 +1,32 @@
+{
+	"compilerOptions": {
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"allowJs": true,
+		"skipLibCheck": true,
+		"strict": false,
+		"noEmit": true,
+		"incremental": true,
+		"esModuleInterop": true,
+		"module": "esnext",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"jsx": "preserve",
+		"plugins": [
+			{
+				"name": "next"
+			}
+		],
+		// Absolute Imports and Module Path Aliases
+		// https://nextjs.org/docs/app/building-your-application/configuring/absolute-imports-and-module-aliases
+		"paths": {
+			"@/components/*": ["./src/components/*"],
+			"@/src/*": ["./src/*"],
+			"@/scss/*": ["./src/scss/*"]
+		},
+		"strictNullChecks": true,
+		"target": "ES2017"
+	},
+	"include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"],
+	"exclude": ["node_modules"]
+}

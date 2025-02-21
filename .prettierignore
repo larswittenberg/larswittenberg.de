@@ -2,19 +2,17 @@
 build
 coverage
 
-# Ignore all HTML files
-*.html
-*.css
-*.md
-*.mdx
-
 # Basics
 package.json
-.eslintrc.json
+
+# Ignore all HTML files
+*.html
 
 # Next.js specific
-node_modules
+*.md
 **/.next/**
 **/_next/**
 **/dist/**
 out
+public
+node_modules
