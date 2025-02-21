@@ -1,5 +1,5 @@
-import LayoutDefault from '../components/LayoutDefault'
-import SocialIcons from '../components/SocialIcons'
+import LayoutDefault from '../../components/LayoutDefault'
+import SocialIcons from '../../components/SocialIcons'
 
 export default function IndexPage() {
 	return (

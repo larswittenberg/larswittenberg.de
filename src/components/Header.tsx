@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export default function Header({ className }) {
+export default function Header({ className }: { className?: string }) {
 	const links = [
 		{ href: '/', label: 'Home' },
 		{ href: '/about', label: 'About' },
