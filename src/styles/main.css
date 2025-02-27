@@ -84,6 +84,20 @@ a.link,
 }
 
 
+.blog-list.not-prose {
+	h2 {
+		@apply text-2xl md:text-3xl lg:text-4xl xl:text-5xl xl:leading-tight mb-16 mt-0;
+	}
+
+	h2 > a {
+		@apply font-extrabold shadow-link no-underline dark:text-gray-200 transition-all duration-150 ease-linear;
+		&:hover {
+			@apply shadow-link-hover dark:text-darkblue;
+		}
+	}
+}
+
+
 /* For Debugging Only */
 /* @import "helpers/debugging.css";  */
 /* @import "helpers/htmllinting.css"; */
