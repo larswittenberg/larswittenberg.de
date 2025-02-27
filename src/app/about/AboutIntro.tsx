@@ -13,14 +13,19 @@ export function AboutIntro() {
 				className="rounded-full"
 			/>
 			<div className="md:ml-8">
-				## Lars Wittenberg Macht was in diesem Internet.
-				<br />
-				Pixelschubser. Coder. Nerd.
-				<br />
-				Rennradfahrer. Gravelbikefahrer.
-				<br />
-				#frontend #effzeh #cyclinglife
-				<Link href="/uses">/uses</Link>
+				<h2>Lars Wittenberg</h2>
+				<p>
+					Macht was in diesem Internet.
+					<br />
+					Pixelschubser. Coder. Nerd.
+					<br />
+					Rennradfahrer. Gravelbikefahrer.
+					<br />
+					#frontend #effzeh #cyclinglife
+				</p>
+				<p>
+					<Link href="/uses">/uses</Link>
+				</p>
 				<SocialIcons size="small" />
 			</div>
 		</div>
