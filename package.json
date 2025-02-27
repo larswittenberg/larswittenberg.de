@@ -13,7 +13,7 @@
   },
   "packageManager": "yarn@4.6.0",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "dev-https": "next dev -p 3001 & npx local-ssl-proxy --source 3000 --target 3001",
     "build": "next build",
     "start": "next start",
