@@ -20,8 +20,6 @@ export default function LayoutDefault({
 	});
 
 	return (
-		<div className="layoutwrapper flex flex-col">
-			<section className={ClassNames}>{children}</section>
-		</div>
+		<section className={ClassNames}>{children}</section>
 	);
 }
