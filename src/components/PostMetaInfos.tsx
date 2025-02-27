@@ -1,4 +1,12 @@
-export default function PostMetaInfos({ date, update, showText }: { date: string; update?: string, showText?: boolean }) {
+export default function PostMetaInfos({
+	date,
+	update,
+	showText,
+}: {
+	date: string;
+	update?: string;
+	showText?: boolean;
+}) {
 	return (
 		<p className="mb-12 text-base">
 			{showText && `Veröffentlich am: `}

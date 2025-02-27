@@ -4,8 +4,8 @@
 import type { MDXComponents } from 'mdx/types';
 import Image, { ImageProps } from 'next/image';
 import CustomFigure from '@/components/atoms/CustomFigure';
-import CustomLink from '@/components/atoms/CustomLink'
-import FlexWrapper from '@/components/atoms/FlexWrapper'
+import CustomLink from '@/components/atoms/CustomLink';
+import FlexWrapper from '@/components/atoms/FlexWrapper';
 
 // This file allows you to provide custom React components
 // to be used in MDX files. You can import and use any

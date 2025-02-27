@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
-import { Analytics } from '@vercel/analytics/react'
-import { SpeedInsights } from '@vercel/speed-insights/next'
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import '@/styles/main.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -30,12 +30,12 @@ export const metadata: Metadata = {
 	},
 };
 
-export default async function RootLayout(props: { children: React.ReactNode; }) {
+export default async function RootLayout(props: { children: React.ReactNode }) {
 	const { children } = props;
 
 	return (
 		<html lang="de">
-			<body className="border-8 border-solid border-orange">
+			<body className="border-orange border-8 border-solid">
 				<Header />
 				<main className="">{children}</main>
 				<Footer />

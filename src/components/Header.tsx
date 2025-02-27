@@ -1,31 +1,31 @@
-import Link from 'next/link'
+import Link from 'next/link';
 
 export default function Header({ className }: { className?: string }) {
 	const links = [
 		{ href: '/', label: 'Home' },
 		{ href: '/about', label: 'About' },
 		{ href: '/blog', label: 'Blog' },
-	]
+	];
 
 	return (
-		<header className={`lg:w-11/12 mx-4 lg:mx-auto lg:my-12 ${className}`}>
+		<header className={`mx-4 lg:mx-auto lg:my-12 lg:w-11/12 ${className}`}>
 			<nav>
-				<ul className="flex flex-col md:flex-row items-center justify-between py-8">
+				<ul className="flex flex-col items-center justify-between py-8 md:flex-row">
 					<li>
 						<Link
 							href="/"
-							className="font-medium text-xl sm:text-2xl py-1 px-4 sm:px-6 tracking-wider font-mono"
+							className="px-4 py-1 font-mono text-xl font-medium tracking-wider sm:px-6 sm:text-2xl"
 						>
 							&lt;larswittenberg.de /&gt;
 						</Link>
 					</li>
 					<li>
-						<ul className="my-8 lg:my-0 m-auto flex flex-wrap items-center justify-between">
+						<ul className="m-auto my-8 flex flex-wrap items-center justify-between lg:my-0">
 							{links.map(({ href, label }) => (
 								<li key={`${href}${label}`}>
 									<Link
 										href={href}
-										className="font-bold text-xl py-1 px-4 sm:px-6 tracking-wider hover:shadow-(--shadow-link-hover) dark:hover:text-darkblue transition-all duration-150 ease-linear"
+										className="dark:hover:text-darkblue px-4 py-1 text-xl font-bold tracking-wider transition-all duration-150 ease-linear hover:shadow-(--shadow-link-hover) sm:px-6"
 									>
 										{label}
 									</Link>
@@ -36,5 +36,5 @@ export default function Header({ className }: { className?: string }) {
 				</ul>
 			</nav>
 		</header>
-	)
+	);
 }

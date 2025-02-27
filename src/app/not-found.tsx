@@ -1,10 +1,10 @@
-import LayoutDefault from '@/components/LayoutDefault'
+import LayoutDefault from '@/components/LayoutDefault';
 
 export default function IndexPage() {
 	return (
 		<LayoutDefault fullWidth centerVertical>
 			<div className="mx-auto max-w-[600px] md:max-w-none">
-				<h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-none mb-12">
+				<h1 className="mb-12 text-3xl leading-none font-extrabold sm:text-5xl lg:text-6xl">
 					404
 					<br />
 					Seite nicht gefunden 😢
@@ -12,5 +12,5 @@ export default function IndexPage() {
 				</h1>
 			</div>
 		</LayoutDefault>
-	)
+	);
 }

@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin '@tailwindcss/typography';
 @theme {
 	--color-orange: #ef7c17;
@@ -13,7 +13,7 @@
 }
 
 body {
-	@apply font-sans text-lg bg-slate-50 text-slate-800 dark:bg-darkblue dark:text-gray-200;
+	@apply dark:bg-darkblue bg-slate-50 font-sans text-lg text-slate-800 dark:text-gray-200;
 }
 
 .layoutwrapper {
@@ -33,7 +33,7 @@ a {
 
 a.link,
 .prose a {
-	@apply shadow-link no-underline dark:text-gray-200 transition-all duration-150 ease-linear;
+	@apply shadow-link no-underline transition-all duration-150 ease-linear dark:text-gray-200;
 
 	&:hover {
 		@apply shadow-link-hover dark:text-darkblue;
@@ -78,25 +78,23 @@ a.link,
 		}
 
 		a {
-			@apply border-0 ml-2;
+			@apply ml-2 border-0;
 		}
 	}
 }
 
-
 .blog-list.not-prose {
 	h2 {
-		@apply text-2xl md:text-3xl lg:text-4xl xl:text-5xl xl:leading-tight mb-16 mt-0;
+		@apply mt-0 mb-16 text-2xl md:text-3xl lg:text-4xl xl:text-5xl xl:leading-tight;
 	}
 
 	h2 > a {
-		@apply font-extrabold shadow-link no-underline dark:text-gray-200 transition-all duration-150 ease-linear;
+		@apply shadow-link font-extrabold no-underline transition-all duration-150 ease-linear dark:text-gray-200;
 		&:hover {
 			@apply shadow-link-hover dark:text-darkblue;
 		}
 	}
 }
-
 
 /* For Debugging Only */
 /* @import "helpers/debugging.css";  */
