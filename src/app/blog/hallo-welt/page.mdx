@@ -1,15 +1,19 @@
----
-title: 'Hallo schöne neue Welt'
-draft: false
-date: '2020-06-03'
-desc: 'Meine Website ist mein Spielplatz.'
-image: 'mockup.jpg'
----
-
 import Image from 'next/image';
+import PostMetaInfos from '@/components/PostMetaInfos';
+import mockup from './mockup.jpg';
+import lighthouseScore from './lighthouse-score.png';
+
+export const metadata = {
+	title: 'Hallo schöne neue Welt',
+	description: 'Meine Website ist mein Spielplatz.'
+};
+
+<PostMetaInfos date="2020-06-03" />
+
+# Hallo schöne neue Welt
 
 <Figure>
-	<Image src="/images/blog/hallo-welt/mockup.jpg" alt="Mockup mit einem MacBook auf dem meine Website angezeigt wird" width="1600" height="1067" />
+	<Image src={mockup} alt="Mockup mit einem MacBook auf dem meine Website angezeigt wird" width="1600" height="1067" priority />
 </Figure>
 
 Meine eigene Website ist über die letzten Jahre ziemlich vernachlässigt worden. Die Domain `larswittenberg.de` habe ich schon viele Jahre. Zu Beginn meines Studiums habe ich hier mal einen Wordpress Blog betrieben. Danach war es eigentlich lange Zeit nur eine Platzhalter-Seite.
@@ -21,7 +25,7 @@ Vor einiger Zeit ist aber den Gedanke gereift, hier wieder mehr zu experimentier
 Hier ist also das Website-Update. Umgesetzt mit dem React-Framework [next.js](https://nextjs.org/) und gehostet bei [vercel.com](https://vercel.com/). Der Code dazu wird auf GitHub verwaltet und durch die perfekte Git-Integration von Vercel muss ich nur einen neuen Commit zu Github schieben und schon wird die Seite automatisch generiert und ausgeliefert. Beim Domain-Provider den Name-Server der eigenen .de Domain auf Vercel gesetzt und _schon_ war alles Online. **Zero config** ist das Marketingwort und das kann ich bestätigen, wenn ich da an andere Deployment-Setups denke. SSL-Zertifikat, CDN und Preview-Urls gibts inklusive.
 
 <Figure bigger>
-	<Image src="/images/blog/hallo-welt/lighthouse-score.png" alt="Lighthouse Ergebnis meiner Website" width="1637" height="1200" />
+	<Image src={lighthouseScore} alt="Lighthouse Ergebnis meiner Website" width="1637" height="1200" />
 	<figcaption>Der Lighthouse Scorce meiner Startseite. Perfekt 👌🏼</figcaption>
 </Figure>
 
