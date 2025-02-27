@@ -1,0 +1,92 @@
+import Image from 'next/image';
+import PostMetaInfos from '@/components/PostMetaInfos';
+
+export const metadata = {
+	title: 'Veloviewer Explorer Score und die Jagd nach Kästchen',
+	description: 'In diesem Beitrag beschreibe ich, was der Veloviewer Explorer Score und das max. Square ist und warum ich diese Zahlen spannend finde.'
+};
+
+<PostMetaInfos date="2020-06-06" />
+
+# Veloviewer Explorer Score und die Jagd nach Kästchen
+
+Ich habe schon in meiner Jugend meine Rennrad-Touren in einer Excel-Liste notiert. Damals noch vom klassischen (digitalen) Tacho abgelesen und per Hand eingetragen.
+
+Dank [Strava](https://www.strava.com/athletes/16160919) geht das Ganze heute einfacher. Am Anfang[^1] habe ich noch per GPS-Uhr meine Ausfahrten aufgezeichnet. Später bin ich auf den [Wahoo Elemnt Bolt](https://de-eu.wahoofitness.com/devices/bike-computers) Fahrrad-Computer umgestiegen, der direkt per WLAN die Daten zu Strava hoch lädt.
+
+Was mir bei Strava fehlt, ist eine Ansicht über alle Touren die ich gemacht habe. Wie es der Zufall will, gibt es dafür natürlich auch ein Tool: [veloviewer.com](https://veloviewer.com/).
+
+## Veloviewer
+
+> Love Strava, but want more? Then you've come to the right place. Connect with Strava to start taking your riding/running/swimming data to the next level!
+
+Veloviewer kann natürlich noch eine ganze Menge Mehr. Aufbereitung der eigenen Strava-Daten auf viele verschiedene Arten. So zum Beispiel eine schicke, automatisch generierte, Infografik mit einer persönlichen Jahresstatistik.
+
+<Figure>
+	<Image src="/images/blog/veloviewer-explorer-score/infographic-2019.png" alt="VeloViewer Infografik mit meiner Jahresstatistik 2019"  width="2160" height="2160" />
+	<figcaption>Meine Veloviewer Infografik für das Jahr 2019.</figcaption>
+</Figure>
+
+Aber so richtig bin ich erst jetzt in der Corona-Zeit auf Veloviewer aufmerksam geworden. Und hierbei speziell auf ein Feature: Die Zahlen vom **Explorer Score**.
+
+## Der Explorer Score
+
+Dieser *Entdecker-Wert* wurde schon 2015 eingeführt. Dabei werden die eigenen GSP-Aufzeichnungen auf einer Karte dargestellt. Diese wird mit Raster überlagert, was sich an dem Open-Street-Map Zoom-Level 14 orientiert und zu einer Kantenlänge von ca. 1,5km führt. Und jedes Kästchen (auch Kachel; engl. tile), durch das eine Tour verläuft, wird ich die Zählung aufgenomen. Die Summe ist der Explorer Score. Das sind die gelb[^2] gefärbten Kacheln im folgenden Screenshot-Ausschnitt.
+
+<Figure bigger>
+	<Image src="/images/blog/veloviewer-explorer-score/veloviewer-karte_1.png" alt="Screenshot Veloviewer Karte mit eingefärbten Kästchen für den Explorer Score"  width="1218" height="822" />
+	<figcaption>Die Veloviewer Karte mit meinem max. Square und max. Cluster.</figcaption>
+</Figure>
+
+Damit aber nicht genug. Es gibt noch zwei weitere Interessante Zahlen die sich davon ableiten lassen. Zum einen der **max. Explorer Cluster** und das **max. Explorer Square**.
+
+Das max. Square ist die größte quadratische Fläche die sich aus den durchfahrenen Kästchen ergibt. Dargestellt durch die dicke blaue Linie.
+
+Der Cluster hingeben zählt alle befahrenen und verbundenen Kacheln zusammen, bei denen die vier direkten Nachbarn an jeder Kästchen-Seite ebenfalls durchfahren wurden. Im Screenshot die blauen Kästchen.
+
+Stand heute vom 06.06.2020 ergeben sich daraus folgende Zahlen:
+
+* Explorer Score: 2610 Kacheln
+* max. Square: 10x10
+* max. Cluster: 318 Kacheln
+
+Zum Vergleich: Der Führende in der Fahrrad-Rangliste hat ein max. Squre von 101x101 Kachel (in der Region um London). Während der Durchschnitt aller User bei 7x7 liegt. Beim max. Cluster hat der Beste einen Wert von 19.341 und der Schnitt liegt bei 154.
+
+## Inspiration für neue Ziele
+
+Für den einen mag das total uninteressant klingen, aber mich reizt die Spielerei, da weitere Kacheln zu *erobern*. Daher habe ich neulich eine kleine Tour geplant, um beim Stuttgater Frauenkopf das Kästchen auch endlich zu durchfahren.
+
+Mit vier weiteren Kästchen in der Nähe von Ditzingen, Kornwestheim und Fellbach kann ich mein großes Quadrat auf die Größe von 12x12 erweitern.
+
+<Figure>
+	<Image src="/images/blog/veloviewer-explorer-score/veloviewer-karte_2.png" alt="Screenshot Veloviewer Karte" width="1280" height="800" />
+	<figcaption>Die fehlenden Kachel beim Frauenkopf und die Option zur Erweiterung auf 12x12.</figcaption>
+</Figure>
+
+Um es nach Süden zu erweitern könnte ich evtl. Schwierigkeiten bekommen, da ich nicht weiß, wie dort  in einem Wald bei Böblingen ein Übungsplatz der US-Armee verläuft.
+
+Ich habe jedenfalls Lust, weitere Touren so zu planen, um spezielle Kästchen *zu jagen*.
+
+Links zum Thema:
+
+* [VeloViewer Explorer Score and Max Square](https://blog.veloviewer.com/veloviewer-explorer-score-and-max-square/)
+* [Introducing the Explorer Cluster](https://blog.veloviewer.com/introducing-the-explorer-cluster-and-configurable-explorer-visuals/)
+* [Die Jagd nach dem grünen Quadranten](https://sportopfer.wordpress.com/2017/10/16/die-jagd-nach-dem-gruenen-quadranten/)
+* [Explore more Motivation Nr 328: Veloviewer Explorer Score](https://torstenfrank.wordpress.com/2017/10/20/explore-more-motivation-nr-328-veloviewer-explorer-score/)
+
+
+## Update 14.06.2020
+
+Mittlerweile habe ich drei weitere Touren unternommen, speziell um meine VeloViewer Zahlen zu verbessern.
+So konnte ich weitere Kästchen "zu fahren" und zwischendurch fünf gleich große (14x14) max. Quadrate erzeugen. Dabei habe ich 26 neue Kästchen erobert, was zu einem sprunghaften Anstieg vom max. Cluster von vormals 318 auf 404 Kästchen führte.
+
+<Figure>
+	<Image src="/images/blog/veloviewer-explorer-score/veloviewer-karte_3.png" alt="Screenshot Veloviewer Karten Vergleich Vorher und Nachher" width="1280" height="604" />
+	<figcaption>Links: die fünf gleichgroßen 14x14 Quadrate. Rechts: Aktueller Stand mit zwei Mal 15x15.</figcaption>
+</Figure>
+
+
+[^1]: Meine erste Strava-Aktivität ist vom Mai 2017
+[^2]: Ich habe bei mir die Farbe auf gelb geändert. Voreingestellt ist diese auf rot.
+
+
