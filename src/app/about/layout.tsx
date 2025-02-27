@@ -1,9 +1,9 @@
 import LayoutDefault from '@/components/LayoutDefault';
 
-export default function ImpressumPage() {
+export default function MdxLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<LayoutDefault prose>
-			<h1>Impressum</h1>
+			{children}
 		</LayoutDefault>
 	);
 }
