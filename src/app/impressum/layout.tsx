@@ -1,3 +1,4 @@
+import React from 'react';
 import LayoutDefault from '@/components/LayoutDefault';
 
 export default function MdxLayout({ children }: { children: React.ReactNode }) {

@@ -9,7 +9,7 @@ export default function PostMetaInfos({
 }) {
 	return (
 		<p className="mb-12 text-base">
-			{showText && `Veröffentlich am: `}
+			{showText && 'Veröffentlich am: '}
 			{new Intl.DateTimeFormat('de-DE', {
 				year: 'numeric',
 				month: 'long',
