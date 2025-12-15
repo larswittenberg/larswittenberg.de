@@ -17,7 +17,7 @@
     "build": "next build",
     "start": "next start",
     "clean": "npx rimraf .next",
-    "lint": "next lint .",
+    "lint": "eslint .",
     "format": "prettier --write .",
     "export": "npx rimraf .next && npx rimraf out && next build && next export"
   },
@@ -40,7 +40,6 @@
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.3",
     "@eslint/js": "^9.39.2",
     "@fullhuman/postcss-purgecss": "^7.0.2",
     "@next/eslint-plugin-next": "16.0.10",
