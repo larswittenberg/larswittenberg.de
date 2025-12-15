@@ -9,7 +9,7 @@ export default function LayoutDefault({
 	prose,
 }) {
 	let ClassNames = cn({
-		'flex-grow mx-4 md:mx-10 lg:mx-auto': true,
+		'grow mx-4 md:mx-10 lg:mx-auto': true,
 		'prose dark:prose-invert  lg:prose-lg xl:prose-xl 2xl:prose-2xl mx-auto':
 			prose,
 		'lg:w-11/12 lg:mx-auto': fullWidth,

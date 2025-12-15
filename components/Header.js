@@ -25,7 +25,7 @@ export default function Header({ className }) {
 								<li key={`${href}${label}`}>
 									<Link
 										href={href}
-										className="font-bold text-xl py-1 px-4 sm:px-6 tracking-wider hover:shadow-linkhover hover:dark:text-darkblue transition-all duration-150 ease-linear"
+										className="font-bold text-xl py-1 px-4 sm:px-6 tracking-wider hover:shadow-linkhover dark:hover:text-darkblue transition-all duration-150 ease-linear"
 									>
 										{label}
 									</Link>
