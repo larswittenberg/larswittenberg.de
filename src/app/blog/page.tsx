@@ -1,9 +1,9 @@
-import Link from 'next/link'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import LayoutDefault from '@/components/LayoutDefault'
 import { Metadata } from 'next'
+import Link from 'next/link'
+import LayoutDefault from '@/components/LayoutDefault'
 
 export const metadata: Metadata = {
 	title: 'Blog',

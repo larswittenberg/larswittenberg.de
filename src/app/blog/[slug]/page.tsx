@@ -1,22 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import LayoutDefault from '@/components/LayoutDefault';
-import CustomFigure from '@/components/atoms/CustomFigure';
-import FlexWrapper from '@/components/atoms/FlexWrapper'
-import Image from 'next/image'
-import { notFound } from 'next/navigation'
-import type { Metadata } from 'next'
-
-// Define components mapping
-const components = {
-	h1: ({ children }: any) => <h1 style={{ color: 'red', fontSize: '48px' }}>{children}</h1>,
-	img: (props: any) => <Image sizes="100vw" style={{ width: '100%', height: 'auto' }} {...props} />,
-	Image,
-	Figure: CustomFigure,
-	FlexWrapper,
-};
+import { useMDXComponents } from '@/mdx-components';
 
 // Interfaces
 interface Frontmatter {
@@ -103,7 +92,7 @@ export default async function PostPage(props: Props) {
 				</p>
 				<h1 className="mb-12">{post.frontMatter.title}</h1>
 
-				<MDXRemote source={post.content} components={components} />
+				<MDXRemote source={post.content} components={useMDXComponents} />
 			</article>
 		</LayoutDefault>
 	);

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { formatDate } from '@/utils/mdx-utils'
-import { useMDXComponents as getMDXComponents } from '@/mdx-components';
+import { useMDXComponents } from '@/mdx-components';
 import LayoutDefault from '@/components/LayoutDefault';
 import ContentUses, { ContentMetadata } from './uses.mdx';
 
@@ -10,8 +10,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-	const mdxComponents = getMDXComponents();
-
 	return (
 		<LayoutDefault prose>
 			<article>
@@ -23,7 +21,7 @@ export default async function Page() {
 					{ContentMetadata.update && ` // Letztes Update: ${formatDate(ContentMetadata.update || '')}`}
 				</p>
 
-				<ContentUses components={mdxComponents} />
+				<ContentUses components={useMDXComponents} />
 			</article>
 		</LayoutDefault>
 	);

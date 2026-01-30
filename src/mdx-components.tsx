@@ -1,6 +1,7 @@
 import type { MDXComponents } from 'mdx/types';
 import Image, { ImageProps } from 'next/image';
-import CustomFigure from '@/components/atoms/CustomFigure'
+import CustomFigure from '@/components/atoms/CustomFigure';
+import FlexWrapper from '@/components/atoms/FlexWrapper';
 
 // const components: MDXComponents = {}
 
@@ -16,7 +17,9 @@ const components = {
 		{...(props as ImageProps)}
 		/>
 	),
+	Image,
 	Figure: CustomFigure,
+	FlexWrapper,
 } satisfies MDXComponents;
 
 export function useMDXComponents(): MDXComponents {
