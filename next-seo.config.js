@@ -1,6 +1,5 @@
-const title = 'Lars Wittenberg - Frontend Web Developer aus Stuttgart'
-const description =
-	'Frontend Web Developer. Pixelschubser. Coder. Nerd. Fahrradfahrer. Aus Stuttgart.'
+const title = 'Lars Wittenberg - Frontend Web Developer aus Stuttgart';
+const description = 'Frontend Web Developer. Pixelschubser. Coder. Nerd. Fahrradfahrer. Aus Stuttgart.';
 
 const SEO = {
 	title,
@@ -26,6 +25,6 @@ const SEO = {
 		site: '@larswittenberg',
 		cardType: 'summary_large_image',
 	},
-}
+};
 
-export default SEO
+export default SEO;

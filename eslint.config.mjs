@@ -39,7 +39,7 @@ export default [
 			...nextPlugin.configs.recommended.rules,
 			...nextPlugin.configs['core-web-vitals'].rules,
 
-			'quotes': ['error', 'single'],
+			quotes: ['error', 'single'],
 			'no-mixed-spaces-and-tabs': 'warn',
 			'react/no-unescaped-entities': [
 				'error',
