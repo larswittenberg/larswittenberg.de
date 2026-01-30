@@ -17,3 +17,5 @@ const components = {
 export function useMDXComponents(): MDXComponents {
 	return components;
 }
+
+export const mdxComponents = components;

@@ -18,7 +18,7 @@
     "start": "next start",
     "clean": "npx rimraf .next",
     "lint": "eslint .",
-    "format": "prettier --write .",
+    "format": "prettier --write ./src",
     "export": "npx rimraf .next && npx rimraf out && next build && next export"
   },
   "dependencies": {

@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import LayoutDefault from '@/components/LayoutDefault';
-import { useMDXComponents } from '@/mdx-components';
+import { mdxComponents } from '@/mdx-components';
 
 // Interfaces
 interface Frontmatter {
@@ -92,7 +92,7 @@ export default async function PostPage(props: Props) {
 				</p>
 				<h1 className="mb-12">{post.frontMatter.title}</h1>
 
-				<MDXRemote source={post.content} components={useMDXComponents} />
+				<MDXRemote source={post.content} components={mdxComponents} />
 			</article>
 		</LayoutDefault>
 	);

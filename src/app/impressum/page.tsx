@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { useMDXComponents } from '@/mdx-components';
+import { mdxComponents } from '@/mdx-components';
 import LayoutDefault from '@/components/LayoutDefault';
 import MdxContent, { ContentMetadata } from './impressum.mdx';
 
@@ -11,7 +11,7 @@ export default async function Page() {
 	return (
 		<LayoutDefault prose>
 			<article>
-				<MdxContent components={useMDXComponents} />
+				<MdxContent components={mdxComponents} />
 			</article>
 		</LayoutDefault>
 	);
