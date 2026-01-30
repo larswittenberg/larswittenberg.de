@@ -3699,7 +3699,6 @@ __metadata:
     gray-matter: "npm:^4.0.3"
     next: "npm:^16.1.6"
     next-mdx-remote: "npm:^5.0.0"
-    next-seo: "npm:^6.6.0"
     postcss: "npm:^8.5.6"
     prettier: "npm:3.8.1"
     prettier-plugin-tailwindcss: "npm:^0.7.2"
@@ -4494,17 +4493,6 @@ __metadata:
   peerDependencies:
     react: ">=16"
   checksum: 10c0/bf96d57bf978c477b6b4e0d330889d3293f99c16f82e92b960a676cb80cd656f5d4427717ec3377323d604330eddd8fcb05a74740c10e03092a3b9888079a250
-  languageName: node
-  linkType: hard
-
-"next-seo@npm:^6.6.0":
-  version: 6.8.0
-  resolution: "next-seo@npm:6.8.0"
-  peerDependencies:
-    next: ^8.1.1-canary.54 || >=9.0.0
-    react: ">=16.0.0"
-    react-dom: ">=16.0.0"
-  checksum: 10c0/63fe63dfb7e5dc8438185f698bec1428925b667808bc6ba5fc4f39758545c50ce049bc48c937d43246ee51913796673b995bd39afd10a8742108db89f0d11e52
   languageName: node
   linkType: hard
 
