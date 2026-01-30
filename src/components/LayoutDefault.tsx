@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import cn from 'classnames';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -8,7 +9,7 @@ export default function LayoutDefault({
 	centerVertical,
 	prose,
 }: {
-	children: React.ReactNode;
+	children: ReactNode;
 	fullWidth?: boolean;
 	centerVertical?: boolean;
 	prose?: boolean;

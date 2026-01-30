@@ -38,7 +38,7 @@ export default function BlogPage({ posts }) {
 											/\.mdx?$/,
 											'',
 										)}`}
-										href={`/blog/[slug]`}
+										href={'/blog/[slug]'}
 										className="link"
 									>
 										{post.data.title}
