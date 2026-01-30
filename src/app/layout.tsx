@@ -1,15 +1,35 @@
 import React from 'react';
 import type { Metadata } from 'next';
-import '@/styles/main.css';
-
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import '@/styles/main.css';
+
+const title = 'Lars Wittenberg - Frontend Web Developer aus Stuttgart';
+const description = 'Frontend Web Developer. Pixelschubser. Coder. Nerd. Fahrradfahrer. Aus Stuttgart.';
 
 export const metadata: Metadata = {
-	title: 'Next.js + Tailwind CSS Kickstarter',
-	description: 'Basic template setup with Next.js + Tailwind CSS and some helpers.',
+	title: {
+		template: '%s | Lars Wittenberg',
+		default: title, // a default is required when creating a template
+	},
+	description,
 	icons: {
 		icon: '/favicon.svg',
+	},
+	openGraph: {
+		type: 'website',
+		locale: 'de_DE',
+		url: 'https://larswittenberg.de/',
+		title,
+		description,
+		images: [
+			{
+				url: 'https://larswittenberg.de/images/opengraph.png',
+				alt: title,
+				width: 1200,
+				height: 628,
+			},
+		],
 	},
 };
 
