@@ -1,0 +1,51 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "noEmit": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    // Absolute Imports and Module Path Aliases
+    // https://nextjs.org/docs/app/building-your-application/configuring/absolute-imports-and-module-aliases
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/components/*": [
+        "./src/components/*"
+      ],
+      "@/src/*": [
+        "./src/*"
+      ],
+      "@/styles/*": [
+        "./src/styles/*"
+      ]
+    },
+    "strictNullChecks": true,
+    "target": "ES2017"
+  },
+  "include": [
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/dev/types/**/*.ts"
+, "src/app/mdx-page/page.mdx", "src/app/impressum/page.mdx", "OLD_pages/blog/[slug].js"  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
