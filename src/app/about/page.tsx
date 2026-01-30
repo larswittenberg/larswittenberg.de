@@ -58,7 +58,7 @@ export default async function Page() {
 							<br />
 							#frontend #effzeh #cyclinglife
 						</p>
-						<p>
+						<p className='mb-8!'>
 							<Link href="/uses">/uses</Link>
 						</p>
 						<SocialIcons size="small" />
