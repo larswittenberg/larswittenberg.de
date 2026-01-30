@@ -58,7 +58,7 @@ export default async function Page() {
 							<br />
 							#frontend #effzeh #cyclinglife
 						</p>
-						<p className='mb-8!'>
+						<p className="mb-8!">
 							<Link href="/uses">/uses</Link>
 						</p>
 						<SocialIcons size="small" />
@@ -70,13 +70,13 @@ export default async function Page() {
 				<p>
 					Meine Expertise als Web Developer mit dem Schwerpunkt Frontend-Entwicklung beruht auf über 16 Jahren
 					Erfahrung. In dieser Zeit habe ich für viele Webseiten das Frontend umgesetzt, Styleguides erstellt,
-					Web-Apps und Mircosites entwickelt, mit verschiedenen Content Management Systemen gearbeitet aber auch
-					Erfahrungen in Kundenbetreuung und Projektmanagement gesammelt. Mit großem Interesse verfolge ich zudem
-					die Weiterentwicklungen rund um neue Internet-Technologien und Trends.
+					Web-Apps und Mircosites entwickelt, mit verschiedenen Content Management Systemen gearbeitet aber
+					auch Erfahrungen in Kundenbetreuung und Projektmanagement gesammelt. Mit großem Interesse verfolge
+					ich zudem die Weiterentwicklungen rund um neue Internet-Technologien und Trends.
 				</p>
 				<p>
-					Wenn ich nicht am Mac arbeite, trifft man mich zumeist auf meinem Rennrad, auf meinem Gravel-Bike oder
-					in der Natur beim wandern an.
+					Wenn ich nicht am Mac arbeite, trifft man mich zumeist auf meinem Rennrad, auf meinem Gravel-Bike
+					oder in der Natur beim wandern an.
 				</p>
 
 				<h2>Kompetenzen</h2>

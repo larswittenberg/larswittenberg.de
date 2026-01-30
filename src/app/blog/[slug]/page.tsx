@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import type { Metadata } from 'next'
-import { notFound } from 'next/navigation'
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import LayoutDefault from '@/components/LayoutDefault';
 import { useMDXComponents } from '@/mdx-components';

@@ -2,8 +2,8 @@ import React from 'react';
 import type { Metadata } from 'next';
 import '@/styles/main.css';
 
-import { Analytics } from '@vercel/analytics/react'
-import { SpeedInsights } from '@vercel/speed-insights/next'
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const metadata: Metadata = {
 	title: 'Next.js + Tailwind CSS Kickstarter',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="de" className="bg-orange">
-			<body className="border-8 border-solid border-orange">
+			<body className="border-orange border-8 border-solid">
 				{children}
 
 				<Analytics />
