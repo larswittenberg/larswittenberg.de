@@ -8,7 +8,7 @@ import FlexWrapper from '@/components/atoms/FlexWrapper';
 const components = {
 	// Allows customizing built-in components, e.g. to add styling.
 	h1: ({ children }) => (
-		<h1 style={{ color: 'red', fontSize: '48px' }}>{children}</h1>
+		<h1 className='title font-semibold text-2xl tracking-tighter'>{children}</h1>
 	),
 	img: (props) => (
 		<Image
