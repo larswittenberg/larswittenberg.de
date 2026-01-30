@@ -10,7 +10,6 @@ const withMDX = require('@next/mdx')({
 				// providerImportSource: "@mdx-js/react",
 			},
 		});
-const path = require('path');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
