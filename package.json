@@ -1,7 +1,7 @@
 {
   "name": "larswittenberg.de",
   "description": "My personal website built with Next.js & TailwindCSS",
-  "version": "1.2.0",
+  "version": "2.1.0",
   "author": {
     "name": "Lars Wittenberg",
     "url": "https://larswittenberg.de"
@@ -41,7 +41,6 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.3",
     "@eslint/js": "^9.39.2",
-    "@fullhuman/postcss-purgecss": "^7.0.2",
     "@next/eslint-plugin-next": "16.1.6",
     "@types/mdx": "^2.0.13",
     "@types/node": "25.1.0",
