@@ -13,9 +13,10 @@ import path from 'path';
 type Metadata = {
 	title: string;
 	date: string;
-	update: string;
-	desc: string;
+	update?: string;
+	desc?: string;
 	image?: string;
+	draft?: boolean;
 };
 
 function parseFrontmatter(fileContent: string) {
@@ -30,7 +31,17 @@ function parseFrontmatter(fileContent: string) {
 		let [key, ...valueArr] = line.split(': ');
 		let value = valueArr.join(': ').trim();
 		value = value.replace(/^['"](.*)['"]$/, '$1'); // Remove quotes
-		metadata[key.trim() as keyof Metadata] = value;
+
+		const trimmedKey = key.trim() as keyof Metadata;
+
+		// Convert boolean strings to actual booleans
+		if (value === 'true') {
+			(metadata as Record<string, unknown>)[trimmedKey] = true;
+		} else if (value === 'false') {
+			(metadata as Record<string, unknown>)[trimmedKey] = false;
+		} else {
+			(metadata as Record<string, unknown>)[trimmedKey] = value;
+		}
 	});
 
 	return { metadata: metadata as Metadata, content };

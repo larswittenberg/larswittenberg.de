@@ -1,50 +1,16 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import LayoutDefault from '@/components/LayoutDefault';
+import { getBlogPosts } from '@/utils/mdx-utils';
 
 export const metadata: Metadata = {
 	title: 'Blog',
 };
 
-interface BlogPost {
-	content: string;
-	data: {
-		title: string;
-		date: string;
-		draft?: boolean;
-		[key: string]: any;
-	};
-	filePath: string;
-}
-
-async function getPosts(): Promise<BlogPost[]> {
-	const postsDirectory = path.join(process.cwd(), 'src/app/blog/blogposts');
-	const filenames = fs.readdirSync(postsDirectory);
-
-	const posts = filenames
-		.filter((filename) => /\.mdx?$/.test(filename))
-		.map((filename) => {
-			const filePath = path.join(postsDirectory, filename);
-			const fileContents = fs.readFileSync(filePath, 'utf8');
-			const { content, data } = matter(fileContents);
-
-			return {
-				content,
-				data: data as BlogPost['data'],
-				filePath: filename,
-			};
-		});
-
-	return posts;
-}
-
 export default async function BlogPage() {
-	const posts = await getPosts();
-	const filteredBlogPosts = posts.filter((i) => i.data.draft === false);
-	filteredBlogPosts.sort((a, b) => Number(new Date(b.data.date)) - Number(new Date(a.data.date)));
+	const posts = getBlogPosts();
+	const filteredBlogPosts = posts.filter((post) => post.metadata.draft === false);
+	filteredBlogPosts.sort((a, b) => Number(new Date(b.metadata.date)) - Number(new Date(a.metadata.date)));
 
 	return (
 		<LayoutDefault prose>
@@ -54,19 +20,19 @@ export default async function BlogPage() {
 				<div className="not-prose">
 					<ul className="list-none">
 						{filteredBlogPosts.map((post) => (
-							<li key={post.filePath} className="mb-16 pl-0">
-								{post.data.date && (
-									<p className="mt-0 mb-2 text-base">
-										{new Intl.DateTimeFormat('de-DE', {
-											year: 'numeric',
-											month: 'long',
-											day: '2-digit',
-										}).format(Date.parse(post.data.date))}
-									</p>
-								)}
-								<h2 className="mb-2 text-2xl font-bold md:text-3xl lg:text-4xl xl:text-5xl xl:leading-tight">
-									<Link href={`/blog/${post.filePath.replace(/\.mdx?$/, '')}`} className="link">
-										{post.data.title}
+						<li key={post.slug} className="mb-16 pl-0">
+							{post.metadata.date && (
+								<p className="mt-0 mb-2 text-base">
+									{new Intl.DateTimeFormat('de-DE', {
+										year: 'numeric',
+										month: 'long',
+										day: '2-digit',
+									}).format(Date.parse(post.metadata.date))}
+								</p>
+							)}
+							<h2 className="mb-2 text-2xl font-bold md:text-3xl lg:text-4xl xl:text-5xl xl:leading-tight">
+								<Link href={`/blog/${post.slug}`} className="link">
+									{post.metadata.title}
 									</Link>
 								</h2>
 							</li>
