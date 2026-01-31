@@ -1,5 +1,3 @@
-const path = require('path');
-
 const withMDX = require('@next/mdx')({
 	extension: /.mdx?$/,
 	options: {
@@ -19,10 +17,6 @@ const nextConfig = {
 	reactStrictMode: true,
 	// Configure `pageExtensions`` to include MDX files
 	pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
-	// https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory
-	turbopack: {
-		root: path.join(__dirname, '..'),
-	},
 };
 
 module.exports = withMDX(nextConfig);
