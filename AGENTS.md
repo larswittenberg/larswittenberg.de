@@ -44,7 +44,7 @@ yarn clean
 
 ### Project Structure
 
-```
+```text
 src/
 ├── app/                    # Next.js App Router pages
 │   ├── layout.tsx          # Root layout with metadata
