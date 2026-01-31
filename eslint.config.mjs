@@ -8,7 +8,7 @@ import globals from 'globals';
 
 export default [
 	{
-		ignores: ['.next/*'],
+		ignores: ['.next/*', 'next-env.d.ts'],
 	},
 	js.configs.recommended,
 	{
