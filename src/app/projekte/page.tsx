@@ -12,6 +12,11 @@ const projectList = [
 		href: '/projekte/github-stars',
 		description: 'Eine Übersicht meiner mit einem Stern markierten GitHub-Repositories.',
 	},
+	{
+		name: 'Fotografie',
+		href: '/projekte/fotografie',
+		description: 'Eine Auswahl meiner Fotografien, hauptsächlich aus der Natur und Landschaftsfotografie.',
+	},
 ];
 
 export default async function Page() {
