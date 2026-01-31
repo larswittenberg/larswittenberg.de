@@ -83,7 +83,6 @@ export default async function PostPage(props: Props) {
 		<LayoutDefault prose>
 			<article>
 				<p className="not-prose mt-0 mb-1 text-base">
-					Datum:{' '}
 					{new Intl.DateTimeFormat('de-DE', {
 						year: 'numeric',
 						month: 'long',
