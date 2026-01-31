@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import LayoutDefault from '@/components/LayoutDefault';
-import { getBlogPosts } from '@/utils/mdx-utils';
+import { getBlogPosts } from '@/lib/mdx-utils';
 
 export const metadata: Metadata = {
 	title: 'Blog',

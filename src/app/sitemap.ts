@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { getBlogPosts } from '@/utils/mdx-utils';
+import { getBlogPosts } from '@/lib/mdx-utils';
 
 export const baseUrl = 'https://larswittenberg.de';
 
