@@ -40,13 +40,29 @@ export default async function Page() {
 				<h1>About</h1>
 
 				<div className="justify-between md:mb-20 md:flex">
-					<NextImage
-						src="/images/lars-wittenberg.jpg"
-						alt="Lars Wittenberg"
-						width="400"
-						height="400"
-						className="rounded-full"
-					/>
+					<div className="group relative aspect-square w-full max-w-100 perspective-[1000px]">
+						<div className="relative h-full w-full transition-all duration-700 transform-3d group-hover:transform-[rotateY(180deg)]">
+							<div className="absolute inset-0 backface-hidden">
+								<NextImage
+									src="/images/lars-wittenberg.jpg"
+									alt="Lars Wittenberg"
+									width="400"
+									height="400"
+									className="h-auto w-full rounded-full"
+								/>
+							</div>
+							<div className="absolute inset-0 backface-hidden transform-[rotateY(180deg)]">
+								<NextImage
+									src="/images/lars-wittenberg_cycling.jpg"
+									alt="Lars Wittenberg - Beim Rennradfahren"
+									width="400"
+									height="400"
+									className="h-auto w-full rounded-full"
+								/>
+							</div>
+						</div>
+					</div>
+
 					<div className="md:ml-8">
 						<h2>Lars Wittenberg</h2>
 						<p>
