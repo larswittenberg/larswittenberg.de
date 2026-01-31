@@ -59,7 +59,7 @@ export function GithubStarsPage({ initialQuery, initialSort }: GithubStarsPagePr
 		const fetchData = async () => {
 			try {
 				setIsLoading(true);
-				const response = await fetch('/api/github-starred');
+				const response = await fetch('/api/projects/github-stars/github-starred');
 				if (!response.ok) {
 					throw new Error(`API responded with status ${response.status}`);
 				}
