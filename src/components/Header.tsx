@@ -4,6 +4,7 @@ export default function Header({ className }: { className?: string }) {
 	const links = [
 		{ href: '/', label: 'Home' },
 		{ href: '/about', label: 'About' },
+		{ href: '/projekte', label: 'Projekte' },
 		{ href: '/blog', label: 'Blog' },
 	];
 

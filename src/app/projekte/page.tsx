@@ -16,7 +16,7 @@ const projectList = [
 
 export default async function Page() {
 	return (
-		<LayoutDefault prose>
+		<LayoutDefault prose fullWidth>
 			<h1>Projekte</h1>
 
 			<ul className="space-y-8 pl-0!">
