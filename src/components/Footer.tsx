@@ -9,7 +9,7 @@ export default function Footer() {
 	return (
 		<footer className="mx-4 mt-16 border-t border-solid border-gray-700 py-8 text-center md:mx-10 lg:mx-auto lg:w-11/12">
 			<div>
-				<p className="text-base text-gray-400">
+				<p className="text-base dark:text-gray-400 text-gray-600">
 					© {new Date().getFullYear()} Lars Wittenberg · Built with{' '}
 					<Link href="https://nextjs.org/" className={linkClass}>
 						next.js 14

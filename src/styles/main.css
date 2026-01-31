@@ -34,7 +34,7 @@
 }
 
 body {
-	@apply font-sans text-lg bg-slate-50 text-slate-800  dark:bg-darkblue dark:text-gray-200;
+	@apply font-sans text-lg bg-slate-50 text-slate-800 dark:bg-darkblue dark:text-gray-200;
 }
 
 .layoutwrapper {
