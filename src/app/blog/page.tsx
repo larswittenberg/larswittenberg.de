@@ -20,19 +20,19 @@ export default async function BlogPage() {
 				<div className="not-prose">
 					<ul className="list-none">
 						{filteredBlogPosts.map((post) => (
-						<li key={post.slug} className="mb-16 pl-0">
-							{post.metadata.date && (
-								<p className="mt-0 mb-2 text-base">
-									{new Intl.DateTimeFormat('de-DE', {
-										year: 'numeric',
-										month: 'long',
-										day: '2-digit',
-									}).format(Date.parse(post.metadata.date))}
-								</p>
-							)}
-							<h2 className="mb-2 text-2xl font-bold md:text-3xl lg:text-4xl xl:text-5xl xl:leading-tight">
-								<Link href={`/blog/${post.slug}`} className="link">
-									{post.metadata.title}
+							<li key={post.slug} className="mb-16 pl-0">
+								{post.metadata.date && (
+									<p className="mt-0 mb-2 text-base">
+										{new Intl.DateTimeFormat('de-DE', {
+											year: 'numeric',
+											month: 'long',
+											day: '2-digit',
+										}).format(Date.parse(post.metadata.date))}
+									</p>
+								)}
+								<h2 className="mb-2 text-2xl font-bold md:text-3xl lg:text-4xl xl:text-5xl xl:leading-tight">
+									<Link href={`/blog/${post.slug}`} className="link">
+										{post.metadata.title}
 									</Link>
 								</h2>
 							</li>

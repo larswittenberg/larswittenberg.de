@@ -1,0 +1,352 @@
+{
+	"repositories": [
+		{
+			"id": "MDEwOlJlcG9zaXRvcnkxMDAx",
+			"name": "nextjs-dev-tools",
+			"full_name": "octo-org/nextjs-dev-tools",
+			"description": "Helper utilities and UI components to explore GitHub stars locally.",
+			"html_url": "https://github.com/octo-org/nextjs-dev-tools",
+			"language": "TypeScript",
+			"stargazers_count": 128,
+			"topics": ["nextjs", "tooling", "mock-data"],
+			"archived": false,
+			"updated_at": "2024-07-18T12:34:56Z",
+			"owner": {
+				"login": "octo-org",
+				"html_url": "https://github.com/octo-org"
+			},
+			"starred_at": "2024-07-19T09:15:00Z"
+		},
+		{
+			"id": "MDEwOlJlcG9zaXRvcnkxMDAy",
+			"name": "awesome-openapi-examples",
+			"full_name": "octo-org/awesome-openapi-examples",
+			"description": "Collection of carefully curated OpenAPI fixtures.",
+			"html_url": "https://github.com/octo-org/awesome-openapi-examples",
+			"language": "JavaScript",
+			"stargazers_count": 256,
+			"topics": ["api", "openapi", "examples"],
+			"archived": false,
+			"updated_at": "2024-06-11T17:20:45Z",
+			"owner": {
+				"login": "octo-org",
+				"html_url": "https://github.com/octo-org"
+			},
+			"starred_at": "2024-07-18T08:42:00Z"
+		},
+		{
+			"id": "MDEwOlJlcG9zaXRvcnkxMDAz",
+			"name": "react-testing-playbook",
+			"full_name": "octo-org/react-testing-playbook",
+			"description": "Opinionated guide for testing React apps with Vitest and Testing Library.",
+			"html_url": "https://github.com/octo-org/react-testing-playbook",
+			"language": "TypeScript",
+			"stargazers_count": 342,
+			"topics": ["react", "testing", "vitest"],
+			"archived": false,
+			"updated_at": "2024-05-01T10:12:03Z",
+			"owner": {
+				"login": "octo-org",
+				"html_url": "https://github.com/octo-org"
+			},
+			"starred_at": "2024-07-17T14:30:00Z"
+		},
+		{
+			"id": "MDEwOlJlcG9zaXRvcnkxMDA0",
+			"name": "css-utility-recipes",
+			"full_name": "octo-org/css-utility-recipes",
+			"description": "Responsive layout snippets and utility-first CSS patterns.",
+			"html_url": "https://github.com/octo-org/css-utility-recipes",
+			"language": "CSS",
+			"stargazers_count": 189,
+			"topics": ["css", "responsive", "design"],
+			"archived": false,
+			"updated_at": "2024-04-22T09:18:44Z",
+			"owner": {
+				"login": "octo-org",
+				"html_url": "https://github.com/octo-org"
+			},
+			"starred_at": "2024-07-16T19:05:00Z"
+		},
+		{
+			"id": "MDEwOlJlcG9zaXRvcnkxMDA1",
+			"name": "nextjs-performance-toolkit",
+			"full_name": "octo-org/nextjs-performance-toolkit",
+			"description": "Collection of performance audits, scripts and analyzers for Next.js apps.",
+			"html_url": "https://github.com/octo-org/nextjs-performance-toolkit",
+			"language": "TypeScript",
+			"stargazers_count": 411,
+			"topics": ["nextjs", "performance", "analytics"],
+			"archived": false,
+			"updated_at": "2024-07-02T07:45:21Z",
+			"owner": {
+				"login": "octo-org",
+				"html_url": "https://github.com/octo-org"
+			},
+			"starred_at": "2024-07-15T08:10:00Z"
+		},
+		{
+			"id": "MDEwOlJlcG9zaXRvcnkxMDA2",
+			"name": "server-actions-lab",
+			"full_name": "octo-org/server-actions-lab",
+			"description": "Experimentation playground for the latest Next.js Server Actions patterns.",
+			"html_url": "https://github.com/octo-org/server-actions-lab",
+			"language": "TypeScript",
+			"stargazers_count": 98,
+			"topics": ["nextjs", "server-actions", "experiments"],
+			"archived": false,
+			"updated_at": "2024-05-28T21:57:50Z",
+			"owner": {
+				"login": "octo-org",
+				"html_url": "https://github.com/octo-org"
+			},
+			"starred_at": "2024-07-14T12:22:00Z"
+		},
+		{
+			"id": "MDEwOlJlcG9zaXRvcnkxMDA3",
+			"name": "tailwind-motion-pack",
+			"full_name": "octo-org/tailwind-motion-pack",
+			"description": "Composable motion primitives and micro-interactions for Tailwind projects.",
+			"html_url": "https://github.com/octo-org/tailwind-motion-pack",
+			"language": "TypeScript",
+			"stargazers_count": 267,
+			"topics": ["tailwindcss", "animation", "ui"],
+			"archived": false,
+			"updated_at": "2024-03-30T18:14:37Z",
+			"owner": {
+				"login": "octo-org",
+				"html_url": "https://github.com/octo-org"
+			},
+			"starred_at": "2024-07-13T16:48:00Z"
+		},
+		{
+			"id": "MDEwOlJlcG9zaXRvcnkxMDA4",
+			"name": "gitops-dashboard",
+			"full_name": "octo-org/gitops-dashboard",
+			"description": "Self-hostable dashboard to monitor GitOps deployments and pipelines.",
+			"html_url": "https://github.com/octo-org/gitops-dashboard",
+			"language": "Go",
+			"stargazers_count": 512,
+			"topics": ["gitops", "kubernetes", "monitoring"],
+			"archived": false,
+			"updated_at": "2024-05-18T11:11:11Z",
+			"owner": {
+				"login": "octo-org",
+				"html_url": "https://github.com/octo-org"
+			},
+			"starred_at": "2024-07-12T11:30:00Z"
+		},
+		{
+			"id": "MDEwOlJlcG9zaXRvcnkxMDA5",
+			"name": "a11y-checklist-cli",
+			"full_name": "octo-org/a11y-checklist-cli",
+			"description": "Command-line accessibility checklist generator for web projects.",
+			"html_url": "https://github.com/octo-org/a11y-checklist-cli",
+			"language": "TypeScript",
+			"stargazers_count": 223,
+			"topics": ["accessibility", "cli", "web"],
+			"archived": false,
+			"updated_at": "2024-06-30T13:05:27Z",
+			"owner": {
+				"login": "octo-org",
+				"html_url": "https://github.com/octo-org"
+			},
+			"starred_at": "2024-07-11T10:05:00Z"
+		},
+		{
+			"id": "MDEwOlJlcG9zaXRvcnkxMDEw",
+			"name": "design-token-studio",
+			"full_name": "octo-org/design-token-studio",
+			"description": "Visual editor and exporter for multi-platform design tokens.",
+			"html_url": "https://github.com/octo-org/design-token-studio",
+			"language": "TypeScript",
+			"stargazers_count": 376,
+			"topics": ["design-system", "tokens", "editor"],
+			"archived": false,
+			"updated_at": "2024-07-08T09:41:02Z",
+			"owner": {
+				"login": "octo-org",
+				"html_url": "https://github.com/octo-org"
+			},
+			"starred_at": "2024-07-10T09:35:00Z"
+		}
+	],
+	"allRepositories": [
+		{
+			"id": "MDEwOlJlcG9zaXRvcnkxMDAx",
+			"name": "nextjs-dev-tools",
+			"full_name": "octo-org/nextjs-dev-tools",
+			"description": "Helper utilities and UI components to explore GitHub stars locally.",
+			"html_url": "https://github.com/octo-org/nextjs-dev-tools",
+			"language": "TypeScript",
+			"stargazers_count": 128,
+			"topics": ["nextjs", "tooling", "mock-data"],
+			"archived": false,
+			"updated_at": "2024-07-18T12:34:56Z",
+			"owner": {
+				"login": "octo-org",
+				"html_url": "https://github.com/octo-org"
+			},
+			"starred_at": "2024-07-19T09:15:00Z"
+		},
+		{
+			"id": "MDEwOlJlcG9zaXRvcnkxMDAy",
+			"name": "awesome-openapi-examples",
+			"full_name": "octo-org/awesome-openapi-examples",
+			"description": "Collection of carefully curated OpenAPI fixtures.",
+			"html_url": "https://github.com/octo-org/awesome-openapi-examples",
+			"language": "JavaScript",
+			"stargazers_count": 256,
+			"topics": ["api", "openapi", "examples"],
+			"archived": false,
+			"updated_at": "2024-06-11T17:20:45Z",
+			"owner": {
+				"login": "octo-org",
+				"html_url": "https://github.com/octo-org"
+			},
+			"starred_at": "2024-07-18T08:42:00Z"
+		},
+		{
+			"id": "MDEwOlJlcG9zaXRvcnkxMDAz",
+			"name": "react-testing-playbook",
+			"full_name": "octo-org/react-testing-playbook",
+			"description": "Opinionated guide for testing React apps with Vitest and Testing Library.",
+			"html_url": "https://github.com/octo-org/react-testing-playbook",
+			"language": "TypeScript",
+			"stargazers_count": 342,
+			"topics": ["react", "testing", "vitest"],
+			"archived": false,
+			"updated_at": "2024-05-01T10:12:03Z",
+			"owner": {
+				"login": "octo-org",
+				"html_url": "https://github.com/octo-org"
+			},
+			"starred_at": "2024-07-17T14:30:00Z"
+		},
+		{
+			"id": "MDEwOlJlcG9zaXRvcnkxMDA0",
+			"name": "css-utility-recipes",
+			"full_name": "octo-org/css-utility-recipes",
+			"description": "Responsive layout snippets and utility-first CSS patterns.",
+			"html_url": "https://github.com/octo-org/css-utility-recipes",
+			"language": "CSS",
+			"stargazers_count": 189,
+			"topics": ["css", "responsive", "design"],
+			"archived": false,
+			"updated_at": "2024-04-22T09:18:44Z",
+			"owner": {
+				"login": "octo-org",
+				"html_url": "https://github.com/octo-org"
+			},
+			"starred_at": "2024-07-16T19:05:00Z"
+		},
+		{
+			"id": "MDEwOlJlcG9zaXRvcnkxMDA1",
+			"name": "nextjs-performance-toolkit",
+			"full_name": "octo-org/nextjs-performance-toolkit",
+			"description": "Collection of performance audits, scripts and analyzers for Next.js apps.",
+			"html_url": "https://github.com/octo-org/nextjs-performance-toolkit",
+			"language": "TypeScript",
+			"stargazers_count": 411,
+			"topics": ["nextjs", "performance", "analytics"],
+			"archived": false,
+			"updated_at": "2024-07-02T07:45:21Z",
+			"owner": {
+				"login": "octo-org",
+				"html_url": "https://github.com/octo-org"
+			},
+			"starred_at": "2024-07-15T08:10:00Z"
+		},
+		{
+			"id": "MDEwOlJlcG9zaXRvcnkxMDA2",
+			"name": "server-actions-lab",
+			"full_name": "octo-org/server-actions-lab",
+			"description": "Experimentation playground for the latest Next.js Server Actions patterns.",
+			"html_url": "https://github.com/octo-org/server-actions-lab",
+			"language": "TypeScript",
+			"stargazers_count": 98,
+			"topics": ["nextjs", "server-actions", "experiments"],
+			"archived": false,
+			"updated_at": "2024-05-28T21:57:50Z",
+			"owner": {
+				"login": "octo-org",
+				"html_url": "https://github.com/octo-org"
+			},
+			"starred_at": "2024-07-14T12:22:00Z"
+		},
+		{
+			"id": "MDEwOlJlcG9zaXRvcnkxMDA3",
+			"name": "tailwind-motion-pack",
+			"full_name": "octo-org/tailwind-motion-pack",
+			"description": "Composable motion primitives and micro-interactions for Tailwind projects.",
+			"html_url": "https://github.com/octo-org/tailwind-motion-pack",
+			"language": "TypeScript",
+			"stargazers_count": 267,
+			"topics": ["tailwindcss", "animation", "ui"],
+			"archived": false,
+			"updated_at": "2024-03-30T18:14:37Z",
+			"owner": {
+				"login": "octo-org",
+				"html_url": "https://github.com/octo-org"
+			},
+			"starred_at": "2024-07-13T16:48:00Z"
+		},
+		{
+			"id": "MDEwOlJlcG9zaXRvcnkxMDA4",
+			"name": "gitops-dashboard",
+			"full_name": "octo-org/gitops-dashboard",
+			"description": "Self-hostable dashboard to monitor GitOps deployments and pipelines.",
+			"html_url": "https://github.com/octo-org/gitops-dashboard",
+			"language": "Go",
+			"stargazers_count": 512,
+			"topics": ["gitops", "kubernetes", "monitoring"],
+			"archived": false,
+			"updated_at": "2024-05-18T11:11:11Z",
+			"owner": {
+				"login": "octo-org",
+				"html_url": "https://github.com/octo-org"
+			},
+			"starred_at": "2024-07-12T11:30:00Z"
+		},
+		{
+			"id": "MDEwOlJlcG9zaXRvcnkxMDA5",
+			"name": "a11y-checklist-cli",
+			"full_name": "octo-org/a11y-checklist-cli",
+			"description": "Command-line accessibility checklist generator for web projects.",
+			"html_url": "https://github.com/octo-org/a11y-checklist-cli",
+			"language": "TypeScript",
+			"stargazers_count": 223,
+			"topics": ["accessibility", "cli", "web"],
+			"archived": false,
+			"updated_at": "2024-06-30T13:05:27Z",
+			"owner": {
+				"login": "octo-org",
+				"html_url": "https://github.com/octo-org"
+			},
+			"starred_at": "2024-07-11T10:05:00Z"
+		},
+		{
+			"id": "MDEwOlJlcG9zaXRvcnkxMDEw",
+			"name": "design-token-studio",
+			"full_name": "octo-org/design-token-studio",
+			"description": "Visual editor and exporter for multi-platform design tokens.",
+			"html_url": "https://github.com/octo-org/design-token-studio",
+			"language": "TypeScript",
+			"stargazers_count": 376,
+			"topics": ["design-system", "tokens", "editor"],
+			"archived": false,
+			"updated_at": "2024-07-08T09:41:02Z",
+			"owner": {
+				"login": "octo-org",
+				"html_url": "https://github.com/octo-org"
+			},
+			"starred_at": "2024-07-10T09:35:00Z"
+		}
+	],
+	"rateLimit": {
+		"limit": 5000,
+		"remaining": 5000,
+		"reset": 0
+	},
+	"totalStarred": 10
+}
