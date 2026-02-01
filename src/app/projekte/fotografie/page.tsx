@@ -1,4 +1,4 @@
-import NextImage from 'next/image';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import LayoutDefault from '@/components/LayoutDefault';
 
@@ -23,7 +23,7 @@ export default async function Page() {
 			<ul className="not-prose">
 				{pictureList.map((project, index) => (
 					<li key={index} className="flex flex-col pl-0! mb-8 md:items-center">
-						<NextImage
+						<Image
 							src={`/images/fotografie/${project.image}`}
 							alt={project.desc}
 							width={800}

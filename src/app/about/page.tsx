@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import NextImage from 'next/image';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import LayoutDefault from '@/components/LayoutDefault';
 import SocialIcons from '@/components/SocialIcons';
@@ -43,7 +43,7 @@ export default async function Page() {
 					<div className="group relative aspect-square w-full max-w-100 perspective-[1000px]">
 						<div className="relative h-full w-full transition-all duration-700 transform-3d group-hover:transform-[rotateY(180deg)]">
 							<div className="absolute inset-0 backface-hidden">
-								<NextImage
+								<Image
 									src="/images/lars-wittenberg.jpg"
 									alt="Lars Wittenberg"
 									width="400"
@@ -52,7 +52,7 @@ export default async function Page() {
 								/>
 							</div>
 							<div className="absolute inset-0 backface-hidden transform-[rotateY(180deg)]">
-								<NextImage
+								<Image
 									src="/images/lars-wittenberg_cycling.jpg"
 									alt="Lars Wittenberg - Beim Rennradfahren"
 									width="400"
