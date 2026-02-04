@@ -34,6 +34,13 @@ const componentsForTweets = {
 			/>
 		);
 	},
+	Video: (props) => {
+		return (
+			<video controls style={{ width: '100%', height: 'auto' }} className="aspect-video">
+				<source src={`/projekte/twitter-media/${props.src}`} />
+			</video>
+		);
+	},
 } satisfies MDXComponents;
 
 export const mdxComponentsForTweets = componentsForTweets;
