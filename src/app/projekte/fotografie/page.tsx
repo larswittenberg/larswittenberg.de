@@ -24,7 +24,7 @@ export default async function Page() {
 				{pictureList.map((project, index) => (
 					<li key={index} className="flex flex-col pl-0! mb-8 md:items-center">
 						<Image
-							src={`/images/fotografie/${project.image}`}
+							src={`/projekte/fotografie/${project.image}`}
 							alt={project.desc}
 							width={800}
 							height={600}
