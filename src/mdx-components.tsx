@@ -19,3 +19,21 @@ export function useMDXComponents(): MDXComponents {
 }
 
 export const mdxComponents = components;
+
+const componentsForTweets = {
+	img: (props) => {
+		return (
+			<Image
+				width="600"
+				height="450"
+				sizes="100vw"
+				src={`/twitter-data/media/${props.src}`}
+				alt={props.alt || ''}
+				style={{ width: '100%', height: 'auto' }}
+				// {...(props as ImageProps)}
+			/>
+		);
+	},
+} satisfies MDXComponents;
+
+export const mdxComponentsForTweets = componentsForTweets;
