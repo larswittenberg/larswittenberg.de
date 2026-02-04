@@ -22,6 +22,10 @@ export default async function Page() {
 				Übersicht meiner Tweets vom Beginn der Nutzung 2009 bis zum Ende durch den Verkauf der Plattform an
 				Elon.
 			</p>
+			<p>
+				Hinweis: Die Links zum originalen Tweet funktionieren nicht mehr, da ich meinen Twitter Account zwar immer noch habe, aber die Tweets nicht mehr öffentlich auf der Plattform zugänglich sind.
+			</p>
+
 			<ol className="m-auto my-8 lg:my-0">
 				{linksForYears.map(({ href, label }) => (
 					<li key={`${href}${label}`}>
