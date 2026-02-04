@@ -13,6 +13,11 @@ const projectList = [
 		description: 'Eine Übersicht meiner mit einem Stern markierten GitHub-Repositories.',
 	},
 	{
+		name: 'twitter Archiv',
+		href: '/projekte/tweets',
+		description: 'Meine tweets von 2009 bis 2023, archiviert und durchsuchbar. Exportiert von Twitter, umgewandelt in Markdown und hier als eigene Daten ausgegeben.',
+	},
+	{
 		name: 'Fotografie',
 		href: '/projekte/fotografie',
 		description: 'Eine Auswahl meiner Fotografien, hauptsächlich aus der Natur und Landschaftsfotografie.',
