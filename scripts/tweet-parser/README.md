@@ -40,3 +40,20 @@ python3 process_tweets.py 2009
 ```
 
 Dies liest die Dateien aus dem Ordner `2009/` und erstellt die Datei `tweets-2009.mdx`.
+
+## Nach-Arbeiten
+
+### twitpic URLs durch Bilder ersetzen
+
+RegEx Suche in VSCode: `http://twitpic\\.com/([a-z0-9]+)`
+Ersetzen durch: `![twitpic]($1.jpg)`
+
+### Videos
+
+Neue MDX-Custom-Komponente `Video` erstellen, die das `<video>` Tag ersetzt.
+
+Suche in VSCode: Your browser does not support the video tag.</video>
+Ersetzen durch nichts sondern löschen.
+
+Suche in VSCode: `<video controls><source src="`
+Ersetzen durch: `<Video src="`
