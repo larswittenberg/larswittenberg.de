@@ -3,7 +3,7 @@ import Link from 'next/link';
 import LayoutDefault from '@/components/LayoutDefault';
 
 export const metadata: Metadata = {
-	title: 'tweets Übersicht',
+	title: 'Mein twitter Archiv',
 };
 
 export default async function Page() {
@@ -16,7 +16,7 @@ export default async function Page() {
 
 	return (
 		<LayoutDefault prose fullWidth>
-			<h1>twitter Archiv</h1>
+			<h1>Mein twitter Archiv</h1>
 
 			<p>
 				Übersicht meiner Tweets vom Beginn der Nutzung 2009 bis zum Ende durch den Verkauf der Plattform an
