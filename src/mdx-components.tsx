@@ -27,7 +27,7 @@ const componentsForTweets = {
 				width="600"
 				height="450"
 				sizes="100vw"
-				src={`/twitter-data/media/${props.src}`}
+				src={`/projekte/twitter-media/${props.src}`}
 				alt={props.alt || ''}
 				style={{ width: '100%', height: 'auto' }}
 				// {...(props as ImageProps)}
