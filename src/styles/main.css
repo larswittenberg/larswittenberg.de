@@ -6,6 +6,11 @@
 
 @config '../../tailwind.config.js';
 
+@theme {
+	--color-orange: #ef7c17;
+	--color-darkblue: #1c2532;
+}
+
 /*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still
@@ -29,8 +34,7 @@
 }
 
 ::selection {
-	background-color: var(--color-orange);
-	color: #fff;
+	@apply bg-orange text-white;
 }
 
 body {
@@ -47,8 +51,7 @@ p {
 
 a {
 	&:focus-visible {
-		outline: 3px solid var(--color-orange);
-		border: 0;
+		@apply outline-orange outline-3 outline-solid outline-offset-2;
 	}
 }
 
