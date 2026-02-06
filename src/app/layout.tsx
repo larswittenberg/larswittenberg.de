@@ -39,8 +39,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 			<body className="border-orange border-8 border-solid">
 				{children}
 
-				<Analytics />
-				<SpeedInsights />
+				{process.env.NODE_ENV === 'production' && (
+					<>
+						<Analytics />
+						<SpeedInsights />
+					</>
+				)}
 			</body>
 		</html>
 	);
