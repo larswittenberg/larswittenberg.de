@@ -26,12 +26,12 @@ export default async function Page() {
 				Hinweis: Die Links zum originalen Tweet funktionieren nicht mehr, da ich meinen Twitter Account zwar immer noch habe, aber die Tweets nicht mehr öffentlich auf der Plattform zugänglich sind.
 			</p>
 
-			<ol className="grid grid-cols-3 gap-x-8 my-8 lg:my-0">
+			<ol className="grid grid-cols-3 gap-x-8 my-8 lg:my-0 marker:text-base!">
 				{linksForYears.map(({ href, label }) => (
 					<li key={`${href}${label}`}>
 						<Link
 							href={href}
-							className="hover:shadow-linkhover dark:hover:text-darkblue px-4 py-1 text-xl font-bold tracking-wider transition-all duration-150 ease-linear sm:px-1"
+							className="hover:shadow-linkhover dark:hover:text-darkblue py-1 text-xl font-bold tracking-wider transition-all duration-150 ease-linear sm:px-1"
 						>
 							{label}
 						</Link>

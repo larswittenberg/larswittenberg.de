@@ -11,7 +11,7 @@ export default function Header({ className }: { className?: string }) {
 	return (
 		<header className={`mx-4 lg:mx-auto lg:my-12 lg:w-11/12 ${className}`}>
 			<nav>
-				<ul className="flex flex-col items-center justify-between py-8 md:flex-row">
+				<ul className="flex flex-col items-center justify-between py-8 lg:flex-row">
 					<li>
 						<Link
 							href="/"

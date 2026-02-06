@@ -49,7 +49,7 @@ const componentsForTweets = {
 		);
 	},
 	p: (props) => {
-		return (<p className="text-base" {...props} />);
+		return (<p className="text-base wrap-break-word" {...props} />);
 	},
 	a: (props) => {
 		return (<a href={props.href} target="_blank" rel="noopener noreferrer" className="underline text-base">{props.children}</a>);
