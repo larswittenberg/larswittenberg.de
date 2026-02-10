@@ -25,6 +25,10 @@ Der Token benötigt mindestens Leserechte für Sternlisten (z. B. Scope `read:
 > **Wichtig für Deployments (z. B. Vercel):** Hinterlege dieselben Variablen im Projekt unter **Settings → Environment Variables**.
 > Ohne gültigen `GH_TOKEN` kann das `update-stars`-Skript nicht auf die GitHub-API zugreifen.
 
+### Aktualisierung der GitHub-Tokens
+
+Hier [Actions secrets and variables](https://github.com/larswittenberg/test-codex-github-stars/settings/secrets/actions) den `GH_TOKEN` aktualisieren, um den Workflow `Update Starred Repositories` auszuführen, wenn hier [Regenerate fine-grained personal access token](https://github.com/settings/personal-access-tokens/9370273/regenerate) der Token erneuert wird.
+
 ### GitHub-Token für Produktionsdeployments
 
 1. Erstelle im GitHub-Account einen Personal Access Token (klassisch) mit mindestens dem Scope `public_repo` (Leserechte).
