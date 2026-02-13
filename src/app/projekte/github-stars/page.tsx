@@ -23,7 +23,7 @@ export default async function IndexPage({ searchParams }: PageProps) {
 	const sortOption = isSortOption(rawSort) ? rawSort : DEFAULT_SORT;
 
 	return (
-		<LayoutDefault fullWidth>
+		<LayoutDefault>
 			<GithubStarsPage initialQuery={rawQuery} initialSort={sortOption} />
 			<DataSourceIndicator />
 		</LayoutDefault>
