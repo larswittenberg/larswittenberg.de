@@ -36,7 +36,7 @@ export const TweetSearchPage = () => {
 	}, []);
 
 	const filteredTweets = useMemo(() => {
-		if (!debouncedQuery) return tweets;
+		if (!debouncedQuery || debouncedQuery.trim().length < 2) return [];
 		const lowerQuery = debouncedQuery.toLowerCase();
 		return tweets.filter((t) => t.search_text.includes(lowerQuery));
 	}, [tweets, debouncedQuery]);
@@ -68,18 +68,16 @@ export const TweetSearchPage = () => {
 		return <div className="py-10 text-center text-red-500">{error}</div>;
 	}
 
+	const hasQuery = debouncedQuery.trim().length >= 2;
+
 	return (
-		<div className="space-y-8">
+		<div className="space-y-8 mb-8 lg:mb-16 not-prose">
 			<div className="relative max-w-xl">
 				<p>
-					Volltext-Suche über meine {new Intl.NumberFormat('de-DE').format(tweets.length)} tweets von 2009-2023.
+					Volltext-Suche über meine 12.000+ tweets von 2009-2023.
 				</p>
-				{/* <div className="mt-2 text-xs text-gray-400">
-					{tweets.length > 0 &&
-						`Durchsuche ${new Intl.NumberFormat('de-DE').format(tweets.length)} Tweets aus den Jahren 2009-2023`}
-				</div> */}
 
-				<div className="relative">
+				<div className="relative mt-4">
 					<input
 						type="search"
 						placeholder="Suche im twitter Archiv..."
@@ -100,7 +98,7 @@ export const TweetSearchPage = () => {
 							d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
 						/>
 					</svg>
-					{query && (
+					{query && hasQuery && (
 						<div className="absolute top-1/2 right-4 -translate-y-1/2 bg-white px-2 text-sm text-gray-400 dark:bg-gray-800">
 							{filteredTweets.length} Treffer
 						</div>
@@ -108,21 +106,25 @@ export const TweetSearchPage = () => {
 				</div>
 			</div>
 
-			<TweetList tweets={displayedTweets} query={debouncedQuery} />
+			{hasQuery && (
+				<>
+					<TweetList tweets={displayedTweets} query={debouncedQuery} />
 
-			{displayedTweets.length < filteredTweets.length && (
-				<div className="py-8 text-center">
-					<button
-						onClick={handleLoadMore}
-						disabled={isPending}
-						className="rounded-full border border-gray-300 bg-white px-8 py-3 font-medium text-gray-700 shadow-sm transition-colors hover:bg-gray-50 disabled:opacity-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
-					>
-						{isPending ? 'Lädt...' : 'Mehr Tweets laden'}
-					</button>
-					<div className="mt-2 text-xs text-gray-400">
-						Zeige {displayedTweets.length} von {filteredTweets.length}
-					</div>
-				</div>
+					{displayedTweets.length < filteredTweets.length && (
+						<div className="py-8 text-center">
+							<button
+								onClick={handleLoadMore}
+								disabled={isPending}
+								className="rounded-full border border-gray-300 bg-white px-8 py-3 font-medium text-gray-700 shadow-sm transition-colors hover:bg-gray-50 disabled:opacity-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+							>
+								{isPending ? 'Lädt...' : 'Mehr Tweets laden'}
+							</button>
+							<div className="mt-2 text-xs text-gray-400">
+								Zeige {displayedTweets.length} von {filteredTweets.length}
+							</div>
+						</div>
+					)}
+				</>
 			)}
 		</div>
 	);

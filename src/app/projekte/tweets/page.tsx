@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import LayoutDefault from '@/components/LayoutDefault';
+import { TweetSearchPage } from '@/components/projects/tweets/tweet-search-page';
 
 export const metadata: Metadata = {
 	title: 'Mein twitter Archiv',
@@ -30,7 +31,7 @@ export default async function Page() {
 				immer noch habe, aber die Tweets nicht mehr öffentlich auf der Plattform zugänglich sind.
 			</p>
 
-			<ol className="my-8 grid grid-cols-2 lg:grid-cols-3 gap-x-8 marker:text-base! lg:my-0">
+			<ol className="my-8 grid grid-cols-2 lg:grid-cols-3 gap-x-8 marker:text-base! lg:my-0>">
 				{linksForYears.map(({ href, label }) => (
 					<li key={`${href}${label}`}>
 						<Link
@@ -46,27 +47,11 @@ export default async function Page() {
 				))}
 			</ol>
 
-			<p>
-				<Link
-					href="/projekte/tweets/suche"
-					className=""
-				>
-					Archiv durchsuchen
-				</Link>
-			</p>
+			<div className="not-prose my-24 p-6 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+				<h2 className="text-4xl font-bold mb-2 text-gray-900 dark:text-gray-100">Archiv durchsuchen</h2>
+				<TweetSearchPage />
+			</div>
 
-			{/* <div className="not-prose my-8 p-6 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-				<h2 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">Archiv durchsuchen</h2>
-				<p className="mb-4 text-gray-600 dark:text-gray-400">
-					Du suchst etwas bestimmtes? Durchsuche alle Tweets auf einer Seite.
-				</p>
-				<Link
-					href="/projekte/tweets/suche"
-					className="inline-block px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors font-medium shadow-sm"
-				>
-					Zur Tweet-Suche
-				</Link>
-			</div> */}
 		</LayoutDefault>
 	);
 }
