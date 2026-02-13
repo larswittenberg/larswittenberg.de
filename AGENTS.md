@@ -2,196 +2,158 @@
 
 ## Project Overview
 
-Personal website for Lars Wittenberg (larswittenberg.de) - a Frontend Web Developer from Stuttgart.
+Personal website for Lars Wittenberg (larswittenberg.de), built with Next.js App Router and MDX content.
 
-**Tech Stack:**
+- Framework: Next.js 16
+- Language: TypeScript + React 19
+- Styling: Tailwind CSS 4
+- Content: MDX blog posts and static pages
+- Package manager: Yarn 4 (`packageManager: yarn@4.12.0`)
+- Deployment target: Vercel
 
-- **Framework:** Next.js 16 (App Router)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS 4
-- **Content:** MDX for blog posts and static pages
-- **Deployment:** Vercel (with Analytics & Speed Insights)
-- **Package Manager:** Yarn 4
+This is a single-package repository (not a monorepo).
 
 ## Setup Commands
 
+Run from repository root:
+
 ```bash
-# Use correct Node.js version (requires nvm)
+# Use Node.js from .nvmrc (24)
 nvm use
 
-# Install dependencies
+# Install dependencies (Yarn 4, via Corepack)
+corepack enable
 yarn install
-
-# Start development server
-yarn dev
-
-# Build for production
-yarn build
-
-# Start production server
-yarn start
-
-# Clean build artifacts
-yarn clean
 ```
+
+Environment variables used by GitHub Stars data flow:
+
+```bash
+GH_TOKEN=<github-personal-access-token>
+GH_USERNAME=<github-username>
+```
+
+Recommended local file: `.env.local`.
 
 ## Development Workflow
 
-- Development server runs on `http://localhost:3000`
-- Hot reload is enabled by default
-- Node.js version 24 is required (defined in `.nvmrc`)
-- Always run `nvm use` before starting development
-
-### Project Structure
-
-```text
-src/
-├── app/                    # Next.js App Router pages
-│   ├── layout.tsx          # Root layout with metadata
-│   ├── page.tsx            # Homepage
-│   ├── blog/
-│   │   ├── page.tsx        # Blog listing
-│   │   ├── [slug]/page.tsx # Dynamic blog post pages
-│   │   └── blogposts/      # MDX blog post files
-│   ├── about/              # About page
-│   ├── impressum/          # Legal page (German Impressum)
-│   └── uses/               # Uses page
-├── components/             # React components
-│   ├── atoms/              # Small reusable components
-│   ├── Footer.tsx
-│   ├── Header.tsx
-│   ├── LayoutDefault.tsx
-│   └── SocialIcons.tsx
-├── styles/
-│   └── main.css            # Global styles with Tailwind
-└── utils/
-    └── mdx-utils.ts        # MDX parsing utilities
-```
-
-## Code Style
-
-### Linting & Formatting
-
 ```bash
-# Run ESLint
-yarn lint
+# Start local dev server (hot reload)
+yarn dev
 
-# Format code with Prettier
-yarn format
-```
-
-### ESLint Rules
-
-- **Quotes:** Single quotes required (`'string'`)
-- **React:** JSX scope import not required (React 19)
-- **TypeScript:** Unused variables are errors, `any` type is allowed
-- **Next.js:** Core Web Vitals rules enabled
-
-### TypeScript Configuration
-
-- Strict null checks enabled
-- Path aliases configured:
-  - `@/*` → `./src/*`
-  - `@/components/*` → `./src/components/*`
-  - `@/styles/*` → `./src/styles/*`
-
-### File Conventions
-
-- React components: PascalCase (`Header.tsx`, `CustomLink.tsx`)
-- Utility files: kebab-case (`mdx-utils.ts`)
-- MDX blog posts: kebab-case (`alpen-bikepacking-2022.mdx`)
-- Use `.tsx` extension for files with JSX
-- Use `.ts` extension for pure TypeScript files
-
-### Component Structure
-
-- Components are located in `src/components/`
-- Small, reusable components go in `src/components/atoms/`
-- Page-specific components stay in the page directory
-
-## Content Management
-
-### Blog Posts
-
-Blog posts are MDX files located in `src/app/blog/blogposts/`.
-
-**Frontmatter format:**
-
-```yaml
----
-title: 'Post Title'
-date: '2024-01-15'
-update: '2024-02-01' # Optional
-desc: 'Brief description'
-image: '/images/blog/post-slug/cover.jpg'
-draft: false # Set to true to hide from production
----
-```
-
-**Image location:** Blog images go in `public/images/blog/<post-slug>/`
-
-### Static Pages with MDX
-
-- Impressum: `src/app/impressum/impressum.mdx`
-- Uses: `src/app/uses/uses.mdx`
-
-## Build and Deployment
-
-### Build Commands
-
-```bash
 # Production build
 yarn build
 
-# Full export (clean + build + export)
+# Start production server after build
+yarn start
+
+# Remove Next.js build output
+yarn clean
+
+# Full static export flow
 yarn export
 ```
 
-### Output
+- Local dev URL: `http://localhost:3000`
+- Main app code lives in `src/app/`
+- Reusable UI components live in `src/components/`
+- Global styles are in `src/styles/main.css`
 
-- Build output: `.next/` directory
-- Static export: `out/` directory (when using export)
+## Testing Instructions
 
-### Deployment
+There is currently no dedicated unit/integration/e2e test framework configured (no Jest/Vitest/Playwright config, no `test` script in `package.json`).
 
-- Deployed automatically via Vercel on push to main branch
-- Vercel Analytics and Speed Insights are integrated
-- Domain: larswittenberg.de
+Use this validation baseline before submitting changes:
 
-## Ignored Files
+```bash
+# Lint (primary quality gate)
+yarn lint
 
-The following are auto-generated and should not be manually edited:
+# Optional: type-check only (no emit)
+yarn tsc --noEmit
 
-- `next-env.d.ts` - Generated by Next.js
-- `.next/` - Build output directory
-- `out/` - Static export directory
+# Ensure production build works
+yarn build
+```
 
-## PR Guidelines
+When adding non-trivial logic, prefer adding tests along with the feature. If you introduce a test framework, document its commands here.
 
-- Run `yarn lint` before committing
-- Run `yarn format` to ensure consistent code style
-- Ensure `yarn build` succeeds before creating PR
-- Keep commits focused and descriptive
+## Code Style Guidelines
 
-## Common Issues
+- ESLint config: `eslint.config.mjs`
+- Prettier command: `yarn format` (currently formats `./src`)
+- Quotes: single quotes enforced
+- TypeScript:
+  - `strict` is `false`, but `strictNullChecks` is enabled
+  - `@typescript-eslint/no-unused-vars` is enforced
+  - `any` is allowed (`@typescript-eslint/no-explicit-any: off`)
+- React:
+  - React import in JSX scope is not required
+  - `react/prop-types` is disabled (TypeScript project)
+- Next.js Core Web Vitals rules are enabled
 
-### ESLint errors in `next-env.d.ts`
+Naming and organization conventions:
 
-This file is auto-generated by Next.js and is excluded from linting. If you see errors, ensure `eslint.config.mjs` includes it in the `ignores` array.
+- React components: PascalCase filenames (e.g., `Header.tsx`)
+- Utility files: kebab-case or existing local convention
+- MDX content: kebab-case filenames
+- Use `.tsx` for files with JSX and `.ts` otherwise
+- Keep small reusable elements under `src/components/atoms/`
 
-### Node.js version mismatch
+## Build and Deployment
 
-Always run `nvm use` to switch to the correct Node.js version (24) before running any commands.
+Build outputs:
 
-### MDX parsing issues
+- `.next/` from `yarn build`
+- `out/` from `yarn export`
 
-- Ensure frontmatter is valid YAML
-- Check for unescaped special characters in MDX content
-- Use `{'>'}` or `{'}'}` for special characters in JSX
+Deployment:
 
-## Additional Notes
+- Production hosting is on Vercel.
+- Vercel Analytics and Speed Insights are included in the app.
 
-- The site is in German (lang="de")
-- Brand colors: Orange (`#ef7c17`), Dark Blue (`#1c2532`)
-- Typography plugin from Tailwind CSS is used for prose styling
-- React Strict Mode is enabled
+GitHub Actions automation:
+
+- Workflow: `.github/workflows/update-data.yml`
+- Purpose: scheduled/manual refresh of `src/data/starred-repositories.json`
+- Trigger: daily cron + manual dispatch
+- Required secrets for workflow: `GH_TOKEN`, `GH_USERNAME`
+
+## Security Considerations
+
+- Never commit secrets (`GH_TOKEN`, other credentials).
+- Use `.env.local` for local secrets and Vercel/GitHub secret stores for CI/deployments.
+- `yarn update-stars` accesses GitHub API; treat all token-related logs as sensitive.
+
+## Pull Request Guidelines
+
+Before opening a PR, run:
+
+```bash
+yarn lint
+yarn build
+```
+
+Also recommended:
+
+```bash
+yarn format
+```
+
+Keep changes focused and descriptive. If you modify data-fetching for GitHub stars, mention required env/secret changes in the PR description.
+
+## Debugging & Troubleshooting
+
+- Node version issues: run `nvm use` (expects Node 24 from `.nvmrc`).
+- Dependency/tooling issues: run `corepack enable` and reinstall with `yarn install`.
+- MDX parse/render issues:
+  - Validate frontmatter YAML
+  - Check special JSX characters (`{'>'}`, `{'}'}` when needed)
+- Linting noise from generated files:
+  - `next-env.d.ts` and `.next/*` are intentionally ignored in ESLint config.
+
+## Agent Notes
+
+- Prefer minimal, targeted edits that match existing style.
+- Do not edit generated artifacts (`.next/`, `out/`, `next-env.d.ts`).
+- When changing commands or workflows, keep this file in sync so future agents have accurate instructions.
