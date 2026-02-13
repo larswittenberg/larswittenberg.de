@@ -48,8 +48,8 @@ export function StarredSearchFilters(props: FiltersProps) {
 	// const disableRefresh = disableControls || isPending;
 
 	return (
-		<section className="mb-16 space-y-4 p-4">
-			<header className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+		<section className="mb-16 space-y-4 lg:p-4">
+			<header className="flex flex-row gap-4 sm:flex-row items-center justify-center">
 				<div>
 					<p className="text-2xl font-semibold">
 						{totalStarredFormatted && (
@@ -67,7 +67,6 @@ export function StarredSearchFilters(props: FiltersProps) {
 				</div>
 				<div className="text-muted-foreground text-xs">
 					<p className="text-muted-foreground mt-1 text-xs">
-						Datenstand:
 						<span className="ml-1 inline-flex items-center gap-2 align-middle">
 							{showCacheSpinner ? (
 								<>

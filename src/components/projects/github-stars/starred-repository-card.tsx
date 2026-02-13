@@ -10,7 +10,7 @@ export function StarredRepositoryCard(props: CardProps) {
 	const { repository, position } = props;
 
 	return (
-		<li className="rounded-lg border border-gray-500 p-6">
+		<li className="rounded-lg border border-gray-500 p-4 lg:p-6">
 			<div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
 				<div>
 					<h2 className="text-primary flex flex-wrap items-center gap-2 text-base font-semibold sm:flex-nowrap lg:text-xl">
@@ -22,34 +22,37 @@ export function StarredRepositoryCard(props: CardProps) {
 						</span>
 					</h2>
 					{repository.description && (
-						<p className="text-muted-foreground mt-1 text-sm">{repository.description}</p>
+						<p className="mt-1 text-sm">{repository.description}</p>
 					)}
 					{(repository.language || repository.topics.length > 0) && (
-						<ul className="text-muted-foreground mt-3 flex flex-wrap gap-2 text-xs">
+						<ul className="mt-3 flex flex-wrap gap-2 text-xs">
 							{repository.language && (
 								<li className="leading-5">
-									<span className="bg-muted/60 text-muted-foreground rounded-full px-2 py-0.5 font-medium">
+									<span className="opacity-60 px-2 py-0.5 font-medium">
 										{repository.language}
 									</span>
 								</li>
 							)}
 							{repository.topics.map((topic) => (
 								<li key={topic} className="leading-5">
-									<span className="opacity-80">#{topic}</span>
+									<span className="opacity-60">#{topic}</span>
 								</li>
 							))}
 						</ul>
 					)}
 				</div>
+				<div>
 				<a
 					href={repository.html_url}
 					target="_blank"
 					rel="noreferrer"
-					className="bg-secondary text-secondary-foreground hover:bg-secondary/80 inline-flex  items-center justify-center gap-1 text-sm font-medium whitespace-nowrap transition-colors sm:shrink-0"
+					className="bg-secondary text-secondary-foreground hover:bg-secondary/80 inline-flex  items-center justify-center gap-1 text-sm font-medium whitespace-nowrap transition-colors shrink"
 				>
 					<span>Auf GitHub öffnen</span>
 					<ExternalLink className="h-4 w-4" aria-hidden="true" />
 				</a>
+
+				</div>
 			</div>
 		</li>
 	);
