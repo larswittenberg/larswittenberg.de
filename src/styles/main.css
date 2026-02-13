@@ -64,14 +64,6 @@ a.link,
 	}
 }
 
-.not-prose a:not(.link) {
-	box-shadow: none;
-
-	&:hover {
-		box-shadow: none;
-	}
-}
-
 /* @tailwindcss/typography custom styles */
 .prose {
 	@apply text-slate-800 dark:text-gray-200;
@@ -105,4 +97,26 @@ a.link,
 			@apply border-0 ml-2;
 		}
 	}
+}
+
+.not-prose {
+	h1,
+	h2,
+	h3 {
+		@apply font-sans;
+	}
+
+	a {
+		&:hover {
+			@apply shadow-linkhover dark:text-darkblue;
+		}
+	}
+
+	/* a:not(.link) {
+		box-shadow: none;
+
+		&:hover {
+			box-shadow: none;
+		}
+	} */
 }

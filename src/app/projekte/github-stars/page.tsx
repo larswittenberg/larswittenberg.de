@@ -23,9 +23,13 @@ export default async function IndexPage({ searchParams }: PageProps) {
 	const sortOption = isSortOption(rawSort) ? rawSort : DEFAULT_SORT;
 
 	return (
-		<LayoutDefault>
-			<GithubStarsPage initialQuery={rawQuery} initialSort={sortOption} />
-			<DataSourceIndicator />
+		<LayoutDefault prose>
+			<h1>Meine GitHub Stars</h1>
+
+			<div className="not-prose">
+				<GithubStarsPage initialQuery={rawQuery} initialSort={sortOption} />
+				<DataSourceIndicator />
+			</div>
 		</LayoutDefault>
 	);
 }

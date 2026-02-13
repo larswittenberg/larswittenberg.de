@@ -45,7 +45,7 @@ export function StarredRepositoryCard(props: CardProps) {
 					href={repository.html_url}
 					target="_blank"
 					rel="noreferrer"
-					className="bg-secondary text-secondary-foreground hover:bg-secondary/80 inline-flex h-9 items-center justify-center gap-1 rounded-md px-3 py-1 text-sm font-medium whitespace-nowrap transition-colors sm:shrink-0"
+					className="bg-secondary text-secondary-foreground hover:bg-secondary/80 inline-flex  items-center justify-center gap-1 text-sm font-medium whitespace-nowrap transition-colors sm:shrink-0"
 				>
 					<span>Auf GitHub öffnen</span>
 					<ExternalLink className="h-4 w-4" aria-hidden="true" />

@@ -51,18 +51,19 @@ export function StarredSearchFilters(props: FiltersProps) {
 		<section className="mb-16 space-y-4 p-4">
 			<header className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
 				<div>
-					<h1 className="text-2xl font-semibold">
-						<a
-							href="https://github.com/larswittenberg?tab=stars"
-							target="_blank"
-							rel="noreferrer"
-							className="text-primary inline-flex items-center gap-2 transition-colors hover:underline"
-						>
-							<span>Meine GitHub Stars</span>
-							{totalStarredFormatted && <span className="text-primary">({totalStarredFormatted})</span>}
-							<ExternalLink className="h-4 w-4" aria-hidden="true" />
-						</a>{' '}
-					</h1>
+					<p className="text-2xl font-semibold">
+						{totalStarredFormatted && (
+							<a
+								href="https://github.com/larswittenberg?tab=stars"
+								target="_blank"
+								rel="noreferrer"
+								className="inline-flex items-center gap-2 "
+							>
+								{totalStarredFormatted && <span className="text-primary">{totalStarredFormatted} Stars</span>}
+								<ExternalLink className="h-4 w-4" aria-hidden="true" />
+							</a>
+						)}
+					</p>
 				</div>
 				<div className="text-muted-foreground text-xs">
 					<p className="text-muted-foreground mt-1 text-xs">
@@ -139,7 +140,7 @@ export function StarredSearchFilters(props: FiltersProps) {
 						value={sortOption}
 						onChange={(event) => onSortOptionChange(event.target.value as SortOption)}
 						disabled={disableControls}
-						className="border-muted bg-muted/30 text-muted-foreground h-9 w-72 rounded-full border px-4 text-sm focus-visible:ring-0"
+						className="h-9 w-80 rounded-md border px-4 text-sm focus-visible:ring-0"
 					>
 						{(Object.keys(SORT_OPTION_LABELS) as SortOption[]).map((value) => (
 							<option key={value} value={value}>
