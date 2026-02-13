@@ -28,6 +28,10 @@ const highlightText = (text: string, query: string) => {
 	}
 };
 
+const unescapeMarkdown = (text: string) => {
+	return text.replace(/\\(.)/g, '$1');
+};
+
 const renderLine = (line: string, key: string | number, query: string) => {
 	// Find Images ! [alt](src), Markdown Links [text](url) and plain URLs
 	// The regex now includes the optional ! for images
@@ -46,7 +50,7 @@ const renderLine = (line: string, key: string | number, query: string) => {
 								height="450"
 								sizes="100vw"
 								src={`/projekte/twitter-media/${imgMatch[2]}`}
-								alt={imgMatch[1] || ''}
+								alt={unescapeMarkdown(imgMatch[1]) || ''}
 								style={{ width: '50%', height: 'auto' }}
 								className="rounded-lg"
 							/>
@@ -60,34 +64,35 @@ const renderLine = (line: string, key: string | number, query: string) => {
 					return (
 						<a
 							key={i}
-							href={mdLinkMatch[2]}
+							href={unescapeMarkdown(mdLinkMatch[2])}
 							target="_blank"
 							rel="noopener noreferrer"
 							className="text-base wrap-break-word text-blue-600 underline dark:text-blue-400"
 						>
-							{highlightText(mdLinkMatch[1], query)}
+							{highlightText(unescapeMarkdown(mdLinkMatch[1]), query)}
 						</a>
 					);
 				}
 
 				// Plain URL
 				if (part.match(/^https?:\/\//)) {
+					const unescapedUrl = unescapeMarkdown(part);
 					return (
 						<a
 							key={i}
-							href={part}
+							href={unescapedUrl}
 							target="_blank"
 							rel="noopener noreferrer"
 							className="text-base wrap-break-word text-blue-600 underline dark:text-blue-400"
 						>
-							{part}
+							{unescapedUrl}
 						</a>
 					);
 				}
 
 				return (
 					<span key={i} className="wrap-break-word">
-						{highlightText(part, query)}
+						{highlightText(unescapeMarkdown(part), query)}
 					</span>
 				);
 			})}
@@ -143,7 +148,7 @@ const renderContent = (content: string, query: string) => {
 						height="450"
 						sizes="100vw"
 						src={`/projekte/twitter-media/${imgMatch[2]}`}
-						alt={imgMatch[1] || ''}
+						alt={unescapeMarkdown(imgMatch[1]) || ''}
 						style={{ width: '50%', height: 'auto' }}
 						className="rounded-lg"
 					/>
