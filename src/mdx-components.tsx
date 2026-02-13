@@ -52,7 +52,7 @@ const componentsForTweets = {
 		return (<p className="text-base wrap-break-word" {...props} />);
 	},
 	a: (props) => {
-		return (<a href={props.href} target="_blank" rel="noopener noreferrer" className="underline text-base">{props.children}</a>);
+		return (<a href={props.href} target="_blank" rel="noopener noreferrer" className="shadow-none! hover:shadow-linkhover! hover:text-darkblue!">{props.children}</a>);
 	},
 	hr: (props) => {
 		return (<hr className="my-8! border-t border-gray-500" {...props} />);

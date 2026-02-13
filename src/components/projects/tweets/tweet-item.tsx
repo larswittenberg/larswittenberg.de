@@ -67,7 +67,7 @@ const renderLine = (line: string, key: string | number, query: string) => {
 							href={unescapeMarkdown(mdLinkMatch[2])}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="text-base wrap-break-word text-blue-600 underline dark:text-blue-400"
+							className="hover:shadow-linkhover! hover:text-darkblue!"
 						>
 							{highlightText(unescapeMarkdown(mdLinkMatch[1]), query)}
 						</a>
@@ -83,7 +83,7 @@ const renderLine = (line: string, key: string | number, query: string) => {
 							href={unescapedUrl}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="text-base wrap-break-word text-blue-600 underline dark:text-blue-400"
+							className="hover:shadow-linkhover! hover:text-darkblue!"
 						>
 							{unescapedUrl}
 						</a>
@@ -190,7 +190,7 @@ export const TweetItem = ({ tweet, query }: TweetItemProps) => {
 						href={tweet.url}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="text-base text-gray-500 underline transition-colors hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
+						className="hover:shadow-linkhover! hover:text-darkblue!"
 					>
 						{tweet.date}
 					</a>
