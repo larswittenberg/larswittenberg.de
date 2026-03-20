@@ -15,10 +15,10 @@ export default function LayoutDefault({
 	prose?: boolean;
 }) {
 	let ClassNames = cn({
-		'grow mx-4 md:mx-10 md:mx-auto': true,
-		'prose dark:prose-invert  lg:prose-lg xl:prose-xl 2xl:prose-2xl': prose,
+		'grow mx-4 md:mx-10 md:mx-auto w-full': true,
+		'prose dark:prose-invert lg:prose-lg xl:prose-xl 2xl:prose-2xl': prose,
 		'lg:w-11/12 lg:mx-auto': fullWidth,
-		'max-w-prose': !fullWidth,
+		'max-w-prose': (!fullWidth && !prose),
 		'flex items-center': centerVertical,
 	});
 
