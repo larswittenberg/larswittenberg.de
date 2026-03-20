@@ -13,6 +13,9 @@ const withMDX = require('@next/mdx')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+	env: {
+		NEXT_PUBLIC_BUILD_DATE: new Date().toISOString(),
+	},
 	// https://nextjs.org/docs/api-reference/next.config.js/react-strict-mode
 	reactStrictMode: true,
 	// Configure `pageExtensions`` to include MDX files

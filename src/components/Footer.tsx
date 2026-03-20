@@ -1,7 +1,11 @@
 import Link from 'next/link';
 import cn from 'classnames';
+import { formatDate } from '@/lib/utils';
 
 export default function Footer() {
+	const currentYear = new Date().getFullYear();
+	const buildDate = process.env.NEXT_PUBLIC_BUILD_DATE;
+
 	let linkClass = cn({
 		'border-b-1 hover:border-b-2 border-gray-500 transition-all': true,
 	});
@@ -9,15 +13,15 @@ export default function Footer() {
 	return (
 		<footer className="mx-4 mt-16 border-t border-solid border-gray-700 py-8 text-center md:mx-10 lg:mx-auto lg:w-11/12">
 			<div>
-				<p className="text-base text-gray-600 dark:text-gray-400">
-					© {new Date().getFullYear()} Lars Wittenberg · Built with{' '}
+				<p className="text-sm text-gray-600 dark:text-gray-400">
+					© {currentYear} Lars Wittenberg · Built with{' '}
 					<Link href="https://nextjs.org/" className={linkClass}>
-						next.js 16
+						next.js 16.2
 					</Link>{' '}
 					· Deployed on{' '}
 					<Link href="https://vercel.com/" className={linkClass}>
 						vercel.com
-					</Link>{' '}
+					</Link> on {buildDate ? formatDate(buildDate) : 'unknown'}{' '}
 					·{' '}
 					<Link href="/impressum" className={linkClass}>
 						Impressum
