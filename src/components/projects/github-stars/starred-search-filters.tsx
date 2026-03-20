@@ -67,7 +67,7 @@ export function StarredSearchFilters(props: FiltersProps) {
 				</div>
 				<div className="text-muted-foreground text-xs">
 					<p className="text-muted-foreground mt-1 text-xs">
-						<span className="ml-1 inline-flex items-center gap-2 align-middle">
+						<span className="ml-1 mb-3 inline-flex items-center gap-2 align-middle">
 							{showCacheSpinner ? (
 								<>
 									<span
