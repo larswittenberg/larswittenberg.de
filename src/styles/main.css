@@ -3,6 +3,7 @@
 /* @import "helpers/htmllinting.css"; */
 
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
 @config '../../tailwind.config.js';
 
@@ -110,13 +111,13 @@ a.link,
 		&:hover {
 			@apply shadow-linkhover dark:text-darkblue;
 		}
-	}
 
-	/* a:not(.link) {
-		box-shadow: none;
+		&.icon-link {
+			@apply shadow-none;
 
-		&:hover {
-			box-shadow: none;
+			&:hover {
+				@apply shadow-none;
+			}
 		}
-	} */
+	}
 }
