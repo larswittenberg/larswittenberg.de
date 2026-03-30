@@ -1,13 +1,30 @@
 {
-  "generatedAt": "2026-03-29T05:08:05.521Z",
+  "generatedAt": "2026-03-30T05:21:25.237Z",
   "repositories": [
+    {
+      "name": "DocumentServer",
+      "description": null,
+      "url": "https://github.com/Euro-Office/DocumentServer",
+      "stargazerCount": 166,
+      "forkCount": 4,
+      "pushedAt": "2026-03-30T02:25:20Z",
+      "owner": {
+        "login": "Euro-Office",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/230963316?v=4"
+      },
+      "primaryLanguage": {
+        "name": "Shell",
+        "color": "#89e051"
+      },
+      "repositoryTopics": []
+    },
     {
       "name": "lap",
       "description": "An offline-first photo manager for large local libraries",
       "url": "https://github.com/julyx10/lap",
-      "stargazerCount": 286,
-      "forkCount": 13,
-      "pushedAt": "2026-03-29T02:45:40Z",
+      "stargazerCount": 307,
+      "forkCount": 14,
+      "pushedAt": "2026-03-29T15:31:28Z",
       "owner": {
         "login": "julyx10",
         "avatarUrl": "https://avatars.githubusercontent.com/u/36072047?u=c89388c48bd80001f9d923bcbc4853a358b65f77&v=4"
@@ -61,7 +78,7 @@
       "name": "Netfluss",
       "description": "A light-weight & open-source menubar app that shows current upload & download speed plus the top apps using bandwidth",
       "url": "https://github.com/rana-gmbh/Netfluss",
-      "stargazerCount": 222,
+      "stargazerCount": 268,
       "forkCount": 6,
       "pushedAt": "2026-03-28T19:16:56Z",
       "owner": {
@@ -83,9 +100,9 @@
       "name": "agent-skills",
       "description": "Vercel's official collection of agent skills",
       "url": "https://github.com/vercel-labs/agent-skills",
-      "stargazerCount": 24035,
-      "forkCount": 2188,
-      "pushedAt": "2026-03-24T23:00:04Z",
+      "stargazerCount": 24073,
+      "forkCount": 2198,
+      "pushedAt": "2026-03-29T17:56:30Z",
       "owner": {
         "login": "vercel-labs",
         "avatarUrl": "https://avatars.githubusercontent.com/u/108547162?v=4"
@@ -100,8 +117,8 @@
       "name": "VidBee",
       "description": "Download videos from almost any website worldwide",
       "url": "https://github.com/nexmoe/VidBee",
-      "stargazerCount": 7721,
-      "forkCount": 544,
+      "stargazerCount": 7753,
+      "forkCount": 546,
       "pushedAt": "2026-03-29T03:24:35Z",
       "owner": {
         "login": "nexmoe",
@@ -123,8 +140,8 @@
       "name": "PlayCover",
       "description": "Community fork of PlayCover",
       "url": "https://github.com/PlayCover/PlayCover",
-      "stargazerCount": 11025,
-      "forkCount": 903,
+      "stargazerCount": 11035,
+      "forkCount": 902,
       "pushedAt": "2026-03-12T19:04:49Z",
       "owner": {
         "login": "PlayCover",
@@ -140,9 +157,9 @@
       "name": "FineTune",
       "description": "FineTune, a macOS menu bar app for per-app volume control, multi-device output, audio routing, and 10-band EQ. Free and open-source alternative to SoundSource.",
       "url": "https://github.com/ronitsingh10/FineTune",
-      "stargazerCount": 4851,
-      "forkCount": 151,
-      "pushedAt": "2026-03-29T05:02:40Z",
+      "stargazerCount": 5089,
+      "forkCount": 158,
+      "pushedAt": "2026-03-29T19:41:35Z",
       "owner": {
         "login": "ronitsingh10",
         "avatarUrl": "https://avatars.githubusercontent.com/u/70445944?u=4b0a17be736bb8122b559b05fc99a23b05822252&v=4"
@@ -168,9 +185,9 @@
       "name": "Handy",
       "description": "A free, open source, and extensible speech-to-text application that works completely offline.",
       "url": "https://github.com/cjpais/Handy",
-      "stargazerCount": 18831,
-      "forkCount": 1484,
-      "pushedAt": "2026-03-29T05:04:16Z",
+      "stargazerCount": 18876,
+      "forkCount": 1492,
+      "pushedAt": "2026-03-29T23:18:54Z",
       "owner": {
         "login": "cjpais",
         "avatarUrl": "https://avatars.githubusercontent.com/u/1559480?u=2a1ffb822085da54a5150a85a6bc628cc35c3755&v=4"
@@ -190,9 +207,9 @@
       "name": "BetterCapture",
       "description": "The macOS screen recorder for the rest of us - always free and open source with a native look and feel  📺",
       "url": "https://github.com/jsattler/BetterCapture",
-      "stargazerCount": 1064,
+      "stargazerCount": 1067,
       "forkCount": 37,
-      "pushedAt": "2026-03-28T22:32:24Z",
+      "pushedAt": "2026-03-29T12:01:40Z",
       "owner": {
         "login": "jsattler",
         "avatarUrl": "https://avatars.githubusercontent.com/u/34030048?u=482d9f0366a888c997bc12ef50e977c0699f1393&v=4"
@@ -219,7 +236,7 @@
       "url": "https://github.com/seluce/Layer8Problem",
       "stargazerCount": 49,
       "forkCount": 2,
-      "pushedAt": "2026-03-28T21:39:39Z",
+      "pushedAt": "2026-03-29T20:51:02Z",
       "owner": {
         "login": "seluce",
         "avatarUrl": "https://avatars.githubusercontent.com/u/36071735?u=c8ded2643224be1069b2a1d40a5a1a338c58716e&v=4"
@@ -234,9 +251,9 @@
       "name": "core",
       "description": ":house_with_garden: Open source home automation that puts local control and privacy first.",
       "url": "https://github.com/home-assistant/core",
-      "stargazerCount": 85895,
-      "forkCount": 37096,
-      "pushedAt": "2026-03-28T22:42:36Z",
+      "stargazerCount": 85906,
+      "forkCount": 37109,
+      "pushedAt": "2026-03-30T05:12:57Z",
       "owner": {
         "login": "home-assistant",
         "avatarUrl": "https://avatars.githubusercontent.com/u/13844975?v=4"
@@ -260,7 +277,7 @@
       "name": "tigervnc",
       "description": "High performance, multi-platform VNC client and server",
       "url": "https://github.com/TigerVNC/tigervnc",
-      "stargazerCount": 6992,
+      "stargazerCount": 6993,
       "forkCount": 1117,
       "pushedAt": "2026-03-26T09:21:53Z",
       "owner": {
@@ -277,7 +294,7 @@
       "name": "altcha",
       "description": "GDPR, WCAG 2.2 AA, and EAA compliant, self-hosted CAPTCHA alternative with PoW mechanism.",
       "url": "https://github.com/altcha-org/altcha",
-      "stargazerCount": 2116,
+      "stargazerCount": 2115,
       "forkCount": 100,
       "pushedAt": "2026-03-21T07:07:08Z",
       "owner": {
@@ -305,7 +322,7 @@
       "name": "tweakcn",
       "description": "A visual no-code theme editor for shadcn/ui components",
       "url": "https://github.com/jnsahaj/tweakcn",
-      "stargazerCount": 9608,
+      "stargazerCount": 9613,
       "forkCount": 606,
       "pushedAt": "2026-03-10T13:54:52Z",
       "owner": {
@@ -329,7 +346,7 @@
       "name": "kamal",
       "description": "Deploy web apps anywhere.",
       "url": "https://github.com/basecamp/kamal",
-      "stargazerCount": 13969,
+      "stargazerCount": 13971,
       "forkCount": 692,
       "pushedAt": "2026-03-27T14:47:50Z",
       "owner": {
@@ -346,7 +363,7 @@
       "name": "ImageOptim",
       "description": "GUI image optimizer for Mac",
       "url": "https://github.com/ImageOptim/ImageOptim",
-      "stargazerCount": 9762,
+      "stargazerCount": 9763,
       "forkCount": 458,
       "pushedAt": "2023-10-29T16:56:33Z",
       "owner": {
@@ -371,7 +388,7 @@
       "name": "itsyhome-macos",
       "description": "A native macOS menu bar app for controlling your smart home devices.",
       "url": "https://github.com/nickustinov/itsyhome-macos",
-      "stargazerCount": 843,
+      "stargazerCount": 844,
       "forkCount": 25,
       "pushedAt": "2026-03-16T13:32:59Z",
       "owner": {
@@ -388,7 +405,7 @@
       "name": "itsytv-macos",
       "description": "The missing Apple TV remote app for macOS",
       "url": "https://github.com/nickustinov/itsytv-macos",
-      "stargazerCount": 508,
+      "stargazerCount": 509,
       "forkCount": 14,
       "pushedAt": "2026-03-26T17:53:27Z",
       "owner": {
@@ -405,9 +422,9 @@
       "name": "ente",
       "description": "💚 End-to-end encrypted cloud for everything.",
       "url": "https://github.com/ente-io/ente",
-      "stargazerCount": 25631,
-      "forkCount": 1512,
-      "pushedAt": "2026-03-28T17:46:32Z",
+      "stargazerCount": 25653,
+      "forkCount": 1513,
+      "pushedAt": "2026-03-30T03:46:31Z",
       "owner": {
         "login": "ente-io",
         "avatarUrl": "https://avatars.githubusercontent.com/u/64603161?v=4"
@@ -433,9 +450,9 @@
       "name": "immich",
       "description": "High performance self-hosted photo and video management solution.",
       "url": "https://github.com/immich-app/immich",
-      "stargazerCount": 95867,
-      "forkCount": 5206,
-      "pushedAt": "2026-03-29T04:47:20Z",
+      "stargazerCount": 95944,
+      "forkCount": 5218,
+      "pushedAt": "2026-03-30T05:10:08Z",
       "owner": {
         "login": "immich-app",
         "avatarUrl": "https://avatars.githubusercontent.com/u/109746326?v=4"
@@ -461,8 +478,8 @@
       "name": "openscreen",
       "description": "Create stunning demos for free. Open-source, no subscriptions, no watermarks, and free for commercial use. An alternative to Screen Studio. ",
       "url": "https://github.com/siddharthvaddem/openscreen",
-      "stargazerCount": 8972,
-      "forkCount": 561,
+      "stargazerCount": 9003,
+      "forkCount": 564,
       "pushedAt": "2026-03-22T16:39:54Z",
       "owner": {
         "login": "siddharthvaddem",
@@ -486,7 +503,7 @@
       "url": "https://github.com/db-ux-design-system/core-web",
       "stargazerCount": 117,
       "forkCount": 16,
-      "pushedAt": "2026-03-28T10:05:45Z",
+      "pushedAt": "2026-03-30T05:10:23Z",
       "owner": {
         "login": "db-ux-design-system",
         "avatarUrl": "https://avatars.githubusercontent.com/u/195734855?v=4"
@@ -512,9 +529,9 @@
       "name": "NotchPrompter",
       "description": "A very basic, always-on-top floating text prompter for macOS. Perfect for quick videos, or keeping important text visible while you work.",
       "url": "https://github.com/jpomykala/NotchPrompter",
-      "stargazerCount": 370,
+      "stargazerCount": 374,
       "forkCount": 25,
-      "pushedAt": "2026-03-28T22:26:32Z",
+      "pushedAt": "2026-03-29T21:07:35Z",
       "owner": {
         "login": "jpomykala",
         "avatarUrl": "https://avatars.githubusercontent.com/u/1548104?u=93b78a24fffb407d46f8e768a2add5e3be389152&v=4"
@@ -534,8 +551,8 @@
       "name": "skills",
       "description": "Public repository for Agent Skills",
       "url": "https://github.com/anthropics/skills",
-      "stargazerCount": 105206,
-      "forkCount": 11625,
+      "stargazerCount": 105938,
+      "forkCount": 11721,
       "pushedAt": "2026-03-25T15:10:49Z",
       "owner": {
         "login": "anthropics",
@@ -553,9 +570,9 @@
       "name": "awesome-copilot",
       "description": "Community-contributed instructions, agents, skills, and configurations to help you make the most of GitHub Copilot.",
       "url": "https://github.com/github/awesome-copilot",
-      "stargazerCount": 27492,
-      "forkCount": 3186,
-      "pushedAt": "2026-03-28T19:28:50Z",
+      "stargazerCount": 27593,
+      "forkCount": 3202,
+      "pushedAt": "2026-03-30T01:26:53Z",
       "owner": {
         "login": "github",
         "avatarUrl": "https://avatars.githubusercontent.com/u/9919?v=4"
@@ -579,7 +596,7 @@
       "name": "neatocal",
       "description": "A single page printable calendar",
       "url": "https://github.com/abetusk/neatocal",
-      "stargazerCount": 834,
+      "stargazerCount": 837,
       "forkCount": 60,
       "pushedAt": "2026-02-21T17:16:36Z",
       "owner": {
@@ -596,9 +613,9 @@
       "name": "Zettlr",
       "description": "Your One-Stop Publication Workbench",
       "url": "https://github.com/Zettlr/Zettlr",
-      "stargazerCount": 12745,
+      "stargazerCount": 12748,
       "forkCount": 784,
-      "pushedAt": "2026-03-29T03:28:28Z",
+      "pushedAt": "2026-03-30T04:04:51Z",
       "owner": {
         "login": "Zettlr",
         "avatarUrl": "https://avatars.githubusercontent.com/u/19707815?v=4"
@@ -624,9 +641,9 @@
       "name": "task",
       "description": "A fast, cross-platform build tool inspired by Make, designed for modern workflows.",
       "url": "https://github.com/go-task/task",
-      "stargazerCount": 15214,
+      "stargazerCount": 15222,
       "forkCount": 811,
-      "pushedAt": "2026-03-29T00:37:51Z",
+      "pushedAt": "2026-03-30T01:18:18Z",
       "owner": {
         "login": "go-task",
         "avatarUrl": "https://avatars.githubusercontent.com/u/26048825?v=4"
@@ -667,7 +684,7 @@
       "name": "cloudflare-error-page",
       "description": "✅Browser ❌Cloudflare ✅Host — Generator of customized Cloudflare error pages (unofficial)",
       "url": "https://github.com/donlon/cloudflare-error-page",
-      "stargazerCount": 5317,
+      "stargazerCount": 5320,
       "forkCount": 282,
       "pushedAt": "2026-01-09T00:35:00Z",
       "owner": {
@@ -712,8 +729,8 @@
       "name": "homebox",
       "description": "A continuation of HomeBox the inventory and organization system built for the Home User",
       "url": "https://github.com/sysadminsmedia/homebox",
-      "stargazerCount": 5562,
-      "forkCount": 362,
+      "stargazerCount": 5580,
+      "forkCount": 363,
       "pushedAt": "2026-03-27T23:36:00Z",
       "owner": {
         "login": "sysadminsmedia",
@@ -751,9 +768,9 @@
       "name": "server",
       "description": "Music Assistant is a free, opensource Media library manager that connects to your streaming services and a wide range of connected speakers. The server is the beating heart, the core of Music Assistant and must run on an always-on device like a Raspberry Pi, a NAS or an Intel NUC or alike.",
       "url": "https://github.com/music-assistant/server",
-      "stargazerCount": 1450,
-      "forkCount": 346,
-      "pushedAt": "2026-03-29T04:07:07Z",
+      "stargazerCount": 1453,
+      "forkCount": 349,
+      "pushedAt": "2026-03-30T00:24:33Z",
       "owner": {
         "login": "music-assistant",
         "avatarUrl": "https://avatars.githubusercontent.com/u/71128003?v=4"
@@ -768,9 +785,9 @@
       "name": "plane",
       "description": "🔥🔥🔥 Open-source Jira, Linear, Monday, and ClickUp alternative. Plane is a modern project management platform to manage tasks, sprints, docs, and triage.",
       "url": "https://github.com/makeplane/plane",
-      "stargazerCount": 47050,
-      "forkCount": 3820,
-      "pushedAt": "2026-03-29T03:41:34Z",
+      "stargazerCount": 47080,
+      "forkCount": 3828,
+      "pushedAt": "2026-03-29T20:44:24Z",
       "owner": {
         "login": "makeplane",
         "avatarUrl": "https://avatars.githubusercontent.com/u/115727700?v=4"
@@ -796,9 +813,9 @@
       "name": "recharts",
       "description": "Redefined chart library built with React and D3",
       "url": "https://github.com/recharts/recharts",
-      "stargazerCount": 26900,
-      "forkCount": 1894,
-      "pushedAt": "2026-03-29T04:37:25Z",
+      "stargazerCount": 26907,
+      "forkCount": 1893,
+      "pushedAt": "2026-03-29T13:55:06Z",
       "owner": {
         "login": "recharts",
         "avatarUrl": "https://avatars.githubusercontent.com/u/13690587?v=4"
@@ -824,7 +841,7 @@
       "name": "linkwarden",
       "description": "⚡️⚡️⚡️ Self-hosted collaborative bookmark manager to collect, read, annotate, and fully preserve what matters, all in one place.",
       "url": "https://github.com/linkwarden/linkwarden",
-      "stargazerCount": 17727,
+      "stargazerCount": 17747,
       "forkCount": 703,
       "pushedAt": "2026-03-27T16:19:49Z",
       "owner": {
@@ -850,9 +867,9 @@
       "name": "Foundry-Local",
       "description": null,
       "url": "https://github.com/microsoft/Foundry-Local",
-      "stargazerCount": 2064,
-      "forkCount": 275,
-      "pushedAt": "2026-03-29T00:47:03Z",
+      "stargazerCount": 2066,
+      "forkCount": 278,
+      "pushedAt": "2026-03-29T22:37:59Z",
       "owner": {
         "login": "microsoft",
         "avatarUrl": "https://avatars.githubusercontent.com/u/6154722?v=4"
@@ -878,9 +895,9 @@
       "name": "FluidAudio",
       "description": "Frontier CoreML audio models in your apps — text-to-speech, speech-to-text, voice activity detection, and speaker diarization. In Swift, powered by SOTA open source. ",
       "url": "https://github.com/FluidInference/FluidAudio",
-      "stargazerCount": 1761,
-      "forkCount": 243,
-      "pushedAt": "2026-03-29T04:20:50Z",
+      "stargazerCount": 1770,
+      "forkCount": 246,
+      "pushedAt": "2026-03-30T04:34:50Z",
       "owner": {
         "login": "FluidInference",
         "avatarUrl": "https://avatars.githubusercontent.com/u/216957621?v=4"
@@ -907,7 +924,7 @@
       "description": "Accessibility engine for automated Web UI testing",
       "url": "https://github.com/dequelabs/axe-core",
       "stargazerCount": 6987,
-      "forkCount": 876,
+      "forkCount": 877,
       "pushedAt": "2026-03-27T12:55:18Z",
       "owner": {
         "login": "dequelabs",
@@ -927,9 +944,9 @@
       "name": "bikecontrol",
       "description": "Do Virtual Gear Shifting (and more) in any rider app with your Zwift Play, Zwift Click, Zwift Ride or any other controller out there!",
       "url": "https://github.com/OpenBikeControl/bikecontrol",
-      "stargazerCount": 536,
+      "stargazerCount": 537,
       "forkCount": 54,
-      "pushedAt": "2026-03-27T10:13:35Z",
+      "pushedAt": "2026-03-29T14:40:50Z",
       "owner": {
         "login": "OpenBikeControl",
         "avatarUrl": "https://avatars.githubusercontent.com/u/243942477?v=4"
@@ -953,9 +970,9 @@
       "name": "coolify",
       "description": "An open-source, self-hostable PaaS alternative to Vercel, Heroku & Netlify that lets you easily deploy static sites, databases, full-stack applications and 280+ one-click services on your own servers.",
       "url": "https://github.com/coollabsio/coolify",
-      "stargazerCount": 52326,
-      "forkCount": 3927,
-      "pushedAt": "2026-03-29T00:16:52Z",
+      "stargazerCount": 52359,
+      "forkCount": 3934,
+      "pushedAt": "2026-03-29T22:06:47Z",
       "owner": {
         "login": "coollabsio",
         "avatarUrl": "https://avatars.githubusercontent.com/u/60715044?v=4"
@@ -981,9 +998,9 @@
       "name": "renovate",
       "description": "Home of the Renovate CLI: Cross-platform Dependency Automation by Mend.io",
       "url": "https://github.com/renovatebot/renovate",
-      "stargazerCount": 21160,
-      "forkCount": 2998,
-      "pushedAt": "2026-03-29T02:31:42Z",
+      "stargazerCount": 21162,
+      "forkCount": 2997,
+      "pushedAt": "2026-03-30T03:33:49Z",
       "owner": {
         "login": "renovatebot",
         "avatarUrl": "https://avatars.githubusercontent.com/u/38656520?v=4"
@@ -1008,7 +1025,7 @@
       "name": "volumeHUD",
       "description": "Bring back the pre-Tahoe macOS volume and brightness HUDs",
       "url": "https://github.com/dannystewart/volumeHUD",
-      "stargazerCount": 237,
+      "stargazerCount": 238,
       "forkCount": 5,
       "pushedAt": "2026-03-23T23:58:08Z",
       "owner": {
@@ -1036,7 +1053,7 @@
       "name": "trufflehog",
       "description": "Find, verify, and analyze leaked credentials",
       "url": "https://github.com/trufflesecurity/trufflehog",
-      "stargazerCount": 25249,
+      "stargazerCount": 25262,
       "forkCount": 2276,
       "pushedAt": "2026-03-27T23:42:35Z",
       "owner": {
@@ -1064,7 +1081,7 @@
       "name": "macOS_Big_Sur_icons_replacements",
       "description": "Replacement icons for popular apps in the style of macOS Big Sur",
       "url": "https://github.com/elrumo/macOS_Big_Sur_icons_replacements",
-      "stargazerCount": 4294,
+      "stargazerCount": 4293,
       "forkCount": 227,
       "pushedAt": "2026-02-17T17:56:33Z",
       "owner": {
@@ -1088,7 +1105,7 @@
       "name": "copyparty",
       "description": "Portable file server with accelerated resumable uploads, dedup, WebDAV, SFTP, FTP, TFTP, zeroconf, media indexer, thumbnails++ all in one file",
       "url": "https://github.com/9001/copyparty",
-      "stargazerCount": 43854,
+      "stargazerCount": 43875,
       "forkCount": 1791,
       "pushedAt": "2026-03-25T04:08:35Z",
       "owner": {
@@ -1114,9 +1131,9 @@
       "name": "librepods",
       "description": "AirPods liberated from Apple's ecosystem.",
       "url": "https://github.com/kavishdevar/librepods",
-      "stargazerCount": 26229,
-      "forkCount": 1448,
-      "pushedAt": "2026-03-18T03:22:28Z",
+      "stargazerCount": 26239,
+      "forkCount": 1451,
+      "pushedAt": "2026-03-29T11:47:31Z",
       "owner": {
         "login": "kavishdevar",
         "avatarUrl": "https://avatars.githubusercontent.com/u/46088622?v=4"
@@ -1142,9 +1159,9 @@
       "name": "PicView",
       "description": "Fast, free and customizable picture viewer",
       "url": "https://github.com/Ruben2776/PicView",
-      "stargazerCount": 3100,
+      "stargazerCount": 3104,
       "forkCount": 170,
-      "pushedAt": "2026-03-28T22:51:09Z",
+      "pushedAt": "2026-03-29T13:24:16Z",
       "owner": {
         "login": "Ruben2776",
         "avatarUrl": "https://avatars.githubusercontent.com/u/4200419?u=61c5426e1f4a8409b5f089247d5b799aeb2f9051&v=4"
@@ -1230,8 +1247,8 @@
       "name": "zsh-autosuggestions",
       "description": "Fish-like autosuggestions for zsh",
       "url": "https://github.com/zsh-users/zsh-autosuggestions",
-      "stargazerCount": 35137,
-      "forkCount": 1926,
+      "stargazerCount": 35144,
+      "forkCount": 1925,
       "pushedAt": "2025-06-24T16:15:03Z",
       "owner": {
         "login": "zsh-users",
@@ -1254,7 +1271,7 @@
       "name": "MacsyZones",
       "description": "Make your workflow more efficient with MacsyZones. Organize your windows with ease. https://macsyzones.com",
       "url": "https://github.com/rohanrhu/MacsyZones",
-      "stargazerCount": 784,
+      "stargazerCount": 783,
       "forkCount": 27,
       "pushedAt": "2026-03-28T10:03:39Z",
       "owner": {
@@ -1279,7 +1296,7 @@
       "name": "jules-awesome-list",
       "description": "Some awesome prompts for Jules Agent",
       "url": "https://github.com/google-labs-code/jules-awesome-list",
-      "stargazerCount": 2913,
+      "stargazerCount": 2914,
       "forkCount": 517,
       "pushedAt": "2025-05-21T04:01:04Z",
       "owner": {
@@ -1293,7 +1310,7 @@
       "name": "edmunds-claude-code",
       "description": null,
       "url": "https://github.com/edmund-io/edmunds-claude-code",
-      "stargazerCount": 1368,
+      "stargazerCount": 1369,
       "forkCount": 281,
       "pushedAt": "2025-10-24T08:29:15Z",
       "owner": {
@@ -1307,8 +1324,8 @@
       "name": "context7",
       "description": "Context7 Platform -- Up-to-date code documentation for LLMs and AI code editors",
       "url": "https://github.com/upstash/context7",
-      "stargazerCount": 50941,
-      "forkCount": 2409,
+      "stargazerCount": 51042,
+      "forkCount": 2416,
       "pushedAt": "2026-03-28T14:36:06Z",
       "owner": {
         "login": "upstash",
@@ -1329,8 +1346,8 @@
       "name": "next-devtools-mcp",
       "description": "Next.js Development for Coding Agent",
       "url": "https://github.com/vercel/next-devtools-mcp",
-      "stargazerCount": 702,
-      "forkCount": 49,
+      "stargazerCount": 703,
+      "forkCount": 51,
       "pushedAt": "2026-03-23T14:00:53Z",
       "owner": {
         "login": "vercel",
@@ -1373,9 +1390,9 @@
       "name": "copilot-cli",
       "description": "GitHub Copilot CLI brings the power of Copilot coding agent directly to your terminal. ",
       "url": "https://github.com/github/copilot-cli",
-      "stargazerCount": 9634,
-      "forkCount": 1309,
-      "pushedAt": "2026-03-27T20:37:05Z",
+      "stargazerCount": 9657,
+      "forkCount": 1311,
+      "pushedAt": "2026-03-29T13:28:04Z",
       "owner": {
         "login": "github",
         "avatarUrl": "https://avatars.githubusercontent.com/u/9919?v=4"
@@ -1407,7 +1424,7 @@
       "name": "next-music-player",
       "description": "A blazing fast, information dense media player built with Next.js.",
       "url": "https://github.com/leerob/next-music-player",
-      "stargazerCount": 824,
+      "stargazerCount": 823,
       "forkCount": 89,
       "pushedAt": "2026-02-01T18:22:43Z",
       "owner": {
@@ -1426,8 +1443,8 @@
       "name": "chrome-devtools-mcp",
       "description": "Chrome DevTools for coding agents",
       "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
-      "stargazerCount": 32109,
-      "forkCount": 1900,
+      "stargazerCount": 32266,
+      "forkCount": 1910,
       "pushedAt": "2026-03-28T00:52:21Z",
       "owner": {
         "login": "ChromeDevTools",
@@ -1452,9 +1469,9 @@
       "name": "gemini-cli",
       "description": "An open-source AI agent that brings the power of Gemini directly into your terminal.",
       "url": "https://github.com/google-gemini/gemini-cli",
-      "stargazerCount": 99377,
-      "forkCount": 12704,
-      "pushedAt": "2026-03-29T04:01:53Z",
+      "stargazerCount": 99480,
+      "forkCount": 12725,
+      "pushedAt": "2026-03-30T04:46:23Z",
       "owner": {
         "login": "google-gemini",
         "avatarUrl": "https://avatars.githubusercontent.com/u/161781182?v=4"
@@ -1477,9 +1494,9 @@
       "name": "FluidVoice",
       "description": "FluidVoice - Fastest macOS Offline Dictation app - Voice to Text fully Local. One ⭐ takes us a long way :)) ",
       "url": "https://github.com/altic-dev/FluidVoice",
-      "stargazerCount": 1596,
-      "forkCount": 98,
-      "pushedAt": "2026-03-29T03:16:13Z",
+      "stargazerCount": 1604,
+      "forkCount": 99,
+      "pushedAt": "2026-03-29T22:11:49Z",
       "owner": {
         "login": "altic-dev",
         "avatarUrl": "https://avatars.githubusercontent.com/u/224717674?u=b66617cc95018c5bc081ae6f0c4106631bf65422&v=4"
@@ -1522,7 +1539,7 @@
       "name": "primitives",
       "description": "Radix Primitives is an open-source UI component library for building high-quality, accessible design systems and web apps. Maintained by @workos.",
       "url": "https://github.com/radix-ui/primitives",
-      "stargazerCount": 18683,
+      "stargazerCount": 18681,
       "forkCount": 1134,
       "pushedAt": "2026-02-13T17:32:48Z",
       "owner": {
@@ -1549,9 +1566,9 @@
       "name": "vitest",
       "description": "Next generation testing framework powered by Vite.",
       "url": "https://github.com/vitest-dev/vitest",
-      "stargazerCount": 16247,
-      "forkCount": 1699,
-      "pushedAt": "2026-03-29T04:45:52Z",
+      "stargazerCount": 16262,
+      "forkCount": 1703,
+      "pushedAt": "2026-03-29T23:56:27Z",
       "owner": {
         "login": "vitest-dev",
         "avatarUrl": "https://avatars.githubusercontent.com/u/95747107?v=4"
@@ -1570,7 +1587,7 @@
       "name": "SourceCodeSyntaxHighlight",
       "description": "Quick Look extension for highlight source code files on macOS 10.15 and later.",
       "url": "https://github.com/sbarex/SourceCodeSyntaxHighlight",
-      "stargazerCount": 3969,
+      "stargazerCount": 3972,
       "forkCount": 94,
       "pushedAt": "2026-03-16T07:04:31Z",
       "owner": {
@@ -1590,8 +1607,8 @@
       "name": "spec-kit",
       "description": "💫 Toolkit to help you get started with Spec-Driven Development",
       "url": "https://github.com/github/spec-kit",
-      "stargazerCount": 83218,
-      "forkCount": 7121,
+      "stargazerCount": 83510,
+      "forkCount": 7142,
       "pushedAt": "2026-03-27T19:04:15Z",
       "owner": {
         "login": "github",
@@ -1615,7 +1632,7 @@
       "name": "qView",
       "description": "Practical and minimal image viewer",
       "url": "https://github.com/jurplel/qView",
-      "stargazerCount": 3202,
+      "stargazerCount": 3205,
       "forkCount": 164,
       "pushedAt": "2025-10-13T00:28:01Z",
       "owner": {
@@ -1641,9 +1658,9 @@
       "name": "boring.notch",
       "description": "TheBoringNotch: Not so boring notch That Rocks 🎸🎶",
       "url": "https://github.com/TheBoredTeam/boring.notch",
-      "stargazerCount": 7818,
+      "stargazerCount": 7835,
       "forkCount": 573,
-      "pushedAt": "2026-03-29T04:02:48Z",
+      "pushedAt": "2026-03-29T22:46:02Z",
       "owner": {
         "login": "TheBoredTeam",
         "avatarUrl": "https://avatars.githubusercontent.com/u/180768848?v=4"
@@ -1658,9 +1675,9 @@
       "name": "iTerm2",
       "description": "iTerm2 is a terminal emulator for Mac OS X that does amazing things.",
       "url": "https://github.com/gnachman/iTerm2",
-      "stargazerCount": 17291,
-      "forkCount": 1338,
-      "pushedAt": "2026-03-28T22:58:25Z",
+      "stargazerCount": 17293,
+      "forkCount": 1339,
+      "pushedAt": "2026-03-29T22:45:54Z",
       "owner": {
         "login": "gnachman",
         "avatarUrl": "https://avatars.githubusercontent.com/u/427546?u=d1d55d90f88c2cc95fa619b2f3db314eacf7423e&v=4"
@@ -1730,7 +1747,7 @@
       "name": "Aegis",
       "description": "A free, secure and open source app for Android to manage your 2-step verification tokens.",
       "url": "https://github.com/beemdevelopment/Aegis",
-      "stargazerCount": 12187,
+      "stargazerCount": 12195,
       "forkCount": 515,
       "pushedAt": "2026-02-24T19:51:57Z",
       "owner": {
@@ -1757,9 +1774,9 @@
       "name": "codex",
       "description": "Lightweight coding agent that runs in your terminal",
       "url": "https://github.com/openai/codex",
-      "stargazerCount": 68177,
-      "forkCount": 9132,
-      "pushedAt": "2026-03-29T04:54:01Z",
+      "stargazerCount": 68318,
+      "forkCount": 9149,
+      "pushedAt": "2026-03-30T04:59:15Z",
       "owner": {
         "login": "openai",
         "avatarUrl": "https://avatars.githubusercontent.com/u/14957082?v=4"
@@ -1774,7 +1791,7 @@
       "name": "zaproxy",
       "description": "The ZAP by Checkmarx Core project",
       "url": "https://github.com/zaproxy/zaproxy",
-      "stargazerCount": 14923,
+      "stargazerCount": 14927,
       "forkCount": 2528,
       "pushedAt": "2026-03-26T09:05:29Z",
       "owner": {
@@ -1801,8 +1818,8 @@
       "name": "trivy",
       "description": "Find vulnerabilities, misconfigurations, secrets, SBOM in containers, Kubernetes, code repositories, clouds and more",
       "url": "https://github.com/aquasecurity/trivy",
-      "stargazerCount": 34207,
-      "forkCount": 214,
+      "stargazerCount": 34220,
+      "forkCount": 219,
       "pushedAt": "2026-03-26T18:30:26Z",
       "owner": {
         "login": "aquasecurity",
@@ -1846,7 +1863,7 @@
       "name": "lefthook",
       "description": "Fast and powerful Git hooks manager for any type of projects.",
       "url": "https://github.com/evilmartians/lefthook",
-      "stargazerCount": 7868,
+      "stargazerCount": 7876,
       "forkCount": 269,
       "pushedAt": "2026-03-23T06:03:43Z",
       "owner": {
@@ -1946,7 +1963,7 @@
       "name": "saas-starter",
       "description": "Get started quickly with Next.js, Postgres, Stripe, and shadcn/ui.",
       "url": "https://github.com/nextjs/saas-starter",
-      "stargazerCount": 15549,
+      "stargazerCount": 15550,
       "forkCount": 2593,
       "pushedAt": "2025-12-11T22:35:37Z",
       "owner": {
@@ -1968,7 +1985,7 @@
       "name": "next-self-host",
       "description": "An example deploying Next / Postgres / Nginx to a Ubuntu Linux server.",
       "url": "https://github.com/leerob/next-self-host",
-      "stargazerCount": 1494,
+      "stargazerCount": 1493,
       "forkCount": 208,
       "pushedAt": "2026-01-31T20:37:32Z",
       "owner": {
@@ -1985,9 +2002,9 @@
       "name": "rustdesk",
       "description": "An open-source remote desktop application designed for self-hosting, as an alternative to TeamViewer.",
       "url": "https://github.com/rustdesk/rustdesk",
-      "stargazerCount": 110167,
-      "forkCount": 16463,
-      "pushedAt": "2026-03-28T05:02:09Z",
+      "stargazerCount": 110212,
+      "forkCount": 16467,
+      "pushedAt": "2026-03-29T15:02:53Z",
       "owner": {
         "login": "rustdesk",
         "avatarUrl": "https://avatars.githubusercontent.com/u/71636191?u=fcdfa5bbe724bd4ec02f6c3b2419ff25b7f5eb07&v=4"
@@ -2047,7 +2064,7 @@
       "name": "cva",
       "description": "Class Variance Authority",
       "url": "https://github.com/joe-bell/cva",
-      "stargazerCount": 6789,
+      "stargazerCount": 6786,
       "forkCount": 132,
       "pushedAt": "2025-12-11T15:36:21Z",
       "owner": {
@@ -2089,7 +2106,7 @@
       "description": "Official Strapi Demo application",
       "url": "https://github.com/strapi/LaunchPad",
       "stargazerCount": 391,
-      "forkCount": 214,
+      "forkCount": 215,
       "pushedAt": "2026-03-06T17:32:12Z",
       "owner": {
         "login": "strapi",
@@ -2105,8 +2122,8 @@
       "name": "bruno",
       "description": "Opensource IDE For Exploring and Testing API's (lightweight alternative to Postman/Insomnia)",
       "url": "https://github.com/usebruno/bruno",
-      "stargazerCount": 42359,
-      "forkCount": 2249,
+      "stargazerCount": 42376,
+      "forkCount": 2252,
       "pushedAt": "2026-03-28T09:42:43Z",
       "owner": {
         "login": "usebruno",
@@ -2133,8 +2150,8 @@
       "name": "lucide",
       "description": "Beautiful & consistent icon toolkit made by the community. Open-source project and a fork of Feather Icons.",
       "url": "https://github.com/lucide-icons/lucide",
-      "stargazerCount": 21834,
-      "forkCount": 1260,
+      "stargazerCount": 21847,
+      "forkCount": 1261,
       "pushedAt": "2026-03-28T08:38:33Z",
       "owner": {
         "login": "lucide-icons",
@@ -2161,7 +2178,7 @@
       "name": "clsx",
       "description": "A tiny (239B) utility for constructing `className` strings conditionally.",
       "url": "https://github.com/lukeed/clsx",
-      "stargazerCount": 9721,
+      "stargazerCount": 9718,
       "forkCount": 172,
       "pushedAt": "2024-06-10T15:48:22Z",
       "owner": {
@@ -2178,7 +2195,7 @@
       "name": "fancy",
       "description": null,
       "url": "https://github.com/danielpetho/fancy",
-      "stargazerCount": 2834,
+      "stargazerCount": 2837,
       "forkCount": 93,
       "pushedAt": "2026-03-14T10:34:13Z",
       "owner": {
@@ -2261,9 +2278,9 @@
       "name": "ui",
       "description": "A set of beautifully-designed, accessible components and a code distribution platform. Works with your favorite frameworks. Open Source. Open Code.",
       "url": "https://github.com/shadcn-ui/ui",
-      "stargazerCount": 110956,
-      "forkCount": 8349,
-      "pushedAt": "2026-03-28T13:05:03Z",
+      "stargazerCount": 110997,
+      "forkCount": 8358,
+      "pushedAt": "2026-03-29T08:04:20Z",
       "owner": {
         "login": "shadcn-ui",
         "avatarUrl": "https://avatars.githubusercontent.com/u/139895814?v=4"
@@ -2289,8 +2306,8 @@
       "name": "sonner",
       "description": "An opinionated toast component for React.",
       "url": "https://github.com/emilkowalski/sonner",
-      "stargazerCount": 12157,
-      "forkCount": 417,
+      "stargazerCount": 12167,
+      "forkCount": 418,
       "pushedAt": "2025-12-23T23:47:55Z",
       "owner": {
         "login": "emilkowalski",
@@ -2310,9 +2327,9 @@
       "name": "hledger",
       "description": "Robust, fast, intuitive plain text accounting tool with CLI, TUI and web interfaces.",
       "url": "https://github.com/simonmichael/hledger",
-      "stargazerCount": 4383,
+      "stargazerCount": 4386,
       "forkCount": 376,
-      "pushedAt": "2026-03-28T23:53:55Z",
+      "pushedAt": "2026-03-30T00:05:42Z",
       "owner": {
         "login": "simonmichael",
         "avatarUrl": "https://avatars.githubusercontent.com/u/10144?v=4"
@@ -2338,8 +2355,8 @@
       "name": "obsidian-livesync",
       "description": null,
       "url": "https://github.com/vrtmrz/obsidian-livesync",
-      "stargazerCount": 9977,
-      "forkCount": 332,
+      "stargazerCount": 9993,
+      "forkCount": 330,
       "pushedAt": "2026-03-28T14:58:34Z",
       "owner": {
         "login": "vrtmrz",
@@ -2355,8 +2372,8 @@
       "name": "jamstack.org",
       "description": "The official Jamstack site",
       "url": "https://github.com/jamstack/jamstack.org",
-      "stargazerCount": 3014,
-      "forkCount": 661,
+      "stargazerCount": 3015,
+      "forkCount": 662,
       "pushedAt": "2026-02-10T06:54:04Z",
       "owner": {
         "login": "jamstack",
@@ -2393,8 +2410,8 @@
       "name": "lazygit",
       "description": "simple terminal UI for git commands",
       "url": "https://github.com/jesseduffield/lazygit",
-      "stargazerCount": 75162,
-      "forkCount": 2649,
+      "stargazerCount": 75221,
+      "forkCount": 2656,
       "pushedAt": "2026-03-27T17:21:48Z",
       "owner": {
         "login": "jesseduffield",
@@ -2414,7 +2431,7 @@
       "name": "rquickshare",
       "description": "Rust implementation of NearbyShare/QuickShare from Android for Linux and macOS.",
       "url": "https://github.com/Martichou/rquickshare",
-      "stargazerCount": 3379,
+      "stargazerCount": 3376,
       "forkCount": 94,
       "pushedAt": "2026-03-01T03:29:40Z",
       "owner": {
@@ -2512,8 +2529,8 @@
       "name": "TomatoBar",
       "description": "🍅 World's neatest Pomodoro timer for macOS menu bar",
       "url": "https://github.com/ivoronin/TomatoBar",
-      "stargazerCount": 3211,
-      "forkCount": 178,
+      "stargazerCount": 3223,
+      "forkCount": 177,
       "pushedAt": "2026-02-19T14:21:01Z",
       "owner": {
         "login": "ivoronin",
@@ -2536,9 +2553,9 @@
       "name": "stats",
       "description": "macOS system monitor in your menu bar",
       "url": "https://github.com/exelban/stats",
-      "stargazerCount": 37428,
-      "forkCount": 1235,
-      "pushedAt": "2026-03-28T12:39:12Z",
+      "stargazerCount": 37455,
+      "forkCount": 1234,
+      "pushedAt": "2026-03-29T10:02:31Z",
       "owner": {
         "login": "exelban",
         "avatarUrl": "https://avatars.githubusercontent.com/u/13332412?u=839d583ed658483af96a6fe40cd384d910522e1a&v=4"
@@ -2566,7 +2583,7 @@
       "url": "https://github.com/mayneyao/eidos",
       "stargazerCount": 3096,
       "forkCount": 132,
-      "pushedAt": "2026-03-27T13:43:05Z",
+      "pushedAt": "2026-03-30T02:12:13Z",
       "owner": {
         "login": "mayneyao",
         "avatarUrl": "https://avatars.githubusercontent.com/u/6588202?u=a9bd2222fd683378ff45e1e96957bf2462b415fb&v=4"
@@ -2613,7 +2630,7 @@
       "name": "FlowVision",
       "description": "Waterfall-style image viewer for macOS, offering a smooth and immersive browsing experience.",
       "url": "https://github.com/netdcy/FlowVision",
-      "stargazerCount": 1167,
+      "stargazerCount": 1170,
       "forkCount": 38,
       "pushedAt": "2026-03-25T11:56:36Z",
       "owner": {
@@ -2656,8 +2673,8 @@
       "name": "dockge",
       "description": "A fancy, easy-to-use and reactive self-hosted docker compose.yaml stack-oriented manager",
       "url": "https://github.com/louislam/dockge",
-      "stargazerCount": 22636,
-      "forkCount": 718,
+      "stargazerCount": 22650,
+      "forkCount": 720,
       "pushedAt": "2026-01-21T10:51:44Z",
       "owner": {
         "login": "louislam",
@@ -2684,7 +2701,7 @@
       "name": "nextgram",
       "description": "A sample Next.js app showing dynamic routing with modals as a route.",
       "url": "https://github.com/vercel/nextgram",
-      "stargazerCount": 1014,
+      "stargazerCount": 1013,
       "forkCount": 228,
       "pushedAt": "2025-12-08T20:36:45Z",
       "owner": {
@@ -2704,8 +2721,8 @@
       "name": "QuickRecorder",
       "description": "A lightweight screen recorder based on ScreenCapture Kit for macOS / 基于 ScreenCapture Kit 的轻量化多功能 macOS 录屏工具",
       "url": "https://github.com/lihaoyun6/QuickRecorder",
-      "stargazerCount": 8103,
-      "forkCount": 451,
+      "stargazerCount": 8106,
+      "forkCount": 452,
       "pushedAt": "2025-06-11T07:47:27Z",
       "owner": {
         "login": "lihaoyun6",
@@ -2721,7 +2738,7 @@
       "name": "gopass",
       "description": "The slightly more awesome standard unix password manager for teams",
       "url": "https://github.com/gopasspw/gopass",
-      "stargazerCount": 6766,
+      "stargazerCount": 6764,
       "forkCount": 527,
       "pushedAt": "2026-03-22T10:20:42Z",
       "owner": {
@@ -2745,8 +2762,8 @@
       "name": "theatre",
       "description": "Motion design editor for the web",
       "url": "https://github.com/theatre-js/theatre",
-      "stargazerCount": 12256,
-      "forkCount": 431,
+      "stargazerCount": 12314,
+      "forkCount": 435,
       "pushedAt": "2024-08-14T13:20:18Z",
       "owner": {
         "login": "theatre-js",
@@ -2786,7 +2803,7 @@
       "name": "tremor",
       "description": "Copy & Paste React components to build modern web applications. ",
       "url": "https://github.com/tremorlabs/tremor",
-      "stargazerCount": 3338,
+      "stargazerCount": 3342,
       "forkCount": 141,
       "pushedAt": "2025-10-10T13:08:24Z",
       "owner": {
@@ -2870,7 +2887,7 @@
       "name": "stylex",
       "description": "StyleX is the styling system for ambitious user interfaces.",
       "url": "https://github.com/facebook/stylex",
-      "stargazerCount": 9140,
+      "stargazerCount": 9137,
       "forkCount": 401,
       "pushedAt": "2026-03-27T20:39:24Z",
       "owner": {
@@ -2975,7 +2992,7 @@
       "name": "KeyCluCask",
       "description": "Simple and handy overview of applications shortcuts",
       "url": "https://github.com/Anze/KeyCluCask",
-      "stargazerCount": 2104,
+      "stargazerCount": 2110,
       "forkCount": 32,
       "pushedAt": "2026-01-12T20:52:41Z",
       "owner": {
@@ -3016,8 +3033,8 @@
       "name": "react-spectrum",
       "description": "A collection of libraries and tools that help you build adaptive, accessible, and robust user experiences.",
       "url": "https://github.com/adobe/react-spectrum",
-      "stargazerCount": 14943,
-      "forkCount": 1407,
+      "stargazerCount": 14942,
+      "forkCount": 1406,
       "pushedAt": "2026-03-28T19:19:14Z",
       "owner": {
         "login": "adobe",
@@ -3040,8 +3057,8 @@
       "name": "Ice",
       "description": "Powerful menu bar manager for macOS",
       "url": "https://github.com/jordanbaird/Ice",
-      "stargazerCount": 26832,
-      "forkCount": 627,
+      "stargazerCount": 26858,
+      "forkCount": 629,
       "pushedAt": "2025-09-20T20:28:17Z",
       "owner": {
         "login": "jordanbaird",
@@ -3068,7 +3085,7 @@
       "name": "google-indexing-script",
       "description": "Script to get your site indexed on Google in less than 48 hours",
       "url": "https://github.com/goenning/google-indexing-script",
-      "stargazerCount": 7595,
+      "stargazerCount": 7593,
       "forkCount": 542,
       "pushedAt": "2024-10-10T18:39:11Z",
       "owner": {
@@ -3152,7 +3169,7 @@
       "name": "react",
       "description": "Cheatsheets for experienced React developers getting started with TypeScript",
       "url": "https://github.com/typescript-cheatsheets/react",
-      "stargazerCount": 47019,
+      "stargazerCount": 47017,
       "forkCount": 4293,
       "pushedAt": "2026-02-13T07:17:32Z",
       "owner": {
@@ -3175,8 +3192,8 @@
       "description": "Bitfocus Companion enables the Elgato Stream Deck and other controllers to be a professional shotbox surface for an increasing amount of different presentation switchers, video playback software and broadcast equipment.",
       "url": "https://github.com/bitfocus/companion",
       "stargazerCount": 2119,
-      "forkCount": 561,
-      "pushedAt": "2026-03-28T15:07:01Z",
+      "forkCount": 562,
+      "pushedAt": "2026-03-29T23:03:07Z",
       "owner": {
         "login": "bitfocus",
         "avatarUrl": "https://avatars.githubusercontent.com/u/38660786?v=4"
@@ -3202,9 +3219,9 @@
       "name": "Cork",
       "description": "A fast GUI for Homebrew written in SwiftUI",
       "url": "https://github.com/buresdv/Cork",
-      "stargazerCount": 4206,
-      "forkCount": 256,
-      "pushedAt": "2026-03-28T23:52:55Z",
+      "stargazerCount": 4266,
+      "forkCount": 262,
+      "pushedAt": "2026-03-29T19:05:08Z",
       "owner": {
         "login": "buresdv",
         "avatarUrl": "https://avatars.githubusercontent.com/u/22037369?u=d848e25cdc2b5e9ddf0488af5e5a4303062ce12c&v=4"
@@ -3228,9 +3245,9 @@
       "name": "twenty",
       "description": "Building a modern alternative to Salesforce, powered by the community.",
       "url": "https://github.com/twentyhq/twenty",
-      "stargazerCount": 42499,
-      "forkCount": 5642,
-      "pushedAt": "2026-03-29T04:13:34Z",
+      "stargazerCount": 43046,
+      "forkCount": 5677,
+      "pushedAt": "2026-03-30T05:01:14Z",
       "owner": {
         "login": "twentyhq",
         "avatarUrl": "https://avatars.githubusercontent.com/u/119600397?v=4"
@@ -3301,9 +3318,9 @@
       "name": "mac-mouse-fix",
       "description": "Mac Mouse Fix - Make Your $10 Mouse Better Than an Apple Trackpad!",
       "url": "https://github.com/noah-nuebling/mac-mouse-fix",
-      "stargazerCount": 9501,
-      "forkCount": 290,
-      "pushedAt": "2026-03-28T23:58:09Z",
+      "stargazerCount": 9532,
+      "forkCount": 294,
+      "pushedAt": "2026-03-29T16:32:19Z",
       "owner": {
         "login": "noah-nuebling",
         "avatarUrl": "https://avatars.githubusercontent.com/u/40808343?u=89f3a7a80c345bd95e34bba579462cb1c2edd29e&v=4"
@@ -3353,7 +3370,7 @@
       "name": "pa11y",
       "description": "Pa11y is your automated accessibility testing pal",
       "url": "https://github.com/pa11y/pa11y",
-      "stargazerCount": 4418,
+      "stargazerCount": 4417,
       "forkCount": 289,
       "pushedAt": "2026-03-23T02:44:17Z",
       "owner": {
@@ -3408,7 +3425,7 @@
       "name": "Pearcleaner",
       "description": "A free, source-available and fair-code licensed mac app cleaner",
       "url": "https://github.com/alienator88/Pearcleaner",
-      "stargazerCount": 11995,
+      "stargazerCount": 12017,
       "forkCount": 285,
       "pushedAt": "2026-01-30T17:52:58Z",
       "owner": {
@@ -3425,7 +3442,7 @@
       "name": "evernote-backup",
       "description": "Backup & export all Evernote notes and notebooks",
       "url": "https://github.com/vzhd1701/evernote-backup",
-      "stargazerCount": 1479,
+      "stargazerCount": 1480,
       "forkCount": 108,
       "pushedAt": "2025-04-28T05:24:11Z",
       "owner": {
@@ -3453,8 +3470,8 @@
       "name": "nextjs-corporate-starter",
       "description": "Strapi Demo application for Corporate Websites using Next.js",
       "url": "https://github.com/strapi/nextjs-corporate-starter",
-      "stargazerCount": 1124,
-      "forkCount": 372,
+      "stargazerCount": 1122,
+      "forkCount": 370,
       "pushedAt": "2024-10-01T14:29:20Z",
       "owner": {
         "login": "strapi",
@@ -3470,7 +3487,7 @@
       "name": "prettier-plugin-tailwindcss",
       "description": "A Prettier plugin for Tailwind CSS that automatically sorts classes based on our recommended class order.",
       "url": "https://github.com/tailwindlabs/prettier-plugin-tailwindcss",
-      "stargazerCount": 7058,
+      "stargazerCount": 7057,
       "forkCount": 176,
       "pushedAt": "2026-02-13T02:28:34Z",
       "owner": {
@@ -3487,9 +3504,9 @@
       "name": "listmonk",
       "description": "High performance, self-hosted, newsletter and mailing list manager with a modern dashboard. Single binary app.",
       "url": "https://github.com/knadh/listmonk",
-      "stargazerCount": 19369,
-      "forkCount": 1967,
-      "pushedAt": "2026-03-27T03:14:31Z",
+      "stargazerCount": 19377,
+      "forkCount": 1971,
+      "pushedAt": "2026-03-30T03:14:39Z",
       "owner": {
         "login": "knadh",
         "avatarUrl": "https://avatars.githubusercontent.com/u/547147?u=d0d65c421bb54c3714c473259ea33259bf3ccd06&v=4"
@@ -3515,8 +3532,8 @@
       "name": "playwright",
       "description": "Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API. ",
       "url": "https://github.com/microsoft/playwright",
-      "stargazerCount": 85182,
-      "forkCount": 5374,
+      "stargazerCount": 85235,
+      "forkCount": 5378,
       "pushedAt": "2026-03-28T21:45:07Z",
       "owner": {
         "login": "microsoft",
@@ -3543,7 +3560,7 @@
       "name": "contentlayer",
       "description": "Contentlayer turns your content into data - making it super easy to import MD(X) and CMS content in your app",
       "url": "https://github.com/contentlayerdev/contentlayer",
-      "stargazerCount": 3543,
+      "stargazerCount": 3542,
       "forkCount": 194,
       "pushedAt": "2024-11-07T07:51:24Z",
       "owner": {
@@ -3577,7 +3594,7 @@
       "name": "Bluetooth-LE-Spam",
       "description": null,
       "url": "https://github.com/simondankelmann/Bluetooth-LE-Spam",
-      "stargazerCount": 4726,
+      "stargazerCount": 4724,
       "forkCount": 382,
       "pushedAt": "2026-03-12T05:26:23Z",
       "owner": {
@@ -3599,9 +3616,9 @@
       "name": "OnlySwitch",
       "description": "⚙️ All-in-One menu bar app, hide 💻MacBook Pro's notch, dark mode, AirPods, Shortcuts",
       "url": "https://github.com/jacklandrin/OnlySwitch",
-      "stargazerCount": 5576,
+      "stargazerCount": 5579,
       "forkCount": 232,
-      "pushedAt": "2026-03-28T23:00:11Z",
+      "pushedAt": "2026-03-29T19:11:22Z",
       "owner": {
         "login": "jacklandrin",
         "avatarUrl": "https://avatars.githubusercontent.com/u/3782279?u=ddfb510c4730253fa3cfe0de3b0eb4250da8c11d&v=4"
@@ -3627,8 +3644,8 @@
       "name": "squoosh",
       "description": "Make images smaller using best-in-class codecs, right in the browser.",
       "url": "https://github.com/GoogleChromeLabs/squoosh",
-      "stargazerCount": 24993,
-      "forkCount": 1879,
+      "stargazerCount": 24996,
+      "forkCount": 1880,
       "pushedAt": "2026-03-17T21:57:27Z",
       "owner": {
         "login": "GoogleChromeLabs",
@@ -3644,8 +3661,8 @@
       "name": "Whisky",
       "description": "A modern Wine wrapper for macOS built with SwiftUI",
       "url": "https://github.com/Whisky-App/Whisky",
-      "stargazerCount": 14945,
-      "forkCount": 500,
+      "stargazerCount": 14946,
+      "forkCount": 502,
       "pushedAt": "2025-05-11T17:50:04Z",
       "owner": {
         "login": "Whisky-App",
@@ -3669,8 +3686,8 @@
       "name": "NearDrop",
       "description": "An unofficial Google Nearby Share/Quick Share app for macOS",
       "url": "https://github.com/grishka/NearDrop",
-      "stargazerCount": 6006,
-      "forkCount": 215,
+      "stargazerCount": 6004,
+      "forkCount": 216,
       "pushedAt": "2026-03-19T20:34:17Z",
       "owner": {
         "login": "grishka",
@@ -3686,7 +3703,7 @@
       "name": "next-i18next",
       "description": "The easiest way to translate your NextJs apps.",
       "url": "https://github.com/i18next/next-i18next",
-      "stargazerCount": 6136,
+      "stargazerCount": 6132,
       "forkCount": 768,
       "pushedAt": "2026-03-28T10:04:31Z",
       "owner": {
@@ -3774,9 +3791,9 @@
       "name": "MarkEdit",
       "description": "Just like TextEdit on Mac but dedicated to Markdown.",
       "url": "https://github.com/MarkEdit-app/MarkEdit",
-      "stargazerCount": 3991,
+      "stargazerCount": 3997,
       "forkCount": 155,
-      "pushedAt": "2026-03-28T03:06:32Z",
+      "pushedAt": "2026-03-30T00:29:15Z",
       "owner": {
         "login": "MarkEdit-app",
         "avatarUrl": "https://avatars.githubusercontent.com/u/120696842?v=4"
@@ -3818,8 +3835,8 @@
       "name": "typescript-book",
       "description": ":books: The definitive guide to TypeScript and possibly the best TypeScript book :book:. Free and Open Source 🌹",
       "url": "https://github.com/basarat/typescript-book",
-      "stargazerCount": 21505,
-      "forkCount": 2616,
+      "stargazerCount": 21506,
+      "forkCount": 2617,
       "pushedAt": "2024-06-29T11:46:59Z",
       "owner": {
         "login": "basarat",
@@ -3884,8 +3901,8 @@
       "name": "blitz",
       "description": "⚡️ The Missing Fullstack Toolkit for Next.js",
       "url": "https://github.com/blitz-js/blitz",
-      "stargazerCount": 14134,
-      "forkCount": 819,
+      "stargazerCount": 14137,
+      "forkCount": 818,
       "pushedAt": "2025-11-21T13:13:37Z",
       "owner": {
         "login": "blitz-js",
@@ -3912,9 +3929,9 @@
       "name": "react-email",
       "description": "💌 Build and send emails using React",
       "url": "https://github.com/resend/react-email",
-      "stargazerCount": 18303,
+      "stargazerCount": 18309,
       "forkCount": 950,
-      "pushedAt": "2026-03-28T14:09:02Z",
+      "pushedAt": "2026-03-29T19:53:07Z",
       "owner": {
         "login": "resend",
         "avatarUrl": "https://avatars.githubusercontent.com/u/109384852?v=4"
@@ -3949,7 +3966,7 @@
       "name": "satori",
       "description": "Enlightened library to convert HTML and CSS to SVG",
       "url": "https://github.com/vercel/satori",
-      "stargazerCount": 13193,
+      "stargazerCount": 13197,
       "forkCount": 336,
       "pushedAt": "2026-03-20T06:56:49Z",
       "owner": {
@@ -4010,8 +4027,8 @@
       "name": "payload",
       "description": "Payload is the open-source, fullstack Next.js framework, giving you instant backend superpowers. Get a full TypeScript backend and admin panel instantly. Use Payload as a headless CMS or for building powerful applications.",
       "url": "https://github.com/payloadcms/payload",
-      "stargazerCount": 41479,
-      "forkCount": 3518,
+      "stargazerCount": 41487,
+      "forkCount": 3517,
       "pushedAt": "2026-03-28T16:30:26Z",
       "owner": {
         "login": "payloadcms",
@@ -4038,7 +4055,7 @@
       "name": "marp",
       "description": "The entrance repository of Markdown presentation ecosystem",
       "url": "https://github.com/marp-team/marp",
-      "stargazerCount": 10739,
+      "stargazerCount": 10746,
       "forkCount": 235,
       "pushedAt": "2025-08-06T18:03:48Z",
       "owner": {
@@ -4078,7 +4095,7 @@
       "name": "impress.js",
       "description": "It's a presentation framework based on the power of CSS3 transforms and transitions in modern browsers and inspired by the idea behind prezi.com.",
       "url": "https://github.com/impress/impress.js",
-      "stargazerCount": 38514,
+      "stargazerCount": 38515,
       "forkCount": 6617,
       "pushedAt": "2026-01-24T15:42:36Z",
       "owner": {
@@ -4121,7 +4138,7 @@
       "name": "fontsource",
       "description": "Self-host Open Source fonts in neatly bundled NPM packages.",
       "url": "https://github.com/fontsource/fontsource",
-      "stargazerCount": 5835,
+      "stargazerCount": 5834,
       "forkCount": 185,
       "pushedAt": "2026-03-23T06:01:59Z",
       "owner": {
@@ -4149,7 +4166,7 @@
       "name": "tippyjs",
       "description": "Tooltip, popover, dropdown, and menu library",
       "url": "https://github.com/atomiks/tippyjs",
-      "stargazerCount": 12299,
+      "stargazerCount": 12298,
       "forkCount": 537,
       "pushedAt": "2024-05-27T19:00:23Z",
       "owner": {
@@ -4198,7 +4215,7 @@
       "name": "alpine",
       "description": "A rugged, minimal framework for composing JavaScript behavior in your markup. ",
       "url": "https://github.com/alpinejs/alpine",
-      "stargazerCount": 31381,
+      "stargazerCount": 31380,
       "forkCount": 1360,
       "pushedAt": "2026-03-27T13:30:57Z",
       "owner": {
@@ -4215,9 +4232,9 @@
       "name": "NewPipe",
       "description": "A libre lightweight streaming front-end for Android.",
       "url": "https://github.com/TeamNewPipe/NewPipe",
-      "stargazerCount": 37676,
-      "forkCount": 3525,
-      "pushedAt": "2026-03-27T11:30:22Z",
+      "stargazerCount": 37683,
+      "forkCount": 3527,
+      "pushedAt": "2026-03-29T18:57:53Z",
       "owner": {
         "login": "TeamNewPipe",
         "avatarUrl": "https://avatars.githubusercontent.com/u/22159318?v=4"
@@ -4260,8 +4277,8 @@
       "name": "UTM",
       "description": "Virtual machines for iOS and macOS",
       "url": "https://github.com/utmapp/UTM",
-      "stargazerCount": 33450,
-      "forkCount": 1685,
+      "stargazerCount": 33462,
+      "forkCount": 1683,
       "pushedAt": "2026-02-27T22:56:05Z",
       "owner": {
         "login": "utmapp",
@@ -4287,8 +4304,8 @@
       "name": "video.js",
       "description": "Video.js - open source HTML5 video player",
       "url": "https://github.com/videojs/video.js",
-      "stargazerCount": 39622,
-      "forkCount": 7510,
+      "stargazerCount": 39626,
+      "forkCount": 7509,
       "pushedAt": "2026-03-11T20:25:34Z",
       "owner": {
         "login": "videojs",
@@ -4398,7 +4415,7 @@
       "name": "react-hot-toast",
       "description": "Smoking Hot React Notifications 🔥 ",
       "url": "https://github.com/timolins/react-hot-toast",
-      "stargazerCount": 10874,
+      "stargazerCount": 10875,
       "forkCount": 366,
       "pushedAt": "2025-08-16T12:19:29Z",
       "owner": {
@@ -4420,7 +4437,7 @@
       "name": "nextjs-notion-starter-kit",
       "description": "Deploy your own Notion-powered website in minutes with Next.js and Vercel.",
       "url": "https://github.com/transitive-bullshit/nextjs-notion-starter-kit",
-      "stargazerCount": 6987,
+      "stargazerCount": 6988,
       "forkCount": 5691,
       "pushedAt": "2026-03-19T18:48:43Z",
       "owner": {
@@ -4445,7 +4462,7 @@
       "description": "A polyglot web converter.",
       "url": "https://github.com/ritz078/transform",
       "stargazerCount": 9131,
-      "forkCount": 700,
+      "forkCount": 701,
       "pushedAt": "2026-01-28T14:55:29Z",
       "owner": {
         "login": "ritz078",
@@ -4472,7 +4489,7 @@
       "name": "NativeBase",
       "description": "Mobile-first, accessible components for React Native & Web to build consistent UI across Android, iOS and Web.",
       "url": "https://github.com/GeekyAnts/NativeBase",
-      "stargazerCount": 20387,
+      "stargazerCount": 20386,
       "forkCount": 2416,
       "pushedAt": "2026-01-31T17:46:33Z",
       "owner": {
@@ -4526,8 +4543,8 @@
       "name": "marktext",
       "description": "📝A simple and elegant markdown editor, available for Linux, macOS and Windows.",
       "url": "https://github.com/marktext/marktext",
-      "stargazerCount": 54741,
-      "forkCount": 4064,
+      "stargazerCount": 54758,
+      "forkCount": 4068,
       "pushedAt": "2026-03-04T13:37:12Z",
       "owner": {
         "login": "marktext",
@@ -4556,7 +4573,7 @@
       "url": "https://github.com/swc-project/swc",
       "stargazerCount": 33330,
       "forkCount": 1379,
-      "pushedAt": "2026-03-29T01:09:04Z",
+      "pushedAt": "2026-03-29T16:28:07Z",
       "owner": {
         "login": "swc-project",
         "avatarUrl": "https://avatars.githubusercontent.com/u/26715726?v=4"
@@ -4663,7 +4680,7 @@
       "name": "aos",
       "description": "Animate on scroll library",
       "url": "https://github.com/michalsnik/aos",
-      "stargazerCount": 28063,
+      "stargazerCount": 28064,
       "forkCount": 2641,
       "pushedAt": "2024-03-26T15:58:43Z",
       "owner": {
@@ -4704,7 +4721,7 @@
       "name": "tabulator",
       "description": "Interactive Tables and Data Grids for JavaScript",
       "url": "https://github.com/olifolkerd/tabulator",
-      "stargazerCount": 7600,
+      "stargazerCount": 7602,
       "forkCount": 885,
       "pushedAt": "2026-03-06T11:08:51Z",
       "owner": {
@@ -4732,7 +4749,7 @@
       "name": "classnames",
       "description": "A simple javascript utility for conditionally joining classNames together",
       "url": "https://github.com/JedWatson/classnames",
-      "stargazerCount": 17827,
+      "stargazerCount": 17821,
       "forkCount": 562,
       "pushedAt": "2026-03-25T22:02:28Z",
       "owner": {
@@ -4749,7 +4766,7 @@
       "name": "disable-devtool",
       "description": "Disable web developer tools from the f12 button, right-click and browser menu",
       "url": "https://github.com/theajack/disable-devtool",
-      "stargazerCount": 3263,
+      "stargazerCount": 3262,
       "forkCount": 279,
       "pushedAt": "2026-01-17T15:11:34Z",
       "owner": {
@@ -4802,9 +4819,9 @@
       "name": "query",
       "description": "🤖 Powerful asynchronous state management, server-state utilities and data fetching for the web. TS/JS, React Query, Solid Query, Svelte Query and Vue Query.",
       "url": "https://github.com/TanStack/query",
-      "stargazerCount": 48948,
-      "forkCount": 3744,
-      "pushedAt": "2026-03-28T13:25:37Z",
+      "stargazerCount": 48951,
+      "forkCount": 3745,
+      "pushedAt": "2026-03-30T04:23:22Z",
       "owner": {
         "login": "TanStack",
         "avatarUrl": "https://avatars.githubusercontent.com/u/72518640?v=4"
@@ -4856,9 +4873,9 @@
       "name": "uptime-kuma",
       "description": "A fancy self-hosted monitoring tool",
       "url": "https://github.com/louislam/uptime-kuma",
-      "stargazerCount": 84612,
-      "forkCount": 7566,
-      "pushedAt": "2026-03-29T00:09:43Z",
+      "stargazerCount": 84639,
+      "forkCount": 7573,
+      "pushedAt": "2026-03-30T00:10:22Z",
       "owner": {
         "login": "louislam",
         "avatarUrl": "https://avatars.githubusercontent.com/u/1336778?u=5f96cafa12ed95d786d4b84bcf284e8fb2bedd89&v=4"
@@ -4884,9 +4901,9 @@
       "name": "directus",
       "description": "The flexible backend for all your projects 🐰 Turn your DB into a headless CMS, admin panels, or apps with a custom UI, instant APIs, auth & more.",
       "url": "https://github.com/directus/directus",
-      "stargazerCount": 34598,
-      "forkCount": 4659,
-      "pushedAt": "2026-03-28T11:15:49Z",
+      "stargazerCount": 34608,
+      "forkCount": 4660,
+      "pushedAt": "2026-03-30T04:13:12Z",
       "owner": {
         "login": "directus",
         "avatarUrl": "https://avatars.githubusercontent.com/u/15967950?v=4"
@@ -4912,7 +4929,7 @@
       "name": "tailwindcss-fluid-type",
       "description": "A plugin that makes the use of Fluid Type a breeze.",
       "url": "https://github.com/davidhellmann/tailwindcss-fluid-type",
-      "stargazerCount": 367,
+      "stargazerCount": 368,
       "forkCount": 9,
       "pushedAt": "2024-11-29T22:16:51Z",
       "owner": {
@@ -4935,9 +4952,9 @@
       "name": "carbon",
       "description": "A design system built by IBM",
       "url": "https://github.com/carbon-design-system/carbon",
-      "stargazerCount": 8975,
-      "forkCount": 2123,
-      "pushedAt": "2026-03-28T14:17:20Z",
+      "stargazerCount": 8979,
+      "forkCount": 2125,
+      "pushedAt": "2026-03-29T16:27:10Z",
       "owner": {
         "login": "carbon-design-system",
         "avatarUrl": "https://avatars.githubusercontent.com/u/25179978?v=4"
@@ -4975,7 +4992,7 @@
       "name": "headlessui",
       "description": "Completely unstyled, fully accessible UI components, designed to integrate beautifully with Tailwind CSS.",
       "url": "https://github.com/tailwindlabs/headlessui",
-      "stargazerCount": 28484,
+      "stargazerCount": 28480,
       "forkCount": 1196,
       "pushedAt": "2025-12-19T16:46:31Z",
       "owner": {
@@ -5084,7 +5101,7 @@
       "name": "handsontable",
       "description": "JavaScript Data Grid / Data Table with a Spreadsheet Look & Feel. Works with React, Angular, and Vue. Supported by the Handsontable team ⚡",
       "url": "https://github.com/handsontable/handsontable",
-      "stargazerCount": 21842,
+      "stargazerCount": 21843,
       "forkCount": 3182,
       "pushedAt": "2026-03-28T23:26:48Z",
       "owner": {
@@ -5184,8 +5201,8 @@
       "name": "autocomplete",
       "description": "IDE-style autocomplete for your existing terminal & shell",
       "url": "https://github.com/withfig/autocomplete",
-      "stargazerCount": 25132,
-      "forkCount": 5498,
+      "stargazerCount": 25131,
+      "forkCount": 5497,
       "pushedAt": "2025-05-05T17:15:31Z",
       "owner": {
         "login": "withfig",
@@ -5212,7 +5229,7 @@
       "name": "noto-fonts",
       "description": " Noto fonts, except for CJK and emoji",
       "url": "https://github.com/notofonts/noto-fonts",
-      "stargazerCount": 2502,
+      "stargazerCount": 2501,
       "forkCount": 204,
       "pushedAt": "2023-01-25T13:40:16Z",
       "owner": {
@@ -5300,7 +5317,7 @@
       "name": "TRex",
       "description": "Copy any text on your screen, stop retyping.",
       "url": "https://github.com/amebalabs/TRex",
-      "stargazerCount": 1769,
+      "stargazerCount": 1771,
       "forkCount": 57,
       "pushedAt": "2026-02-13T18:43:06Z",
       "owner": {
@@ -5376,7 +5393,7 @@
       "name": "serve",
       "description": "Static file serving and directory listing",
       "url": "https://github.com/vercel/serve",
-      "stargazerCount": 9848,
+      "stargazerCount": 9843,
       "forkCount": 700,
       "pushedAt": "2026-03-03T19:05:01Z",
       "owner": {
@@ -5417,7 +5434,7 @@
       "url": "https://github.com/ChartsCSS/charts.css",
       "stargazerCount": 6558,
       "forkCount": 180,
-      "pushedAt": "2026-03-28T22:14:02Z",
+      "pushedAt": "2026-03-29T20:18:33Z",
       "owner": {
         "login": "ChartsCSS",
         "avatarUrl": "https://avatars.githubusercontent.com/u/71930264?v=4"
@@ -5537,9 +5554,9 @@
       "name": "uppy",
       "description": "The next open source file uploader for web browsers :dog: ",
       "url": "https://github.com/transloadit/uppy",
-      "stargazerCount": 30698,
+      "stargazerCount": 30696,
       "forkCount": 2095,
-      "pushedAt": "2026-03-29T04:21:45Z",
+      "pushedAt": "2026-03-29T13:09:50Z",
       "owner": {
         "login": "transloadit",
         "avatarUrl": "https://avatars.githubusercontent.com/u/125754?v=4"
@@ -5565,8 +5582,8 @@
       "name": "awesome-cheatsheets",
       "description": "👩‍💻👨‍💻 Awesome cheatsheets for popular programming languages, frameworks and development tools. They include everything you should know in one single file.",
       "url": "https://github.com/LeCoupa/awesome-cheatsheets",
-      "stargazerCount": 45569,
-      "forkCount": 6671,
+      "stargazerCount": 45571,
+      "forkCount": 6673,
       "pushedAt": "2026-02-20T08:42:26Z",
       "owner": {
         "login": "LeCoupa",
@@ -5593,7 +5610,7 @@
       "name": "Lunar",
       "description": "Intelligent adaptive brightness for your external monitors",
       "url": "https://github.com/alin23/Lunar",
-      "stargazerCount": 5497,
+      "stargazerCount": 5498,
       "forkCount": 138,
       "pushedAt": "2026-03-13T15:24:08Z",
       "owner": {
@@ -5621,9 +5638,9 @@
       "name": "remotion",
       "description": "🎥      Make videos programmatically with React",
       "url": "https://github.com/remotion-dev/remotion",
-      "stargazerCount": 41092,
-      "forkCount": 2631,
-      "pushedAt": "2026-03-28T08:01:53Z",
+      "stargazerCount": 41212,
+      "forkCount": 2647,
+      "pushedAt": "2026-03-29T19:47:12Z",
       "owner": {
         "login": "remotion-dev",
         "avatarUrl": "https://avatars.githubusercontent.com/u/85344006?v=4"
@@ -5642,7 +5659,7 @@
       "name": "Latest",
       "description": "A small utility app for macOS that makes sure you know about all the latest updates to the apps you use.",
       "url": "https://github.com/mangerlahn/Latest",
-      "stargazerCount": 4523,
+      "stargazerCount": 4525,
       "forkCount": 129,
       "pushedAt": "2026-02-09T19:56:17Z",
       "owner": {
@@ -5713,7 +5730,7 @@
       "name": "animxyz",
       "description": "The first truly composable CSS animation library. Built for Vue, React, SCSS, and CSS, AnimXYZ will bring your website to life.",
       "url": "https://github.com/ingram-projects/animxyz",
-      "stargazerCount": 2498,
+      "stargazerCount": 2499,
       "forkCount": 62,
       "pushedAt": "2026-01-19T01:50:29Z",
       "owner": {
@@ -5741,9 +5758,9 @@
       "name": "Karabiner-Elements",
       "description": "Karabiner-Elements is a powerful tool for customizing keyboards on macOS",
       "url": "https://github.com/pqrs-org/Karabiner-Elements",
-      "stargazerCount": 21795,
+      "stargazerCount": 21803,
       "forkCount": 904,
-      "pushedAt": "2026-03-28T08:16:07Z",
+      "pushedAt": "2026-03-29T15:07:50Z",
       "owner": {
         "login": "pqrs-org",
         "avatarUrl": "https://avatars.githubusercontent.com/u/29721576?v=4"
@@ -5761,8 +5778,8 @@
       "name": "zustand",
       "description": "🐻 Bear necessities for state management in React",
       "url": "https://github.com/pmndrs/zustand",
-      "stargazerCount": 57560,
-      "forkCount": 2006,
+      "stargazerCount": 57561,
+      "forkCount": 2008,
       "pushedAt": "2026-03-24T00:14:03Z",
       "owner": {
         "login": "pmndrs",
@@ -5786,7 +5803,7 @@
       "name": "d3-force",
       "description": "Force-directed graph layout using velocity Verlet integration.",
       "url": "https://github.com/d3/d3-force",
-      "stargazerCount": 1952,
+      "stargazerCount": 1953,
       "forkCount": 391,
       "pushedAt": "2023-12-30T16:50:14Z",
       "owner": {
@@ -5803,7 +5820,7 @@
       "name": "MonitorControl",
       "description": "🖥 Control your display's brightness & volume on your Mac as if it was a native Apple Display. Use Apple Keyboard keys or custom shortcuts. Shows the native macOS OSDs.",
       "url": "https://github.com/MonitorControl/MonitorControl",
-      "stargazerCount": 32814,
+      "stargazerCount": 32817,
       "forkCount": 943,
       "pushedAt": "2026-02-09T09:32:16Z",
       "owner": {
@@ -5831,7 +5848,7 @@
       "name": "twin.macro",
       "description": "🦹‍♂️ Twin blends the magic of Tailwind with the flexibility of css-in-js (emotion, styled-components, solid-styled-components, stitches and goober) at build time.",
       "url": "https://github.com/ben-rogerson/twin.macro",
-      "stargazerCount": 8041,
+      "stargazerCount": 8039,
       "forkCount": 181,
       "pushedAt": "2026-03-22T03:38:39Z",
       "owner": {
@@ -5859,7 +5876,7 @@
       "name": "openmtp",
       "description": "OpenMTP  - Advanced Android File Transfer Application for macOS",
       "url": "https://github.com/ganeshrvel/openmtp",
-      "stargazerCount": 6396,
+      "stargazerCount": 6399,
       "forkCount": 256,
       "pushedAt": "2025-08-12T18:50:09Z",
       "owner": {
@@ -5886,8 +5903,8 @@
       "name": "react-datepicker",
       "description": "A simple and reusable datepicker component for React",
       "url": "https://github.com/Hacker0x01/react-datepicker",
-      "stargazerCount": 8366,
-      "forkCount": 2273,
+      "stargazerCount": 8365,
+      "forkCount": 2272,
       "pushedAt": "2026-03-29T03:22:15Z",
       "owner": {
         "login": "Hacker0x01",
@@ -5911,8 +5928,8 @@
       "name": "react-hook-form",
       "description": "📋 React Hooks for form state management and validation (Web + React Native)",
       "url": "https://github.com/react-hook-form/react-hook-form",
-      "stargazerCount": 44636,
-      "forkCount": 2379,
+      "stargazerCount": 44634,
+      "forkCount": 2377,
       "pushedAt": "2026-03-25T20:58:03Z",
       "owner": {
         "login": "react-hook-form",
@@ -5938,9 +5955,9 @@
       "name": "simple-icons",
       "description": "SVG icons for popular brands",
       "url": "https://github.com/simple-icons/simple-icons",
-      "stargazerCount": 24785,
-      "forkCount": 3087,
-      "pushedAt": "2026-03-29T00:57:24Z",
+      "stargazerCount": 24792,
+      "forkCount": 3088,
+      "pushedAt": "2026-03-30T03:10:21Z",
       "owner": {
         "login": "simple-icons",
         "avatarUrl": "https://avatars.githubusercontent.com/u/29872746?v=4"
@@ -6016,7 +6033,7 @@
       "name": "react-tooltip",
       "description": "React Tooltip Component",
       "url": "https://github.com/ReactTooltip/react-tooltip",
-      "stargazerCount": 3792,
+      "stargazerCount": 3793,
       "forkCount": 528,
       "pushedAt": "2025-11-11T19:22:34Z",
       "owner": {
@@ -6039,8 +6056,8 @@
       "name": "react-day-picker",
       "description": "DayPicker is a customizable date picker component for React. Add date pickers, calendars, and date inputs to your web applications.",
       "url": "https://github.com/gpbl/react-day-picker",
-      "stargazerCount": 6760,
-      "forkCount": 767,
+      "stargazerCount": 6762,
+      "forkCount": 768,
       "pushedAt": "2026-03-06T21:44:44Z",
       "owner": {
         "login": "gpbl",
@@ -6067,7 +6084,7 @@
       "name": "dog",
       "description": "A command-line DNS client.",
       "url": "https://github.com/ogham/dog",
-      "stargazerCount": 6630,
+      "stargazerCount": 6631,
       "forkCount": 208,
       "pushedAt": "2024-05-29T11:36:13Z",
       "owner": {
@@ -6089,7 +6106,7 @@
       "name": "svg-path-editor",
       "description": "Online editor to create and manipulate SVG paths",
       "url": "https://github.com/Yqnn/svg-path-editor",
-      "stargazerCount": 5131,
+      "stargazerCount": 5132,
       "forkCount": 409,
       "pushedAt": "2025-11-02T13:59:02Z",
       "owner": {
@@ -6132,7 +6149,7 @@
       "name": "next-mdx-remote",
       "description": "Load MDX content from anywhere",
       "url": "https://github.com/hashicorp/next-mdx-remote",
-      "stargazerCount": 3086,
+      "stargazerCount": 3085,
       "forkCount": 147,
       "pushedAt": "2026-03-26T06:02:26Z",
       "owner": {
@@ -6149,7 +6166,7 @@
       "name": "locomotive-scroll",
       "description": "🛤 Detection of elements in viewport & smooth scrolling with parallax.",
       "url": "https://github.com/locomotivemtl/locomotive-scroll",
-      "stargazerCount": 8733,
+      "stargazerCount": 8732,
       "forkCount": 1128,
       "pushedAt": "2026-03-26T19:22:43Z",
       "owner": {
@@ -6171,8 +6188,8 @@
       "name": "snapdrop",
       "description": "A Progressive Web App for local file sharing ",
       "url": "https://github.com/SnapDrop/snapdrop",
-      "stargazerCount": 19708,
-      "forkCount": 1887,
+      "stargazerCount": 19706,
+      "forkCount": 1888,
       "pushedAt": "2025-02-10T10:35:43Z",
       "owner": {
         "login": "SnapDrop",
@@ -6192,7 +6209,7 @@
       "name": "visx",
       "description": "🐯 visx | visualization components",
       "url": "https://github.com/airbnb/visx",
-      "stargazerCount": 20704,
+      "stargazerCount": 20702,
       "forkCount": 755,
       "pushedAt": "2025-11-11T18:12:07Z",
       "owner": {
@@ -6461,8 +6478,8 @@
       "name": "next-themes",
       "description": "Perfect Next.js dark mode in 2 lines of code. Support System preference and any other theme with no flashing",
       "url": "https://github.com/pacocoursey/next-themes",
-      "stargazerCount": 6235,
-      "forkCount": 242,
+      "stargazerCount": 6237,
+      "forkCount": 244,
       "pushedAt": "2026-02-25T05:25:42Z",
       "owner": {
         "login": "pacocoursey",
@@ -6573,7 +6590,7 @@
       "name": "alt-tab-macos",
       "description": "Windows alt-tab on macOS ",
       "url": "https://github.com/lwouis/alt-tab-macos",
-      "stargazerCount": 15261,
+      "stargazerCount": 15270,
       "forkCount": 515,
       "pushedAt": "2026-03-22T16:29:12Z",
       "owner": {
@@ -6599,8 +6616,8 @@
       "name": "next-auth",
       "description": "Authentication for the Web.",
       "url": "https://github.com/nextauthjs/next-auth",
-      "stargazerCount": 28174,
-      "forkCount": 4048,
+      "stargazerCount": 28172,
+      "forkCount": 4047,
       "pushedAt": "2026-02-07T21:40:57Z",
       "owner": {
         "login": "nextauthjs",
@@ -6670,8 +6687,8 @@
       "name": "scrcpy",
       "description": "Display and control your Android device",
       "url": "https://github.com/Genymobile/scrcpy",
-      "stargazerCount": 137719,
-      "forkCount": 12826,
+      "stargazerCount": 137756,
+      "forkCount": 12832,
       "pushedAt": "2026-03-24T19:57:52Z",
       "owner": {
         "login": "Genymobile",
@@ -6696,7 +6713,7 @@
       "name": "theme-ui",
       "description": "Build consistent, themeable React apps based on constraint-based design principles",
       "url": "https://github.com/system-ui/theme-ui",
-      "stargazerCount": 5395,
+      "stargazerCount": 5394,
       "forkCount": 666,
       "pushedAt": "2026-03-21T22:57:05Z",
       "owner": {
@@ -6794,7 +6811,7 @@
       "name": "tailblocks",
       "description": "Ready-to-use Tailwind CSS blocks.",
       "url": "https://github.com/mertJF/tailblocks",
-      "stargazerCount": 8915,
+      "stargazerCount": 8912,
       "forkCount": 839,
       "pushedAt": "2023-01-31T22:16:06Z",
       "owner": {
@@ -6897,7 +6914,7 @@
       "description": "A modified web browser that helps in responsive web development. A web developer's must have dev-tool.",
       "url": "https://github.com/responsively-org/responsively-app",
       "stargazerCount": 24822,
-      "forkCount": 1344,
+      "forkCount": 1347,
       "pushedAt": "2026-03-28T17:20:58Z",
       "owner": {
         "login": "responsively-org",
@@ -6924,7 +6941,7 @@
       "name": "iron-session",
       "description": "🛠 Secure, stateless, and cookie-based session library for JavaScript",
       "url": "https://github.com/vvo/iron-session",
-      "stargazerCount": 4113,
+      "stargazerCount": 4112,
       "forkCount": 256,
       "pushedAt": "2026-03-27T13:13:58Z",
       "owner": {
@@ -7010,7 +7027,7 @@
       "name": "fonts",
       "description": "A fast, open-source CDN for open-source fonts",
       "url": "https://github.com/xz/fonts",
-      "stargazerCount": 281,
+      "stargazerCount": 280,
       "forkCount": 13,
       "pushedAt": "2022-04-06T18:23:06Z",
       "owner": {
@@ -7044,7 +7061,7 @@
       "name": "tabletop",
       "description": "Tabletop.js gives spreadsheets legs",
       "url": "https://github.com/jsoma/tabletop",
-      "stargazerCount": 3777,
+      "stargazerCount": 3776,
       "forkCount": 443,
       "pushedAt": "2023-11-25T05:16:37Z",
       "owner": {
@@ -7228,8 +7245,8 @@
       "name": "city-roads",
       "description": "Visualization of all roads within any city",
       "url": "https://github.com/anvaka/city-roads",
-      "stargazerCount": 9138,
-      "forkCount": 692,
+      "stargazerCount": 9142,
+      "forkCount": 691,
       "pushedAt": "2026-03-17T06:28:29Z",
       "owner": {
         "login": "anvaka",
@@ -7245,9 +7262,9 @@
       "name": "DOMPurify",
       "description": "DOMPurify - a DOM-only, super-fast, uber-tolerant XSS sanitizer for HTML, MathML and SVG. DOMPurify works with a secure default, but offers a lot of configurability and hooks. Demo:",
       "url": "https://github.com/cure53/DOMPurify",
-      "stargazerCount": 16805,
+      "stargazerCount": 16807,
       "forkCount": 828,
-      "pushedAt": "2026-03-26T08:07:23Z",
+      "pushedAt": "2026-03-29T23:27:15Z",
       "owner": {
         "login": "cure53",
         "avatarUrl": "https://avatars.githubusercontent.com/u/6709482?u=4149eb5ebf4e59175c31bbc618805bce4d0535dc&v=4"
@@ -7273,7 +7290,7 @@
       "name": "twitter-lite",
       "description": "A tiny, full-featured, flexible client / server library for the Twitter API",
       "url": "https://github.com/draftbit/twitter-lite",
-      "stargazerCount": 785,
+      "stargazerCount": 784,
       "forkCount": 92,
       "pushedAt": "2023-03-04T13:52:45Z",
       "owner": {
@@ -7298,7 +7315,7 @@
       "name": "motion",
       "description": "A modern animation library for React and JavaScript",
       "url": "https://github.com/motiondivision/motion",
-      "stargazerCount": 31318,
+      "stargazerCount": 31326,
       "forkCount": 1111,
       "pushedAt": "2026-03-27T00:14:21Z",
       "owner": {
@@ -7322,8 +7339,8 @@
       "name": "tailwindcss",
       "description": "A utility-first CSS framework for rapid UI development.",
       "url": "https://github.com/tailwindlabs/tailwindcss",
-      "stargazerCount": 94206,
-      "forkCount": 5135,
+      "stargazerCount": 94205,
+      "forkCount": 5139,
       "pushedAt": "2026-03-27T15:53:57Z",
       "owner": {
         "login": "tailwindlabs",
@@ -7347,7 +7364,7 @@
       "name": "Hack",
       "description": "A typeface designed for source code",
       "url": "https://github.com/source-foundry/Hack",
-      "stargazerCount": 17185,
+      "stargazerCount": 17186,
       "forkCount": 655,
       "pushedAt": "2022-11-21T18:05:33Z",
       "owner": {
@@ -7570,8 +7587,8 @@
       "name": "strapi",
       "description": "🚀 Strapi is the leading open-source headless CMS. It’s 100% JavaScript/TypeScript, fully customizable, and developer-first.",
       "url": "https://github.com/strapi/strapi",
-      "stargazerCount": 71718,
-      "forkCount": 9591,
+      "stargazerCount": 71730,
+      "forkCount": 9589,
       "pushedAt": "2026-03-28T08:51:56Z",
       "owner": {
         "login": "strapi",
@@ -7598,8 +7615,8 @@
       "name": "excalidraw",
       "description": "Virtual whiteboard for sketching hand-drawn like diagrams",
       "url": "https://github.com/excalidraw/excalidraw",
-      "stargazerCount": 119721,
-      "forkCount": 13032,
+      "stargazerCount": 119781,
+      "forkCount": 13036,
       "pushedAt": "2026-03-27T12:43:53Z",
       "owner": {
         "login": "excalidraw",
@@ -7644,8 +7661,8 @@
       "name": "learn-regex",
       "description": "Learn regex the easy way",
       "url": "https://github.com/ziishaned/learn-regex",
-      "stargazerCount": 46153,
-      "forkCount": 6209,
+      "stargazerCount": 46150,
+      "forkCount": 6210,
       "pushedAt": "2025-08-25T23:17:54Z",
       "owner": {
         "login": "ziishaned",
@@ -7662,8 +7679,8 @@
       "name": "mac-setup",
       "description": "Installing Development environment on macOS",
       "url": "https://github.com/sb2nov/mac-setup",
-      "stargazerCount": 7358,
-      "forkCount": 1011,
+      "stargazerCount": 7360,
+      "forkCount": 1010,
       "pushedAt": "2026-03-08T18:20:50Z",
       "owner": {
         "login": "sb2nov",
@@ -7712,8 +7729,8 @@
       "name": "react-icons",
       "description": "svg react icons of popular icon packs",
       "url": "https://github.com/react-icons/react-icons",
-      "stargazerCount": 12524,
-      "forkCount": 805,
+      "stargazerCount": 12527,
+      "forkCount": 806,
       "pushedAt": "2026-03-29T03:29:21Z",
       "owner": {
         "login": "react-icons",
@@ -7733,7 +7750,7 @@
       "name": "tota11y",
       "description": "an accessibility (a11y) visualization toolkit",
       "url": "https://github.com/jdan/tota11y",
-      "stargazerCount": 5068,
+      "stargazerCount": 5069,
       "forkCount": 273,
       "pushedAt": "2023-09-11T23:59:39Z",
       "owner": {
@@ -7750,8 +7767,8 @@
       "name": "css.gg",
       "description": "700+ Pure CSS, SVG & Figma UI Icons, 6000+ glyphs, patterns, colors and layouts.",
       "url": "https://github.com/astrit/css.gg",
-      "stargazerCount": 9985,
-      "forkCount": 495,
+      "stargazerCount": 9986,
+      "forkCount": 496,
       "pushedAt": "2024-08-26T22:56:02Z",
       "owner": {
         "login": "astrit",
@@ -7816,9 +7833,9 @@
       "name": "pdf.js",
       "description": "PDF Reader in JavaScript",
       "url": "https://github.com/mozilla/pdf.js",
-      "stargazerCount": 53048,
-      "forkCount": 10604,
-      "pushedAt": "2026-03-27T00:34:31Z",
+      "stargazerCount": 53053,
+      "forkCount": 10602,
+      "pushedAt": "2026-03-29T18:48:47Z",
       "owner": {
         "login": "mozilla",
         "avatarUrl": "https://avatars.githubusercontent.com/u/131524?v=4"
@@ -7867,7 +7884,7 @@
       "name": "tc-lib-pdf",
       "description": "TCPDF - PHP PDF Library - https://tcpdf.org",
       "url": "https://github.com/tecnickcom/tc-lib-pdf",
-      "stargazerCount": 1805,
+      "stargazerCount": 1806,
       "forkCount": 244,
       "pushedAt": "2026-03-28T10:28:53Z",
       "owner": {
@@ -7909,9 +7926,9 @@
       "name": "pdfkit",
       "description": "A JavaScript PDF generation library for Node and the browser",
       "url": "https://github.com/foliojs/pdfkit",
-      "stargazerCount": 10622,
+      "stargazerCount": 10623,
       "forkCount": 1210,
-      "pushedAt": "2026-03-25T21:43:07Z",
+      "pushedAt": "2026-03-30T00:44:23Z",
       "owner": {
         "login": "foliojs",
         "avatarUrl": "https://avatars.githubusercontent.com/u/41874169?v=4"
@@ -7928,7 +7945,7 @@
       "url": "https://github.com/bpampuch/pdfmake",
       "stargazerCount": 12254,
       "forkCount": 2078,
-      "pushedAt": "2026-03-17T16:05:22Z",
+      "pushedAt": "2026-03-29T09:29:47Z",
       "owner": {
         "login": "bpampuch",
         "avatarUrl": "https://avatars.githubusercontent.com/u/3721522?v=4"
@@ -7943,9 +7960,9 @@
       "name": "jsPDF",
       "description": "Client-side JavaScript PDF generation for everyone.",
       "url": "https://github.com/parallax/jsPDF",
-      "stargazerCount": 31201,
+      "stargazerCount": 31199,
       "forkCount": 4813,
-      "pushedAt": "2026-03-28T10:17:17Z",
+      "pushedAt": "2026-03-29T21:59:08Z",
       "owner": {
         "login": "parallax",
         "avatarUrl": "https://avatars.githubusercontent.com/u/320004?v=4"
@@ -8157,8 +8174,8 @@
       "name": "hidden",
       "description": "An ultra-light MacOS utility that helps hide menu bar icons",
       "url": "https://github.com/dwarvesf/hidden",
-      "stargazerCount": 13628,
-      "forkCount": 389,
+      "stargazerCount": 13638,
+      "forkCount": 388,
       "pushedAt": "2026-03-03T13:48:22Z",
       "owner": {
         "login": "dwarvesf",
@@ -8260,8 +8277,8 @@
       "name": "33-js-concepts",
       "description": "📜 33 JavaScript concepts every developer should know.",
       "url": "https://github.com/leonardomso/33-js-concepts",
-      "stargazerCount": 66302,
-      "forkCount": 9194,
+      "stargazerCount": 66299,
+      "forkCount": 9193,
       "pushedAt": "2026-03-26T06:57:30Z",
       "owner": {
         "login": "leonardomso",
@@ -8288,7 +8305,7 @@
       "name": "focus-visible",
       "description": "Polyfill for `:focus-visible`",
       "url": "https://github.com/WICG/focus-visible",
-      "stargazerCount": 1604,
+      "stargazerCount": 1603,
       "forkCount": 124,
       "pushedAt": "2025-11-11T01:24:50Z",
       "owner": {
@@ -8305,7 +8322,7 @@
       "name": "swr",
       "description": "React Hooks for Data Fetching",
       "url": "https://github.com/vercel/swr",
-      "stargazerCount": 32350,
+      "stargazerCount": 32348,
       "forkCount": 1325,
       "pushedAt": "2026-02-27T16:41:51Z",
       "owner": {
@@ -8357,7 +8374,7 @@
       "name": "numi",
       "description": "Beautiful calculator app for macOS, Linux & Windows",
       "url": "https://github.com/nikolaeu/numi",
-      "stargazerCount": 6387,
+      "stargazerCount": 6385,
       "forkCount": 245,
       "pushedAt": "2026-02-20T05:36:55Z",
       "owner": {
@@ -8408,8 +8425,8 @@
       "name": "create-react-app",
       "description": "Set up a modern web app by running one command.",
       "url": "https://github.com/facebook/create-react-app",
-      "stargazerCount": 103805,
-      "forkCount": 27103,
+      "stargazerCount": 103796,
+      "forkCount": 27102,
       "pushedAt": "2025-02-15T01:32:11Z",
       "owner": {
         "login": "facebook",
@@ -8447,7 +8464,7 @@
       "description": "Modern CSS framework based on Flexbox",
       "url": "https://github.com/jgthms/bulma",
       "stargazerCount": 50069,
-      "forkCount": 3904,
+      "forkCount": 3906,
       "pushedAt": "2026-03-01T20:13:02Z",
       "owner": {
         "login": "jgthms",
@@ -8469,7 +8486,7 @@
       "name": "redux-toolkit",
       "description": "The official, opinionated, batteries-included toolset for efficient Redux development",
       "url": "https://github.com/reduxjs/redux-toolkit",
-      "stargazerCount": 11190,
+      "stargazerCount": 11189,
       "forkCount": 1261,
       "pushedAt": "2026-03-25T15:38:23Z",
       "owner": {
@@ -8509,8 +8526,8 @@
       "name": "gatsby-starter-ghost",
       "description": "A starter template to build lightning fast websites with Ghost & Gatsby",
       "url": "https://github.com/TryGhost/gatsby-starter-ghost",
-      "stargazerCount": 1096,
-      "forkCount": 850,
+      "stargazerCount": 1097,
+      "forkCount": 849,
       "pushedAt": "2026-01-19T07:39:38Z",
       "owner": {
         "login": "TryGhost",
@@ -8578,9 +8595,9 @@
       "name": "tinacms",
       "description": "A fully open-source headless CMS that supports Markdown and Visual Editing",
       "url": "https://github.com/tinacms/tinacms",
-      "stargazerCount": 13243,
+      "stargazerCount": 13242,
       "forkCount": 686,
-      "pushedAt": "2026-03-27T06:25:29Z",
+      "pushedAt": "2026-03-30T05:18:36Z",
       "owner": {
         "login": "tinacms",
         "avatarUrl": "https://avatars.githubusercontent.com/u/54718400?v=4"
@@ -8629,7 +8646,7 @@
       "name": "svgr",
       "description": "Transform SVGs into React components 🦁",
       "url": "https://github.com/gregberge/svgr",
-      "stargazerCount": 11029,
+      "stargazerCount": 11026,
       "forkCount": 440,
       "pushedAt": "2026-03-01T18:35:20Z",
       "owner": {
@@ -8657,7 +8674,7 @@
       "name": "react-three-fiber",
       "description": "🇨🇭 A React renderer for Three.js",
       "url": "https://github.com/pmndrs/react-three-fiber",
-      "stargazerCount": 30435,
+      "stargazerCount": 30430,
       "forkCount": 1798,
       "pushedAt": "2026-03-21T04:24:10Z",
       "owner": {
@@ -8698,9 +8715,9 @@
       "name": "chakra-ui",
       "description": "Chakra UI is a component system for building SaaS products with speed ⚡️",
       "url": "https://github.com/chakra-ui/chakra-ui",
-      "stargazerCount": 40329,
-      "forkCount": 3574,
-      "pushedAt": "2026-03-29T04:47:00Z",
+      "stargazerCount": 40324,
+      "forkCount": 3575,
+      "pushedAt": "2026-03-30T01:10:29Z",
       "owner": {
         "login": "chakra-ui",
         "avatarUrl": "https://avatars.githubusercontent.com/u/54212428?v=4"
@@ -8726,7 +8743,7 @@
       "name": "kittenTricks",
       "description": "React Native starter kit with over 40 screens and modern Light and Dark theme for creating stunning cross-platform mobile applications.",
       "url": "https://github.com/akveo/kittenTricks",
-      "stargazerCount": 7277,
+      "stargazerCount": 7276,
       "forkCount": 991,
       "pushedAt": "2024-02-26T18:51:21Z",
       "owner": {
@@ -8751,7 +8768,7 @@
       "name": "react-native-elements",
       "description": "Cross-Platform React Native UI Toolkit",
       "url": "https://github.com/react-native-elements/react-native-elements",
-      "stargazerCount": 25788,
+      "stargazerCount": 25787,
       "forkCount": 4690,
       "pushedAt": "2026-01-27T06:53:44Z",
       "owner": {
@@ -8778,7 +8795,7 @@
       "name": "react-native-animatable",
       "description": "Standard set of easy to use animations and declarative transitions for React Native",
       "url": "https://github.com/oblador/react-native-animatable",
-      "stargazerCount": 9950,
+      "stargazerCount": 9949,
       "forkCount": 695,
       "pushedAt": "2023-10-26T16:46:05Z",
       "owner": {
@@ -8799,8 +8816,8 @@
       "name": "thefuck",
       "description": "Magnificent app which corrects your previous console command.",
       "url": "https://github.com/nvbn/thefuck",
-      "stargazerCount": 95770,
-      "forkCount": 3861,
+      "stargazerCount": 95768,
+      "forkCount": 3863,
       "pushedAt": "2024-07-19T14:56:13Z",
       "owner": {
         "login": "nvbn",
@@ -8819,9 +8836,9 @@
       "name": "react-native",
       "description": "A framework for building native applications using React",
       "url": "https://github.com/facebook/react-native",
-      "stargazerCount": 125676,
-      "forkCount": 25120,
-      "pushedAt": "2026-03-28T19:20:46Z",
+      "stargazerCount": 125682,
+      "forkCount": 25123,
+      "pushedAt": "2026-03-30T05:17:31Z",
       "owner": {
         "login": "facebook",
         "avatarUrl": "https://avatars.githubusercontent.com/u/69631?v=4"
@@ -8898,7 +8915,7 @@
       "name": "orbit",
       "description": "React components of open-source Orbit design system by Kiwi.com",
       "url": "https://github.com/kiwicom/orbit",
-      "stargazerCount": 1435,
+      "stargazerCount": 1434,
       "forkCount": 168,
       "pushedAt": "2026-01-23T13:10:55Z",
       "owner": {
@@ -8965,8 +8982,8 @@
       "name": "grommet",
       "description": "a react-based framework that provides accessibility, modularity, responsiveness, and theming in a tidy package",
       "url": "https://github.com/grommet/grommet",
-      "stargazerCount": 8356,
-      "forkCount": 1031,
+      "stargazerCount": 8355,
+      "forkCount": 1032,
       "pushedAt": "2026-03-25T20:58:28Z",
       "owner": {
         "login": "grommet",
@@ -8991,7 +9008,7 @@
       "name": "body-scroll-lock",
       "description": "Body scroll locking that just works with everything 😏",
       "url": "https://github.com/willmcpo/body-scroll-lock",
-      "stargazerCount": 4105,
+      "stargazerCount": 4106,
       "forkCount": 327,
       "pushedAt": "2023-03-30T18:49:50Z",
       "owner": {
@@ -9046,7 +9063,7 @@
       "name": "vanilla-tilt.js",
       "description": "A smooth 3D tilt javascript library.",
       "url": "https://github.com/micku7zu/vanilla-tilt.js",
-      "stargazerCount": 4008,
+      "stargazerCount": 4007,
       "forkCount": 180,
       "pushedAt": "2024-03-01T09:20:19Z",
       "owner": {
@@ -9074,7 +9091,7 @@
       "name": "react-parallax-tilt",
       "description": "👀  Easily apply tilt hover effect to React components - lightweight/zero dependencies 2.9kB",
       "url": "https://github.com/mkosir/react-parallax-tilt",
-      "stargazerCount": 1053,
+      "stargazerCount": 1055,
       "forkCount": 123,
       "pushedAt": "2026-03-25T08:42:41Z",
       "owner": {
@@ -9100,7 +9117,7 @@
       "name": "urql",
       "description": "The highly customizable and versatile GraphQL client with which you add on features like normalized caching as you grow.",
       "url": "https://github.com/urql-graphql/urql",
-      "stargazerCount": 8949,
+      "stargazerCount": 8948,
       "forkCount": 472,
       "pushedAt": "2026-02-26T07:17:24Z",
       "owner": {
@@ -9140,7 +9157,7 @@
       "name": "react-native-web",
       "description": "Cross-platform React UI packages",
       "url": "https://github.com/necolas/react-native-web",
-      "stargazerCount": 22123,
+      "stargazerCount": 22120,
       "forkCount": 1834,
       "pushedAt": "2025-10-16T15:10:21Z",
       "owner": {
@@ -9184,9 +9201,9 @@
       "name": "svelte",
       "description": "web development for the rest of us",
       "url": "https://github.com/sveltejs/svelte",
-      "stargazerCount": 86128,
+      "stargazerCount": 86127,
       "forkCount": 4833,
-      "pushedAt": "2026-03-28T16:31:44Z",
+      "pushedAt": "2026-03-30T02:55:23Z",
       "owner": {
         "login": "sveltejs",
         "avatarUrl": "https://avatars.githubusercontent.com/u/23617963?v=4"
@@ -9222,7 +9239,7 @@
       "name": "awesome-react",
       "description": "A collection of awesome things regarding React ecosystem",
       "url": "https://github.com/enaqx/awesome-react",
-      "stargazerCount": 72566,
+      "stargazerCount": 72576,
       "forkCount": 7547,
       "pushedAt": "2026-03-27T01:20:52Z",
       "owner": {
@@ -9275,7 +9292,7 @@
       "name": "mkcert",
       "description": "A simple zero-config tool to make locally trusted development certificates with any names you'd like.",
       "url": "https://github.com/FiloSottile/mkcert",
-      "stargazerCount": 58349,
+      "stargazerCount": 58354,
       "forkCount": 3050,
       "pushedAt": "2024-08-13T13:37:46Z",
       "owner": {
@@ -9303,7 +9320,7 @@
       "name": "design-system",
       "description": "🗃 Storybook Design System",
       "url": "https://github.com/storybookjs/design-system",
-      "stargazerCount": 1997,
+      "stargazerCount": 1996,
       "forkCount": 603,
       "pushedAt": "2025-05-30T11:33:17Z",
       "owner": {
@@ -9337,7 +9354,7 @@
       "name": "minimal-twitter",
       "description": "Minimal Theme for Twitter - Refine and Declutter Your Twitter Web Experience",
       "url": "https://github.com/typefully/minimal-twitter",
-      "stargazerCount": 943,
+      "stargazerCount": 942,
       "forkCount": 58,
       "pushedAt": "2025-12-18T17:02:11Z",
       "owner": {
@@ -9546,7 +9563,7 @@
       "description": "A minimalist Gatsby Theme for documentation sites built with MDX and Theme UI",
       "url": "https://github.com/johno/gatsby-theme-documentation",
       "stargazerCount": 134,
-      "forkCount": 18,
+      "forkCount": 17,
       "pushedAt": "2023-01-26T12:47:23Z",
       "owner": {
         "login": "johno",
@@ -9562,8 +9579,8 @@
       "name": "docz",
       "description": "✍ It has never been so easy to document your things!",
       "url": "https://github.com/doczjs/docz",
-      "stargazerCount": 23634,
-      "forkCount": 1419,
+      "stargazerCount": 23631,
+      "forkCount": 1418,
       "pushedAt": "2025-11-21T04:28:57Z",
       "owner": {
         "login": "doczjs",
@@ -9651,7 +9668,7 @@
       "name": "react-spring",
       "description": "✌️ A spring physics based React animation library",
       "url": "https://github.com/pmndrs/react-spring",
-      "stargazerCount": 29067,
+      "stargazerCount": 29065,
       "forkCount": 1212,
       "pushedAt": "2026-03-28T10:06:59Z",
       "owner": {
@@ -9674,9 +9691,9 @@
       "name": "storybook",
       "description": "Storybook is the industry standard workshop for building, documenting, and testing UI components in isolation",
       "url": "https://github.com/storybookjs/storybook",
-      "stargazerCount": 89556,
-      "forkCount": 9963,
-      "pushedAt": "2026-03-29T01:59:57Z",
+      "stargazerCount": 89562,
+      "forkCount": 9965,
+      "pushedAt": "2026-03-29T16:31:33Z",
       "owner": {
         "login": "storybookjs",
         "avatarUrl": "https://avatars.githubusercontent.com/u/22632046?v=4"
@@ -9702,9 +9719,9 @@
       "name": "expo",
       "description": "An open-source framework for making universal native apps with React. Expo runs on Android, iOS, and the web.",
       "url": "https://github.com/expo/expo",
-      "stargazerCount": 48315,
-      "forkCount": 11568,
-      "pushedAt": "2026-03-29T04:44:38Z",
+      "stargazerCount": 48336,
+      "forkCount": 11590,
+      "pushedAt": "2026-03-30T04:20:34Z",
       "owner": {
         "login": "expo",
         "avatarUrl": "https://avatars.githubusercontent.com/u/12504344?v=4"
@@ -9775,7 +9792,7 @@
       "name": "lottie-web",
       "description": "Render After Effects animations natively on Web, Android and iOS, and React Native. http://airbnb.io/lottie/",
       "url": "https://github.com/airbnb/lottie-web",
-      "stargazerCount": 31775,
+      "stargazerCount": 31777,
       "forkCount": 2928,
       "pushedAt": "2025-09-01T09:01:31Z",
       "owner": {
@@ -9809,8 +9826,8 @@
       "name": "eleventy",
       "description": "A simpler site generator. Transforms a directory of templates (of varying types) into HTML.",
       "url": "https://github.com/11ty/eleventy",
-      "stargazerCount": 19537,
-      "forkCount": 572,
+      "stargazerCount": 19530,
+      "forkCount": 573,
       "pushedAt": "2026-03-25T22:35:20Z",
       "owner": {
         "login": "11ty",
@@ -9833,7 +9850,7 @@
       "name": "cssgridgenerator",
       "description": "🧮 Generate basic CSS Grid code to make dynamic layouts!",
       "url": "https://github.com/sdras/cssgridgenerator",
-      "stargazerCount": 5340,
+      "stargazerCount": 5339,
       "forkCount": 576,
       "pushedAt": "2024-03-13T17:16:45Z",
       "owner": {
@@ -9898,8 +9915,8 @@
       "name": "awesome-nextjs",
       "description": ":notebook_with_decorative_cover: :books: A curated list of awesome resources : books, videos, articles about using Next.js (A minimalistic framework for universal server-rendered React applications) ",
       "url": "https://github.com/unicodeveloper/awesome-nextjs",
-      "stargazerCount": 11059,
-      "forkCount": 1040,
+      "stargazerCount": 11061,
+      "forkCount": 1041,
       "pushedAt": "2026-03-24T18:07:59Z",
       "owner": {
         "login": "unicodeveloper",
@@ -9923,7 +9940,7 @@
       "name": "next-mdx-blog",
       "description": "Next.js + MDX blog template with Tailwind CSS and TypeScript.",
       "url": "https://github.com/leerob/next-mdx-blog",
-      "stargazerCount": 7562,
+      "stargazerCount": 7559,
       "forkCount": 1442,
       "pushedAt": "2026-03-18T00:39:41Z",
       "owner": {
@@ -10007,7 +10024,7 @@
       "name": "mdx-deck",
       "description": "♠️ React MDX-based presentation decks",
       "url": "https://github.com/jxnblk/mdx-deck",
-      "stargazerCount": 11481,
+      "stargazerCount": 11482,
       "forkCount": 599,
       "pushedAt": "2023-01-04T01:58:59Z",
       "owner": {
@@ -10036,7 +10053,7 @@
       "description": "Play with fluids in your browser (works even on mobile)",
       "url": "https://github.com/PavelDoGreat/WebGL-Fluid-Simulation",
       "stargazerCount": 16199,
-      "forkCount": 1863,
+      "forkCount": 1865,
       "pushedAt": "2024-11-12T13:29:23Z",
       "owner": {
         "login": "PavelDoGreat",
@@ -10087,8 +10104,8 @@
       "description": "📇 A little directory of people's personal sites",
       "url": "https://github.com/xdesro/personalsit.es",
       "stargazerCount": 904,
-      "forkCount": 863,
-      "pushedAt": "2026-03-27T04:00:15Z",
+      "forkCount": 865,
+      "pushedAt": "2026-03-29T17:26:49Z",
       "owner": {
         "login": "xdesro",
         "avatarUrl": "https://avatars.githubusercontent.com/u/13542610?u=67bac9de1be8ee43910af614a87087dffd825b71&v=4"
@@ -10131,7 +10148,7 @@
       "name": "glide",
       "description": "A dependency-free JavaScript ES6 slider and carousel. It’s lightweight, flexible and fast. Designed to slide. No less, no more",
       "url": "https://github.com/glidejs/glide",
-      "stargazerCount": 7673,
+      "stargazerCount": 7672,
       "forkCount": 769,
       "pushedAt": "2026-03-21T17:52:29Z",
       "owner": {
@@ -10155,7 +10172,7 @@
       "name": "cssfx",
       "description": "✨ Beautifully simple click-to-copy CSS effects",
       "url": "https://github.com/jolaleye/cssfx",
-      "stargazerCount": 6142,
+      "stargazerCount": 6141,
       "forkCount": 353,
       "pushedAt": "2021-08-15T20:26:20Z",
       "owner": {
@@ -10240,7 +10257,7 @@
       "name": "color-names",
       "description": "Large list of handpicked color names 🌈",
       "url": "https://github.com/meodai/color-names",
-      "stargazerCount": 2876,
+      "stargazerCount": 2879,
       "forkCount": 217,
       "pushedAt": "2026-03-27T14:27:21Z",
       "owner": {
@@ -10305,8 +10322,8 @@
       "name": "30-seconds-of-code",
       "description": "Coding articles to level up your development skills",
       "url": "https://github.com/Chalarangelo/30-seconds-of-code",
-      "stargazerCount": 127261,
-      "forkCount": 12469,
+      "stargazerCount": 127276,
+      "forkCount": 12470,
       "pushedAt": "2026-03-29T01:12:03Z",
       "owner": {
         "login": "Chalarangelo",
@@ -10333,8 +10350,8 @@
       "name": "Maccy",
       "description": "Lightweight clipboard manager for macOS",
       "url": "https://github.com/p0deje/Maccy",
-      "stargazerCount": 19142,
-      "forkCount": 887,
+      "stargazerCount": 19156,
+      "forkCount": 888,
       "pushedAt": "2026-02-10T15:10:20Z",
       "owner": {
         "login": "p0deje",
@@ -10354,7 +10371,7 @@
       "name": "fractal",
       "description": "A tool to help you build and document website component libraries and design systems.",
       "url": "https://github.com/frctl/fractal",
-      "stargazerCount": 2136,
+      "stargazerCount": 2135,
       "forkCount": 170,
       "pushedAt": "2023-09-05T10:57:33Z",
       "owner": {
@@ -10374,7 +10391,7 @@
       "name": "linaria",
       "description": "Zero-runtime CSS in JS library",
       "url": "https://github.com/callstack/linaria",
-      "stargazerCount": 12291,
+      "stargazerCount": 12290,
       "forkCount": 412,
       "pushedAt": "2026-02-07T12:01:41Z",
       "owner": {
@@ -10413,9 +10430,9 @@
       "name": "hosts",
       "description": "🔒 Consolidating and extending hosts files from several well-curated sources. Optionally pick extensions for porn, social media, and other categories.",
       "url": "https://github.com/StevenBlack/hosts",
-      "stargazerCount": 30114,
-      "forkCount": 2400,
-      "pushedAt": "2026-03-25T19:18:23Z",
+      "stargazerCount": 30128,
+      "forkCount": 2399,
+      "pushedAt": "2026-03-30T01:33:21Z",
       "owner": {
         "login": "StevenBlack",
         "avatarUrl": "https://avatars.githubusercontent.com/u/80144?u=115ad569cf1e49f64172984ac813e16f45976ed1&v=4"
@@ -10441,7 +10458,7 @@
       "name": "idiomatic.js",
       "description": "Principles of Writing Consistent, Idiomatic JavaScript",
       "url": "https://github.com/rwaldron/idiomatic.js",
-      "stargazerCount": 25701,
+      "stargazerCount": 25702,
       "forkCount": 3553,
       "pushedAt": "2024-01-08T20:19:45Z",
       "owner": {
@@ -10455,9 +10472,9 @@
       "name": "flutter",
       "description": "Flutter makes it easy and fast to build beautiful apps for mobile and beyond",
       "url": "https://github.com/flutter/flutter",
-      "stargazerCount": 175747,
+      "stargazerCount": 175765,
       "forkCount": 30183,
-      "pushedAt": "2026-03-29T04:18:11Z",
+      "pushedAt": "2026-03-30T02:47:42Z",
       "owner": {
         "login": "flutter",
         "avatarUrl": "https://avatars.githubusercontent.com/u/14101776?v=4"
@@ -10484,7 +10501,7 @@
       "description": "A Hassle-Free Way to Self-Host Google Fonts. Get eot, ttf, svg, woff and woff2 files + CSS snippets",
       "url": "https://github.com/majodev/google-webfonts-helper",
       "stargazerCount": 12939,
-      "forkCount": 445,
+      "forkCount": 444,
       "pushedAt": "2026-02-27T14:45:40Z",
       "owner": {
         "login": "majodev",
@@ -10500,7 +10517,7 @@
       "name": "better-scroll",
       "description": ":scroll: inspired by iscroll, and it supports more features and has a better scroll perfermance",
       "url": "https://github.com/ustbhuangyi/better-scroll",
-      "stargazerCount": 16508,
+      "stargazerCount": 16507,
       "forkCount": 2591,
       "pushedAt": "2024-06-14T02:59:46Z",
       "owner": {
@@ -10524,7 +10541,7 @@
       "name": "iscroll",
       "description": "Smooth scrolling for the web",
       "url": "https://github.com/cubiq/iscroll",
-      "stargazerCount": 12835,
+      "stargazerCount": 12834,
       "forkCount": 3754,
       "pushedAt": "2018-12-13T19:06:24Z",
       "owner": {
@@ -10702,7 +10719,7 @@
       "name": "what-input",
       "description": "A global utility for tracking the current input method (mouse/pointer, keyboard or touch).",
       "url": "https://github.com/ten1seven/what-input",
-      "stargazerCount": 1383,
+      "stargazerCount": 1382,
       "forkCount": 78,
       "pushedAt": "2025-02-17T22:16:57Z",
       "owner": {
@@ -10793,8 +10810,8 @@
       "name": "svg.js",
       "description": "The lightweight library for manipulating and animating SVG",
       "url": "https://github.com/svgdotjs/svg.js",
-      "stargazerCount": 11751,
-      "forkCount": 1080,
+      "stargazerCount": 11753,
+      "forkCount": 1081,
       "pushedAt": "2025-09-15T16:21:02Z",
       "owner": {
         "login": "svgdotjs",
@@ -10815,7 +10832,7 @@
       "name": "inter",
       "description": "The Inter font family",
       "url": "https://github.com/rsms/inter",
-      "stargazerCount": 19359,
+      "stargazerCount": 19356,
       "forkCount": 457,
       "pushedAt": "2024-11-19T03:16:13Z",
       "owner": {
@@ -10836,7 +10853,7 @@
       "name": "ui",
       "description": "Open-source components, blocks, and AI agents designed to speed up your workflow. Import them seamlessly into your favorite tools through Registry and MCPs.",
       "url": "https://github.com/creativetimofficial/ui",
-      "stargazerCount": 11783,
+      "stargazerCount": 11784,
       "forkCount": 4848,
       "pushedAt": "2026-03-14T20:41:18Z",
       "owner": {
@@ -10931,7 +10948,7 @@
       "name": "modern-normalize",
       "description": "🐒 Normalize browsers' default style",
       "url": "https://github.com/sindresorhus/modern-normalize",
-      "stargazerCount": 7283,
+      "stargazerCount": 7284,
       "forkCount": 393,
       "pushedAt": "2025-01-11T10:10:45Z",
       "owner": {
@@ -11018,7 +11035,7 @@
       "name": "uikit",
       "description": "A lightweight and modular front-end framework for developing fast and powerful web interfaces",
       "url": "https://github.com/uikit/uikit",
-      "stargazerCount": 18538,
+      "stargazerCount": 18537,
       "forkCount": 2302,
       "pushedAt": "2026-03-27T13:51:38Z",
       "owner": {
@@ -11078,8 +11095,8 @@
       "name": "Hover",
       "description": "A collection of CSS3 powered hover effects to be applied to links, buttons, logos, SVG, featured images and so on. Easily apply to your own elements, modify or just use for inspiration. Available in CSS, Sass, and LESS.",
       "url": "https://github.com/IanLunn/Hover",
-      "stargazerCount": 29405,
-      "forkCount": 5678,
+      "stargazerCount": 29404,
+      "forkCount": 5680,
       "pushedAt": "2023-10-28T16:07:33Z",
       "owner": {
         "login": "IanLunn",
@@ -11139,9 +11156,9 @@
       "name": "ohmyzsh",
       "description": "🙃   A delightful community-driven (with 2,400+ contributors) framework for managing your zsh configuration. Includes 300+ optional plugins (rails, git, macOS, hub, docker, homebrew, node, php, python, etc), 140+ themes to spice up your morning, and an auto-update tool that makes it easy to keep up with the latest updates from the community.",
       "url": "https://github.com/ohmyzsh/ohmyzsh",
-      "stargazerCount": 185701,
-      "forkCount": 26314,
-      "pushedAt": "2026-03-26T19:09:57Z",
+      "stargazerCount": 185742,
+      "forkCount": 26313,
+      "pushedAt": "2026-03-29T12:52:20Z",
       "owner": {
         "login": "ohmyzsh",
         "avatarUrl": "https://avatars.githubusercontent.com/u/22552083?v=4"
@@ -11167,8 +11184,8 @@
       "name": "dotfiles",
       "description": ":wrench: .files, including ~/.macos — sensible hacker defaults for macOS",
       "url": "https://github.com/mathiasbynens/dotfiles",
-      "stargazerCount": 31284,
-      "forkCount": 8573,
+      "stargazerCount": 31286,
+      "forkCount": 8574,
       "pushedAt": "2024-08-05T19:06:13Z",
       "owner": {
         "login": "mathiasbynens",
@@ -11188,7 +11205,7 @@
       "name": "dotfiles",
       "description": "paul's fish, bash, git, etc config files. good stuff. ",
       "url": "https://github.com/paulirish/dotfiles",
-      "stargazerCount": 4320,
+      "stargazerCount": 4321,
       "forkCount": 1280,
       "pushedAt": "2026-03-19T18:48:46Z",
       "owner": {
@@ -11210,9 +11227,9 @@
       "name": "prettier",
       "description": "Prettier is an opinionated code formatter.",
       "url": "https://github.com/prettier/prettier",
-      "stargazerCount": 51736,
-      "forkCount": 4690,
-      "pushedAt": "2026-03-28T00:53:37Z",
+      "stargazerCount": 51735,
+      "forkCount": 4692,
+      "pushedAt": "2026-03-30T01:13:59Z",
       "owner": {
         "login": "prettier",
         "avatarUrl": "https://avatars.githubusercontent.com/u/25822731?v=4"
@@ -11290,7 +11307,7 @@
       "name": "react-select",
       "description": "The Select Component for React.js",
       "url": "https://github.com/JedWatson/react-select",
-      "stargazerCount": 28056,
+      "stargazerCount": 28055,
       "forkCount": 4140,
       "pushedAt": "2025-07-11T12:49:28Z",
       "owner": {
@@ -11325,7 +11342,7 @@
       "description": "A set of React components implementing Google's Material Design specification with the power of CSS Modules",
       "url": "https://github.com/react-toolbox/react-toolbox",
       "stargazerCount": 8632,
-      "forkCount": 985,
+      "forkCount": 984,
       "pushedAt": "2021-12-28T08:27:27Z",
       "owner": {
         "login": "react-toolbox",
@@ -11346,7 +11363,7 @@
       "name": "project-guidelines",
       "description": "A set of best practices for JavaScript projects",
       "url": "https://github.com/elsewhencode/project-guidelines",
-      "stargazerCount": 29508,
+      "stargazerCount": 29507,
       "forkCount": 3175,
       "pushedAt": "2024-12-09T07:59:04Z",
       "owner": {
@@ -11416,8 +11433,8 @@
       "name": "react-boilerplate",
       "description": "🔥 A highly scalable, offline-first foundation with the best developer experience and a focus on performance and best practices.",
       "url": "https://github.com/react-boilerplate/react-boilerplate",
-      "stargazerCount": 29530,
-      "forkCount": 6053,
+      "stargazerCount": 29526,
+      "forkCount": 6052,
       "pushedAt": "2023-03-23T21:35:09Z",
       "owner": {
         "login": "react-boilerplate",
@@ -11736,8 +11753,8 @@
       "name": "mas",
       "description": ":package: Mac App Store command-line interface",
       "url": "https://github.com/mas-cli/mas",
-      "stargazerCount": 12065,
-      "forkCount": 288,
+      "stargazerCount": 12067,
+      "forkCount": 289,
       "pushedAt": "2026-03-22T14:47:08Z",
       "owner": {
         "login": "mas-cli",
@@ -11789,7 +11806,7 @@
       "name": "slick",
       "description": "the last carousel you'll ever need",
       "url": "https://github.com/kenwheeler/slick",
-      "stargazerCount": 28600,
+      "stargazerCount": 28599,
       "forkCount": 5793,
       "pushedAt": "2026-03-11T20:15:21Z",
       "owner": {
@@ -11841,7 +11858,7 @@
       "name": "react-burger-menu",
       "description": ":hamburger: An off-canvas sidebar component with a collection of effects and styles using CSS transitions and SVG path animations",
       "url": "https://github.com/negomi/react-burger-menu",
-      "stargazerCount": 5096,
+      "stargazerCount": 5097,
       "forkCount": 578,
       "pushedAt": "2025-11-14T14:38:45Z",
       "owner": {
@@ -11865,8 +11882,8 @@
       "name": "devdocs",
       "description": "API Documentation Browser",
       "url": "https://github.com/freeCodeCamp/devdocs",
-      "stargazerCount": 38646,
-      "forkCount": 2579,
+      "stargazerCount": 38645,
+      "forkCount": 2581,
       "pushedAt": "2026-03-28T12:30:28Z",
       "owner": {
         "login": "freeCodeCamp",
@@ -11909,8 +11926,8 @@
       "name": "Front-End-Checklist",
       "description": "🗂 The perfect Front-End Checklist for modern websites and meticulous developers",
       "url": "https://github.com/thedaviddias/Front-End-Checklist",
-      "stargazerCount": 72415,
-      "forkCount": 6630,
+      "stargazerCount": 72414,
+      "forkCount": 6632,
       "pushedAt": "2026-03-16T22:54:03Z",
       "owner": {
         "login": "thedaviddias",
@@ -11957,7 +11974,7 @@
       "description": "Clipboard extension app for macOS.",
       "url": "https://github.com/Clipy/Clipy",
       "stargazerCount": 8434,
-      "forkCount": 742,
+      "forkCount": 745,
       "pushedAt": "2024-06-29T14:02:13Z",
       "owner": {
         "login": "Clipy",
@@ -11980,7 +11997,7 @@
       "name": "styleguide-generators",
       "description": "An overview of automatic living styleguide generators",
       "url": "https://github.com/davidhund/styleguide-generators",
-      "stargazerCount": 1897,
+      "stargazerCount": 1896,
       "forkCount": 118,
       "pushedAt": "2019-05-31T17:00:33Z",
       "owner": {
@@ -12044,7 +12061,7 @@
       "name": "downshift",
       "description": "🏎 A set of primitives to build simple, flexible, WAI-ARIA compliant React autocomplete, combobox or select dropdown components.",
       "url": "https://github.com/downshift-js/downshift",
-      "stargazerCount": 12299,
+      "stargazerCount": 12297,
       "forkCount": 939,
       "pushedAt": "2026-03-17T07:13:32Z",
       "owner": {
@@ -12095,7 +12112,7 @@
       "name": "react-virtualized",
       "description": "React components for efficiently rendering large lists and tabular data",
       "url": "https://github.com/bvaughn/react-virtualized",
-      "stargazerCount": 27078,
+      "stargazerCount": 27075,
       "forkCount": 3039,
       "pushedAt": "2025-01-20T21:42:24Z",
       "owner": {
@@ -12122,9 +12139,9 @@
       "name": "material-ui",
       "description": "Material UI: Comprehensive React component library that implements Google's Material Design. Free forever.",
       "url": "https://github.com/mui/material-ui",
-      "stargazerCount": 98023,
-      "forkCount": 32694,
-      "pushedAt": "2026-03-29T05:03:15Z",
+      "stargazerCount": 98018,
+      "forkCount": 32696,
+      "pushedAt": "2026-03-29T16:04:53Z",
       "owner": {
         "login": "mui",
         "avatarUrl": "https://avatars.githubusercontent.com/u/33663932?v=4"
@@ -12223,7 +12240,7 @@
       "name": "victory",
       "description": "A collection of composable React components for building interactive data visualizations",
       "url": "https://github.com/FormidableLabs/victory",
-      "stargazerCount": 11271,
+      "stargazerCount": 11270,
       "forkCount": 533,
       "pushedAt": "2025-12-19T23:11:18Z",
       "owner": {
@@ -12245,7 +12262,7 @@
       "name": "react-router-transition",
       "description": "painless transitions built for react-router, powered by react-motion",
       "url": "https://github.com/maisano/react-router-transition",
-      "stargazerCount": 2586,
+      "stargazerCount": 2585,
       "forkCount": 134,
       "pushedAt": "2021-04-30T10:05:43Z",
       "owner": {
@@ -12262,7 +12279,7 @@
       "name": "react-transition-group",
       "description": "An easy way to perform animations when a React component enters or leaves the DOM",
       "url": "https://github.com/reactjs/react-transition-group",
-      "stargazerCount": 10252,
+      "stargazerCount": 10250,
       "forkCount": 646,
       "pushedAt": "2026-03-05T03:43:36Z",
       "owner": {
@@ -12352,7 +12369,7 @@
       "name": "particles.js",
       "description": "A lightweight JavaScript library for creating particles",
       "url": "https://github.com/VincentGarreau/particles.js",
-      "stargazerCount": 30377,
+      "stargazerCount": 30374,
       "forkCount": 4838,
       "pushedAt": "2024-03-28T03:21:07Z",
       "owner": {
@@ -12369,7 +12386,7 @@
       "name": "moving-letters",
       "description": "Text animated with anime.js",
       "url": "https://github.com/tobiasahlin/moving-letters",
-      "stargazerCount": 573,
+      "stargazerCount": 574,
       "forkCount": 65,
       "pushedAt": "2020-10-01T05:12:25Z",
       "owner": {
@@ -12465,8 +12482,8 @@
       "name": "front-end-guide",
       "description": "📚 Study guide and introduction to the modern front end stack.",
       "url": "https://github.com/grab/front-end-guide",
-      "stargazerCount": 15260,
-      "forkCount": 1106,
+      "stargazerCount": 15259,
+      "forkCount": 1107,
       "pushedAt": "2023-06-12T05:35:55Z",
       "owner": {
         "login": "grab",
@@ -12549,7 +12566,7 @@
       "name": "skrollr",
       "description": "Stand-alone parallax scrolling library for mobile (Android + iOS) and desktop. No jQuery. Just plain JavaScript (and some love).",
       "url": "https://github.com/Prinzhorn/skrollr",
-      "stargazerCount": 18442,
+      "stargazerCount": 18440,
       "forkCount": 3432,
       "pushedAt": "2018-01-23T20:05:59Z",
       "owner": {
@@ -12583,7 +12600,7 @@
       "name": "fullPage.js",
       "description": "fullPage plugin by Alvaro Trigo. Create full screen pages fast and simple",
       "url": "https://github.com/alvarotrigo/fullPage.js",
-      "stargazerCount": 35479,
+      "stargazerCount": 35477,
       "forkCount": 7160,
       "pushedAt": "2026-03-17T16:13:31Z",
       "owner": {
@@ -12611,8 +12628,8 @@
       "name": "GSAP",
       "description": "GSAP (GreenSock Animation Platform), a JavaScript animation library for the modern web",
       "url": "https://github.com/greensock/GSAP",
-      "stargazerCount": 24146,
-      "forkCount": 1941,
+      "stargazerCount": 24150,
+      "forkCount": 1940,
       "pushedAt": "2025-12-12T21:03:38Z",
       "owner": {
         "login": "greensock",
@@ -12634,9 +12651,9 @@
       "name": "pixijs",
       "description": "The HTML5 Creation Engine: Create beautiful digital content with the fastest, most flexible 2D WebGL renderer.",
       "url": "https://github.com/pixijs/pixijs",
-      "stargazerCount": 46825,
-      "forkCount": 4989,
-      "pushedAt": "2026-03-28T07:54:35Z",
+      "stargazerCount": 46827,
+      "forkCount": 4988,
+      "pushedAt": "2026-03-29T17:10:33Z",
       "owner": {
         "login": "pixijs",
         "avatarUrl": "https://avatars.githubusercontent.com/u/5406849?v=4"
@@ -12662,8 +12679,8 @@
       "name": "floating-ui",
       "description": "A JavaScript library to position floating elements and create interactions for them.",
       "url": "https://github.com/floating-ui/floating-ui",
-      "stargazerCount": 32514,
-      "forkCount": 1675,
+      "stargazerCount": 32515,
+      "forkCount": 1676,
       "pushedAt": "2026-03-03T03:02:11Z",
       "owner": {
         "login": "floating-ui",
@@ -12781,8 +12798,8 @@
       "name": "awesome-javascript",
       "description": "🐢 A collection of awesome browser-side  JavaScript libraries, resources and shiny things.",
       "url": "https://github.com/sorrycc/awesome-javascript",
-      "stargazerCount": 34938,
-      "forkCount": 4528,
+      "stargazerCount": 34936,
+      "forkCount": 4527,
       "pushedAt": "2026-03-16T02:09:30Z",
       "owner": {
         "login": "sorrycc",
@@ -12812,7 +12829,7 @@
       "name": "Snap.svg",
       "description": "The JavaScript library for modern SVG graphics.",
       "url": "https://github.com/adobe-webplatform/Snap.svg",
-      "stargazerCount": 14017,
+      "stargazerCount": 14016,
       "forkCount": 1127,
       "pushedAt": "2022-03-13T07:11:15Z",
       "owner": {
@@ -12893,9 +12910,9 @@
       "name": "styled-components",
       "description": "Fast, expressive styling for React. Server components, client components, streaming SSR, React Native—one API.",
       "url": "https://github.com/styled-components/styled-components",
-      "stargazerCount": 41027,
-      "forkCount": 2527,
-      "pushedAt": "2026-03-29T03:44:12Z",
+      "stargazerCount": 41024,
+      "forkCount": 2528,
+      "pushedAt": "2026-03-29T20:40:50Z",
       "owner": {
         "login": "styled-components",
         "avatarUrl": "https://avatars.githubusercontent.com/u/20658825?v=4"
@@ -12934,8 +12951,8 @@
       "name": "react-router",
       "description": "Declarative routing for React",
       "url": "https://github.com/remix-run/react-router",
-      "stargazerCount": 56335,
-      "forkCount": 10838,
+      "stargazerCount": 56334,
+      "forkCount": 10835,
       "pushedAt": "2026-03-26T15:10:25Z",
       "owner": {
         "login": "remix-run",
@@ -12968,8 +12985,8 @@
       "name": "hyper",
       "description": "A terminal built on web technologies",
       "url": "https://github.com/vercel/hyper",
-      "stargazerCount": 44715,
-      "forkCount": 3550,
+      "stargazerCount": 44708,
+      "forkCount": 3551,
       "pushedAt": "2024-08-14T03:32:57Z",
       "owner": {
         "login": "vercel",
@@ -13016,8 +13033,8 @@
       "name": "website",
       "description": "Syntax Podcast Website",
       "url": "https://github.com/syntaxfm/website",
-      "stargazerCount": 1193,
-      "forkCount": 516,
+      "stargazerCount": 1194,
+      "forkCount": 515,
       "pushedAt": "2026-03-26T17:46:35Z",
       "owner": {
         "login": "syntaxfm",
@@ -13061,7 +13078,7 @@
       "name": "javascript",
       "description": "JavaScript Style Guide",
       "url": "https://github.com/airbnb/javascript",
-      "stargazerCount": 148130,
+      "stargazerCount": 148117,
       "forkCount": 26750,
       "pushedAt": "2026-02-24T14:05:16Z",
       "owner": {
@@ -13130,9 +13147,9 @@
       "name": "twofactorauth",
       "description": "List of sites with two factor auth support which includes SMS, email, phone calls, hardware, and software.",
       "url": "https://github.com/2factorauth/twofactorauth",
-      "stargazerCount": 3446,
-      "forkCount": 1782,
-      "pushedAt": "2026-03-21T19:59:25Z",
+      "stargazerCount": 3447,
+      "forkCount": 1781,
+      "pushedAt": "2026-03-29T21:54:32Z",
       "owner": {
         "login": "2factorauth",
         "avatarUrl": "https://avatars.githubusercontent.com/u/14816858?v=4"
@@ -13175,8 +13192,8 @@
       "name": "grav",
       "description": "Modern, Crazy Fast, Ridiculously Easy and Amazingly Powerful Flat-File CMS powered by PHP, Markdown, Twig, and Symfony",
       "url": "https://github.com/getgrav/grav",
-      "stargazerCount": 15431,
-      "forkCount": 1419,
+      "stargazerCount": 15430,
+      "forkCount": 1418,
       "pushedAt": "2026-03-17T21:19:18Z",
       "owner": {
         "login": "getgrav",
@@ -13204,8 +13221,8 @@
       "description": "React-based framework with performance, scalability, and security built in.",
       "url": "https://github.com/gatsbyjs/gatsby",
       "stargazerCount": 55955,
-      "forkCount": 10215,
-      "pushedAt": "2026-03-28T01:40:48Z",
+      "forkCount": 10212,
+      "pushedAt": "2026-03-29T12:47:50Z",
       "owner": {
         "login": "gatsbyjs",
         "avatarUrl": "https://avatars.githubusercontent.com/u/12551863?v=4"
@@ -13245,8 +13262,8 @@
       "name": "css-protips",
       "description": "⚡️ A collection of tips to help take your CSS skills pro 🦾",
       "url": "https://github.com/AllThingsSmitty/css-protips",
-      "stargazerCount": 29960,
-      "forkCount": 2204,
+      "stargazerCount": 29965,
+      "forkCount": 2205,
       "pushedAt": "2025-03-20T14:10:02Z",
       "owner": {
         "login": "AllThingsSmitty",
@@ -13293,9 +13310,9 @@
       "name": "next.js",
       "description": "The React Framework",
       "url": "https://github.com/vercel/next.js",
-      "stargazerCount": 138512,
-      "forkCount": 30724,
-      "pushedAt": "2026-03-29T05:07:08Z",
+      "stargazerCount": 138524,
+      "forkCount": 30723,
+      "pushedAt": "2026-03-30T04:20:16Z",
       "owner": {
         "login": "vercel",
         "avatarUrl": "https://avatars.githubusercontent.com/u/14985020?v=4"
@@ -13339,7 +13356,7 @@
       "description": "JavaScript animation engine",
       "url": "https://github.com/juliangarnier/anime",
       "stargazerCount": 66955,
-      "forkCount": 4482,
+      "forkCount": 4484,
       "pushedAt": "2026-02-13T17:19:34Z",
       "owner": {
         "login": "juliangarnier",
@@ -13363,8 +13380,8 @@
       "name": "react",
       "description": "The library for web and native user interfaces.",
       "url": "https://github.com/facebook/react",
-      "stargazerCount": 244240,
-      "forkCount": 50874,
+      "stargazerCount": 244267,
+      "forkCount": 50870,
       "pushedAt": "2026-03-29T01:18:21Z",
       "owner": {
         "login": "facebook",
@@ -13387,7 +13404,7 @@
       "name": "uswds",
       "description": "The U.S. Web Design System helps the federal government build fast, accessible, mobile-friendly websites.",
       "url": "https://github.com/uswds/uswds",
-      "stargazerCount": 7083,
+      "stargazerCount": 7082,
       "forkCount": 1061,
       "pushedAt": "2026-03-27T21:06:55Z",
       "owner": {
@@ -13410,7 +13427,7 @@
       "description": "A mighty CSS linter that helps you avoid errors and enforce conventions.",
       "url": "https://github.com/stylelint/stylelint",
       "stargazerCount": 11442,
-      "forkCount": 996,
+      "forkCount": 997,
       "pushedAt": "2026-03-27T14:22:00Z",
       "owner": {
         "login": "stylelint",
@@ -13478,7 +13495,7 @@
       "name": "browserslist",
       "description": "🦔 Share target browsers between different front-end tools, like Autoprefixer, Stylelint and babel-preset-env",
       "url": "https://github.com/browserslist/browserslist",
-      "stargazerCount": 13514,
+      "stargazerCount": 13515,
       "forkCount": 763,
       "pushedAt": "2026-03-21T10:32:27Z",
       "owner": {
@@ -13495,7 +13512,7 @@
       "name": "scrollreveal",
       "description": "Animate elements as they scroll into view.",
       "url": "https://github.com/jlmakes/scrollreveal",
-      "stargazerCount": 22524,
+      "stargazerCount": 22523,
       "forkCount": 2222,
       "pushedAt": "2024-04-05T17:55:48Z",
       "owner": {
@@ -13538,9 +13555,9 @@
       "name": "mastodon",
       "description": "Your self-hosted, globally interconnected microblogging community",
       "url": "https://github.com/mastodon/mastodon",
-      "stargazerCount": 49784,
-      "forkCount": 7419,
-      "pushedAt": "2026-03-29T05:03:24Z",
+      "stargazerCount": 49786,
+      "forkCount": 7418,
+      "pushedAt": "2026-03-30T05:12:03Z",
       "owner": {
         "login": "mastodon",
         "avatarUrl": "https://avatars.githubusercontent.com/u/24979032?v=4"
@@ -13632,8 +13649,8 @@
       "name": "postcss",
       "description": "Transforming styles with JS plugins",
       "url": "https://github.com/postcss/postcss",
-      "stargazerCount": 28977,
-      "forkCount": 1590,
+      "stargazerCount": 28976,
+      "forkCount": 1589,
       "pushedAt": "2026-03-02T22:19:28Z",
       "owner": {
         "login": "postcss",
@@ -13880,7 +13897,7 @@
       "name": "channels",
       "description": "📺 A collection of useful YouTube channels for javascript developers and web designers",
       "url": "https://github.com/andrew--r/channels",
-      "stargazerCount": 4453,
+      "stargazerCount": 4454,
       "forkCount": 426,
       "pushedAt": "2021-10-01T07:50:42Z",
       "owner": {
@@ -13902,9 +13919,9 @@
       "name": "lossless-cut",
       "description": "The swiss army knife of lossless video/audio editing",
       "url": "https://github.com/mifi/lossless-cut",
-      "stargazerCount": 39398,
+      "stargazerCount": 39431,
       "forkCount": 1915,
-      "pushedAt": "2026-03-26T03:20:29Z",
+      "pushedAt": "2026-03-29T15:51:52Z",
       "owner": {
         "login": "mifi",
         "avatarUrl": "https://avatars.githubusercontent.com/u/402547?u=8f7d479bde7f334cc92dfb13295978093a816602&v=4"
@@ -13968,9 +13985,9 @@
       "name": "lighthouse",
       "description": "Automated auditing, performance metrics, and best practices for the web.",
       "url": "https://github.com/GoogleChrome/lighthouse",
-      "stargazerCount": 29976,
-      "forkCount": 9697,
-      "pushedAt": "2026-03-27T04:31:15Z",
+      "stargazerCount": 29979,
+      "forkCount": 9696,
+      "pushedAt": "2026-03-29T12:07:24Z",
       "owner": {
         "login": "GoogleChrome",
         "avatarUrl": "https://avatars.githubusercontent.com/u/1778935?v=4"
@@ -13994,7 +14011,7 @@
       "name": "droptogif",
       "description": "Zero-click animated Gifs",
       "url": "https://github.com/mortenjust/droptogif",
-      "stargazerCount": 2710,
+      "stargazerCount": 2706,
       "forkCount": 137,
       "pushedAt": "2015-12-30T06:42:43Z",
       "owner": {
@@ -14085,8 +14102,8 @@
       "name": "You-Dont-Know-JS",
       "description": "A book series (2 published editions) on the JS language.",
       "url": "https://github.com/getify/You-Dont-Know-JS",
-      "stargazerCount": 184545,
-      "forkCount": 33608,
+      "stargazerCount": 184544,
+      "forkCount": 33609,
       "pushedAt": "2026-02-15T04:36:44Z",
       "owner": {
         "login": "getify",
@@ -14111,7 +14128,7 @@
       "description": "JavaScript image gallery for mobile and desktop, modular, framework independent",
       "url": "https://github.com/dimsemenov/PhotoSwipe",
       "stargazerCount": 25121,
-      "forkCount": 3286,
+      "forkCount": 3287,
       "pushedAt": "2025-12-04T07:31:46Z",
       "owner": {
         "login": "dimsemenov",
@@ -14132,8 +14149,8 @@
       "name": "jQuery-File-Upload",
       "description": "File Upload widget with multiple file selection, drag&drop support, progress bar, validation and preview images, audio and video for jQuery. Supports cross-domain, chunked and resumable file uploads. Works with any server-side platform (Google App Engine, PHP, Python, Ruby on Rails, Java, etc.) that supports standard HTML form file uploads.",
       "url": "https://github.com/blueimp/jQuery-File-Upload",
-      "stargazerCount": 30796,
-      "forkCount": 7805,
+      "stargazerCount": 30795,
+      "forkCount": 7804,
       "pushedAt": "2023-05-25T09:11:07Z",
       "owner": {
         "login": "blueimp",
@@ -14149,8 +14166,8 @@
       "name": "awesome-raspberry-pi",
       "description": "📝 A curated list of awesome Raspberry Pi tools, projects, images and resources",
       "url": "https://github.com/thibmaek/awesome-raspberry-pi",
-      "stargazerCount": 16117,
-      "forkCount": 1096,
+      "stargazerCount": 16115,
+      "forkCount": 1097,
       "pushedAt": "2026-03-22T16:34:25Z",
       "owner": {
         "login": "thibmaek",
@@ -14229,7 +14246,7 @@
       "name": "moment",
       "description": "Parse, validate, manipulate, and display dates in javascript.",
       "url": "https://github.com/moment/moment",
-      "stargazerCount": 48028,
+      "stargazerCount": 48025,
       "forkCount": 7015,
       "pushedAt": "2024-08-14T17:12:19Z",
       "owner": {
@@ -14246,7 +14263,7 @@
       "name": "metalsmith",
       "description": "An extremely simple, pluggable static site generator for Node.js",
       "url": "https://github.com/metalsmith/metalsmith",
-      "stargazerCount": 7829,
+      "stargazerCount": 7828,
       "forkCount": 614,
       "pushedAt": "2026-02-09T20:40:55Z",
       "owner": {
@@ -14367,7 +14384,7 @@
       "name": "isotope",
       "description": ":revolving_hearts: Filter & sort magical layouts",
       "url": "https://github.com/metafizzy/isotope",
-      "stargazerCount": 11100,
+      "stargazerCount": 11101,
       "forkCount": 1385,
       "pushedAt": "2021-09-24T03:20:14Z",
       "owner": {
@@ -14490,7 +14507,7 @@
       "description": "Utility libraries for Google Maps JavaScript API v3",
       "url": "https://github.com/googlemaps/v3-utility-library",
       "stargazerCount": 1108,
-      "forkCount": 1265,
+      "forkCount": 1264,
       "pushedAt": "2021-06-21T18:37:20Z",
       "owner": {
         "login": "googlemaps",
@@ -14509,7 +14526,7 @@
       "name": "youtube-dl",
       "description": "Command-line program to download videos from YouTube.com and other video sites",
       "url": "https://github.com/ytdl-org/youtube-dl",
-      "stargazerCount": 139958,
+      "stargazerCount": 139955,
       "forkCount": 10608,
       "pushedAt": "2026-02-19T16:45:25Z",
       "owner": {
@@ -14526,7 +14543,7 @@
       "name": "HEAD",
       "description": "A simple guide to HTML <head> elements",
       "url": "https://github.com/joshbuchea/HEAD",
-      "stargazerCount": 30254,
+      "stargazerCount": 30253,
       "forkCount": 1939,
       "pushedAt": "2026-03-17T07:27:16Z",
       "owner": {
@@ -14618,9 +14635,9 @@
       "name": "a11y-dialog",
       "description": "A very lightweight and flexible accessible modal dialog script.",
       "url": "https://github.com/KittyGiraudel/a11y-dialog",
-      "stargazerCount": 2480,
+      "stargazerCount": 2479,
       "forkCount": 130,
-      "pushedAt": "2026-03-28T19:43:23Z",
+      "pushedAt": "2026-03-30T04:42:30Z",
       "owner": {
         "login": "KittyGiraudel",
         "avatarUrl": "https://avatars.githubusercontent.com/u/1889710?u=34d8dbbbdbb05f6748dbf1a33e826fe46212e7b2&v=4"
@@ -14640,7 +14657,7 @@
       "name": "reveal.js",
       "description": "The HTML Presentation Framework",
       "url": "https://github.com/hakimel/reveal.js",
-      "stargazerCount": 70876,
+      "stargazerCount": 70879,
       "forkCount": 16812,
       "pushedAt": "2026-03-24T15:07:08Z",
       "owner": {
@@ -14662,7 +14679,7 @@
       "description": "A meaningful web typography starter kit.",
       "url": "https://github.com/matejlatin/Gutenberg",
       "stargazerCount": 2848,
-      "forkCount": 153,
+      "forkCount": 154,
       "pushedAt": "2022-11-30T15:05:05Z",
       "owner": {
         "login": "matejlatin",
@@ -14699,8 +14716,8 @@
       "name": "dropzone",
       "description": "Dropzone is an easy to use drag'n'drop library. It supports image previews and shows nice progress bars.",
       "url": "https://github.com/dropzone/dropzone",
-      "stargazerCount": 18392,
-      "forkCount": 3264,
+      "stargazerCount": 18390,
+      "forkCount": 3262,
       "pushedAt": "2024-07-15T15:20:29Z",
       "owner": {
         "login": "dropzone",
@@ -14927,7 +14944,7 @@
       "description": "A boilerplate for Sass projects using the 7-1 architecture pattern from Sass Guidelines.",
       "url": "https://github.com/KittyGiraudel/sass-boilerplate",
       "stargazerCount": 3374,
-      "forkCount": 768,
+      "forkCount": 767,
       "pushedAt": "2024-07-28T07:36:30Z",
       "owner": {
         "login": "KittyGiraudel",
@@ -15046,8 +15063,8 @@
       "name": "awesome-macos-command-line",
       "description": "Use your macOS terminal shell to do awesome things.",
       "url": "https://github.com/herrbischoff/awesome-macos-command-line",
-      "stargazerCount": 30405,
-      "forkCount": 1435,
+      "stargazerCount": 30409,
+      "forkCount": 1436,
       "pushedAt": "2026-03-04T11:01:49Z",
       "owner": {
         "login": "herrbischoff",
@@ -15068,8 +15085,8 @@
       "name": "the-art-of-command-line",
       "description": "Master the command line, in one page",
       "url": "https://github.com/jlevy/the-art-of-command-line",
-      "stargazerCount": 160471,
-      "forkCount": 14790,
+      "stargazerCount": 160486,
+      "forkCount": 14791,
       "pushedAt": "2024-06-25T18:13:44Z",
       "owner": {
         "login": "jlevy",
@@ -15144,7 +15161,7 @@
       "description": "Easy visualizer for JavaScript KeyCodes",
       "url": "https://github.com/toptal/keycodes",
       "stargazerCount": 2165,
-      "forkCount": 360,
+      "forkCount": 359,
       "pushedAt": "2025-09-08T13:02:15Z",
       "owner": {
         "login": "toptal",
@@ -15194,7 +15211,7 @@
       "name": "decap-cms",
       "description": "A Git-based CMS for Static Site Generators",
       "url": "https://github.com/decaporg/decap-cms",
-      "stargazerCount": 18998,
+      "stargazerCount": 18996,
       "forkCount": 3105,
       "pushedAt": "2026-03-29T00:45:00Z",
       "owner": {
@@ -15262,8 +15279,8 @@
       "name": "npm-check-updates",
       "description": "Find newer versions of package dependencies than what your package.json allows",
       "url": "https://github.com/raineorshine/npm-check-updates",
-      "stargazerCount": 10187,
-      "forkCount": 356,
+      "stargazerCount": 10188,
+      "forkCount": 357,
       "pushedAt": "2026-03-27T20:38:47Z",
       "owner": {
         "login": "raineorshine",
@@ -15370,7 +15387,7 @@
       "name": "smartcrop.js",
       "description": "Content aware image cropping",
       "url": "https://github.com/jwagner/smartcrop.js",
-      "stargazerCount": 12971,
+      "stargazerCount": 12970,
       "forkCount": 571,
       "pushedAt": "2024-03-16T23:45:27Z",
       "owner": {
@@ -15392,7 +15409,7 @@
       "name": "flexbugs",
       "description": "A community-curated list of flexbox issues and cross-browser workarounds for them.",
       "url": "https://github.com/philipwalton/flexbugs",
-      "stargazerCount": 13580,
+      "stargazerCount": 13579,
       "forkCount": 490,
       "pushedAt": "2024-01-19T22:00:42Z",
       "owner": {
@@ -15498,7 +15515,7 @@
       "description": "A minimal, type-focused Jekyll theme.",
       "url": "https://github.com/brianmaierjr/long-haul",
       "stargazerCount": 704,
-      "forkCount": 795,
+      "forkCount": 796,
       "pushedAt": "2024-08-10T16:42:38Z",
       "owner": {
         "login": "brianmaierjr",
@@ -15667,8 +15684,8 @@
       "name": "hugo",
       "description": "The world’s fastest framework for building websites.",
       "url": "https://github.com/gohugoio/hugo",
-      "stargazerCount": 87324,
-      "forkCount": 8226,
+      "stargazerCount": 87341,
+      "forkCount": 8231,
       "pushedAt": "2026-03-28T20:32:28Z",
       "owner": {
         "login": "gohugoio",
@@ -15709,7 +15726,7 @@
       "name": "foundation-emails",
       "description": "Quickly create responsive HTML emails that work on any device and client. Even Outlook.",
       "url": "https://github.com/foundation/foundation-emails",
-      "stargazerCount": 7792,
+      "stargazerCount": 7793,
       "forkCount": 1077,
       "pushedAt": "2026-03-13T16:40:54Z",
       "owner": {
@@ -15744,7 +15761,7 @@
       "description": "Control and manage Android devices from your browser.",
       "url": "https://github.com/openstf/stf",
       "stargazerCount": 13848,
-      "forkCount": 2961,
+      "forkCount": 2960,
       "pushedAt": "2023-05-31T05:47:03Z",
       "owner": {
         "login": "openstf",
@@ -15783,8 +15800,8 @@
       "name": "awesome",
       "description": "😎 Awesome lists about all kinds of interesting topics",
       "url": "https://github.com/sindresorhus/awesome",
-      "stargazerCount": 449698,
-      "forkCount": 33795,
+      "stargazerCount": 449996,
+      "forkCount": 33809,
       "pushedAt": "2026-03-09T07:59:57Z",
       "owner": {
         "login": "sindresorhus",
@@ -15886,7 +15903,7 @@
       "description": "WordPress starter theme with Laravel Blade components and templates, Tailwind CSS, and block editor support",
       "url": "https://github.com/roots/sage",
       "stargazerCount": 13196,
-      "forkCount": 3033,
+      "forkCount": 3032,
       "pushedAt": "2026-03-25T15:18:13Z",
       "owner": {
         "login": "roots",
@@ -15937,8 +15954,8 @@
       "name": "material-design-lite",
       "description": "Material Design Components in HTML/CSS/JS",
       "url": "https://github.com/google/material-design-lite",
-      "stargazerCount": 32202,
-      "forkCount": 4942,
+      "stargazerCount": 32204,
+      "forkCount": 4940,
       "pushedAt": "2025-03-11T00:13:36Z",
       "owner": {
         "login": "google",
@@ -15994,8 +16011,8 @@
       "name": "Magnific-Popup",
       "description": "Light and responsive lightbox script with focus on performance.",
       "url": "https://github.com/dimsemenov/Magnific-Popup",
-      "stargazerCount": 11353,
-      "forkCount": 3393,
+      "stargazerCount": 11352,
+      "forkCount": 3392,
       "pushedAt": "2024-06-08T08:20:34Z",
       "owner": {
         "login": "dimsemenov",
@@ -16011,7 +16028,7 @@
       "name": "logos",
       "description": "A huge collection of SVG logos",
       "url": "https://github.com/gilbarbara/logos",
-      "stargazerCount": 6692,
+      "stargazerCount": 6693,
       "forkCount": 752,
       "pushedAt": "2026-03-28T00:35:04Z",
       "owner": {
@@ -16032,7 +16049,7 @@
       "description": "A brazen two-column theme for Jekyll.",
       "url": "https://github.com/poole/hyde",
       "stargazerCount": 3868,
-      "forkCount": 4019,
+      "forkCount": 4018,
       "pushedAt": "2024-07-03T19:48:54Z",
       "owner": {
         "login": "poole",
@@ -16085,7 +16102,7 @@
       "name": "code-guide",
       "description": "Standards for developing consistent, flexible, and sustainable HTML and CSS.",
       "url": "https://github.com/mdo/code-guide",
-      "stargazerCount": 8482,
+      "stargazerCount": 8481,
       "forkCount": 1117,
       "pushedAt": "2024-07-26T02:51:35Z",
       "owner": {
@@ -16136,7 +16153,7 @@
       "name": "smooth-scroll",
       "description": "A lightweight script to animate scrolling to anchor links.",
       "url": "https://github.com/cferdinandi/smooth-scroll",
-      "stargazerCount": 5454,
+      "stargazerCount": 5453,
       "forkCount": 845,
       "pushedAt": "2020-04-27T19:47:01Z",
       "owner": {
@@ -16202,7 +16219,7 @@
       "name": "lazysizes",
       "description": "High performance and SEO friendly lazy loader for images (responsive and normal), iframes and more, that detects any visibility changes triggered through user interaction, CSS or JavaScript without configuration.",
       "url": "https://github.com/aFarkas/lazysizes",
-      "stargazerCount": 17741,
+      "stargazerCount": 17740,
       "forkCount": 1715,
       "pushedAt": "2024-04-03T08:17:04Z",
       "owner": {
@@ -16226,7 +16243,7 @@
       "name": "liquid",
       "description": "Liquid markup language. Safe, customer facing template language for flexible web apps. ",
       "url": "https://github.com/Shopify/liquid",
-      "stargazerCount": 11741,
+      "stargazerCount": 11744,
       "forkCount": 1507,
       "pushedAt": "2026-03-27T19:32:54Z",
       "owner": {
@@ -16243,7 +16260,7 @@
       "name": "mdb-ui-kit",
       "description": "Bootstrap 5 & Material Design UI KIT",
       "url": "https://github.com/mdbootstrap/mdb-ui-kit",
-      "stargazerCount": 24283,
+      "stargazerCount": 24284,
       "forkCount": 3462,
       "pushedAt": "2026-03-24T12:10:47Z",
       "owner": {
@@ -16271,7 +16288,7 @@
       "name": "pure",
       "description": "A set of small, responsive CSS modules that you can use in every web project.",
       "url": "https://github.com/pure-css/pure",
-      "stargazerCount": 23751,
+      "stargazerCount": 23750,
       "forkCount": 2428,
       "pushedAt": "2026-02-14T03:48:55Z",
       "owner": {
@@ -16309,7 +16326,7 @@
       "name": "must-watch-css",
       "description": "🔥 CSS talks you have to see ⚡️ covering CSS Grid, flexbox, custom variables, performance, frameworks, Sass, tools, and more! 🚀",
       "url": "https://github.com/AllThingsSmitty/must-watch-css",
-      "stargazerCount": 4859,
+      "stargazerCount": 4860,
       "forkCount": 241,
       "pushedAt": "2025-12-05T14:45:16Z",
       "owner": {
@@ -16438,7 +16455,7 @@
       "name": "materialize",
       "description": "Materialize, a CSS Framework based on Material Design",
       "url": "https://github.com/Dogfalo/materialize",
-      "stargazerCount": 39105,
+      "stargazerCount": 39104,
       "forkCount": 4656,
       "pushedAt": "2025-08-10T02:17:57Z",
       "owner": {
@@ -16463,7 +16480,7 @@
       "name": "webfontloader",
       "description": "Web Font Loader gives you added control when using linked fonts via @font-face.",
       "url": "https://github.com/typekit/webfontloader",
-      "stargazerCount": 9268,
+      "stargazerCount": 9267,
       "forkCount": 637,
       "pushedAt": "2024-01-04T09:27:53Z",
       "owner": {
@@ -16481,7 +16498,7 @@
       "description": "Extract & Inline Critical-path CSS in HTML pages",
       "url": "https://github.com/addyosmani/critical",
       "stargazerCount": 10178,
-      "forkCount": 380,
+      "forkCount": 379,
       "pushedAt": "2026-01-24T09:10:10Z",
       "owner": {
         "login": "addyosmani",
@@ -16520,7 +16537,7 @@
       "name": "current-device",
       "description": "📱 The easiest way to write conditional CSS and/or JavaScript based on device operating system (iOS, Android, Blackberry, Windows, Firefox OS, MeeGo), orientation (Portrait vs. Landscape), and type (Tablet vs. Mobile).",
       "url": "https://github.com/matthewhudson/current-device",
-      "stargazerCount": 3939,
+      "stargazerCount": 3938,
       "forkCount": 577,
       "pushedAt": "2026-03-24T01:50:33Z",
       "owner": {
@@ -16541,7 +16558,7 @@
       "name": "css",
       "description": "Primer is GitHub's design system. This is the CSS implementation",
       "url": "https://github.com/primer/css",
-      "stargazerCount": 12916,
+      "stargazerCount": 12915,
       "forkCount": 1283,
       "pushedAt": "2026-03-27T18:36:25Z",
       "owner": {
@@ -16626,7 +16643,7 @@
       "name": "Leaflet",
       "description": "🍃 JavaScript library for mobile-friendly interactive maps 🇺🇦",
       "url": "https://github.com/Leaflet/Leaflet",
-      "stargazerCount": 44732,
+      "stargazerCount": 44739,
       "forkCount": 6103,
       "pushedAt": "2026-03-27T17:32:05Z",
       "owner": {
@@ -16647,8 +16664,8 @@
       "name": "typeahead.js",
       "description": "typeahead.js is a fast and fully-featured autocomplete library",
       "url": "https://github.com/twitter/typeahead.js",
-      "stargazerCount": 16480,
-      "forkCount": 3141,
+      "stargazerCount": 16479,
+      "forkCount": 3140,
       "pushedAt": "2023-04-14T07:24:33Z",
       "owner": {
         "login": "twitter",
@@ -16681,9 +16698,9 @@
       "name": "ScrollMagic",
       "description": "The javascript library for magical scroll interactions.",
       "url": "https://github.com/janpaepke/ScrollMagic",
-      "stargazerCount": 14952,
+      "stargazerCount": 14950,
       "forkCount": 2135,
-      "pushedAt": "2026-03-25T22:05:09Z",
+      "pushedAt": "2026-03-30T01:23:25Z",
       "owner": {
         "login": "janpaepke",
         "avatarUrl": "https://avatars.githubusercontent.com/u/3076177?u=a82165735829dcbed425516c9adfed1b2378ff17&v=4"
@@ -16729,8 +16746,8 @@
       "name": "generator-webapp",
       "description": "A gulp.js generator for modern webapps",
       "url": "https://github.com/yeoman/generator-webapp",
-      "stargazerCount": 3752,
-      "forkCount": 699,
+      "stargazerCount": 3751,
+      "forkCount": 698,
       "pushedAt": "2024-01-30T08:49:40Z",
       "owner": {
         "login": "yeoman",
@@ -16875,7 +16892,7 @@
       "description": "A professional front-end template for building fast, robust, and adaptable web apps or sites.",
       "url": "https://github.com/h5bp/html5-boilerplate",
       "stargazerCount": 57415,
-      "forkCount": 12302,
+      "forkCount": 12303,
       "pushedAt": "2026-03-25T23:58:15Z",
       "owner": {
         "login": "h5bp",
@@ -17092,7 +17109,7 @@
       "description": "Build mobile apps with simple HTML, CSS, and JavaScript components. ",
       "url": "https://github.com/twbs/ratchet",
       "stargazerCount": 14655,
-      "forkCount": 1425,
+      "forkCount": 1426,
       "pushedAt": "2025-03-18T16:40:18Z",
       "owner": {
         "login": "twbs",
@@ -17113,7 +17130,7 @@
       "name": "bounce.js",
       "description": "Create beautiful CSS3 powered animations in no time.",
       "url": "https://github.com/tictail/bounce.js",
-      "stargazerCount": 6182,
+      "stargazerCount": 6181,
       "forkCount": 410,
       "pushedAt": "2020-09-03T08:17:21Z",
       "owner": {
@@ -17172,7 +17189,7 @@
       "name": "gulp",
       "description": "A toolkit to automate & enhance your workflow",
       "url": "https://github.com/gulpjs/gulp",
-      "stargazerCount": 32997,
+      "stargazerCount": 32996,
       "forkCount": 4176,
       "pushedAt": "2026-02-09T06:30:13Z",
       "owner": {
@@ -17334,7 +17351,7 @@
       "name": "browser-sync",
       "description": "Keep multiple browsers & devices in sync when building websites. https://browsersync.io",
       "url": "https://github.com/BrowserSync/browser-sync",
-      "stargazerCount": 12288,
+      "stargazerCount": 12290,
       "forkCount": 757,
       "pushedAt": "2025-04-02T13:55:05Z",
       "owner": {
@@ -17583,9 +17600,9 @@
       "name": "bootstrap",
       "description": "The most popular HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web.",
       "url": "https://github.com/twbs/bootstrap",
-      "stargazerCount": 174121,
-      "forkCount": 79028,
-      "pushedAt": "2026-03-29T04:41:36Z",
+      "stargazerCount": 174116,
+      "forkCount": 79024,
+      "pushedAt": "2026-03-29T21:05:57Z",
       "owner": {
         "login": "twbs",
         "avatarUrl": "https://avatars.githubusercontent.com/u/2918581?v=4"
@@ -17633,8 +17650,8 @@
       "name": "normalize.css",
       "description": "A modern alternative to CSS resets",
       "url": "https://github.com/necolas/normalize.css",
-      "stargazerCount": 53764,
-      "forkCount": 10450,
+      "stargazerCount": 53762,
+      "forkCount": 10449,
       "pushedAt": "2024-06-12T20:36:06Z",
       "owner": {
         "login": "necolas",
