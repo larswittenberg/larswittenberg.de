@@ -5015,7 +5015,7 @@ __metadata:
     globals: "npm:^17.5.0"
     gray-matter: "npm:^4.0.3"
     lucide-react: "npm:^0.577.0"
-    next: "npm:^16.2.3"
+    next: "npm:16.2.3"
     next-mdx-remote: "npm:^6.0.0"
     node-fetch: "npm:^3.3.2"
     postcss: "npm:^8.5.9"
@@ -5939,7 +5939,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:^16.2.3":
+"next@npm:16.2.3":
   version: 16.2.3
   resolution: "next@npm:16.2.3"
   dependencies:
