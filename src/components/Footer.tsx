@@ -1,10 +1,12 @@
 import Link from 'next/link';
 import cn from 'classnames';
+import packageJson from '../../package.json';
 import { formatDate } from '@/lib/utils';
 
 export default function Footer() {
 	const currentYear = new Date().getFullYear();
 	const buildDate = process.env.NEXT_PUBLIC_BUILD_DATE;
+	const nextVersion = packageJson.dependencies.next;
 
 	let linkClass = cn({
 		'border-b-1 hover:border-b-2 border-gray-500 transition-all': true,
@@ -16,7 +18,7 @@ export default function Footer() {
 				<p className="text-sm text-gray-600 dark:text-gray-400">
 					© {currentYear} Lars Wittenberg · Built with{' '}
 					<Link href="https://nextjs.org/" className={linkClass}>
-						next.js 16.2
+						next.js {nextVersion}
 					</Link>{' '}
 					· Deployed on{' '}
 					<Link href="https://vercel.com/" className={linkClass}>
