@@ -4156,6 +4156,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"highlight.js@npm:^11.11.1":
+  version: 11.11.1
+  resolution: "highlight.js@npm:11.11.1"
+  checksum: 10c0/40f53ac19dac079891fcefd5bd8a21cf2e8931fd47da5bd1dca73b7e4375c1defed0636fc39120c639b9c44119b7d110f7f0c15aa899557a5a1c8910f3c0144c
+  languageName: node
+  linkType: hard
+
 "hono@npm:^4.11.4":
   version: 4.12.18
   resolution: "hono@npm:4.12.18"
@@ -4927,6 +4934,7 @@ __metadata:
     eslint-plugin-react: "npm:^7.37.5"
     globals: "npm:^17.6.0"
     gray-matter: "npm:^4.0.3"
+    highlight.js: "npm:^11.11.1"
     lucide-react: "npm:^1.14.0"
     next: "npm:16.2.6"
     next-mdx-remote: "npm:^6.0.0"

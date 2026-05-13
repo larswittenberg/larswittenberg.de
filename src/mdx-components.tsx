@@ -1,6 +1,7 @@
 import type { MDXComponents } from 'mdx/types';
 import Image, { ImageProps } from 'next/image';
 import CustomFigure from '@/components/atoms/CustomFigure';
+import CodeBlock from '@/components/atoms/CodeBlock';
 import FlexWrapper from '@/components/atoms/FlexWrapper';
 
 // const components: MDXComponents = {}
@@ -9,6 +10,7 @@ const components = {
 	// Allows customizing built-in components, e.g. to add styling.
 	h1: ({ children }) => <h1 className="title text-2xl font-semibold tracking-tighter">{children}</h1>,
 	img: (props) => <Image sizes="100vw" style={{ width: '100%', height: 'auto' }} {...(props as ImageProps)} />,
+	pre: (props) => <CodeBlock {...props} />,
 	Image,
 	Figure: CustomFigure,
 	FlexWrapper,

@@ -7,6 +7,8 @@
 
 @config '../../tailwind.config.js';
 
+@import 'highlight.js/styles/atom-one-dark.css';
+
 @theme {
 	--color-orange: #ef7c17;
 	--color-darkblue: #1c2532;
@@ -77,6 +79,15 @@ a.link,
 
 	strong {
 		font-weight: 700;
+	}
+
+	:not(pre) > code {
+		@apply rounded-md border border-slate-300/80 bg-slate-100 px-1.5 py-0.5 text-[0.85em] font-medium text-slate-900 dark:border-slate-600 dark:bg-slate-800/80 dark:text-slate-100;
+	}
+
+	:not(pre) > code::before,
+	:not(pre) > code::after {
+		content: '';
 	}
 
 	blockquote {
