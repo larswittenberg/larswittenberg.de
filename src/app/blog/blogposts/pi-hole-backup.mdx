@@ -1,0 +1,166 @@
+---
+title: 'Pi-Hole Backup Guide'
+draft: false
+date: '2026-05-13'
+desc: 'Pi-Hole'
+---
+
+Ich habe seit einiger Zeit auf meinem alten Raspberry Pi Model 1B [Pi-Hole](https://pi-hole.net/) laufen. Um für den Fall der Fälle gewappnet zu sein (wenn z.B. die SD-Karte kaputt geht), habe ich mir ein einfaches Backup eingerichtet.
+
+Über das Webinterface von Pi-Hole kann man zwar ein Backup erstellen (Settings > Teleporter > Export), allerdings muss man sich dafür immer einloggen und das Backup manuell herunterladen.
+
+<p className="not-prose text-sm leading-tight">Disclaimer: Dieser Beitrag wurde mit KI-Unterstützung erstellt. Es könnte also sein, dass die Anleitung nicht 100% korrekt ist. Bitte prüfe die Schritte sorgfältig, bevor du sie ausführst.</p>
+
+## Was im Backup enthalten ist
+
+- Alle Blocklisten (Adlists): Deine mühsam zusammengestellten Listen.
+- Whitelist / Blacklist: Alle Ausnahmen, die du über die Zeit hinzugefügt hast.
+- Local DNS Records: Deine händisch vergebenen Domains für lokale Geräte.
+- DHCP-Einstellungen: Falls dein Pi-hole auch dein DHCP-Server ist (inkl. statischer IP-Reservierungen).
+- Client-Gruppen: Die Zuordnung, welcher Rechner welche Filter bekommt.
+- Privacy-Settings: Deine Einstellungen zum Logging.
+
+## Voraussetzungen
+
+Ich beschreibe hier nur die Schritte wie mein System beeits eingerichtet ist: Auf meinem Raspberry Pi läuft bereits ein Pi-Hole Version 6 und ich nutze macOS im weitere Prozess. Die Nutzung vom Terminal ist hier essentiell und du solltest per SSH Zugriff auf den Pi haben und entsprechend die IP-Adresse und deinen Pi-User kennen, um die Befehle auszuführen.
+
+Ersetze in den folgenden Beispielen immer "deine-pi-hole-ip" durch die tatsächliche IP-Adresse deines Raspberry Pi; Ggf. musst du auch den Standardbenutzernamen "pi" anpassen, falls du einen anderen Benutzer eingerichtet hast. Mein Raspberry Pi läuft mit dem User "raspiuser".
+
+## Zugriff per SSH-Key einrichten
+
+Falls du noch keinen SSH-Key erstellt hast, solltest du das tun, um dich sicher mit deinem Raspberry Pi ohne Passwort-Eingabe verbinden zu können. Das kannst du prüfen, indem du folgenden Befehl in deinem Terminal ausführst:
+
+```bash
+ls -l ~/.ssh/id_ed25519.pub
+```
+
+Wenn "No such file" als Ausgabe erscheint, hast du noch keinen SSH-Key. Dann kannst du einen mit folgendem Befehl einen neuen erstellen:
+
+```bash
+ssh-keygen -t ed25519 -C "Dein Mac-Name"
+```
+
+Bestätige alle Fragen einfach mit Enter – ein Passwort/Passphrase für den Key ist optional, aber für maximalen Komfort lässt du es leer.
+
+Jetzt musst du deinen öffentlichen SSH-Key auf den Raspberry Pi übertragen, damit du dich ohne Passwort anmelden kannst. Das kannst du mit folgendem Befehl tun:
+
+```bash
+ssh-copy-id raspiuser@deine-pi-hole-ip
+```
+
+Anschließend erstellen wir noch einen SSH-Config Eintrag, damit du dich in Zukunft einfach mit "ssh pihole" verbinden kannst. Öffne dazu die SSH-Config Datei mit folgendem Befehl:
+
+```bash
+nano ~/.ssh/config
+```
+
+Füge am Ende der Datei folgenden Eintrag hinzu:
+
+```text
+Host pihole
+	HostName deine-pi-hole-ip
+	User raspiuser
+	IdentityFile ~/.ssh/id_ed25519
+```
+
+## Backup-Script erstellen
+
+Verbinde dich jetzt per SSH mit deinem Raspberry Pi:
+
+```bash
+ssh pihole
+```
+
+Zuerst legen wir einen Ordner für die Backups an, damit diese nicht im Home-Verzeichnis herumliegen:
+
+```bash
+mkdir -p ~/pihole-backups
+```
+
+Öffne nun einen Texteditor, um ein neues Backup-Script zu erstellen. Ich nutze hier den nano Editor:
+
+```bash
+nano ~/pihole-backup.sh
+```
+
+Füge folgenden Inhalt in die Datei ein:
+
+```bash
+#!/bin/bash
+# Pfad zu deinem Backup-Ordner (bitte deinen Usernamen prüfen)
+BACKUP_DIR="/home/raspiuser/pihole-backups"
+
+mkdir -p "$BACKUP_DIR"
+cd "$BACKUP_DIR" || exit
+
+# Der neue Pi-hole v6 Befehl
+sudo pihole-FTL --teleporter
+
+# Falls die Datei als root erstellt wurde, dem User zurückgeben
+sudo chown raspiuser:raspiuser "$BACKUP_DIR"/*.zip
+
+# Alte Backups löschen (v6 erstellt .zip statt .tar.gz)
+find "$BACKUP_DIR" -type f -name "*.zip" -mtime +30 -delete
+```
+
+Speichere die Datei mit CTRL + O, bestätige mit Enter und verlasse den Editor mit CTRL + X.
+
+Mache das Script ausführbar:
+
+```bash
+chmod +x ~/pihole-backup.sh
+```
+
+Jetzt kannst du das Script manuell ausführen und testen, um ein Backup zu erstellen:
+
+```bash
+sudo ~/pihole-backup.sh
+```
+
+Wenn das Script erfolgreich ausgeführt wurde, solltest du im Ordner `~/pihole-backups` eine neue .zip Datei mit deinem Backup finden.
+
+## Automatisierung mit Cronjob
+
+Um das Backup regelmäßig automatisch zu erstellen, können wir einen Cronjob einrichten. Öffne dazu die Cron-Tabelle mit folgendem Befehl:
+
+```bash
+crontab -e
+```
+
+Füge am Ende der Datei folgende Zeile hinzu, um das Backup-Script jeden Sonntag um 3 Uhr morgens auszuführen:
+
+```text
+0 3 * * 0 /home/raspiuser/pihole-backup.sh > /dev/null 2>&1
+```
+
+Speichere die Datei und verlasse den Editor. Jetzt wird dein Pi-Hole automatisch jede Woche gesichert, ohne dass du dich darum kümmern musst.
+
+## Lokaler Download (optional)
+
+In diesem Schritt legen wir noch ein lokalen Alias an, damit du die Backups einfach auf deinen Mac herunterladen kannst. Trenne dazu die SSH-Verbindung zum Pi-Hole mit `exit` und öffne die Terminal-Konfiguration auf deinem Mac (bei mir ist das die Zsh-Konfiguration):
+
+```bash
+nano ~/.zshrc
+```
+
+Füge am Ende der Datei folgenden Alias hinzu:
+
+```bash
+alias get-pihole-backup='scp "pihole:pihole-backups/*.zip" ~/Downloads/'
+```
+
+Hinweis: Dafür ist notwendig, dass du den SSH-Zugriff mit dem Alias "pihole" wie oben beschrieben eingerichtet hast.
+
+Speichere die Datei mit CTRL + O, bestätige mit Enter und verlasse den Editor mit CTRL + X. Die Konfiguration wird automatisch beim nächsten Terminal-Start geladen, oder du kannst sie mit folgendem Befehl sofort anwenden:
+
+```bash
+source ~/.zshrc
+```
+
+Jetzt kannst du einfach `get-pihole-backup` in deinem Terminal eingeben, um die neuesten Backups von deinem Pi-Hole auf deinen Mac in den /Downloads-Ordner herunterzuladen.
+
+## Fazit
+
+Mit diesem Setup hast du nun ein automatisiertes Backup für deinen Pi-Hole, das regelmäßig erstellt wird und einfach auf deinen Mac heruntergeladen werden kann. So bist du für den Fall der Fälle gut vorbereitet und kannst deine Pi-Hole Konfiguration schnell wiederherstellen, falls mal etwas schiefgeht.
+
+Wichtig: Falls du deinen Pi komplett neu aufsetzt, installiere erst Pi-hole v6 und lade dann die .zip Datei über das Webinterface unter Settings > Teleporter hoch. Die IP-Adresse deines neuen Pi sollte die gleiche sein wie die des alten, damit deine Geräte ihn sofort wieder finden.
