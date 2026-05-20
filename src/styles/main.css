@@ -83,6 +83,8 @@ a.link,
 
 	:not(pre) > code {
 		@apply rounded-md border border-slate-300/80 bg-slate-100 px-1.5 py-0.5 text-[0.85em] font-medium text-slate-900 dark:border-slate-600 dark:bg-slate-800/80 dark:text-slate-100;
+		overflow-wrap: anywhere;
+		word-break: break-word;
 	}
 
 	:not(pre) > code::before,
@@ -96,6 +98,12 @@ a.link,
 
 	blockquote cite {
 		@apply dark:bg-darkblue dark:text-gray-200;
+	}
+
+	a,
+	cite {
+		overflow-wrap: anywhere;
+		word-break: break-word;
 	}
 
 	.footnotes {
