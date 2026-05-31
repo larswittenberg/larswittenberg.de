@@ -2,6 +2,8 @@ import { Tweet } from '@/types/tweet';
 import React from 'react';
 import Image from 'next/image';
 
+const tweetMediaSizes = '(min-width: 1024px) 360px, (min-width: 768px) 42vw, 50vw';
+
 interface TweetItemProps {
 	tweet: Tweet;
 	query: string;
@@ -48,9 +50,10 @@ const renderLine = (line: string, key: string | number, query: string) => {
 							<Image
 								width="600"
 								height="450"
-								sizes="100vw"
+								sizes={tweetMediaSizes}
 								src={`/projekte/twitter-media/${imgMatch[2]}`}
 								alt={unescapeMarkdown(imgMatch[1]) || ''}
+								unoptimized
 								style={{ width: '50%', height: 'auto' }}
 								className="rounded-lg"
 							/>
@@ -146,9 +149,10 @@ const renderContent = (content: string, query: string) => {
 					<Image
 						width="600"
 						height="450"
-						sizes="100vw"
+						sizes={tweetMediaSizes}
 						src={`/projekte/twitter-media/${imgMatch[2]}`}
 						alt={unescapeMarkdown(imgMatch[1]) || ''}
+						unoptimized
 						style={{ width: '50%', height: 'auto' }}
 						className="rounded-lg"
 					/>

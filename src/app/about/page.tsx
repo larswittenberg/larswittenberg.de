@@ -48,6 +48,8 @@ export default async function Page() {
 									alt="Lars Wittenberg"
 									width="400"
 									height="400"
+									unoptimized
+									sizes="(min-width: 768px) 400px, 100vw"
 									className="h-auto w-full rounded-full"
 								/>
 							</div>
@@ -57,6 +59,8 @@ export default async function Page() {
 									alt="Lars Wittenberg - Beim Rennradfahren"
 									width="400"
 									height="400"
+									unoptimized
+									sizes="(min-width: 768px) 400px, 100vw"
 									className="h-auto w-full rounded-full"
 								/>
 							</div>

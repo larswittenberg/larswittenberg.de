@@ -28,6 +28,8 @@ export default async function Page() {
 							alt={project.desc}
 							width={800}
 							height={600}
+							unoptimized
+							sizes="(min-width: 1024px) 91vw, 100vw"
 							className="my-0! h-auto w-full rounded-md border-8 border-gray-200"
 						/>
 						<p className="text-base mt-2">{project.desc}</p>

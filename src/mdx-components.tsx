@@ -6,10 +6,13 @@ import FlexWrapper from '@/components/atoms/FlexWrapper';
 
 // const components: MDXComponents = {}
 
+const proseImageSizes = '(min-width: 1536px) 900px, (min-width: 1280px) 820px, (min-width: 1024px) 720px, 100vw';
+const tweetMediaSizes = '(min-width: 1024px) 360px, (min-width: 768px) 42vw, 50vw';
+
 const components = {
 	// Allows customizing built-in components, e.g. to add styling.
 	h1: ({ children }) => <h1 className="title text-2xl font-semibold tracking-tighter">{children}</h1>,
-	img: (props) => <Image sizes="100vw" style={{ width: '100%', height: 'auto' }} {...(props as ImageProps)} />,
+	img: (props) => <Image sizes={proseImageSizes} style={{ width: '100%', height: 'auto' }} {...(props as ImageProps)} />,
 	pre: (props) => <CodeBlock {...props} />,
 	Image,
 	Figure: CustomFigure,
@@ -28,9 +31,10 @@ const componentsForTweets = {
 			<Image
 				width="600"
 				height="450"
-				sizes="100vw"
+				sizes={tweetMediaSizes}
 				src={`/projekte/twitter-media/${props.src}`}
 				alt={props.alt || ''}
+				unoptimized
 				style={{ width: '50%', height: 'auto' }}
 				// {...(props as ImageProps)}
 			/>
