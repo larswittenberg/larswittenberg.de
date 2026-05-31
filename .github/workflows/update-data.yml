@@ -1,9 +1,9 @@
 name: Update Starred Repositories Data
 
 on:
-  # Führt den Job täglich um 03:00 Uhr aus
+  # Führt den Job wöchentlich sonntags um 03:00 Uhr aus
   schedule:
-    - cron: '0 3 * * *'
+    - cron: '0 3 * * 0'
   # Ermöglicht das manuelle Starten des Workflows von der Actions-Seite
   workflow_dispatch:
 
