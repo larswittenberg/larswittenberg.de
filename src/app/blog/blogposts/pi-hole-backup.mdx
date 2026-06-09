@@ -137,16 +137,28 @@ Speichere die Datei und verlasse den Editor. Jetzt wird dein Pi-Hole automatisch
 
 ## Lokaler Download (optional)
 
-In diesem Schritt legen wir noch ein lokalen Alias an, damit du die Backups einfach auf deinen Mac herunterladen kannst. Trenne dazu die SSH-Verbindung zum Pi-Hole mit `exit` und öffne die Terminal-Konfiguration auf deinem Mac (bei mir ist das die Zsh-Konfiguration):
+In diesem Schritt legen wir noch eine lokale Funktion an, damit du die neuste Backup-Datei einfach auf deinen Mac herunterladen kannst. Trenne dazu die SSH-Verbindung zum Pi-Hole mit `exit` und öffne die Terminal-Konfiguration auf deinem Mac (bei mir ist das die Zsh-Konfiguration):
 
 ```bash
 nano ~/.zshrc
 ```
 
-Füge am Ende der Datei folgenden Alias hinzu:
+Füge am Ende der Datei folgende Funktion hinzu:
 
 ```bash
-alias get-pihole-backup='scp "pihole:pihole-backups/*.zip" ~/Downloads/'
+get-pihole-backup() {
+    # 1. Holt den neuesten Dateinamen direkt über SSH vom Pi
+    NEUESTE_DATEI=$(ssh pihole "ls -t pihole-backups/*.zip 2>/dev/null | head -n 1")
+
+    if [ -z "$NEUESTE_DATEI" ]; then
+        echo "Keine Backup-Dateien auf dem Pi gefunden!"
+        return 1
+    fi
+
+    # 2. Lädt genau diese Datei herunter
+    echo "Lade neueste Datei herunter: $(basename "$NEUESTE_DATEI")"
+    scp "pihole:$NEUESTE_DATEI" ~/Desktop/
+}
 ```
 
 Hinweis: Dafür ist notwendig, dass du den SSH-Zugriff mit dem Alias "pihole" wie oben beschrieben eingerichtet hast.
@@ -157,7 +169,7 @@ Speichere die Datei mit CTRL + O, bestätige mit Enter und verlasse den Editor m
 source ~/.zshrc
 ```
 
-Jetzt kannst du einfach `get-pihole-backup` in deinem Terminal eingeben, um die neuesten Backups von deinem Pi-Hole auf deinen Mac in den /Downloads-Ordner herunterzuladen.
+Jetzt kannst du einfach `get-pihole-backup` in deinem Terminal eingeben, um das neuste Backup von deinem Pi-Hole auf deinen Mac auf den Schreibtisch (Desktop-Ordner) herunterzuladen. Statt "~/Desktop/" kannst du natürlich auch einen anderen Pfad angeben, wenn du die Datei woanders speichern möchtest.
 
 ## Fazit
 
