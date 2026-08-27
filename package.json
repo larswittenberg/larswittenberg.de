@@ -21,7 +21,8 @@
     "lint": "eslint .",
     "format": "prettier --write ./src",
     "export": "npx rimraf .next && npx rimraf out && next build && next export",
-    "update-stars": "node ./src/scripts/fetch-starred-repos.js"
+    "update-stars": "node ./src/scripts/fetch-starred-repos.js",
+    "verify": "yarn lint && yarn typecheck && yarn format:check && yarn build"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
