@@ -23,8 +23,8 @@ export default function Footer() {
 					· Deployed on{' '}
 					<Link href="https://vercel.com/" className={linkClass}>
 						vercel.com
-					</Link> on {buildDate ? formatDate(buildDate) : 'unknown'}{' '}
-					·{' '}
+					</Link>{' '}
+					on {buildDate ? formatDate(buildDate) : 'unknown'} ·{' '}
 					<Link href="/impressum" className={linkClass}>
 						Impressum
 					</Link>

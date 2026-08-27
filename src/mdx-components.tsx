@@ -12,7 +12,9 @@ const tweetMediaSizes = '(min-width: 1024px) 360px, (min-width: 768px) 42vw, 50v
 const components = {
 	// Allows customizing built-in components, e.g. to add styling.
 	h1: ({ children }) => <h1 className="title text-2xl font-semibold tracking-tighter">{children}</h1>,
-	img: (props) => <Image sizes={proseImageSizes} style={{ width: '100%', height: 'auto' }} {...(props as ImageProps)} />,
+	img: (props) => (
+		<Image sizes={proseImageSizes} style={{ width: '100%', height: 'auto' }} {...(props as ImageProps)} />
+	),
 	pre: (props) => <CodeBlock {...props} />,
 	Image,
 	Figure: CustomFigure,
@@ -49,20 +51,29 @@ const componentsForTweets = {
 	},
 	blockquote: (props) => {
 		return (
-			<blockquote className="not-prose border-l-4 border-gray-300 pl-4 italic text-tw-prose-quotes">
+			<blockquote className="not-prose text-tw-prose-quotes border-l-4 border-gray-300 pl-4 italic">
 				{props.children}
 			</blockquote>
 		);
 	},
 	p: (props) => {
-		return (<p className="text-base wrap-break-word" {...props} />);
+		return <p className="text-base wrap-break-word" {...props} />;
 	},
 	a: (props) => {
-		return (<a href={props.href} target="_blank" rel="noopener noreferrer" className="shadow-none! hover:shadow-linkhover! hover:text-darkblue!">{props.children}</a>);
+		return (
+			<a
+				href={props.href}
+				target="_blank"
+				rel="noopener noreferrer"
+				className="hover:shadow-linkhover! hover:text-darkblue! shadow-none!"
+			>
+				{props.children}
+			</a>
+		);
 	},
 	hr: (props) => {
-		return (<hr className="my-8! border-t border-gray-500" {...props} />);
-	}
+		return <hr className="my-8! border-t border-gray-500" {...props} />;
+	},
 } satisfies MDXComponents;
 
 export const mdxComponentsForTweets = componentsForTweets;

@@ -71,11 +71,9 @@ export const TweetSearchPage = () => {
 	const hasQuery = debouncedQuery.trim().length >= 2;
 
 	return (
-		<div className="space-y-8 mb-8 lg:mb-16 not-prose">
+		<div className="not-prose mb-8 space-y-8 lg:mb-16">
 			<div className="relative max-w-xl">
-				<p>
-					Volltext-Suche über meine 12.000+ tweets von 2009-2023.
-				</p>
+				<p>Volltext-Suche über meine 12.000+ tweets von 2009-2023.</p>
 
 				<div className="relative mt-4">
 					<input

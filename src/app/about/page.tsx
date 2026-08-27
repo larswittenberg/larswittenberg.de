@@ -53,7 +53,7 @@ export default async function Page() {
 									className="h-auto w-full rounded-full"
 								/>
 							</div>
-							<div className="absolute inset-0 backface-hidden transform-[rotateY(180deg)]">
+							<div className="absolute inset-0 transform-[rotateY(180deg)] backface-hidden">
 								<Image
 									src="/images/lars-wittenberg_cycling.jpg"
 									alt="Lars Wittenberg - Beim Rennradfahren"

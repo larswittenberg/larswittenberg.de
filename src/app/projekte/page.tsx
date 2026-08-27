@@ -15,7 +15,8 @@ const projectList = [
 	{
 		name: 'Mein twitter Archiv',
 		href: '/projekte/tweets',
-		description: 'Meine tweets von 2009 bis 2023, archiviert und durchsuchbar. Exportiert von Twitter, umgewandelt in Markdown und hier als eigene Daten ausgegeben.',
+		description:
+			'Meine tweets von 2009 bis 2023, archiviert und durchsuchbar. Exportiert von Twitter, umgewandelt in Markdown und hier als eigene Daten ausgegeben.',
 	},
 	{
 		name: 'Fotografie',

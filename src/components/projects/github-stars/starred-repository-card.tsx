@@ -21,16 +21,12 @@ export function StarredRepositoryCard(props: CardProps) {
 							{repository.stargazers_count.toLocaleString('de-DE')}
 						</span>
 					</h2>
-					{repository.description && (
-						<p className="mt-1 text-sm">{repository.description}</p>
-					)}
+					{repository.description && <p className="mt-1 text-sm">{repository.description}</p>}
 					{(repository.language || repository.topics.length > 0) && (
 						<ul className="mt-3 flex flex-wrap gap-2 text-xs">
 							{repository.language && (
 								<li className="leading-5">
-									<span className="opacity-60 px-2 py-0.5 font-medium">
-										{repository.language}
-									</span>
+									<span className="px-2 py-0.5 font-medium opacity-60">{repository.language}</span>
 								</li>
 							)}
 							{repository.topics.map((topic) => (
@@ -42,16 +38,15 @@ export function StarredRepositoryCard(props: CardProps) {
 					)}
 				</div>
 				<div>
-				<a
-					href={repository.html_url}
-					target="_blank"
-					rel="noreferrer"
-					className="bg-secondary text-secondary-foreground hover:bg-secondary/80 inline-flex  items-center justify-center gap-1 text-sm font-medium whitespace-nowrap transition-colors shrink"
-				>
-					<span>Auf GitHub öffnen</span>
-					<ExternalLink className="h-4 w-4" aria-hidden="true" />
-				</a>
-
+					<a
+						href={repository.html_url}
+						target="_blank"
+						rel="noreferrer"
+						className="bg-secondary text-secondary-foreground hover:bg-secondary/80 inline-flex shrink items-center justify-center gap-1 text-sm font-medium whitespace-nowrap transition-colors"
+					>
+						<span>Auf GitHub öffnen</span>
+						<ExternalLink className="h-4 w-4" aria-hidden="true" />
+					</a>
 				</div>
 			</div>
 		</li>

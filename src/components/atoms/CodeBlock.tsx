@@ -36,9 +36,10 @@ export default function CodeBlock({ children }: { children?: ReactNode }) {
 	const language = match?.[1];
 	const code = getTextContent(children.props.children).replace(/\n$/, '');
 
-	const highlighted = language && hljs.getLanguage(language)
-		? hljs.highlight(code, { language }).value
-		: hljs.highlightAuto(code).value;
+	const highlighted =
+		language && hljs.getLanguage(language)
+			? hljs.highlight(code, { language }).value
+			: hljs.highlightAuto(code).value;
 
 	const highlightedClassName = ['hljs', className].filter(Boolean).join(' ');
 

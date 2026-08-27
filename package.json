@@ -19,6 +19,7 @@
     "start": "next start",
     "clean": "npx rimraf .next",
     "lint": "eslint .",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
     "format": "prettier --write ./src",
     "export": "npx rimraf .next && npx rimraf out && next build && next export",
     "update-stars": "node ./src/scripts/fetch-starred-repos.js",

@@ -31,7 +31,7 @@ export default async function Page() {
 				immer noch habe, aber die Tweets nicht mehr öffentlich auf der Plattform zugänglich sind.
 			</p>
 
-			<ol className="my-8 grid grid-cols-2 lg:grid-cols-3 gap-x-8 marker:text-base! lg:my-0>">
+			<ol className="lg:my-0> my-8 grid grid-cols-2 gap-x-8 marker:text-base! lg:grid-cols-3">
 				{linksForYears.map(({ href, label }) => (
 					<li key={`${href}${label}`}>
 						<Link
@@ -40,18 +40,17 @@ export default async function Page() {
 						>
 							{label}
 						</Link>
-						<span className="block sm:inline text-sm text-gray-500 dark:text-gray-400 mt-2 sm:mt-0 sm:ml-2">
+						<span className="mt-2 block text-sm text-gray-500 sm:mt-0 sm:ml-2 sm:inline dark:text-gray-400">
 							({tweetsPerYear[years.indexOf(parseInt(label))] || 0} Tweets)
 						</span>
 					</li>
 				))}
 			</ol>
 
-			<div className="not-prose my-24 p-6 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-				<h2 className="text-4xl font-bold mb-2 text-gray-900 dark:text-gray-100">Archiv durchsuchen</h2>
+			<div className="not-prose my-24 rounded-lg border border-gray-200 bg-gray-50 p-6 dark:border-gray-700 dark:bg-gray-800">
+				<h2 className="mb-2 text-4xl font-bold text-gray-900 dark:text-gray-100">Archiv durchsuchen</h2>
 				<TweetSearchPage />
 			</div>
-
 		</LayoutDefault>
 	);
 }

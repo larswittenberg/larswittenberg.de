@@ -22,7 +22,7 @@ export default async function Page() {
 
 			<ul className="not-prose">
 				{pictureList.map((project, index) => (
-					<li key={index} className="flex flex-col pl-0! mb-8 md:items-center">
+					<li key={index} className="mb-8 flex flex-col pl-0! md:items-center">
 						<Image
 							src={`/projekte/fotografie/${project.image}`}
 							alt={project.desc}
@@ -32,7 +32,7 @@ export default async function Page() {
 							sizes="(min-width: 1024px) 91vw, 100vw"
 							className="my-0! h-auto w-full rounded-md border-8 border-gray-200"
 						/>
-						<p className="text-base mt-2">{project.desc}</p>
+						<p className="mt-2 text-base">{project.desc}</p>
 					</li>
 				))}
 			</ul>

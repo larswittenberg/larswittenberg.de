@@ -49,7 +49,7 @@ export function StarredSearchFilters(props: FiltersProps) {
 
 	return (
 		<section className="mb-16 space-y-4 lg:p-4">
-			<header className="flex flex-row gap-4 sm:flex-row items-center justify-center">
+			<header className="flex flex-row items-center justify-center gap-4 sm:flex-row">
 				<div>
 					<p className="text-2xl font-semibold">
 						{totalStarredFormatted && (
@@ -57,9 +57,11 @@ export function StarredSearchFilters(props: FiltersProps) {
 								href="https://github.com/larswittenberg?tab=stars"
 								target="_blank"
 								rel="noreferrer"
-								className="inline-flex items-center gap-2 "
+								className="inline-flex items-center gap-2"
 							>
-								{totalStarredFormatted && <span className="text-primary">{totalStarredFormatted} Stars</span>}
+								{totalStarredFormatted && (
+									<span className="text-primary">{totalStarredFormatted} Stars</span>
+								)}
 								<ExternalLink className="h-4 w-4" aria-hidden="true" />
 							</a>
 						)}
@@ -67,7 +69,7 @@ export function StarredSearchFilters(props: FiltersProps) {
 				</div>
 				<div className="text-muted-foreground text-xs">
 					<p className="text-muted-foreground mt-1 text-xs">
-						<span className="ml-1 mb-3 inline-flex items-center gap-2 align-middle">
+						<span className="mb-3 ml-1 inline-flex items-center gap-2 align-middle">
 							{showCacheSpinner ? (
 								<>
 									<span
