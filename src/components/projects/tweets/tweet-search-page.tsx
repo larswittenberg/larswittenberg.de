@@ -45,10 +45,6 @@ export const TweetSearchPage = () => {
 		return filteredTweets.slice(0, displayCount);
 	}, [filteredTweets, displayCount]);
 
-	useEffect(() => {
-		setDisplayCount(PAGE_SIZE);
-	}, [debouncedQuery]);
-
 	const handleLoadMore = () => {
 		startTransition(() => {
 			setDisplayCount((prev) => prev + PAGE_SIZE);
@@ -81,7 +77,10 @@ export const TweetSearchPage = () => {
 						placeholder="Suche im twitter Archiv..."
 						className="w-full rounded-full border px-5 py-3 pl-12 text-lg shadow-sm transition-all focus:ring-2 focus:ring-blue-500 focus:outline-hidden dark:border-gray-700 dark:bg-gray-800"
 						value={query}
-						onChange={(e) => setQuery(e.target.value)}
+						onChange={(e) => {
+							setQuery(e.target.value);
+							setDisplayCount(PAGE_SIZE); // Setzt die Paginierung beim Tippen sofort zurück
+						}}
 					/>
 					<svg
 						className="absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2 text-gray-400"

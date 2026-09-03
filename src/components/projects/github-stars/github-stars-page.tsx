@@ -39,21 +39,12 @@ export function GithubStarsPage({ initialQuery, initialSort }: GithubStarsPagePr
 	const [query, setQuery] = useState(initialQuery);
 	const [sortOption, setSortOption] = useState<SortOption>(initialSort);
 
-	const [isSearching, setIsSearching] = useState(false);
-
 	const debouncedQuery = useDebounce(query, 300);
+	const isSearching = debouncedQuery.trim().length >= MIN_QUERY_LENGTH;
 
 	const router = useRouter();
 	const searchParams = useSearchParams();
 	const [isPending, startTransition] = useTransition();
-
-	useEffect(() => {
-		if (debouncedQuery.trim().length >= MIN_QUERY_LENGTH) {
-			setIsSearching(true);
-		} else {
-			setIsSearching(false);
-		}
-	}, [debouncedQuery]);
 
 	useEffect(() => {
 		const fetchData = async () => {
