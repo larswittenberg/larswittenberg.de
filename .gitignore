@@ -57,6 +57,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Vercel Blob media (uploaded to Vercel Blob store)
+public/projekte/twitter-media/
+
 # Yarn files
 .pnp.*
 .yarn/*
