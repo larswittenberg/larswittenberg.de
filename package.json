@@ -23,6 +23,7 @@
     "format": "prettier --write ./src",
     "export": "npx rimraf .next && npx rimraf out && next build && next export",
     "update-stars": "node ./src/scripts/fetch-starred-repos.js",
+    "blob:upload": "node scripts/upload-to-blob.mjs",
     "verify": "yarn lint && yarn typecheck && yarn format && yarn build"
   },
   "dependencies": {
@@ -32,6 +33,7 @@
     "@tailwindcss/postcss": "^4.3.3",
     "@tailwindcss/typography": "^0.5.20",
     "@vercel/analytics": "^2.0.1",
+    "@vercel/blob": "^2.8.0",
     "@vercel/speed-insights": "^2.0.0",
     "classnames": "^2.5.1",
     "clsx": "^2.1.1",

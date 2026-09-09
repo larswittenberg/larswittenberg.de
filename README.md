@@ -42,3 +42,33 @@ Hier [Actions secrets and variables](https://github.com/larswittenberg/test-code
 3. Trigger anschließend ein Re-Deployment. Ohne diese Variablen schlägt der Server mit `403 Forbidden` fehl und die Oberfläche zeigt den GitHub API-Fehler an.
 
 > Tipp: Bewahre den Token sicher auf; in Pull Requests oder Logs darf er nicht auftauchen. Wechsle ihn bei Bedarf aus und triggere anschließend erneut ein Deployment.
+
+## Twitter-Media (Vercel Blob)
+
+Um das Vercel Deployment-Speicherlimit (10 GB) einzuhalten, werden Mediendateien (Bilder & MP4-Videos) des Twitter-Archivs in einen **Vercel Blob Store (Public)** ausgelagert statt im Git-Repository gebündelt.
+
+### Vorbereitung
+
+In der `.env.local` muss der Lese-/Schreib-Token für den Vercel Blob Store hinterlegt sein:
+
+```env
+BLOB_READ_WRITE_TOKEN="vercel_blob_rw_..."
+```
+
+### Upload-Skript ausführen
+
+Das Skript `scripts/upload-to-blob.mjs` lädt Dateien aus `public/projekte/twitter-media/` zu Vercel Blob hoch. Bereits vorhandene Blobs werden automatisch erkannt und übersprungen:
+
+```bash
+# Gesamten Ordner hochladen
+yarn blob:upload
+
+# Testlauf mit begrenzter Anzahl an Dateien (z. B. 5)
+yarn blob:upload --limit 5
+
+# Mit benutzerdefinierter Anzahl paralleler Uploads (Standard: 3)
+yarn blob:upload --concurrency 5
+
+# Vorhandene Blobs erzwingend überschreiben
+yarn blob:upload --force
+```

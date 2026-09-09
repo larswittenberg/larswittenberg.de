@@ -26,11 +26,12 @@ corepack enable
 yarn install
 ```
 
-Environment variables used by GitHub Stars data flow:
+Environment variables used by GitHub Stars data flow and Vercel Blob:
 
 ```bash
 GH_TOKEN=<github-personal-access-token>
 GH_USERNAME=<github-username>
+BLOB_READ_WRITE_TOKEN=<vercel-blob-read-write-token>
 ```
 
 Recommended local file: `.env.local`.
@@ -52,6 +53,9 @@ yarn clean
 
 # Full static export flow
 yarn export
+
+# Upload Twitter media to Vercel Blob
+yarn blob:upload
 ```
 
 - Local dev URL: `http://localhost:3000`
