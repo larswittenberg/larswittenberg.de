@@ -3,6 +3,7 @@ import Image, { ImageProps } from 'next/image';
 import CustomFigure from '@/components/atoms/CustomFigure';
 import CodeBlock from '@/components/atoms/CodeBlock';
 import FlexWrapper from '@/components/atoms/FlexWrapper';
+import { TWITTER_MEDIA_BASE_URL } from '@/lib/constants';
 
 // const components: MDXComponents = {}
 
@@ -34,7 +35,7 @@ const componentsForTweets = {
 				width="600"
 				height="450"
 				sizes={tweetMediaSizes}
-				src={`/projekte/twitter-media/${props.src}`}
+				src={`${TWITTER_MEDIA_BASE_URL}/${props.src}`}
 				alt={props.alt || ''}
 				unoptimized
 				style={{ width: '50%', height: 'auto' }}
@@ -45,7 +46,7 @@ const componentsForTweets = {
 	Video: (props) => {
 		return (
 			<video controls style={{ width: '50%', height: 'auto' }} className="aspect-video">
-				<source src={`/projekte/twitter-media/${props.src}`} />
+				<source src={`${TWITTER_MEDIA_BASE_URL}/${props.src}`} />
 			</video>
 		);
 	},

@@ -1,6 +1,7 @@
 import { Tweet } from '@/types/tweet';
 import React from 'react';
 import Image from 'next/image';
+import { TWITTER_MEDIA_BASE_URL } from '@/lib/constants';
 
 const tweetMediaSizes = '(min-width: 1024px) 360px, (min-width: 768px) 42vw, 50vw';
 
@@ -51,7 +52,7 @@ const renderLine = (line: string, key: string | number, query: string) => {
 								width="600"
 								height="450"
 								sizes={tweetMediaSizes}
-								src={`/projekte/twitter-media/${imgMatch[2]}`}
+								src={`${TWITTER_MEDIA_BASE_URL}/${imgMatch[2]}`}
 								alt={unescapeMarkdown(imgMatch[1]) || ''}
 								unoptimized
 								style={{ width: '50%', height: 'auto' }}
@@ -150,7 +151,7 @@ const renderContent = (content: string, query: string) => {
 						width="600"
 						height="450"
 						sizes={tweetMediaSizes}
-						src={`/projekte/twitter-media/${imgMatch[2]}`}
+						src={`${TWITTER_MEDIA_BASE_URL}/${imgMatch[2]}`}
 						alt={unescapeMarkdown(imgMatch[1]) || ''}
 						unoptimized
 						style={{ width: '50%', height: 'auto' }}
@@ -167,7 +168,7 @@ const renderContent = (content: string, query: string) => {
 			renderedElements.push(
 				<div key={`video-${lineIndex}`} className="my-4">
 					<video controls style={{ width: '50%', height: 'auto' }} className="aspect-video rounded-lg">
-						<source src={`/projekte/twitter-media/${videoMatch[1]}`} />
+						<source src={`${TWITTER_MEDIA_BASE_URL}/${videoMatch[1]}`} />
 					</video>
 				</div>,
 			);

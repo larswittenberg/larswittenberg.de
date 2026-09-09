@@ -27,6 +27,12 @@ const nextConfig = {
 				pathname: '/images/**',
 			},
 		],
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: '*.public.blob.vercel-storage.com',
+			},
+		],
 	},
 	// https://nextjs.org/docs/api-reference/next.config.js/react-strict-mode
 	reactStrictMode: true,
