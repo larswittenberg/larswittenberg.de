@@ -18,7 +18,7 @@ const SORT_OPTIONS: Record<SortOption, string> = {
 
 const ALL = 'all';
 
-const numberFormat = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 1 });
+const numberFormat = new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const integerFormat = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 });
 const dateFormat = new Intl.DateTimeFormat('de-DE', {
 	day: '2-digit',
@@ -39,7 +39,8 @@ function formatDuration(seconds: number | null) {
 	if (!seconds) return '–';
 	const h = Math.floor(seconds / 3600);
 	const m = Math.floor((seconds % 3600) / 60);
-	return h > 0 ? `${h} h ${String(m).padStart(2, '0')} min` : `${m} min`;
+	const s = String(seconds % 60).padStart(2, '0');
+	return h > 0 ? `${h}:${String(m).padStart(2, '0')}:${s}` : `${m}:${s}`;
 }
 
 const yearOf = (activity: StravaActivityListItem) => activity.start_date.slice(0, 4);
@@ -175,7 +176,7 @@ export function StravaDashboard({ activities }: { activities: StravaActivityList
 								<td className="py-2 pr-4 text-right whitespace-nowrap tabular-nums">
 									{formatDuration(a.moving_time)}
 								</td>
-								<td className="py-2">
+								<td className="py-2 whitespace-nowrap">
 									<a
 										href={`https://www.strava.com/activities/${a.id}`}
 										target="_blank"

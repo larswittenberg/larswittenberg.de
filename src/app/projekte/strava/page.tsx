@@ -12,7 +12,7 @@ export default function Page() {
 	const activities = getActivities();
 
 	return (
-		<LayoutDefault prose fullWidth>
+		<LayoutDefault prose wide>
 			<h1>Strava Dashboard</h1>
 
 			<div className="not-prose">
