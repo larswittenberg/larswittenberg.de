@@ -36,6 +36,10 @@ const nextConfig = {
 	},
 	// https://nextjs.org/docs/api-reference/next.config.js/react-strict-mode
 	reactStrictMode: true,
+	// Ship the SQLite file with the serverless function in case the page is rendered at request time
+	outputFileTracingIncludes: {
+		'/projekte/strava': ['./src/data/strava.db'],
+	},
 	// Configure `pageExtensions`` to include MDX files
 	pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
 };
