@@ -40,11 +40,12 @@ export type StravaTotals = {
 
 export type YearlyKilometers = { year: string; kilometers: number };
 
-/** Protected: yearly distance in full km per sport type; years without activities in between are filled with 0. */
-export async function getYearlyKilometersBySportType<T extends string>(
-	sportTypes: readonly T[],
-): Promise<Record<T, YearlyKilometers[]>> {
+/** Protected: yearly distance in full km per group of sport types; years without activities in between are filled with 0. */
+export async function getYearlyKilometers<K extends string>(
+	groups: Record<K, readonly string[]>,
+): Promise<Record<K, YearlyKilometers[]>> {
 	if (!(await isAuthenticated())) throw new Error('Unauthorized');
+	const sportTypes = [...new Set(Object.values<readonly string[]>(groups).flat())];
 	const db = openDb();
 	try {
 		const rows = db
@@ -55,19 +56,23 @@ export async function getYearlyKilometersBySportType<T extends string>(
 				GROUP BY sport_type, year
 				ORDER BY year`,
 			)
-			.all(...sportTypes) as { sportType: T; year: string; meters: number }[];
+			.all(...sportTypes) as { sportType: string; year: string; meters: number }[];
 
-		const result = {} as Record<T, YearlyKilometers[]>;
-		for (const sportType of sportTypes) {
-			const sportRows = rows.filter((r) => r.sportType === sportType);
-			if (sportRows.length === 0) {
-				result[sportType] = [];
+		const result = {} as Record<K, YearlyKilometers[]>;
+		for (const key of Object.keys(groups) as K[]) {
+			const groupTypes = new Set(groups[key]);
+			const metersByYear = new Map<string, number>();
+			for (const r of rows) {
+				if (groupTypes.has(r.sportType)) metersByYear.set(r.year, (metersByYear.get(r.year) ?? 0) + r.meters);
+			}
+			if (metersByYear.size === 0) {
+				result[key] = [];
 				continue;
 			}
-			const metersByYear = new Map(sportRows.map((r) => [r.year, r.meters]));
-			const first = Number(sportRows[0].year);
-			const last = Number(sportRows[sportRows.length - 1].year);
-			result[sportType] = Array.from({ length: last - first + 1 }, (_, i) => {
+			const years = [...metersByYear.keys()].map(Number);
+			const first = Math.min(...years);
+			const last = Math.max(...years);
+			result[key] = Array.from({ length: last - first + 1 }, (_, i) => {
 				const year = String(first + i);
 				return { year, kilometers: Math.round((metersByYear.get(year) ?? 0) / 1000) };
 			});

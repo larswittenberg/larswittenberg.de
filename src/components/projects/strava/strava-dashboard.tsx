@@ -6,6 +6,7 @@ import { ArrowDown, ArrowUp, ChevronDown, ChevronsUpDown, ExternalLink, RotateCc
 import { Select } from '@/components/projects/github-stars/ui/select';
 import { Label } from '@/components/projects/github-stars/ui/label';
 import type { StravaActivityListItem, StravaDashboardData } from '@/lib/strava/db';
+import { CYCLING_SPORT_TYPES } from '@/lib/strava/sport-types';
 
 type SortKey = 'date' | 'type' | 'name' | 'distance' | 'elevation' | 'duration';
 type SortDirection = 'asc' | 'desc';
@@ -74,7 +75,7 @@ const NO_GEAR = 'none';
 
 // Combined type filter; not a Strava sport type.
 const CYCLING = 'cycling';
-const CYCLING_TYPES = new Set(['Ride', 'E-Bike Ride', 'Virtual Ride']);
+const CYCLING_TYPES = new Set<string>(CYCLING_SPORT_TYPES);
 
 const matchesType = (sportType: string, type: string) =>
 	type === ALL || (type === CYCLING ? CYCLING_TYPES.has(sportType) : sportType === type);

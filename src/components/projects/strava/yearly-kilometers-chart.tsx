@@ -13,14 +13,15 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 const integerFormat = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 });
+const listFormat = new Intl.ListFormat('de-DE', { type: 'conjunction' });
 
 type Props = {
 	title: string;
-	sportType: string;
+	sportTypes: readonly string[];
 	data: YearlyKilometers[];
 };
 
-export function YearlyKilometersChart({ title, sportType, data }: Props) {
+export function YearlyKilometersChart({ title, sportTypes, data }: Props) {
 	const headingId = useId();
 	const total = data.reduce((sum, d) => sum + d.kilometers, 0);
 
@@ -35,7 +36,7 @@ export function YearlyKilometersChart({ title, sportType, data }: Props) {
 						{title}: Kilometer pro Jahr
 					</h2>
 					<p className="text-sm text-gray-600 dark:text-gray-400">
-						Summe aller Aktivitäten vom Typ „{sportType}“
+						Summe aller Aktivitäten vom Typ {listFormat.format(sportTypes.map((t) => `„${t}“`))}
 					</p>
 				</div>
 				<p className="text-sm text-gray-600 dark:text-gray-400">
