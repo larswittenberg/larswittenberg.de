@@ -456,11 +456,16 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 		[filtered],
 	);
 
+	const totalMinutes = Math.round(totals.time / 60);
+
 	const stats = [
 		{ label: 'Aktivitäten', value: integerFormat.format(filtered.length) },
-		{ label: 'Distanz', value: `${integerFormat.format(totals.distance / 1000)} km` },
+		{ label: 'Distanz', value: `${numberFormat.format(totals.distance / 1000)} km` },
 		{ label: 'Höhenmeter', value: `${integerFormat.format(totals.elevation)} hm` },
-		{ label: 'Bewegungszeit', value: `${integerFormat.format(totals.time / 3600)} h` },
+		{
+			label: 'Bewegungszeit',
+			value: `${integerFormat.format(Math.floor(totalMinutes / 60))} h ${String(totalMinutes % 60).padStart(2, '0')} min`,
+		},
 	];
 
 	const filterLabel = [
