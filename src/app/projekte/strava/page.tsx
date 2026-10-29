@@ -31,7 +31,10 @@ export default async function Page({ searchParams }: PageProps) {
 				{data ? (
 					<>
 						<form action={logout} className="flex justify-end">
-							<button type="submit" className="text-sm text-gray-600 hover:underline dark:text-gray-400">
+							<button
+								type="submit"
+								className="inline-flex items-center justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs inset-ring inset-ring-gray-300 hover:bg-gray-50 dark:bg-white/10 dark:text-white dark:shadow-none dark:inset-ring-white/5 dark:hover:bg-white/20"
+							>
 								Abmelden
 							</button>
 						</form>
