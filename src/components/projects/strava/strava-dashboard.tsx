@@ -424,6 +424,8 @@ export function StravaDashboard({ activities }: { activities: StravaActivityList
 		{ label: 'Bewegungszeit', value: `${integerFormat.format(totals.time / 3600)} h` },
 	];
 
+	const filterLabel = [year === ALL ? 'alle Jahre' : year, type === ALL ? 'alle Typen' : type].join(', ');
+
 	return (
 		<div className="space-y-8">
 			<div className="flex flex-wrap items-end gap-4">
@@ -476,14 +478,22 @@ export function StravaDashboard({ activities }: { activities: StravaActivityList
 				</div>
 			</div>
 
-			<dl className="grid grid-cols-2 gap-4 md:grid-cols-4">
-				{stats.map((stat) => (
-					<div key={stat.label} className="rounded-lg border border-gray-200 p-4 dark:border-gray-700">
-						<dt className="text-sm text-gray-600 dark:text-gray-400">{stat.label}</dt>
-						<dd className="mt-1 text-2xl font-semibold">{stat.value}</dd>
-					</div>
-				))}
-			</dl>
+			<section
+				aria-label="Summe der gefilterten Aktivitäten"
+				className="rounded-lg bg-gray-50 px-4 py-3 text-sm dark:bg-gray-900"
+			>
+				<p className="mb-2 text-xs font-semibold tracking-wide text-gray-500 uppercase dark:text-gray-400">
+					Auswahl: {filterLabel}
+				</p>
+				<dl className="flex flex-wrap gap-x-8 gap-y-2">
+					{stats.map((stat) => (
+						<div key={stat.label} className="flex items-baseline gap-2">
+							<dt className="text-gray-600 dark:text-gray-400">{stat.label}</dt>
+							<dd className="font-semibold tabular-nums">{stat.value}</dd>
+						</div>
+					))}
+				</dl>
+			</section>
 
 			<div className="overflow-x-auto">
 				<table className="w-full text-left text-sm">

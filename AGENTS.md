@@ -26,12 +26,14 @@ corepack enable
 yarn install
 ```
 
-Environment variables used by GitHub Stars data flow and Vercel Blob:
+Environment variables used by GitHub Stars data flow, Vercel Blob and the Strava dashboard login:
 
 ```bash
 GH_TOKEN=<github-personal-access-token>
 GH_USERNAME=<github-username>
 BLOB_READ_WRITE_TOKEN=<vercel-blob-read-write-token>
+STRAVA_DASHBOARD_PASSWORD=<long-random-password>
+STRAVA_SESSION_SECRET=<random-string-min-32-chars>
 ```
 
 Recommended local file: `.env.local`.

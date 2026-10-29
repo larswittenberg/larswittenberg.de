@@ -81,7 +81,7 @@ Dashboard unter `/projekte/strava` mit allen Strava-Aktivitäten (Filter nach Ja
 
 1. Strava-Export herunterladen (Strava → Einstellungen → Mein Konto → „Konto herunterladen“) und entpacken nach `data/strava-export/`.
 2. `yarn strava:import` liest `data/strava-export/activities.csv` und schreibt die Aktivitäten in `src/data/strava.db`.
-3. `src/data/strava.db` wird committet. Next.js liest die DB beim Build (read-only, `better-sqlite3`) und erzeugt die Seite statisch.
+3. `src/data/strava.db` wird committet und mit ausgeliefert. Die Seite wird pro Request gerendert (wegen des Login-Cookies) und liest die DB read-only per `better-sqlite3`.
 
 > **Wichtig:** `data/strava-export/` ist in der `.gitignore` und darf nicht eingecheckt werden (enthält GPS-Dateien, Nachrichten, Logins etc.). `src/data/strava.db` dagegen **muss** eingecheckt werden – das Repo ist privat.
 
@@ -116,7 +116,7 @@ Der Import läuft in einer Transaktion (alles oder nichts) und nutzt `ON CONFLIC
 1. Neuen Strava-Export nach `data/strava-export/` entpacken (alten Inhalt ersetzen).
 2. `yarn strava:import --dry-run --only-new` – zeigt, wie viele Aktivitäten neu sind.
 3. `yarn strava:import --only-new`
-4. `src/data/strava.db` committen und pushen → Vercel baut die Seite neu.
+4. `src/data/strava.db` committen und pushen → Vercel deployt die neue DB.
 
 ### Datenmodell
 
@@ -133,8 +133,32 @@ Der Import läuft in einer Transaktion (alles oder nichts) und nutzt `ON CONFLIC
 | ----- | ----- |
 | `scripts/import-strava.ts` | CSV-Import (ausgeführt mit `tsx`) |
 | `src/lib/strava/db.ts` | Read-only Zugriff auf die DB |
-| `src/app/projekte/strava/page.tsx` | Server Component / Seite |
+| `src/app/projekte/strava/page.tsx` | Server Component / Seite (öffentliche Summen, Login oder Dashboard) |
+| `src/app/projekte/strava/actions.ts` | Server Actions für Login/Logout inkl. Honeypot und Rate-Limit |
+| `src/lib/strava/auth.ts` | Passwortprüfung und signiertes Session-Token |
+| `src/lib/strava/session.ts` | `isAuthenticated()` für Server Components |
+| `src/proxy.ts` | Leitet künftige Unterseiten `/projekte/strava/*` ohne Session auf die Login-Seite um |
 | `src/components/projects/strava/strava-dashboard.tsx` | Client-UI mit Filtern und Tabelle |
-| `next.config.js` | `outputFileTracingIncludes` liefert die DB mit aus, falls die Seite dynamisch gerendert wird |
+| `src/components/projects/strava/strava-totals-overview.tsx` | Öffentliche Gesamtsummen |
+| `src/components/projects/strava/strava-login-form.tsx` | Login-Formular |
+| `next.config.js` | `outputFileTracingIncludes` liefert die DB mit der Serverless-Funktion aus |
 
-> **Hinweis:** Die Seite ist noch nicht passwortgeschützt, aber nicht verlinkt, nicht in der Sitemap und `noindex`. Ein Passwortschutz (Middleware + Cookie) ist geplant.
+### Passwortschutz
+
+Öffentlich sichtbar sind nur die vier Gesamtsummen (Aktivitäten, Distanz, Höhenmeter, Bewegungszeit). Liste, Filter, Details und gefilterte Summen erscheinen erst nach Login; ohne gültige Session werden diese Daten serverseitig gar nicht geladen (`getActivities()` prüft die Session selbst).
+
+Benötigte Variablen in `.env.local` und auf Vercel (**Settings → Environment Variables**):
+
+```env
+# Langes Zufallspasswort, z. B. `openssl rand -base64 24`
+STRAVA_DASHBOARD_PASSWORD="..."
+# Mindestens 32 Zeichen, z. B. `openssl rand -base64 48`
+STRAVA_SESSION_SECRET="..."
+```
+
+- Session-Cookie `strava_session`: `httpOnly`, `secure` (Produktion), `sameSite=lax`, Pfad `/projekte/strava`, 30 Tage gültig, HMAC-signiert.
+- Alle Sessions ungültig machen: `STRAVA_SESSION_SECRET` ändern und neu deployen.
+- Schutz gegen Brute-Force: Honeypot-Feld, 1 s Verzögerung bei Fehlversuchen, max. 5 Fehlversuche pro IP in 15 Minuten (pro Server-Instanz, daher nur Zusatzschutz), zeitkonstanter Passwortvergleich. Der eigentliche Schutz ist ein langes Zufallspasswort.
+- Fehlen die Variablen, schlägt jeder Login fehl (Fehler im Server-Log), die öffentlichen Summen bleiben sichtbar.
+
+> **Hinweis:** Die Seite ist zusätzlich nicht verlinkt, nicht in der Sitemap und `noindex`.
