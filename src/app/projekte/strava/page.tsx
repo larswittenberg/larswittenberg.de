@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
+import { ChartColumn } from 'lucide-react';
 import LayoutDefault from '@/components/LayoutDefault';
 import { StravaDashboard } from '@/components/projects/strava/strava-dashboard';
 import { StravaLoginForm } from '@/components/projects/strava/strava-login-form';
@@ -30,14 +32,23 @@ export default async function Page({ searchParams }: PageProps) {
 
 				{data ? (
 					<>
-						<form action={logout} className="flex justify-end">
-							<button
-								type="submit"
-								className="inline-flex items-center justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs inset-ring inset-ring-gray-300 hover:bg-gray-50 dark:bg-white/10 dark:text-white dark:shadow-none dark:inset-ring-white/5 dark:hover:bg-white/20"
+						<div className="flex flex-wrap items-center justify-between gap-4">
+							<Link
+								href="/projekte/strava/charts"
+								className="inline-flex items-center gap-1.5 text-sm font-semibold text-gray-700 hover:underline dark:text-gray-300"
 							>
-								Abmelden
-							</button>
-						</form>
+								<ChartColumn className="size-4" aria-hidden="true" />
+								Charts ansehen
+							</Link>
+							<form action={logout}>
+								<button
+									type="submit"
+									className="inline-flex items-center justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs inset-ring inset-ring-gray-300 hover:bg-gray-50 dark:bg-white/10 dark:text-white dark:shadow-none dark:inset-ring-white/5 dark:hover:bg-white/20"
+								>
+									Abmelden
+								</button>
+							</form>
+						</div>
 						<StravaDashboard {...data} />
 					</>
 				) : (

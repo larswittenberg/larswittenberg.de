@@ -38,6 +38,46 @@ export type StravaTotals = {
 	firstYear: string | null;
 };
 
+export type YearlyKilometers = { year: string; kilometers: number };
+
+/** Protected: yearly distance in full km per sport type; years without activities in between are filled with 0. */
+export async function getYearlyKilometersBySportType<T extends string>(
+	sportTypes: readonly T[],
+): Promise<Record<T, YearlyKilometers[]>> {
+	if (!(await isAuthenticated())) throw new Error('Unauthorized');
+	const db = openDb();
+	try {
+		const rows = db
+			.prepare(
+				`SELECT sport_type AS sportType, strftime('%Y', start_date) AS year, COALESCE(SUM(distance), 0) AS meters
+				FROM activities
+				WHERE sport_type IN (${sportTypes.map(() => '?').join(', ')})
+				GROUP BY sport_type, year
+				ORDER BY year`,
+			)
+			.all(...sportTypes) as { sportType: T; year: string; meters: number }[];
+
+		const result = {} as Record<T, YearlyKilometers[]>;
+		for (const sportType of sportTypes) {
+			const sportRows = rows.filter((r) => r.sportType === sportType);
+			if (sportRows.length === 0) {
+				result[sportType] = [];
+				continue;
+			}
+			const metersByYear = new Map(sportRows.map((r) => [r.year, r.meters]));
+			const first = Number(sportRows[0].year);
+			const last = Number(sportRows[sportRows.length - 1].year);
+			result[sportType] = Array.from({ length: last - first + 1 }, (_, i) => {
+				const year = String(first + i);
+				return { year, kilometers: Math.round((metersByYear.get(year) ?? 0) / 1000) };
+			});
+		}
+		return result;
+	} finally {
+		db.close();
+	}
+}
+
 /** Public: aggregate values only. */
 export function getActivityTotals(): StravaTotals {
 	const db = openDb();

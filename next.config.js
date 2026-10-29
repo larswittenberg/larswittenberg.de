@@ -39,6 +39,7 @@ const nextConfig = {
 	// Ship the SQLite file with the serverless function in case the page is rendered at request time
 	outputFileTracingIncludes: {
 		'/projekte/strava': ['./src/data/strava.db'],
+		'/projekte/strava/charts': ['./src/data/strava.db'],
 	},
 	// Configure `pageExtensions`` to include MDX files
 	pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
