@@ -68,7 +68,9 @@ const DEFAULT_SORT: SortOption = 'date-desc';
 
 const isSortOption = (value: string): value is SortOption => Object.hasOwn(SORT_OPTIONS, value);
 
-type Filters = { type: string; sort: SortOption };
+type Filters = { type: string; gear: string; sort: SortOption };
+
+const NO_GEAR = 'none';
 
 const URL_CHANGE_EVENT = 'strava-filters-change';
 
@@ -86,6 +88,7 @@ function writeFiltersToUrl(filters: Filters) {
 	const set = (key: string, value: string, fallback: string) =>
 		value === fallback ? params.delete(key) : params.set(key, value);
 	set('type', filters.type, ALL);
+	set('gear', filters.gear, ALL);
 	set('sort', filters.sort, DEFAULT_SORT);
 	const query = params.toString();
 	window.history.replaceState(window.history.state, '', query ? `?${query}` : window.location.pathname);
@@ -371,28 +374,39 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 
 	const yearId = useId();
 	const typeId = useId();
+	const gearId = useId();
 	const sortId = useId();
 
 	const types = useMemo(() => [...new Set(activities.map((a) => a.sport_type))].sort(), [activities]);
+	const gears = useMemo(
+		() =>
+			[...new Set(activities.map((a) => a.gear_name).filter((g): g is string => Boolean(g)))].sort(
+				collator.compare,
+			),
+		[activities],
+	);
+	const hasActivitiesWithoutGear = useMemo(() => activities.some((a) => !a.gear_name), [activities]);
 
-	// Server snapshot is empty; type and sort are applied after hydration.
+	// Server snapshot is empty; type, gear and sort are applied after hydration.
 	const search = useSyncExternalStore(
 		subscribeToUrl,
 		() => window.location.search,
 		() => '',
 	);
 
-	const { type, sort } = useMemo<Filters>(() => {
+	const { type, gear, sort } = useMemo<Filters>(() => {
 		const params = new URLSearchParams(search);
 		const urlType = params.get('type') ?? '';
+		const urlGear = params.get('gear') ?? '';
 		const urlSort = params.get('sort') ?? '';
 		return {
 			type: types.includes(urlType) ? urlType : ALL,
+			gear: gears.includes(urlGear) || (urlGear === NO_GEAR && hasActivitiesWithoutGear) ? urlGear : ALL,
 			sort: isSortOption(urlSort) ? urlSort : DEFAULT_SORT,
 		};
-	}, [search, types]);
+	}, [search, types, gears, hasActivitiesWithoutGear]);
 
-	const updateFilters = (next: Partial<Filters>) => writeFiltersToUrl({ type, sort, ...next });
+	const updateFilters = (next: Partial<Filters>) => writeFiltersToUrl({ type, gear, sort, ...next });
 	const onSort = (next: SortOption) => updateFilters({ sort: next });
 
 	// Year changes load new data from the server.
@@ -405,8 +419,15 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 	};
 
 	const filtered = useMemo(
-		() => activities.filter((a) => type === ALL || a.sport_type === type).sort(compareActivities(sort)),
-		[activities, type, sort],
+		() =>
+			activities
+				.filter(
+					(a) =>
+						(type === ALL || a.sport_type === type) &&
+						(gear === ALL || (gear === NO_GEAR ? !a.gear_name : a.gear_name === gear)),
+				)
+				.sort(compareActivities(sort)),
+		[activities, type, gear, sort],
 	);
 
 	const totals = useMemo(
@@ -429,9 +450,13 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 		{ label: 'Bewegungszeit', value: `${integerFormat.format(totals.time / 3600)} h` },
 	];
 
-	const filterLabel = [selectedYear === ALL ? 'alle Jahre' : selectedYear, type === ALL ? 'alle Typen' : type].join(
-		', ',
-	);
+	const filterLabel = [
+		selectedYear === ALL ? 'alle Jahre' : selectedYear,
+		type === ALL ? 'alle Typen' : type,
+		gear === ALL ? null : gear === NO_GEAR ? 'ohne Ausrüstung' : gear,
+	]
+		.filter(Boolean)
+		.join(', ');
 
 	return (
 		<div className="space-y-8">
@@ -467,6 +492,23 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 								{t}
 							</option>
 						))}
+					</Select>
+				</div>
+				<div className="flex flex-col gap-1">
+					<Label htmlFor={gearId}>Ausrüstung</Label>
+					<Select
+						id={gearId}
+						value={gear}
+						onChange={(e) => updateFilters({ gear: e.target.value })}
+						className="w-56"
+					>
+						<option value={ALL}>Alle Ausrüstungen</option>
+						{gears.map((g) => (
+							<option key={g} value={g}>
+								{g}
+							</option>
+						))}
+						{hasActivitiesWithoutGear && <option value={NO_GEAR}>Ohne Ausrüstung</option>}
 					</Select>
 				</div>
 				<div className="flex flex-col gap-1">
