@@ -1,20 +1,65 @@
 'use client';
 
 import { Fragment, useId, useMemo, useState, useSyncExternalStore } from 'react';
-import { ChevronDown, ExternalLink } from 'lucide-react';
+import { ArrowDown, ArrowUp, ChevronDown, ChevronsUpDown, ExternalLink } from 'lucide-react';
 import { Select } from '@/components/projects/github-stars/ui/select';
 import { Label } from '@/components/projects/github-stars/ui/label';
 import type { StravaActivityListItem } from '@/lib/strava/db';
 
-type SortOption = 'date-desc' | 'date-asc' | 'distance-desc' | 'elevation-desc' | 'duration-desc';
+type SortKey = 'date' | 'type' | 'name' | 'distance' | 'elevation' | 'duration';
+type SortDirection = 'asc' | 'desc';
+type SortOption = `${SortKey}-${SortDirection}`;
 
 const SORT_OPTIONS: Record<SortOption, string> = {
 	'date-desc': 'Neueste zuerst',
 	'date-asc': 'Älteste zuerst',
 	'distance-desc': 'Längste Distanz',
+	'distance-asc': 'Kürzeste Distanz',
 	'elevation-desc': 'Meiste Höhenmeter',
+	'elevation-asc': 'Wenigste Höhenmeter',
 	'duration-desc': 'Längste Dauer',
+	'duration-asc': 'Kürzeste Dauer',
+	'name-asc': 'Name A–Z',
+	'name-desc': 'Name Z–A',
+	'type-asc': 'Typ A–Z',
+	'type-desc': 'Typ Z–A',
 };
+
+// Text columns start ascending, numbers and dates descending.
+const DEFAULT_DIRECTION: Record<SortKey, SortDirection> = {
+	date: 'desc',
+	type: 'asc',
+	name: 'asc',
+	distance: 'desc',
+	elevation: 'desc',
+	duration: 'desc',
+};
+
+const SORT_VALUE: Record<SortKey, (a: StravaActivityListItem) => string | number | null> = {
+	date: (a) => a.start_date,
+	type: (a) => a.sport_type,
+	name: (a) => a.name,
+	distance: (a) => a.distance,
+	elevation: (a) => a.total_elevation_gain,
+	duration: (a) => a.moving_time,
+};
+
+const collator = new Intl.Collator('de-DE', { sensitivity: 'base', numeric: true });
+
+function compareActivities(sort: SortOption) {
+	const [key, direction] = sort.split('-') as [SortKey, SortDirection];
+	const factor = direction === 'asc' ? 1 : -1;
+	const getValue = SORT_VALUE[key];
+	return (a: StravaActivityListItem, b: StravaActivityListItem) => {
+		const va = getValue(a);
+		const vb = getValue(b);
+		// Missing values always go last, regardless of direction.
+		if (va === null || vb === null) return va === vb ? 0 : va === null ? 1 : -1;
+		const result =
+			typeof va === 'number' && typeof vb === 'number' ? va - vb : collator.compare(String(va), String(vb));
+		return result * factor;
+	};
+}
 
 const ALL = 'all';
 const DEFAULT_SORT: SortOption = 'date-desc';
@@ -81,35 +126,236 @@ function formatSpeed(metersPerSecond: number | null) {
 	return metersPerSecond ? `${decimalFormat.format(metersPerSecond * 3.6)} km/h` : null;
 }
 
+function formatPace(metersPerSecond: number | null) {
+	if (!metersPerSecond) return null;
+	const secondsPerKm = Math.round(1000 / metersPerSecond);
+	return `${Math.floor(secondsPerKm / 60)}:${String(secondsPerKm % 60).padStart(2, '0')} /km`;
+}
+
+function formatTemperature(celsius: number | null) {
+	return celsius !== null ? `${decimalFormat.format(celsius)} °C` : null;
+}
+
+function formatPercent(fraction: number | null) {
+	return fraction !== null ? `${integerFormat.format(fraction * 100)} %` : null;
+}
+
+const COMPASS = ['N', 'NO', 'O', 'SO', 'S', 'SW', 'W', 'NW'];
+const compassDirection = (degrees: number) => COMPASS[Math.round((((degrees % 360) + 360) % 360) / 45) % 8];
+
+const positive = (value: number | null): value is number => value !== null && value > 0;
+
+const FOOT_SPORTS = new Set(['Run', 'Walk', 'Hike', 'Trail Run']);
+
+type DetailItem = { label: string; value: string };
+type DetailGroup = { title: string; items: { label: string; value: string | null }[] };
+
 function getDetails(a: StravaActivityListItem) {
 	// Older export rows lack average_speed; derive it like Strava does.
 	const avgSpeed = a.average_speed ?? (a.distance && a.moving_time ? a.distance / a.moving_time : null);
+	const isRide = a.sport_type.includes('Ride');
+	const isFoot = FOOT_SPORTS.has(a.sport_type);
+	// Export stores foot cadence per leg; Strava shows steps per minute.
+	const cadence = (value: number | null) =>
+		positive(value) ? `${integerFormat.format(isFoot ? value * 2 : value)} ${isFoot ? 'spm' : 'rpm'}` : null;
 
-	return [
-		{ label: 'Startzeit', value: `${timeFormat.format(new Date(a.start_date))} Uhr` },
-		{ label: 'Gesamtzeit', value: a.elapsed_time ? formatDuration(a.elapsed_time) : null },
-		{ label: 'Ø Geschwindigkeit', value: formatSpeed(avgSpeed) },
-		{ label: 'Max. Geschwindigkeit', value: formatSpeed(a.max_speed) },
-		{ label: 'Ø Leistung', value: a.average_watts ? `${integerFormat.format(a.average_watts)} W` : null },
-		{ label: 'Kalorien', value: a.calories ? `${integerFormat.format(a.calories)} kcal` : null },
+	const groups: DetailGroup[] = [
 		{
-			label: 'Ø Herzfrequenz',
-			value: a.average_heartrate ? `${integerFormat.format(a.average_heartrate)} bpm` : null,
+			title: 'Allgemein',
+			items: [
+				{ label: 'Startzeit', value: `${timeFormat.format(new Date(a.start_date))} Uhr` },
+				{ label: 'Gesamtzeit', value: a.elapsed_time ? formatDuration(a.elapsed_time) : null },
+				{ label: 'Ausrüstung', value: a.gear_name },
+				{ label: 'Kalorien', value: positive(a.calories) ? `${integerFormat.format(a.calories)} kcal` : null },
+				{ label: 'Arbeit', value: positive(a.kilojoules) ? `${integerFormat.format(a.kilojoules)} kJ` : null },
+			],
 		},
-		{ label: 'Max. Herzfrequenz', value: a.max_heartrate ? `${integerFormat.format(a.max_heartrate)} bpm` : null },
-		{ label: 'Ausrüstung', value: a.gear_name },
-	].filter((d): d is { label: string; value: string } => Boolean(d.value));
+		{
+			title: 'Geschwindigkeit',
+			items: [
+				{ label: 'Ø Geschwindigkeit', value: formatSpeed(avgSpeed) },
+				{ label: 'Max. Geschwindigkeit', value: formatSpeed(a.max_speed) },
+				{ label: 'Ø Pace', value: isFoot ? formatPace(avgSpeed) : null },
+				{ label: 'Ø GAP', value: formatPace(a.average_grade_adjusted_speed) },
+				{
+					label: 'GAP-Distanz',
+					value: positive(a.grade_adjusted_distance) ? formatDistance(a.grade_adjusted_distance) : null,
+				},
+			],
+		},
+		{
+			title: 'Höhe & Steigung',
+			items: [
+				{ label: 'Bergab', value: positive(a.elevation_loss) ? formatElevation(a.elevation_loss) : null },
+				{
+					label: 'Tiefster Punkt',
+					value: a.elev_low !== null ? `${integerFormat.format(a.elev_low)} m` : null,
+				},
+				{
+					label: 'Höchster Punkt',
+					value: a.elev_high !== null ? `${integerFormat.format(a.elev_high)} m` : null,
+				},
+				{
+					label: 'Max. Steigung',
+					value: positive(a.max_grade) ? `${decimalFormat.format(a.max_grade)} %` : null,
+				},
+				{
+					label: 'Ø Steigung',
+					value: a.average_grade !== null ? `${decimalFormat.format(a.average_grade)} %` : null,
+				},
+			],
+		},
+		{
+			title: 'Leistung & Trittfrequenz',
+			items: [
+				{
+					label: 'Ø Leistung',
+					value: positive(a.average_watts) ? `${integerFormat.format(a.average_watts)} W` : null,
+				},
+				{
+					label: 'Gewichtete Ø-Leistung',
+					value: positive(a.weighted_average_watts)
+						? `${integerFormat.format(a.weighted_average_watts)} W`
+						: null,
+				},
+				{ label: 'Ø Trittfrequenz', value: cadence(a.average_cadence) },
+				{ label: 'Max. Trittfrequenz', value: cadence(a.max_cadence) },
+			],
+		},
+		{
+			title: 'Herzfrequenz & Belastung',
+			items: [
+				{
+					label: 'Ø Herzfrequenz',
+					value: positive(a.average_heartrate) ? `${integerFormat.format(a.average_heartrate)} bpm` : null,
+				},
+				{
+					label: 'Max. Herzfrequenz',
+					value: positive(a.max_heartrate) ? `${integerFormat.format(a.max_heartrate)} bpm` : null,
+				},
+				{
+					label: 'Relative Effort',
+					value: positive(a.relative_effort) ? integerFormat.format(a.relative_effort) : null,
+				},
+				{
+					label: 'Training Load',
+					value: positive(a.training_load) ? integerFormat.format(a.training_load) : null,
+				},
+				{ label: 'Intensität', value: positive(a.intensity) ? `${integerFormat.format(a.intensity)} %` : null },
+				{
+					label: 'Gefühlte Anstrengung',
+					value: positive(a.perceived_exertion) ? `${integerFormat.format(a.perceived_exertion)} / 10` : null,
+				},
+			],
+		},
+		{
+			title: 'Wetter',
+			items: [
+				{ label: 'Temperatur', value: formatTemperature(a.weather_temperature) },
+				{ label: 'Gefühlt', value: formatTemperature(a.apparent_temperature) },
+				{ label: 'Temperatur (Gerät)', value: formatTemperature(a.average_temp) },
+				{
+					label: 'Wind',
+					value:
+						a.wind_speed !== null
+							? `${integerFormat.format(a.wind_speed * 3.6)} km/h${a.wind_bearing !== null ? ` aus ${compassDirection(a.wind_bearing)}` : ''}`
+							: null,
+				},
+				{
+					label: 'Böen',
+					value: a.wind_gust !== null ? `${integerFormat.format(a.wind_gust * 3.6)} km/h` : null,
+				},
+				{ label: 'Luftfeuchte', value: formatPercent(a.humidity) },
+				{ label: 'Bewölkung', value: formatPercent(a.cloud_cover) },
+				{
+					label: 'Niederschlag',
+					value:
+						a.precipitation_intensity !== null
+							? `${decimalFormat.format(a.precipitation_intensity)} mm/h${
+									a.precipitation_probability !== null
+										? ` (${formatPercent(a.precipitation_probability)})`
+										: ''
+								}`
+							: null,
+				},
+				{
+					label: 'Luftdruck',
+					value: a.weather_pressure !== null ? `${integerFormat.format(a.weather_pressure)} hPa` : null,
+				},
+				{ label: 'UV-Index', value: a.uv_index !== null ? String(a.uv_index) : null },
+			],
+		},
+		{
+			title: 'Sonstiges',
+			items: [
+				{ label: 'Schritte', value: positive(a.total_steps) ? integerFormat.format(a.total_steps) : null },
+				{
+					label: 'Unbefestigt',
+					value:
+						positive(a.dirt_distance) && a.distance
+							? `${formatDistance(a.dirt_distance)} (${formatPercent(a.dirt_distance / a.distance)})`
+							: null,
+				},
+				{
+					label: 'Körpergewicht',
+					value: positive(a.athlete_weight) ? `${decimalFormat.format(a.athlete_weight)} kg` : null,
+				},
+				{
+					label: 'Radgewicht',
+					value: isRide && positive(a.bike_weight) ? `${decimalFormat.format(a.bike_weight)} kg` : null,
+				},
+			],
+		},
+	];
+
+	return groups
+		.map((g) => ({ ...g, items: g.items.filter((d): d is DetailItem => Boolean(d.value)) }))
+		.filter((g) => g.items.length > 0);
 }
 
 const yearOf = (activity: StravaActivityListItem) => activity.start_date.slice(0, 4);
 
-const sorters: Record<SortOption, (a: StravaActivityListItem, b: StravaActivityListItem) => number> = {
-	'date-desc': (a, b) => b.start_date.localeCompare(a.start_date),
-	'date-asc': (a, b) => a.start_date.localeCompare(b.start_date),
-	'distance-desc': (a, b) => (b.distance ?? 0) - (a.distance ?? 0),
-	'elevation-desc': (a, b) => (b.total_elevation_gain ?? 0) - (a.total_elevation_gain ?? 0),
-	'duration-desc': (a, b) => (b.moving_time ?? 0) - (a.moving_time ?? 0),
-};
+function SortableHeader({
+	label,
+	sortKey,
+	sort,
+	onSort,
+	align = 'left',
+}: {
+	label: string;
+	sortKey: SortKey;
+	sort: SortOption;
+	onSort: (sort: SortOption) => void;
+	align?: 'left' | 'right';
+}) {
+	const [activeKey, activeDirection] = sort.split('-') as [SortKey, SortDirection];
+	const isActive = activeKey === sortKey;
+	const nextDirection: SortDirection = isActive
+		? activeDirection === 'asc'
+			? 'desc'
+			: 'asc'
+		: DEFAULT_DIRECTION[sortKey];
+	const Icon = !isActive ? ChevronsUpDown : activeDirection === 'asc' ? ArrowUp : ArrowDown;
+
+	return (
+		<th
+			scope="col"
+			aria-sort={isActive ? (activeDirection === 'asc' ? 'ascending' : 'descending') : 'none'}
+			className={`py-2 pr-4 font-medium ${align === 'right' ? 'text-right' : ''}`}
+		>
+			<button
+				type="button"
+				onClick={() => onSort(`${sortKey}-${nextDirection}`)}
+				className={`inline-flex items-center gap-1 whitespace-nowrap hover:text-gray-900 dark:hover:text-gray-100 ${
+					align === 'right' ? 'flex-row-reverse' : ''
+				} ${isActive ? 'text-gray-900 dark:text-gray-100' : ''}`}
+			>
+				{label}
+				<Icon className={`h-3.5 w-3.5 ${isActive ? '' : 'opacity-40'}`} aria-hidden="true" />
+			</button>
+		</th>
+	);
+}
 
 export function StravaDashboard({ activities }: { activities: StravaActivityListItem[] }) {
 	const [expanded, setExpanded] = useState<Set<number>>(() => new Set());
@@ -148,12 +394,13 @@ export function StravaDashboard({ activities }: { activities: StravaActivityList
 	}, [search, years, types]);
 
 	const updateFilters = (next: Partial<Filters>) => writeFiltersToUrl({ year, type, sort, ...next });
+	const onSort = (next: SortOption) => updateFilters({ sort: next });
 
 	const filtered = useMemo(
 		() =>
 			activities
 				.filter((a) => (year === ALL || yearOf(a) === year) && (type === ALL || a.sport_type === type))
-				.sort(sorters[sort]),
+				.sort(compareActivities(sort)),
 		[activities, year, type, sort],
 	);
 
@@ -245,12 +492,30 @@ export function StravaDashboard({ activities }: { activities: StravaActivityList
 							<th className="w-8 py-2">
 								<span className="sr-only">Details</span>
 							</th>
-							<th className="py-2 pr-4 font-medium">Datum</th>
-							<th className="py-2 pr-4 font-medium">Typ</th>
-							<th className="py-2 pr-4 font-medium">Name</th>
-							<th className="py-2 pr-4 text-right font-medium">Distanz</th>
-							<th className="py-2 pr-4 text-right font-medium">Höhe</th>
-							<th className="py-2 pr-4 text-right font-medium">Dauer</th>
+							<SortableHeader label="Datum" sortKey="date" sort={sort} onSort={onSort} />
+							<SortableHeader label="Typ" sortKey="type" sort={sort} onSort={onSort} />
+							<SortableHeader label="Name" sortKey="name" sort={sort} onSort={onSort} />
+							<SortableHeader
+								label="Distanz"
+								sortKey="distance"
+								sort={sort}
+								onSort={onSort}
+								align="right"
+							/>
+							<SortableHeader
+								label="Höhe"
+								sortKey="elevation"
+								sort={sort}
+								onSort={onSort}
+								align="right"
+							/>
+							<SortableHeader
+								label="Dauer"
+								sortKey="duration"
+								sort={sort}
+								onSort={onSort}
+								align="right"
+							/>
 							<th className="py-2 font-medium">
 								<span className="sr-only">Strava</span>
 							</th>
@@ -316,16 +581,27 @@ export function StravaDashboard({ activities }: { activities: StravaActivityList
 										<tr id={detailsId} className="bg-gray-50 dark:bg-gray-900">
 											<td />
 											<td colSpan={7} className="py-4 pr-4">
-												<dl className="grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-3 lg:grid-cols-5">
-													{getDetails(a).map((d) => (
-														<div key={d.label}>
-															<dt className="text-xs text-gray-600 dark:text-gray-400">
-																{d.label}
-															</dt>
-															<dd className="font-medium tabular-nums">{d.value}</dd>
-														</div>
+												<div className="grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+													{getDetails(a).map((group) => (
+														<section key={group.title}>
+															<h3 className="mb-2 text-xs font-semibold tracking-wide text-gray-500 uppercase dark:text-gray-400">
+																{group.title}
+															</h3>
+															<dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1">
+																{group.items.map((d) => (
+																	<Fragment key={d.label}>
+																		<dt className="text-gray-600 dark:text-gray-400">
+																			{d.label}
+																		</dt>
+																		<dd className="font-medium tabular-nums">
+																			{d.value}
+																		</dd>
+																	</Fragment>
+																))}
+															</dl>
+														</section>
 													))}
-												</dl>
+												</div>
 												{a.description && (
 													<p className="mt-4 max-w-prose whitespace-pre-line text-gray-700 dark:text-gray-300">
 														{a.description}

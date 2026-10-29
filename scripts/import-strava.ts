@@ -9,8 +9,13 @@ import path from 'node:path';
 import { parseArgs } from 'node:util';
 import csv from 'csv-parser';
 import Database from 'better-sqlite3';
-import type { StravaActivity } from '../src/types/strava';
-import { CREATE_ACTIVITIES_TABLE, STRAVA_DB_FILE } from '../src/lib/strava/schema';
+import type { StravaActivity, StravaActivityMetrics } from '../src/types/strava';
+import {
+	ACTIVITY_METRIC_COLUMNS,
+	CREATE_ACTIVITIES_TABLE,
+	STRAVA_DB_FILE,
+	type ActivityMetricColumn,
+} from '../src/lib/strava/schema';
 
 const { values: args } = parseArgs({
 	options: {
@@ -72,6 +77,57 @@ function text(value: string | undefined): string | null {
 	return v ? v : null;
 }
 
+// CSV header (or getter) per metric column; empty-only CSV columns (Max Watts, Max Temperature, Newly Explored Distance) are skipped.
+const METRIC_SOURCES: Record<ActivityMetricColumn, string | ((row: CsvRow) => number | null)> = {
+	elevation_loss: 'Elevation Loss',
+	elev_low: 'Elevation Low',
+	elev_high: 'Elevation High',
+	max_grade: 'Max Grade',
+	average_grade: 'Average Grade',
+	average_cadence: 'Average Cadence',
+	max_cadence: 'Max Cadence',
+	weighted_average_watts: 'Weighted Average Power',
+	kilojoules: (row) => {
+		const joules = num(row['Total Work']);
+		return joules === null ? null : joules / 1000;
+	},
+	relative_effort: (row) => num(row['Relative Effort#2']) ?? num(row['Relative Effort']),
+	training_load: 'Training Load',
+	intensity: 'Intensity',
+	perceived_exertion: 'Perceived Exertion',
+	average_temp: 'Average Temperature',
+	weather_condition: 'Weather Condition',
+	weather_temperature: 'Weather Temperature',
+	apparent_temperature: 'Apparent Temperature',
+	humidity: 'Humidity',
+	wind_speed: 'Wind Speed',
+	wind_gust: 'Wind Gust',
+	wind_bearing: 'Wind Bearing',
+	cloud_cover: 'Cloud Cover',
+	precipitation_intensity: 'Precipitation Intensity',
+	precipitation_probability: 'Precipitation Probability',
+	weather_pressure: 'Weather Pressure',
+	uv_index: 'UV Index',
+	average_grade_adjusted_speed: 'Average Grade Adjusted Pace',
+	grade_adjusted_distance: 'Grade Adjusted Distance',
+	total_steps: 'Total Steps',
+	dirt_distance: 'Dirt Distance',
+	athlete_weight: 'Athlete Weight',
+	bike_weight: 'Bike Weight',
+};
+
+const METRIC_KEYS = Object.keys(ACTIVITY_METRIC_COLUMNS) as ActivityMetricColumn[];
+
+function toMetrics(row: CsvRow): StravaActivityMetrics {
+	const metrics = {} as StravaActivityMetrics;
+	for (const key of METRIC_KEYS) {
+		const source = METRIC_SOURCES[key];
+		const value = typeof source === 'string' ? num(row[source]) : source(row);
+		metrics[key] = value !== null && ACTIVITY_METRIC_COLUMNS[key] === 'INTEGER' ? Math.round(value) : value;
+	}
+	return metrics;
+}
+
 // Duplicate CSV headers get a "#2" suffix; the second occurrence holds the detailed values (e.g. distance in meters).
 function toActivity(row: CsvRow): StravaActivity {
 	const id = Number(row['Activity ID']);
@@ -101,6 +157,7 @@ function toActivity(row: CsvRow): StravaActivity {
 		average_watts: num(row['Average Watts']),
 		calories: num(row['Calories']),
 		gear_name: text(row['Activity Gear']),
+		...toMetrics(row),
 		commute: row['Commute'] === 'true',
 		source: 'export',
 	};
@@ -127,6 +184,16 @@ function readCsv(file: string): Promise<CsvRow[]> {
 	});
 }
 
+function ensureSchema(db: Database.Database) {
+	db.exec(CREATE_ACTIVITIES_TABLE);
+	const existing = new Set((db.prepare('PRAGMA table_info(activities)').all() as { name: string }[]).map((c) => c.name));
+	for (const key of METRIC_KEYS) {
+		if (existing.has(key)) continue;
+		db.exec(`ALTER TABLE activities ADD COLUMN ${key} ${ACTIVITY_METRIC_COLUMNS[key]}`);
+		console.log(`  + added column ${key}`);
+	}
+}
+
 async function main() {
 	const rows = await readCsv(csvPath);
 	const selected = limit ? rows.slice(0, limit) : rows;
@@ -146,7 +213,7 @@ async function main() {
 	errors.forEach((e) => console.warn(`  ! ${e}`));
 
 	const db = dryRun && !fs.existsSync(dbPath) ? null : new Database(dbPath, { readonly: dryRun });
-	if (db && !dryRun) db.exec(CREATE_ACTIVITIES_TABLE);
+	if (db && !dryRun) ensureSchema(db);
 
 	const existingIds = new Set<number>();
 	if (db && db.prepare('SELECT 1 FROM sqlite_master WHERE type = ? AND name = ?').get('table', 'activities')) {
@@ -168,6 +235,10 @@ async function main() {
 				km: a.distance !== null ? +(a.distance / 1000).toFixed(2) : null,
 				hm: a.total_elevation_gain,
 				moving_min: a.moving_time !== null ? Math.round(a.moving_time / 60) : null,
+				down_m: a.elevation_loss,
+				np_w: a.weighted_average_watts,
+				kj: a.kilojoules !== null ? Math.round(a.kilojoules) : null,
+				temp: a.weather_temperature,
 			})),
 		);
 		db?.close();
@@ -175,34 +246,19 @@ async function main() {
 		return;
 	}
 
+	const columns = [
+		'id', 'name', 'sport_type', 'start_date', 'description', 'distance', 'moving_time', 'elapsed_time',
+		'total_elevation_gain', 'average_speed', 'max_speed', 'average_heartrate', 'max_heartrate',
+		'average_watts', 'calories', 'gear_name', ...METRIC_KEYS, 'commute', 'source',
+	];
 	const upsert = db!.prepare(`
-		INSERT INTO activities (
-			id, name, sport_type, start_date, description, distance, moving_time, elapsed_time,
-			total_elevation_gain, average_speed, max_speed, average_heartrate, max_heartrate,
-			average_watts, calories, gear_name, commute, source
-		) VALUES (
-			@id, @name, @sport_type, @start_date, @description, @distance, @moving_time, @elapsed_time,
-			@total_elevation_gain, @average_speed, @max_speed, @average_heartrate, @max_heartrate,
-			@average_watts, @calories, @gear_name, @commute, @source
-		)
+		INSERT INTO activities (${columns.join(', ')})
+		VALUES (${columns.map((c) => `@${c}`).join(', ')})
 		ON CONFLICT(id) DO UPDATE SET
-			name = excluded.name,
-			sport_type = excluded.sport_type,
-			start_date = excluded.start_date,
-			description = excluded.description,
-			distance = excluded.distance,
-			moving_time = excluded.moving_time,
-			elapsed_time = excluded.elapsed_time,
-			total_elevation_gain = excluded.total_elevation_gain,
-			average_speed = excluded.average_speed,
-			max_speed = excluded.max_speed,
-			average_heartrate = excluded.average_heartrate,
-			max_heartrate = excluded.max_heartrate,
-			average_watts = excluded.average_watts,
-			calories = excluded.calories,
-			gear_name = excluded.gear_name,
-			commute = excluded.commute,
-			source = excluded.source,
+			${columns
+				.filter((c) => c !== 'id')
+				.map((c) => `${c} = excluded.${c}`)
+				.join(',\n\t\t\t')},
 			imported_at = strftime('%Y-%m-%dT%H:%M:%SZ', 'now')
 	`);
 

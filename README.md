@@ -124,7 +124,8 @@ Der Import läuft in einer Transaktion (alles oder nichts) und nutzt `ON CONFLIC
 - Tabelle `activities`, Primärschlüssel ist die Strava-Aktivitäts-ID.
 - Einheiten wie in der Strava-API: Distanz/Höhe in Metern, Zeiten in Sekunden, Geschwindigkeiten in m/s, `start_date` als ISO-String (UTC).
 - Spaltennamen folgen der Strava-API (`sport_type`, `moving_time`, `total_elevation_gain` …); die Spalte `source` (`export` | `api`) ist für eine spätere API-Anbindung vorbereitet.
-- Nicht übernommen: private Notizen, GPS-/FIT-Dateien, Wetter- und weitere Detailspalten.
+- Zusätzliche Metriken (Höhe, Steigung, Trittfrequenz, Leistung, Belastung, Wetter, Laufwerte, Gewicht) sind zentral in `ACTIVITY_METRIC_COLUMNS` (`src/lib/strava/schema.ts`) definiert. Fehlende Spalten ergänzt das Import-Skript automatisch per `ALTER TABLE` – neue Felder also dort und in `METRIC_SOURCES` (`scripts/import-strava.ts`) eintragen und `yarn strava:import` erneut ausführen.
+- Nicht übernommen: private Notizen, GPS-/FIT-Dateien sowie im Export immer leere Spalten (`Max Watts`, `Max Temperature`, `Newly Explored Distance`).
 
 ### Relevante Dateien
 
