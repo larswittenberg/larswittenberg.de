@@ -44,19 +44,97 @@ if (!fs.existsSync(csvPath)) {
 
 type CsvRow = Record<string, string>;
 
+// Strava localizes the export to the account language; German headers are mapped to the English ones used below.
+const HEADER_DE: Record<string, string> = {
+	'Aktivitäts-ID': 'Activity ID',
+	Aktivitätsdatum: 'Activity Date',
+	'Name der Aktivität': 'Activity Name',
+	Aktivitätsart: 'Activity Type',
+	Aktivitätsbeschreibung: 'Activity Description',
+	'Verstrichene Zeit': 'Elapsed Time',
+	Distanz: 'Distance',
+	'Max. Herzfrequenz': 'Max Heart Rate',
+	'Relative Leistung': 'Relative Effort',
+	Pendeln: 'Commute',
+	Aktivitätsausrüstung: 'Activity Gear',
+	Sportlergewicht: 'Athlete Weight',
+	Fahrradgewicht: 'Bike Weight',
+	Bewegungszeit: 'Moving Time',
+	'Höchstgeschw.': 'Max Speed',
+	'Durchschnittliche Geschwindigkeit': 'Average Speed',
+	Höhenzunahme: 'Elevation Gain',
+	Höhenunterschied: 'Elevation Loss',
+	'Min. Höhe': 'Elevation Low',
+	'Max. Höhe': 'Elevation High',
+	'Max. Steigung': 'Max Grade',
+	'Durchschnittliche Steigung': 'Average Grade',
+	'Max. Tritt-/Schrittfrequenz': 'Max Cadence',
+	'Durchschnittliche Trittfrequenz': 'Average Cadence',
+	'Durchschnittliche Herzfrequenz': 'Average Heart Rate',
+	'Durchschnittliche Watt': 'Average Watts',
+	Kalorien: 'Calories',
+	'Durchschnittliche Temperatur': 'Average Temperature',
+	Gesamtarbeit: 'Total Work',
+	'Gefühlte Anstrengung': 'Perceived Exertion',
+	'Gewichtete durchschnittliche Leistung': 'Weighted Average Power',
+	'Auf Steigung angepasste Distanz': 'Grade Adjusted Distance',
+	Wetterlage: 'Weather Condition',
+	'Wetter: Temperatur': 'Weather Temperature',
+	'Scheinbare Temperatur': 'Apparent Temperature',
+	Luftfeuchtigkeit: 'Humidity',
+	'Wetter: Druck': 'Weather Pressure',
+	Windgeschwindigkeit: 'Wind Speed',
+	Windböe: 'Wind Gust',
+	Windrichtung: 'Wind Bearing',
+	Niederschlagsintensität: 'Precipitation Intensity',
+	Niederschlagswahrscheinlichkeit: 'Precipitation Probability',
+	Wolkendecke: 'Cloud Cover',
+	'UV-Index': 'UV Index',
+	'Auf Schotter zurückgelegte Distanz': 'Dirt Distance',
+	'Schritte insgesamt': 'Total Steps',
+	Trainingsbelastung: 'Training Load',
+	Intensität: 'Intensity',
+	'Durchschnittliches auf Steigung angepasstes Tempo': 'Average Grade Adjusted Pace',
+};
+
+// German activity types -> English types stored in the DB (and used by dashboard filters/charts).
+const ACTIVITY_TYPE_DE: Record<string, string> = {
+	Lauf: 'Run',
+	Spaziergang: 'Walk',
+	Wandern: 'Hike',
+	Radfahrt: 'Ride',
+	'E-Bike-Radfahrt': 'E-Bike Ride',
+	'Virtuelle Radfahrt': 'Virtual Ride',
+	Training: 'Workout',
+	Yoga: 'Yoga',
+	'Kajak fahren': 'Kayaking',
+	Kanu: 'Canoe',
+};
+
+type ExportLocale = 'en' | 'de';
+
 const MONTHS: Record<string, string> = {
 	Jan: '01', Feb: '02', Mar: '03', Apr: '04', May: '05', Jun: '06',
 	Jul: '07', Aug: '08', Sep: '09', Oct: '10', Nov: '11', Dec: '12',
 };
 
-/** "Sep 21, 2026, 11:10:33 AM" (UTC) -> "2026-09-21T11:10:33Z" */
+/**
+ * "Sep 21, 2026, 11:10:33 AM" or "21.09.2026, 11:10:33" (both UTC) -> "2026-09-21T11:10:33Z"
+ */
 function parseStravaDate(value: string): string {
+	const pad = (n: number | string) => String(n).padStart(2, '0');
+
+	const de = value.trim().match(/^(\d{1,2})\.(\d{1,2})\.(\d{4}),? (\d{1,2}):(\d{2}):(\d{2})$/);
+	if (de) {
+		const [, day, month, year, h, min, sec] = de;
+		return `${year}-${pad(month)}-${pad(day)}T${pad(h)}:${min}:${sec}Z`;
+	}
+
 	const m = value.trim().match(/^(\w{3}) (\d{1,2}), (\d{4}),? (\d{1,2}):(\d{2}):(\d{2}) (AM|PM)$/);
 	if (!m || !MONTHS[m[1]]) throw new Error(`Unparseable date "${value}"`);
 	const [, mon, day, year, h, min, sec, ampm] = m;
 	let hour = Number(h) % 12;
 	if (ampm === 'PM') hour += 12;
-	const pad = (n: number | string) => String(n).padStart(2, '0');
 	return `${year}-${MONTHS[mon]}-${pad(day)}T${pad(hour)}:${min}:${sec}Z`;
 }
 
@@ -129,16 +207,22 @@ function toMetrics(row: CsvRow): StravaActivityMetrics {
 }
 
 // Duplicate CSV headers get a "#2" suffix; the second occurrence holds the detailed values (e.g. distance in meters).
-function toActivity(row: CsvRow): StravaActivity {
+function toActivity(row: CsvRow, locale: ExportLocale): StravaActivity {
 	const id = Number(row['Activity ID']);
 	if (!Number.isSafeInteger(id) || id <= 0) throw new Error(`Invalid Activity ID "${row['Activity ID']}"`);
 
 	const name = text(row['Activity Name']);
-	const sportType = text(row['Activity Type']);
+	const rawType = text(row['Activity Type']);
 	if (!name) throw new Error('Missing Activity Name');
-	if (!sportType) throw new Error('Missing Activity Type');
+	if (!rawType) throw new Error('Missing Activity Type');
+	const sportType = locale === 'de' ? ACTIVITY_TYPE_DE[rawType] : rawType;
+	if (!sportType) throw new Error(`Unknown German activity type "${rawType}" - add it to ACTIVITY_TYPE_DE`);
 
-	const distanceKm = num(row['Distance']);
+	// Only the km column uses a locale decimal separator ("6,16" in German exports).
+	const kmToMeters = (value: string | undefined) => {
+		const km = num(value?.replace(',', '.'));
+		return km !== null ? km * 1000 : null;
+	};
 
 	return {
 		id,
@@ -146,7 +230,7 @@ function toActivity(row: CsvRow): StravaActivity {
 		sport_type: sportType,
 		start_date: parseStravaDate(row['Activity Date']),
 		description: text(row['Activity Description']),
-		distance: num(row['Distance#2']) ?? (distanceKm !== null ? distanceKm * 1000 : null),
+		distance: num(row['Distance#2']) ?? kmToMeters(row['Distance']),
 		moving_time: int(row['Moving Time']),
 		elapsed_time: int(row['Elapsed Time#2']) ?? int(row['Elapsed Time']),
 		total_elevation_gain: num(row['Elevation Gain']),
@@ -163,26 +247,55 @@ function toActivity(row: CsvRow): StravaActivity {
 	};
 }
 
-function readCsv(file: string): Promise<CsvRow[]> {
+function readCsv(file: string): Promise<{ rows: CsvRow[]; headers: string[]; locale: ExportLocale }> {
 	const seen = new Map<string, number>();
+	const headers: string[] = [];
+	let locale: ExportLocale = 'en';
 	return new Promise((resolve, reject) => {
 		const rows: CsvRow[] = [];
 		fs.createReadStream(file)
 			.pipe(
 				csv({
 					mapHeaders: ({ header }) => {
-						const clean = header.replace(/^\uFEFF/, '').trim();
+						const raw = header.replace(/^\uFEFF/, '').trim();
+						if (HEADER_DE[raw]) locale = 'de';
+						const clean = HEADER_DE[raw] ?? raw;
 						const count = (seen.get(clean) ?? 0) + 1;
 						seen.set(clean, count);
-						return count === 1 ? clean : `${clean}#${count}`;
+						const key = count === 1 ? clean : `${clean}#${count}`;
+						headers.push(key);
+						return key;
 					},
 				}),
 			)
 			.on('data', (row: CsvRow) => rows.push(row))
-			.on('end', () => resolve(rows))
+			.on('end', () => resolve({ rows, headers, locale }))
 			.on('error', reject);
 	});
 }
+
+const REQUIRED_HEADERS = [
+	'Activity ID',
+	'Activity Date',
+	'Activity Name',
+	'Activity Type',
+	'Activity Description',
+	'Distance#2',
+	'Moving Time',
+	'Elapsed Time#2',
+	'Elevation Gain',
+	'Average Speed',
+	'Max Speed',
+	'Average Heart Rate',
+	'Max Heart Rate#2',
+	'Average Watts',
+	'Calories',
+	'Activity Gear',
+	'Commute',
+	'Total Work',
+	'Relative Effort#2',
+	...Object.values(METRIC_SOURCES).filter((s): s is string => typeof s === 'string'),
+];
 
 function ensureSchema(db: Database.Database) {
 	db.exec(CREATE_ACTIVITIES_TABLE);
@@ -195,20 +308,28 @@ function ensureSchema(db: Database.Database) {
 }
 
 async function main() {
-	const rows = await readCsv(csvPath);
+	const { rows, headers, locale } = await readCsv(csvPath);
+
+	const missingHeaders = REQUIRED_HEADERS.filter((h) => !headers.includes(h));
+	if (missingHeaders.length) {
+		console.error(`Missing CSV columns (unknown export format/language?): ${missingHeaders.join(', ')}`);
+		console.error(`CSV headers found: ${headers.slice(0, 10).join(', ')} ...`);
+		process.exit(1);
+	}
+
 	const selected = limit ? rows.slice(0, limit) : rows;
 
 	const activities: StravaActivity[] = [];
 	const errors: string[] = [];
 	selected.forEach((row, i) => {
 		try {
-			activities.push(toActivity(row));
+			activities.push(toActivity(row, locale));
 		} catch (err) {
 			errors.push(`Row ${i + 2} (ID ${row['Activity ID'] ?? '?'}): ${(err as Error).message}`);
 		}
 	});
 
-	console.log(`CSV: ${csvPath}`);
+	console.log(`CSV: ${csvPath} (export language: ${locale})`);
 	console.log(`Rows in CSV: ${rows.length}, processed: ${selected.length}, valid: ${activities.length}, invalid: ${errors.length}`);
 	errors.forEach((e) => console.warn(`  ! ${e}`));
 

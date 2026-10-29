@@ -111,6 +111,8 @@ yarn strava:import --only-new
 
 Der Import läuft in einer Transaktion (alles oder nichts) und nutzt `ON CONFLICT(id) DO UPDATE`, kann also beliebig oft wiederholt werden.
 
+**Sprache des Exports:** Strava exportiert die CSV in der Sprache des Kontos. Das Skript erkennt englische und deutsche Exporte automatisch (`export language: de` in der Ausgabe). Deutsche Spaltennamen werden über `HEADER_DE`, deutsche Aktivitätsarten (z. B. `Radfahrt` → `Ride`) über `ACTIVITY_TYPE_DE` in `scripts/import-strava.ts` auf die englischen Werte abgebildet, damit Filter und Charts weiter funktionieren. Taucht eine neue deutsche Aktivitätsart auf, meldet der Dry-Run sie als Fehler – dann dort ergänzen.
+
 ### Aktualisierung (z. B. alle paar Monate)
 
 1. Neuen Strava-Export nach `data/strava-export/` entpacken (alten Inhalt ersetzen).
