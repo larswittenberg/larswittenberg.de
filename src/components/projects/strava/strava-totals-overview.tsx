@@ -7,7 +7,7 @@ export function StravaTotalsOverview({ totals }: { totals: StravaTotals }) {
 		{ label: 'Aktivitäten', value: integerFormat.format(totals.count) },
 		{ label: 'Distanz', value: `${integerFormat.format(totals.distance / 1000)} km` },
 		{ label: 'Höhenmeter', value: `${integerFormat.format(totals.elevation)} hm` },
-		{ label: 'Bewegungszeit', value: `${integerFormat.format(totals.movingTime / 3600)} h` },
+		{ label: 'Bewegungszeit', value: `${integerFormat.format(totals.movingTime / 3600)} Stunden` },
 	];
 
 	return (

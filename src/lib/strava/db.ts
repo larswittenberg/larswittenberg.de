@@ -57,14 +57,43 @@ export function getActivityTotals(): StravaTotals {
 	}
 }
 
-/** Protected: throws without a valid session. */
-export async function getActivities(): Promise<StravaActivityListItem[]> {
+export const ALL_YEARS = 'all';
+
+export type StravaDashboardData = {
+	activities: StravaActivityListItem[];
+	years: string[];
+	selectedYear: string;
+	defaultYear: string;
+};
+
+/** Protected: throws without a valid session. Loads only the requested year (default: current year). */
+export async function getDashboardData(requestedYear: string | undefined): Promise<StravaDashboardData> {
 	if (!(await isAuthenticated())) throw new Error('Unauthorized');
 	const db = openDb();
 	try {
-		return db
-			.prepare(`SELECT ${LIST_COLUMNS.join(', ')} FROM activities ORDER BY start_date DESC`)
-			.all() as StravaActivityListItem[];
+		const years = (
+			db
+				.prepare('SELECT DISTINCT strftime(?, start_date) AS year FROM activities ORDER BY year DESC')
+				.all('%Y') as { year: string }[]
+		).map((r) => r.year);
+
+		const currentYear = String(new Date().getUTCFullYear());
+		const defaultYear = years.includes(currentYear) ? currentYear : (years[0] ?? ALL_YEARS);
+		const selectedYear =
+			requestedYear === ALL_YEARS || (requestedYear && years.includes(requestedYear))
+				? requestedYear
+				: defaultYear;
+
+		const select = `SELECT ${LIST_COLUMNS.join(', ')} FROM activities`;
+		const activities = (
+			selectedYear === ALL_YEARS
+				? db.prepare(`${select} ORDER BY start_date DESC`).all()
+				: db
+						.prepare(`${select} WHERE start_date >= ? AND start_date < ? ORDER BY start_date DESC`)
+						.all(`${selectedYear}-01-01`, `${Number(selectedYear) + 1}-01-01`)
+		) as StravaActivityListItem[];
+
+		return { activities, years, selectedYear, defaultYear };
 	} finally {
 		db.close();
 	}

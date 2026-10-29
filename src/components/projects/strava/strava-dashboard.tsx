@@ -1,10 +1,11 @@
 'use client';
 
-import { Fragment, useId, useMemo, useState, useSyncExternalStore } from 'react';
+import { Fragment, useId, useMemo, useState, useSyncExternalStore, useTransition } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import { ArrowDown, ArrowUp, ChevronDown, ChevronsUpDown, ExternalLink } from 'lucide-react';
 import { Select } from '@/components/projects/github-stars/ui/select';
 import { Label } from '@/components/projects/github-stars/ui/label';
-import type { StravaActivityListItem } from '@/lib/strava/db';
+import type { StravaActivityListItem, StravaDashboardData } from '@/lib/strava/db';
 
 type SortKey = 'date' | 'type' | 'name' | 'distance' | 'elevation' | 'duration';
 type SortDirection = 'asc' | 'desc';
@@ -61,12 +62,13 @@ function compareActivities(sort: SortOption) {
 	};
 }
 
+// Must match ALL_YEARS in src/lib/strava/db.ts (not imported to keep better-sqlite3 out of the client bundle).
 const ALL = 'all';
 const DEFAULT_SORT: SortOption = 'date-desc';
 
 const isSortOption = (value: string): value is SortOption => Object.hasOwn(SORT_OPTIONS, value);
 
-type Filters = { year: string; type: string; sort: SortOption };
+type Filters = { type: string; sort: SortOption };
 
 const URL_CHANGE_EVENT = 'strava-filters-change';
 
@@ -83,7 +85,6 @@ function writeFiltersToUrl(filters: Filters) {
 	const params = new URLSearchParams(window.location.search);
 	const set = (key: string, value: string, fallback: string) =>
 		value === fallback ? params.delete(key) : params.set(key, value);
-	set('year', filters.year, ALL);
 	set('type', filters.type, ALL);
 	set('sort', filters.sort, DEFAULT_SORT);
 	const query = params.toString();
@@ -313,8 +314,6 @@ function getDetails(a: StravaActivityListItem) {
 		.filter((g) => g.items.length > 0);
 }
 
-const yearOf = (activity: StravaActivityListItem) => activity.start_date.slice(0, 4);
-
 function SortableHeader({
 	label,
 	sortKey,
@@ -357,7 +356,10 @@ function SortableHeader({
 	);
 }
 
-export function StravaDashboard({ activities }: { activities: StravaActivityListItem[] }) {
+export function StravaDashboard({ activities, years, selectedYear, defaultYear }: StravaDashboardData) {
+	const router = useRouter();
+	const pathname = usePathname();
+	const [isLoadingYear, startTransition] = useTransition();
 	const [expanded, setExpanded] = useState<Set<number>>(() => new Set());
 
 	const toggle = (id: number) =>
@@ -371,37 +373,40 @@ export function StravaDashboard({ activities }: { activities: StravaActivityList
 	const typeId = useId();
 	const sortId = useId();
 
-	const years = useMemo(() => [...new Set(activities.map(yearOf))].sort().reverse(), [activities]);
 	const types = useMemo(() => [...new Set(activities.map((a) => a.sport_type))].sort(), [activities]);
 
-	// Server snapshot is empty so the page stays statically rendered with default filters.
+	// Server snapshot is empty; type and sort are applied after hydration.
 	const search = useSyncExternalStore(
 		subscribeToUrl,
 		() => window.location.search,
 		() => '',
 	);
 
-	const { year, type, sort } = useMemo<Filters>(() => {
+	const { type, sort } = useMemo<Filters>(() => {
 		const params = new URLSearchParams(search);
-		const urlYear = params.get('year') ?? '';
 		const urlType = params.get('type') ?? '';
 		const urlSort = params.get('sort') ?? '';
 		return {
-			year: years.includes(urlYear) ? urlYear : ALL,
 			type: types.includes(urlType) ? urlType : ALL,
 			sort: isSortOption(urlSort) ? urlSort : DEFAULT_SORT,
 		};
-	}, [search, years, types]);
+	}, [search, types]);
 
-	const updateFilters = (next: Partial<Filters>) => writeFiltersToUrl({ year, type, sort, ...next });
+	const updateFilters = (next: Partial<Filters>) => writeFiltersToUrl({ type, sort, ...next });
 	const onSort = (next: SortOption) => updateFilters({ sort: next });
 
+	// Year changes load new data from the server.
+	const onYearChange = (value: string) => {
+		const params = new URLSearchParams(window.location.search);
+		if (value === defaultYear) params.delete('year');
+		else params.set('year', value);
+		const query = params.toString();
+		startTransition(() => router.replace(query ? `${pathname}?${query}` : pathname, { scroll: false }));
+	};
+
 	const filtered = useMemo(
-		() =>
-			activities
-				.filter((a) => (year === ALL || yearOf(a) === year) && (type === ALL || a.sport_type === type))
-				.sort(compareActivities(sort)),
-		[activities, year, type, sort],
+		() => activities.filter((a) => type === ALL || a.sport_type === type).sort(compareActivities(sort)),
+		[activities, type, sort],
 	);
 
 	const totals = useMemo(
@@ -424,7 +429,9 @@ export function StravaDashboard({ activities }: { activities: StravaActivityList
 		{ label: 'Bewegungszeit', value: `${integerFormat.format(totals.time / 3600)} h` },
 	];
 
-	const filterLabel = [year === ALL ? 'alle Jahre' : year, type === ALL ? 'alle Typen' : type].join(', ');
+	const filterLabel = [selectedYear === ALL ? 'alle Jahre' : selectedYear, type === ALL ? 'alle Typen' : type].join(
+		', ',
+	);
 
 	return (
 		<div className="space-y-8">
@@ -433,8 +440,9 @@ export function StravaDashboard({ activities }: { activities: StravaActivityList
 					<Label htmlFor={yearId}>Jahr</Label>
 					<Select
 						id={yearId}
-						value={year}
-						onChange={(e) => updateFilters({ year: e.target.value })}
+						value={selectedYear}
+						onChange={(e) => onYearChange(e.target.value)}
+						disabled={isLoadingYear}
 						className="w-40"
 					>
 						<option value={ALL}>Alle Jahre</option>
@@ -495,7 +503,10 @@ export function StravaDashboard({ activities }: { activities: StravaActivityList
 				</dl>
 			</section>
 
-			<div className="overflow-x-auto">
+			<div
+				className={`overflow-x-auto transition-opacity ${isLoadingYear ? 'opacity-50' : ''}`}
+				aria-busy={isLoadingYear}
+			>
 				<table className="w-full text-left text-sm">
 					<thead className="border-b border-gray-200 text-gray-600 dark:border-gray-700 dark:text-gray-400">
 						<tr>
