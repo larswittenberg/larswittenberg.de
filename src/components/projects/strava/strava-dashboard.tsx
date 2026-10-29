@@ -2,7 +2,7 @@
 
 import { Fragment, useId, useMemo, useState, useSyncExternalStore, useTransition } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { ArrowDown, ArrowUp, ChevronDown, ChevronsUpDown, ExternalLink } from 'lucide-react';
+import { ArrowDown, ArrowUp, ChevronDown, ChevronsUpDown, ExternalLink, RotateCcw } from 'lucide-react';
 import { Select } from '@/components/projects/github-stars/ui/select';
 import { Label } from '@/components/projects/github-stars/ui/label';
 import type { StravaActivityListItem, StravaDashboardData } from '@/lib/strava/db';
@@ -418,6 +418,19 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 		startTransition(() => router.replace(query ? `${pathname}?${query}` : pathname, { scroll: false }));
 	};
 
+	const hasActiveFilters = selectedYear !== defaultYear || type !== ALL || gear !== ALL || sort !== DEFAULT_SORT;
+
+	const resetFilters = () => {
+		if (selectedYear === defaultYear) {
+			writeFiltersToUrl({ type: ALL, gear: ALL, sort: DEFAULT_SORT });
+			return;
+		}
+		const params = new URLSearchParams(window.location.search);
+		for (const key of ['year', 'type', 'gear', 'sort']) params.delete(key);
+		const query = params.toString();
+		startTransition(() => router.replace(query ? `${pathname}?${query}` : pathname, { scroll: false }));
+	};
+
 	const filtered = useMemo(
 		() =>
 			activities
@@ -526,6 +539,15 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 						))}
 					</Select>
 				</div>
+				<button
+					type="button"
+					onClick={resetFilters}
+					disabled={!hasActiveFilters || isLoadingYear}
+					className="inline-flex items-center justify-center gap-1.5 rounded-md bg-white px-3 py-1.5 text-sm/6 font-semibold text-gray-900 shadow-xs inset-ring inset-ring-gray-300 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-white/10 dark:text-white dark:shadow-none dark:inset-ring-white/5 dark:hover:bg-white/20"
+				>
+					<RotateCcw className="size-4" aria-hidden="true" />
+					Zurücksetzen
+				</button>
 			</div>
 
 			<section
