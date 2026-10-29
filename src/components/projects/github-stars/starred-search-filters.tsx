@@ -141,7 +141,7 @@ export function StarredSearchFilters(props: FiltersProps) {
 						value={sortOption}
 						onChange={(event) => onSortOptionChange(event.target.value as SortOption)}
 						disabled={disableControls}
-						className="h-9 w-80 rounded-md border px-4 text-sm focus-visible:ring-0"
+						className="w-80"
 					>
 						{(Object.keys(SORT_OPTION_LABELS) as SortOption[]).map((value) => (
 							<option key={value} value={value}>

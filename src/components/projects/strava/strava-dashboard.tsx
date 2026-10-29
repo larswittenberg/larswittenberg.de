@@ -461,7 +461,7 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 	return (
 		<div className="space-y-8">
 			<div className="flex flex-wrap items-end gap-4">
-				<div className="flex flex-col gap-1">
+				<div className="flex flex-col gap-2">
 					<Label htmlFor={yearId}>Jahr</Label>
 					<Select
 						id={yearId}
@@ -478,7 +478,7 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 						))}
 					</Select>
 				</div>
-				<div className="flex flex-col gap-1">
+				<div className="flex flex-col gap-2">
 					<Label htmlFor={typeId}>Typ</Label>
 					<Select
 						id={typeId}
@@ -494,7 +494,7 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 						))}
 					</Select>
 				</div>
-				<div className="flex flex-col gap-1">
+				<div className="flex flex-col gap-2">
 					<Label htmlFor={gearId}>Ausrüstung</Label>
 					<Select
 						id={gearId}
@@ -511,7 +511,7 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 						{hasActivitiesWithoutGear && <option value={NO_GEAR}>Ohne Ausrüstung</option>}
 					</Select>
 				</div>
-				<div className="flex flex-col gap-1">
+				<div className="flex flex-col gap-2">
 					<Label htmlFor={sortId}>Sortierung</Label>
 					<Select
 						id={sortId}
