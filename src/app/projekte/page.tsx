@@ -8,6 +8,11 @@ export const metadata: Metadata = {
 
 const projectList = [
 	{
+		name: 'Strava Dashboard',
+		href: '/projekte/strava',
+		description: 'Ein Archiv meiner Strava-Aktivitäten zum filtern und sortieren. Passwortgeschützt. Ich will meine Strava-Daten selber besitzen, um diese unabhängig von der Plattform nutzen zu können.',
+	},
+	{
 		name: 'Meine GitHub Stars',
 		href: '/projekte/github-stars',
 		description: 'Eine Übersicht meiner mit einem Stern markierten GitHub-Repositories.',
