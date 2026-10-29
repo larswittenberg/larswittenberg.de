@@ -72,6 +72,13 @@ type Filters = { type: string; gear: string; sort: SortOption };
 
 const NO_GEAR = 'none';
 
+// Combined type filter; not a Strava sport type.
+const CYCLING = 'cycling';
+const CYCLING_TYPES = new Set(['Ride', 'E-Bike Ride', 'Virtual Ride']);
+
+const matchesType = (sportType: string, type: string) =>
+	type === ALL || (type === CYCLING ? CYCLING_TYPES.has(sportType) : sportType === type);
+
 const URL_CHANGE_EVENT = 'strava-filters-change';
 
 function subscribeToUrl(callback: () => void) {
@@ -83,11 +90,11 @@ function subscribeToUrl(callback: () => void) {
 	};
 }
 
-function writeFiltersToUrl(filters: Filters) {
+function writeFiltersToUrl(filters: Filters, defaultType: string) {
 	const params = new URLSearchParams(window.location.search);
 	const set = (key: string, value: string, fallback: string) =>
 		value === fallback ? params.delete(key) : params.set(key, value);
-	set('type', filters.type, ALL);
+	set('type', filters.type, defaultType);
 	set('gear', filters.gear, ALL);
 	set('sort', filters.sort, DEFAULT_SORT);
 	const query = params.toString();
@@ -378,6 +385,9 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 	const sortId = useId();
 
 	const types = useMemo(() => [...new Set(activities.map((a) => a.sport_type))].sort(), [activities]);
+	const hasCycling = useMemo(() => types.some((t) => CYCLING_TYPES.has(t)), [types]);
+	// Without `type` in the URL the combined cycling filter applies; "all types" is written as `type=all`.
+	const defaultType = hasCycling ? CYCLING : ALL;
 	const gears = useMemo(
 		() =>
 			[...new Set(activities.map((a) => a.gear_name).filter((g): g is string => Boolean(g)))].sort(
@@ -400,13 +410,16 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 		const urlGear = params.get('gear') ?? '';
 		const urlSort = params.get('sort') ?? '';
 		return {
-			type: types.includes(urlType) ? urlType : ALL,
+			type:
+				urlType === ALL || types.includes(urlType) || (urlType === CYCLING && hasCycling)
+					? urlType
+					: defaultType,
 			gear: gears.includes(urlGear) || (urlGear === NO_GEAR && hasActivitiesWithoutGear) ? urlGear : ALL,
 			sort: isSortOption(urlSort) ? urlSort : DEFAULT_SORT,
 		};
-	}, [search, types, gears, hasActivitiesWithoutGear]);
+	}, [search, types, hasCycling, defaultType, gears, hasActivitiesWithoutGear]);
 
-	const updateFilters = (next: Partial<Filters>) => writeFiltersToUrl({ type, gear, sort, ...next });
+	const updateFilters = (next: Partial<Filters>) => writeFiltersToUrl({ type, gear, sort, ...next }, defaultType);
 	const onSort = (next: SortOption) => updateFilters({ sort: next });
 
 	// Year changes load new data from the server.
@@ -418,11 +431,12 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 		startTransition(() => router.replace(query ? `${pathname}?${query}` : pathname, { scroll: false }));
 	};
 
-	const hasActiveFilters = selectedYear !== defaultYear || type !== ALL || gear !== ALL || sort !== DEFAULT_SORT;
+	const hasActiveFilters =
+		selectedYear !== defaultYear || type !== defaultType || gear !== ALL || sort !== DEFAULT_SORT;
 
 	const resetFilters = () => {
 		if (selectedYear === defaultYear) {
-			writeFiltersToUrl({ type: ALL, gear: ALL, sort: DEFAULT_SORT });
+			writeFiltersToUrl({ type: defaultType, gear: ALL, sort: DEFAULT_SORT }, defaultType);
 			return;
 		}
 		const params = new URLSearchParams(window.location.search);
@@ -436,7 +450,7 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 			activities
 				.filter(
 					(a) =>
-						(type === ALL || a.sport_type === type) &&
+						matchesType(a.sport_type, type) &&
 						(gear === ALL || (gear === NO_GEAR ? !a.gear_name : a.gear_name === gear)),
 				)
 				.sort(compareActivities(sort)),
@@ -470,7 +484,7 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 
 	const filterLabel = [
 		selectedYear === ALL ? 'alle Jahre' : selectedYear,
-		type === ALL ? 'alle Typen' : type,
+		type === ALL ? 'alle Typen' : type === CYCLING ? 'Radfahren' : type,
 		gear === ALL ? null : gear === NO_GEAR ? 'ohne Ausrüstung' : gear,
 	]
 		.filter(Boolean)
@@ -505,6 +519,7 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 						className="w-48"
 					>
 						<option value={ALL}>Alle Typen</option>
+						{hasCycling && <option value={CYCLING}>Radfahren</option>}
 						{types.map((t) => (
 							<option key={t} value={t}>
 								{t}

@@ -149,7 +149,7 @@ Der Import läuft in einer Transaktion (alles oder nichts) und nutzt `ON CONFLIC
 
 Öffentlich sichtbar sind nur die vier Gesamtsummen (Aktivitäten, Distanz, Höhenmeter, Bewegungszeit). Liste, Filter, Details und gefilterte Summen erscheinen erst nach Login; ohne gültige Session werden diese Daten serverseitig gar nicht geladen (`getDashboardData()` prüft die Session selbst).
 
-Nach dem Login lädt der Server nur die Aktivitäten des aktuellen Jahres. Andere Jahre werden per URL-Parameter nachgeladen (`?year=2024`, `?year=all` für alle Jahre); Typ und Sortierung (`?type=Ride&sort=distance-desc`) werden clientseitig angewendet.
+Nach dem Login lädt der Server nur die Aktivitäten des aktuellen Jahres. Andere Jahre werden per URL-Parameter nachgeladen (`?year=2024`, `?year=all` für alle Jahre); Typ und Sortierung (`?type=Ride&sort=distance-desc`) werden clientseitig angewendet. Standard-Typ ist der Sammelfilter „Radfahren“ (Ride, E-Bike Ride, Virtual Ride, `?type=cycling`); alle Typen zeigt `?type=all`.
 
 Benötigte Variablen in `.env.local` und auf Vercel (**Settings → Environment Variables**):
 
