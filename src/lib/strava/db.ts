@@ -38,9 +38,9 @@ export type StravaTotals = {
 	firstYear: string | null;
 };
 
-export type YearlyKilometers = { year: string; kilometers: number };
+export type YearlyKilometers = { year: string; kilometers: number; activities: number };
 
-/** Protected: yearly distance in full km per group of sport types; years without activities in between are filled with 0. */
+/** Protected: yearly distance in full km and activity count per group of sport types; years without activities in between are filled with 0. */
 export async function getYearlyKilometers<K extends string>(
 	groups: Record<K, readonly string[]>,
 ): Promise<Record<K, YearlyKilometers[]>> {
@@ -50,20 +50,23 @@ export async function getYearlyKilometers<K extends string>(
 	try {
 		const rows = db
 			.prepare(
-				`SELECT sport_type AS sportType, strftime('%Y', start_date) AS year, COALESCE(SUM(distance), 0) AS meters
+				`SELECT sport_type AS sportType, strftime('%Y', start_date) AS year, COALESCE(SUM(distance), 0) AS meters, COUNT(*) AS count
 				FROM activities
 				WHERE sport_type IN (${sportTypes.map(() => '?').join(', ')})
 				GROUP BY sport_type, year
 				ORDER BY year`,
 			)
-			.all(...sportTypes) as { sportType: string; year: string; meters: number }[];
+			.all(...sportTypes) as { sportType: string; year: string; meters: number; count: number }[];
 
 		const result = {} as Record<K, YearlyKilometers[]>;
 		for (const key of Object.keys(groups) as K[]) {
 			const groupTypes = new Set(groups[key]);
 			const metersByYear = new Map<string, number>();
+			const countByYear = new Map<string, number>();
 			for (const r of rows) {
-				if (groupTypes.has(r.sportType)) metersByYear.set(r.year, (metersByYear.get(r.year) ?? 0) + r.meters);
+				if (!groupTypes.has(r.sportType)) continue;
+				metersByYear.set(r.year, (metersByYear.get(r.year) ?? 0) + r.meters);
+				countByYear.set(r.year, (countByYear.get(r.year) ?? 0) + r.count);
 			}
 			if (metersByYear.size === 0) {
 				result[key] = [];
@@ -74,7 +77,11 @@ export async function getYearlyKilometers<K extends string>(
 			const last = Math.max(...years);
 			result[key] = Array.from({ length: last - first + 1 }, (_, i) => {
 				const year = String(first + i);
-				return { year, kilometers: Math.round((metersByYear.get(year) ?? 0) / 1000) };
+				return {
+					year,
+					kilometers: Math.round((metersByYear.get(year) ?? 0) / 1000),
+					activities: countByYear.get(year) ?? 0,
+				};
 			});
 		}
 		return result;

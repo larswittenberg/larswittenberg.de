@@ -58,12 +58,22 @@ export function YearlyKilometersChart({ title, sportTypes, data }: Props) {
 							cursor={false}
 							content={
 								<ChartTooltipContent
-									formatter={(value) => (
-										<div className="flex w-full items-center justify-between gap-4">
-											<span className="text-gray-500 dark:text-gray-400">Kilometer</span>
-											<span className="font-mono font-medium tabular-nums">
-												{integerFormat.format(Number(value))} km
-											</span>
+									formatter={(value, _name, item) => (
+										<div className="flex w-full flex-col gap-1">
+											<div className="flex items-center justify-between gap-4">
+												<span className="text-gray-500 dark:text-gray-400">Kilometer</span>
+												<span className="font-mono font-medium tabular-nums">
+													{integerFormat.format(Number(value))} km
+												</span>
+											</div>
+											<div className="flex items-center justify-between gap-4">
+												<span className="text-gray-500 dark:text-gray-400">Aktivitäten</span>
+												<span className="font-mono font-medium tabular-nums">
+													{integerFormat.format(
+														(item.payload as YearlyKilometers).activities,
+													)}
+												</span>
+											</div>
 										</div>
 									)}
 								/>

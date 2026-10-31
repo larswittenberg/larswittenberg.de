@@ -19,6 +19,8 @@ const CHART_GROUPS = {
 	ride: ['Ride'],
 	ebike: ['E-Bike Ride'],
 	virtual: ['Virtual Ride'],
+	hike: ['Hike'],
+	walk: ['Walk'],
 } as const satisfies Record<string, readonly string[]>;
 
 type ChartKey = keyof typeof CHART_GROUPS;
@@ -30,6 +32,8 @@ const CHARTS: { key: ChartKey; title: string }[] = [
 	{ key: 'ebike', title: 'E-Bike' },
 	{ key: 'virtual', title: 'Virtuelles Radfahren' },
 	{ key: 'run', title: 'Laufen' },
+	{ key: 'hike', title: 'Wandern' },
+	{ key: 'walk', title: 'Spazieren' },
 ];
 
 export default async function Page() {
