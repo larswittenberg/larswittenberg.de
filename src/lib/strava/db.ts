@@ -109,6 +109,30 @@ export function getActivityTotals(): StravaTotals {
 	}
 }
 
+export type SportTypeTotals = Omit<StravaTotals, 'firstYear'> & { sportType: string };
+
+/** Protected: totals per sport type over all years, most activities first. */
+export async function getSportTypeTotals(): Promise<SportTypeTotals[]> {
+	if (!(await isAuthenticated())) throw new Error('Unauthorized');
+	const db = openDb();
+	try {
+		return db
+			.prepare(
+				`SELECT sport_type AS sportType,
+					COUNT(*) AS count,
+					COALESCE(SUM(distance), 0) AS distance,
+					COALESCE(SUM(total_elevation_gain), 0) AS elevation,
+					COALESCE(SUM(moving_time), 0) AS movingTime
+				FROM activities
+				GROUP BY sport_type
+				ORDER BY count DESC, sport_type`,
+			)
+			.all() as SportTypeTotals[];
+	} finally {
+		db.close();
+	}
+}
+
 export const ALL_YEARS = 'all';
 
 export type StravaDashboardData = {

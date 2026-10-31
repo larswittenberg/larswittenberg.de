@@ -6,7 +6,7 @@ import { ArrowDown, ArrowUp, ChevronDown, ChevronsUpDown, ExternalLink, RotateCc
 import { Select } from '@/components/projects/github-stars/ui/select';
 import { Label } from '@/components/projects/github-stars/ui/label';
 import type { StravaActivityListItem, StravaDashboardData } from '@/lib/strava/db';
-import { CYCLING_SPORT_TYPES } from '@/lib/strava/sport-types';
+import { CYCLING_SPORT_TYPES, compareSportTypes } from '@/lib/strava/sport-types';
 
 type SortKey = 'date' | 'type' | 'name' | 'distance' | 'elevation' | 'duration';
 type SortDirection = 'asc' | 'desc';
@@ -380,7 +380,10 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 	const gearId = useId();
 	const sortId = useId();
 
-	const types = useMemo(() => [...new Set(activities.map((a) => a.sport_type))].sort(), [activities]);
+	const types = useMemo(
+		() => [...new Set(activities.map((a) => a.sport_type))].sort(compareSportTypes),
+		[activities],
+	);
 	const hasCycling = useMemo(() => types.some((t) => CYCLING_TYPES.has(t)), [types]);
 	// Without `type` in the URL the combined cycling filter applies; "all types" is written as `type=all`.
 	const defaultType = hasCycling ? CYCLING : ALL;

@@ -4,8 +4,9 @@ import { ChartColumn } from 'lucide-react';
 import LayoutDefault from '@/components/LayoutDefault';
 import { StravaDashboard } from '@/components/projects/strava/strava-dashboard';
 import { StravaLoginForm } from '@/components/projects/strava/strava-login-form';
+import { StravaSportTypeTotals } from '@/components/projects/strava/strava-sport-type-totals';
 import { StravaTotalsOverview } from '@/components/projects/strava/strava-totals-overview';
-import { getActivityTotals, getDashboardData } from '@/lib/strava/db';
+import { getActivityTotals, getDashboardData, getSportTypeTotals } from '@/lib/strava/db';
 import { isAuthenticated } from '@/lib/strava/session';
 import { logout } from './actions';
 
@@ -21,7 +22,9 @@ type PageProps = {
 export default async function Page({ searchParams }: PageProps) {
 	const totals = getActivityTotals();
 	const { year } = await searchParams;
-	const data = (await isAuthenticated()) ? await getDashboardData(typeof year === 'string' ? year : undefined) : null;
+	const authenticated = await isAuthenticated();
+	const data = authenticated ? await getDashboardData(typeof year === 'string' ? year : undefined) : null;
+	const sportTypeTotals = authenticated ? await getSportTypeTotals() : null;
 
 	return (
 		<LayoutDefault prose wide>
@@ -49,6 +52,7 @@ export default async function Page({ searchParams }: PageProps) {
 								</button>
 							</form>
 						</div>
+						{sportTypeTotals && <StravaSportTypeTotals totals={sportTypeTotals} />}
 						<StravaDashboard {...data} />
 					</>
 				) : (
