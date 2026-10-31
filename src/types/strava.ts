@@ -30,6 +30,8 @@ export interface StravaActivity extends StravaActivityMetrics {
 	average_watts: number | null;
 	calories: number | null;
 	gear_name: string | null;
+	/** activity file in the export's activities/ folder, e.g. "12345.fit.gz"; null for API imports */
+	filename: string | null;
 	commute: boolean;
 	source: StravaActivitySource;
 }

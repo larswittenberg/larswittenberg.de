@@ -40,6 +40,11 @@ export const ACTIVITY_METRIC_COLUMNS = {
 
 export type ActivityMetricColumn = keyof typeof ACTIVITY_METRIC_COLUMNS;
 
+// Nullable non-metric columns added after the initial schema; added via ALTER TABLE when missing.
+export const ACTIVITY_EXTRA_COLUMNS = {
+	filename: 'TEXT', // file in the export's activities/ folder, e.g. "12345.fit.gz"
+} as const satisfies Record<string, ColumnType>;
+
 const metricColumnsSql = Object.entries(ACTIVITY_METRIC_COLUMNS)
 	.map(([name, type]) => `\t${name.padEnd(28)} ${type},`)
 	.join('\n');
@@ -62,6 +67,7 @@ CREATE TABLE IF NOT EXISTS activities (
 	average_watts        REAL,
 	calories             REAL,
 	gear_name            TEXT,
+	filename             TEXT,
 ${metricColumnsSql}
 	commute              INTEGER NOT NULL DEFAULT 0 CHECK (commute IN (0, 1)),
 	source               TEXT    NOT NULL DEFAULT 'export' CHECK (source IN ('export', 'api')),

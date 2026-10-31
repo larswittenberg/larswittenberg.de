@@ -11,6 +11,7 @@ import csv from 'csv-parser';
 import Database from 'better-sqlite3';
 import type { StravaActivity, StravaActivityMetrics } from '../src/types/strava';
 import {
+	ACTIVITY_EXTRA_COLUMNS,
 	ACTIVITY_METRIC_COLUMNS,
 	CREATE_ACTIVITIES_TABLE,
 	STRAVA_DB_FILE,
@@ -56,6 +57,7 @@ const HEADER_DE: Record<string, string> = {
 	'Max. Herzfrequenz': 'Max Heart Rate',
 	'Relative Leistung': 'Relative Effort',
 	Pendeln: 'Commute',
+	Dateiname: 'Filename',
 	Aktivitätsausrüstung: 'Activity Gear',
 	Sportlergewicht: 'Athlete Weight',
 	Fahrradgewicht: 'Bike Weight',
@@ -241,6 +243,8 @@ function toActivity(row: CsvRow, locale: ExportLocale): StravaActivity {
 		average_watts: num(row['Average Watts']),
 		calories: num(row['Calories']),
 		gear_name: text(row['Activity Gear']),
+		// Export path is "activities/<file>"; keep only the file name.
+		filename: text(row['Filename'])?.split('/').pop() ?? null,
 		...toMetrics(row),
 		commute: row['Commute'] === 'true',
 		source: 'export',
@@ -300,9 +304,10 @@ const REQUIRED_HEADERS = [
 function ensureSchema(db: Database.Database) {
 	db.exec(CREATE_ACTIVITIES_TABLE);
 	const existing = new Set((db.prepare('PRAGMA table_info(activities)').all() as { name: string }[]).map((c) => c.name));
-	for (const key of METRIC_KEYS) {
+	const optionalColumns: Record<string, string> = { ...ACTIVITY_EXTRA_COLUMNS, ...ACTIVITY_METRIC_COLUMNS };
+	for (const [key, type] of Object.entries(optionalColumns)) {
 		if (existing.has(key)) continue;
-		db.exec(`ALTER TABLE activities ADD COLUMN ${key} ${ACTIVITY_METRIC_COLUMNS[key]}`);
+		db.exec(`ALTER TABLE activities ADD COLUMN ${key} ${type}`);
 		console.log(`  + added column ${key}`);
 	}
 }
@@ -370,7 +375,7 @@ async function main() {
 	const columns = [
 		'id', 'name', 'sport_type', 'start_date', 'description', 'distance', 'moving_time', 'elapsed_time',
 		'total_elevation_gain', 'average_speed', 'max_speed', 'average_heartrate', 'max_heartrate',
-		'average_watts', 'calories', 'gear_name', ...METRIC_KEYS, 'commute', 'source',
+		'average_watts', 'calories', 'gear_name', 'filename', ...METRIC_KEYS, 'commute', 'source',
 	];
 	const upsert = db!.prepare(`
 		INSERT INTO activities (${columns.join(', ')})

@@ -311,6 +311,7 @@ function getDetails(a: StravaActivityListItem) {
 					label: 'Körpergewicht',
 					value: positive(a.athlete_weight) ? `${decimalFormat.format(a.athlete_weight)} kg` : null,
 				},
+				{ label: 'Datei', value: a.filename },
 			],
 		},
 	];

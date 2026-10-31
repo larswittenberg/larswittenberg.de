@@ -22,6 +22,7 @@ const LIST_COLUMNS = [
 	'max_heartrate',
 	'gear_name',
 	'description',
+	'filename',
 	...Object.keys(ACTIVITY_METRIC_COLUMNS),
 ];
 
