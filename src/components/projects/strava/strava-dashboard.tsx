@@ -587,7 +587,7 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 			</section>
 
 			<div
-				className={`overflow-x-auto transition-opacity ${isLoadingYear ? 'opacity-50' : ''}`}
+				className={`relative overflow-x-auto transition-opacity ${isLoadingYear ? 'opacity-50' : ''}`}
 				aria-busy={isLoadingYear}
 			>
 				<table className="w-full text-left text-sm">
@@ -657,7 +657,7 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 											{dateFormat.format(new Date(a.start_date))}
 										</td>
 										<td className="py-2 pr-4 whitespace-nowrap">{a.sport_type}</td>
-										<td className="py-2 pr-4">{a.name}</td>
+										<td className="min-w-48 py-2 pr-4">{a.name}</td>
 										<td className="py-2 pr-4 text-right whitespace-nowrap tabular-nums">
 											{formatDistance(a.distance)}
 										</td>

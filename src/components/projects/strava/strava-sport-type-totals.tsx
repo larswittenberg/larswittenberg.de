@@ -63,7 +63,7 @@ export function StravaSportTypeTotals({ totals: allTotals }: { totals: SportType
 					<tbody className="divide-y divide-gray-100 dark:divide-gray-800">
 						{rows.map((t) => (
 							<tr key={t.sportType} className={t === cycling ? 'font-semibold' : undefined}>
-								<th scope="row" className="py-2 pr-4 font-[inherit]">
+								<th scope="row" className="min-w-40 py-2 pr-4 font-[inherit]">
 									{t.sportType}
 								</th>
 								<td className="py-2 pr-4 text-right tabular-nums">{integerFormat.format(t.count)}</td>
