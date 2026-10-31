@@ -1,6 +1,6 @@
 'use client';
 
-import { useId } from 'react';
+import { useId, useMemo, useState } from 'react';
 import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts';
 import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from '@/components/ui/chart';
 import type { YearlyKilometers } from '@/lib/strava/db';
@@ -15,6 +15,13 @@ const chartConfig = {
 const integerFormat = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 });
 const listFormat = new Intl.ListFormat('de-DE', { type: 'conjunction' });
 
+type SortOrder = 'year' | 'distance';
+
+const SORT_OPTIONS: { value: SortOrder; label: string }[] = [
+	{ value: 'year', label: 'Jahr' },
+	{ value: 'distance', label: 'Distanz' },
+];
+
 type Props = {
 	title: string;
 	sportTypes: readonly string[];
@@ -23,7 +30,15 @@ type Props = {
 
 export function YearlyKilometersChart({ title, sportTypes, data }: Props) {
 	const headingId = useId();
+	const [sortOrder, setSortOrder] = useState<SortOrder>('year');
 	const total = data.reduce((sum, d) => sum + d.kilometers, 0);
+	const chartData = useMemo(
+		() =>
+			sortOrder === 'distance'
+				? [...data].sort((a, b) => b.kilometers - a.kilometers || a.year.localeCompare(b.year))
+				: data,
+		[data, sortOrder],
+	);
 
 	return (
 		<section
@@ -39,19 +54,44 @@ export function YearlyKilometersChart({ title, sportTypes, data }: Props) {
 						Summe aller Aktivitäten vom Typ {listFormat.format(sportTypes.map((t) => `„${t}“`))}
 					</p>
 				</div>
-				<p className="text-sm text-gray-600 dark:text-gray-400">
-					Gesamt:{' '}
-					<span className="font-semibold text-gray-900 tabular-nums dark:text-white">
-						{integerFormat.format(total)} km
-					</span>
-				</p>
+				<div className="flex flex-wrap items-center gap-4">
+					<p className="text-sm text-gray-600 dark:text-gray-400">
+						Gesamt:{' '}
+						<span className="font-semibold text-gray-900 tabular-nums dark:text-white">
+							{integerFormat.format(total)} km
+						</span>
+					</p>
+					{data.length > 1 && (
+						<div
+							role="group"
+							aria-label="Sortierung"
+							className="inline-flex rounded-md border border-gray-200 p-0.5 text-sm dark:border-gray-700"
+						>
+							{SORT_OPTIONS.map(({ value, label }) => (
+								<button
+									key={value}
+									type="button"
+									aria-pressed={sortOrder === value}
+									onClick={() => setSortOrder(value)}
+									className={
+										sortOrder === value
+											? 'rounded bg-gray-900 px-2.5 py-1 font-semibold text-white dark:bg-white dark:text-gray-900'
+											: 'rounded px-2.5 py-1 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'
+									}
+								>
+									{label}
+								</button>
+							))}
+						</div>
+					)}
+				</div>
 			</header>
 
 			{data.length === 0 ? (
 				<p className="py-8 text-center text-gray-600 dark:text-gray-400">Keine Aktivitäten vorhanden.</p>
 			) : (
 				<ChartContainer config={chartConfig} className="aspect-auto h-72 w-full sm:h-80">
-					<BarChart accessibilityLayer data={data} margin={{ top: 8 }}>
+					<BarChart accessibilityLayer data={chartData} margin={{ top: 8 }}>
 						<CartesianGrid vertical={false} />
 						<XAxis dataKey="year" tickLine={false} axisLine={false} tickMargin={10} />
 						<ChartTooltip
