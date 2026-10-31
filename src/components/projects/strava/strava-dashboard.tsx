@@ -165,7 +165,6 @@ type DetailGroup = { title: string; items: { label: string; value: string | null
 function getDetails(a: StravaActivityListItem) {
 	// Older export rows lack average_speed; derive it like Strava does.
 	const avgSpeed = a.average_speed ?? (a.distance && a.moving_time ? a.distance / a.moving_time : null);
-	const isRide = a.sport_type.includes('Ride');
 	const isFoot = FOOT_SPORTS.has(a.sport_type);
 	// Export stores foot cadence per leg; Strava shows steps per minute.
 	const cadence = (value: number | null) =>
@@ -311,10 +310,6 @@ function getDetails(a: StravaActivityListItem) {
 				{
 					label: 'Körpergewicht',
 					value: positive(a.athlete_weight) ? `${decimalFormat.format(a.athlete_weight)} kg` : null,
-				},
-				{
-					label: 'Radgewicht',
-					value: isRide && positive(a.bike_weight) ? `${decimalFormat.format(a.bike_weight)} kg` : null,
 				},
 			],
 		},
@@ -687,6 +682,11 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 										<tr id={detailsId} className="bg-gray-50 dark:bg-gray-900">
 											<td />
 											<td colSpan={7} className="py-4 pr-4">
+												{a.description && (
+													<p className="mb-6 max-w-prose text-base whitespace-pre-line text-gray-700 dark:text-gray-300">
+														{a.description}
+													</p>
+												)}
 												<div className="grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
 													{getDetails(a).map((group) => (
 														<section key={group.title}>
@@ -708,11 +708,6 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 														</section>
 													))}
 												</div>
-												{a.description && (
-													<p className="mt-4 max-w-prose whitespace-pre-line text-gray-700 dark:text-gray-300">
-														{a.description}
-													</p>
-												)}
 											</td>
 										</tr>
 									)}
