@@ -27,7 +27,7 @@ export default async function Page({ searchParams }: PageProps) {
 	const sportTypeTotals = authenticated ? await getSportTypeTotals() : null;
 
 	return (
-		<LayoutDefault prose wide>
+		<LayoutDefault prose wide={authenticated}>
 			<h1>Strava Dashboard</h1>
 
 			<div className="not-prose space-y-10">

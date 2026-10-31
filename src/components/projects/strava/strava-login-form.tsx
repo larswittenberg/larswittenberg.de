@@ -15,7 +15,7 @@ export function StravaLoginForm() {
 	const errorId = useId();
 
 	return (
-		<section className="max-w-sm rounded-lg border border-gray-200 p-6 dark:border-gray-700">
+		<section className="mx-auto w-full max-w-lg rounded-lg border border-gray-200 p-6 dark:border-gray-700">
 			<h2 className="mb-1 flex items-center gap-2 text-lg font-semibold">
 				<Lock className="h-4 w-4" aria-hidden="true" />
 				Alle Aktivitäten ansehen
