@@ -1,6 +1,7 @@
 import Database from 'better-sqlite3';
 import { ACTIVITY_METRIC_COLUMNS, STRAVA_DB_FILE } from '@/lib/strava/schema';
 import { isAuthenticated } from '@/lib/strava/session';
+import { TOTALS_SUBTYPES, formatApiSportType } from '@/lib/strava/sport-types';
 import type { StravaActivity, StravaActivityApiFields } from '@/types/strava';
 
 export type StravaActivityListItem = Omit<StravaActivity, 'source'> &
@@ -128,18 +129,24 @@ export async function getSportTypeTotals(): Promise<SportTypeTotals[]> {
 	if (!(await isAuthenticated())) throw new Error('Unauthorized');
 	const db = openDb();
 	try {
-		return db
+		// Subtypes in TOTALS_SUBTYPES (e.g. GravelRide) get their own row instead of counting towards their parent.
+		const subtypes = Object.keys(TOTALS_SUBTYPES);
+		const placeholders = subtypes.map(() => '?').join(', ') || 'NULL';
+		const rows = db
 			.prepare(
-				`SELECT sport_type AS sportType,
+				`SELECT CASE WHEN api_sport_type IN (${placeholders}) THEN api_sport_type ELSE sport_type END AS sportType,
 					COUNT(*) AS count,
 					COALESCE(SUM(distance), 0) AS distance,
 					COALESCE(SUM(total_elevation_gain), 0) AS elevation,
 					COALESCE(SUM(moving_time), 0) AS movingTime
 				FROM activities
-				GROUP BY sport_type
-				ORDER BY count DESC, sport_type`,
+				GROUP BY 1
+				ORDER BY count DESC, 1`,
 			)
-			.all() as SportTypeTotals[];
+			.all(...subtypes) as SportTypeTotals[];
+		return rows.map((r) =>
+			Object.hasOwn(TOTALS_SUBTYPES, r.sportType) ? { ...r, sportType: formatApiSportType(r.sportType) } : r,
+		);
 	} finally {
 		db.close();
 	}

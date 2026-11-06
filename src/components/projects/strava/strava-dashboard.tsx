@@ -9,6 +9,7 @@ import type { StravaActivityListItem, StravaDashboardData } from '@/lib/strava/d
 import {
 	CYCLING_SPORT_TYPES,
 	compareSportTypes,
+	displaySportType,
 	formatApiSportType,
 	isApiSubtype,
 } from '@/lib/strava/sport-types';
@@ -51,7 +52,7 @@ const DEFAULT_DIRECTION: Record<SortKey, SortDirection> = {
 
 const SORT_VALUE: Record<SortKey, (a: StravaActivityListItem) => string | number | null> = {
 	date: (a) => a.start_date,
-	type: (a) => a.sport_type,
+	type: (a) => displaySportType(a),
 	name: (a) => a.name,
 	distance: (a) => a.distance,
 	elevation: (a) => a.total_elevation_gain,
@@ -203,7 +204,10 @@ function getDetails(a: StravaActivityListItem) {
 				{ label: 'Startzeit', value: `${timeFormat.format(new Date(a.start_date))} Uhr` },
 				{
 					label: 'Strava-Sportart',
-					value: a.api_sport_type && isApiSubtype(a.api_sport_type) ? formatApiSportType(a.api_sport_type) : null,
+					value:
+						a.api_sport_type && isApiSubtype(a.api_sport_type)
+							? formatApiSportType(a.api_sport_type)
+							: null,
 				},
 				{ label: 'Gesamtzeit', value: a.elapsed_time ? formatDuration(a.elapsed_time) : null },
 				{ label: 'Ausrüstung', value: a.gear_name },
@@ -425,9 +429,7 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 		() =>
 			[
 				...new Set(
-					activities
-						.map((a) => a.api_sport_type)
-						.filter((t): t is string => Boolean(t) && isApiSubtype(t!)),
+					activities.map((a) => a.api_sport_type).filter((t): t is string => Boolean(t) && isApiSubtype(t!)),
 				),
 			]
 				.sort(collator.compare)
@@ -452,10 +454,7 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 		[activities],
 	);
 	const hasActivitiesWithoutDevice = useMemo(() => activities.some((a) => !a.device_name), [activities]);
-	const tagsById = useMemo(
-		() => new Map(activities.map((a) => [a.id, getActivityTags(a)])),
-		[activities],
-	);
+	const tagsById = useMemo(() => new Map(activities.map((a) => [a.id, getActivityTags(a)])), [activities]);
 	// Only tags occurring in the loaded year.
 	const availableTags = useMemo(() => {
 		const present = new Set([...tagsById.values()].flatMap((tags) => tags.map((t) => t.key)));
@@ -528,10 +527,7 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 
 	const resetFilters = () => {
 		if (selectedYear === defaultYear) {
-			writeFiltersToUrl(
-				{ type: defaultType, gear: ALL, device: ALL, tag: ALL, sort: DEFAULT_SORT },
-				defaultType,
-			);
+			writeFiltersToUrl({ type: defaultType, gear: ALL, device: ALL, tag: ALL, sort: DEFAULT_SORT }, defaultType);
 			return;
 		}
 		const params = new URLSearchParams(window.location.search);
@@ -805,7 +801,7 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 										<td className="py-2 pr-4 whitespace-nowrap tabular-nums">
 											{dateFormat.format(new Date(a.start_date))}
 										</td>
-										<td className="py-2 pr-4 whitespace-nowrap">{a.sport_type}</td>
+										<td className="py-2 pr-4 whitespace-nowrap">{displaySportType(a)}</td>
 										<td className="min-w-48 py-2 pr-4">
 											{a.name}
 											{tags.map((t) => (

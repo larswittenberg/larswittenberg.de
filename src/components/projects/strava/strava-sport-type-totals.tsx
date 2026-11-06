@@ -1,10 +1,17 @@
 import type { SportTypeTotals } from '@/lib/strava/db';
-import { CYCLING_SPORT_TYPES, MAIN_SPORT_TYPES } from '@/lib/strava/sport-types';
+import { CYCLING_SPORT_TYPES, TOTALS_SPORT_TYPES, TOTALS_SUBTYPES, formatApiSportType } from '@/lib/strava/sport-types';
 
 const numberFormat = new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const integerFormat = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 });
 
-const CYCLING_TYPES = new Set<string>(CYCLING_SPORT_TYPES);
+const CYCLING_TYPES_BASE = new Set<string>(CYCLING_SPORT_TYPES);
+// Cycling types plus their subtypes with an own totals row (e.g. Gravel Ride).
+const CYCLING_TYPES = new Set<string>([
+	...CYCLING_SPORT_TYPES,
+	...Object.entries(TOTALS_SUBTYPES)
+		.filter(([, parent]) => CYCLING_TYPES_BASE.has(parent))
+		.map(([subtype]) => formatApiSportType(subtype)),
+]);
 
 function formatMovingTime(seconds: number) {
 	const totalMinutes = Math.round(seconds / 60);
@@ -12,7 +19,7 @@ function formatMovingTime(seconds: number) {
 }
 
 export function StravaSportTypeTotals({ totals: allTotals }: { totals: SportTypeTotals[] }) {
-	const totals = MAIN_SPORT_TYPES.map((type) => allTotals.find((t) => t.sportType === type)).filter(
+	const totals = TOTALS_SPORT_TYPES.map((type) => allTotals.find((t) => t.sportType === type)).filter(
 		(t): t is SportTypeTotals => Boolean(t),
 	);
 	const cyclingRows = totals.filter((t) => CYCLING_TYPES.has(t.sportType));
