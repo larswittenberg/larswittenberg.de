@@ -8,15 +8,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
 import csv from 'csv-parser';
-import Database from 'better-sqlite3';
 import type { StravaActivity, StravaActivityMetrics } from '../src/types/strava';
-import {
-	ACTIVITY_EXTRA_COLUMNS,
-	ACTIVITY_METRIC_COLUMNS,
-	CREATE_ACTIVITIES_TABLE,
-	STRAVA_DB_FILE,
-	type ActivityMetricColumn,
-} from '../src/lib/strava/schema';
+import { ACTIVITY_METRIC_COLUMNS, STRAVA_DB_FILE, type ActivityMetricColumn } from '../src/lib/strava/schema';
+import { BASE_COLUMNS, METRIC_KEYS, openStravaDb } from './lib/strava-api/db';
 
 const { values: args } = parseArgs({
 	options: {
@@ -196,8 +190,6 @@ const METRIC_SOURCES: Record<ActivityMetricColumn, string | ((row: CsvRow) => nu
 	bike_weight: 'Bike Weight',
 };
 
-const METRIC_KEYS = Object.keys(ACTIVITY_METRIC_COLUMNS) as ActivityMetricColumn[];
-
 function toMetrics(row: CsvRow): StravaActivityMetrics {
 	const metrics = {} as StravaActivityMetrics;
 	for (const key of METRIC_KEYS) {
@@ -301,17 +293,6 @@ const REQUIRED_HEADERS = [
 	...Object.values(METRIC_SOURCES).filter((s): s is string => typeof s === 'string'),
 ];
 
-function ensureSchema(db: Database.Database) {
-	db.exec(CREATE_ACTIVITIES_TABLE);
-	const existing = new Set((db.prepare('PRAGMA table_info(activities)').all() as { name: string }[]).map((c) => c.name));
-	const optionalColumns: Record<string, string> = { ...ACTIVITY_EXTRA_COLUMNS, ...ACTIVITY_METRIC_COLUMNS };
-	for (const [key, type] of Object.entries(optionalColumns)) {
-		if (existing.has(key)) continue;
-		db.exec(`ALTER TABLE activities ADD COLUMN ${key} ${type}`);
-		console.log(`  + added column ${key}`);
-	}
-}
-
 async function main() {
 	const { rows, headers, locale } = await readCsv(csvPath);
 
@@ -338,17 +319,22 @@ async function main() {
 	console.log(`Rows in CSV: ${rows.length}, processed: ${selected.length}, valid: ${activities.length}, invalid: ${errors.length}`);
 	errors.forEach((e) => console.warn(`  ! ${e}`));
 
-	const db = dryRun && !fs.existsSync(dbPath) ? null : new Database(dbPath, { readonly: dryRun });
-	if (db && !dryRun) ensureSchema(db);
+	const db = dryRun && !fs.existsSync(dbPath) ? null : openStravaDb(dbPath, { readonly: dryRun });
 
 	const existingIds = new Set<number>();
+	// Rows from strava:sync count as "not yet exported": --only-new replaces them with the richer export data.
+	const exportIds = new Set<number>();
 	if (db && db.prepare('SELECT 1 FROM sqlite_master WHERE type = ? AND name = ?').get('table', 'activities')) {
-		for (const { id } of db.prepare('SELECT id FROM activities').all() as { id: number }[]) existingIds.add(id);
+		for (const { id, source } of db.prepare('SELECT id, source FROM activities').all() as { id: number; source: string }[]) {
+			existingIds.add(id);
+			if (source === 'export') exportIds.add(id);
+		}
 	}
 
-	const toWrite = onlyNew ? activities.filter((a) => !existingIds.has(a.id)) : activities;
+	const toWrite = onlyNew ? activities.filter((a) => !exportIds.has(a.id)) : activities;
 	const newCount = activities.filter((a) => !existingIds.has(a.id)).length;
-	console.log(`Mode: ${onlyNew ? 'only new' : 'upsert all'} -> ${toWrite.length} to write (${newCount} new, ${activities.length - newCount} already in DB)`);
+	const apiCount = activities.filter((a) => existingIds.has(a.id) && !exportIds.has(a.id)).length;
+	console.log(`Mode: ${onlyNew ? 'only new' : 'upsert all'} -> ${toWrite.length} to write (${newCount} new, ${apiCount} replacing API rows, ${activities.length - newCount} already in DB)`);
 
 	if (dryRun) {
 		console.log('\nDry run - nothing written. Sample:');
@@ -372,11 +358,7 @@ async function main() {
 		return;
 	}
 
-	const columns = [
-		'id', 'name', 'sport_type', 'start_date', 'description', 'distance', 'moving_time', 'elapsed_time',
-		'total_elevation_gain', 'average_speed', 'max_speed', 'average_heartrate', 'max_heartrate',
-		'average_watts', 'calories', 'gear_name', 'filename', ...METRIC_KEYS, 'commute', 'source',
-	];
+	const columns = BASE_COLUMNS;
 	const upsert = db!.prepare(`
 		INSERT INTO activities (${columns.join(', ')})
 		VALUES (${columns.map((c) => `@${c}`).join(', ')})

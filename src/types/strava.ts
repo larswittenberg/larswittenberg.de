@@ -36,6 +36,25 @@ export interface StravaActivity extends StravaActivityMetrics {
 	source: StravaActivitySource;
 }
 
+export type StravaApiStatus = 'ok' | 'not_found';
+
+/** Columns filled only via the Strava API (see ACTIVITY_API_COLUMNS); all null for rows not yet enriched. */
+export interface StravaActivityApiFields {
+	/** raw API sport_type, e.g. "GravelRide" */
+	api_sport_type: string | null;
+	device_name: string | null;
+	workout_type: number | null;
+	trainer: boolean | null;
+	visibility: string | null;
+	external_id: string | null;
+	gear_id: string | null;
+	start_date_local: string | null;
+	timezone: string | null;
+	/** ISO 8601, UTC */
+	api_synced_at: string | null;
+	api_status: StravaApiStatus | null;
+}
+
 /** Row shape as stored in SQLite (booleans as 0/1). */
 export type StravaActivityRow = Omit<StravaActivity, 'commute'> & {
 	commute: 0 | 1;

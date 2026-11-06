@@ -6,7 +6,19 @@ import { ArrowDown, ArrowUp, ChevronDown, ChevronsUpDown, ExternalLink, RotateCc
 import { Select } from '@/components/projects/github-stars/ui/select';
 import { Label } from '@/components/projects/github-stars/ui/label';
 import type { StravaActivityListItem, StravaDashboardData } from '@/lib/strava/db';
-import { CYCLING_SPORT_TYPES, compareSportTypes } from '@/lib/strava/sport-types';
+import {
+	CYCLING_SPORT_TYPES,
+	compareSportTypes,
+	formatApiSportType,
+	isApiSubtype,
+} from '@/lib/strava/sport-types';
+import {
+	ACTIVITY_TAG_KEYS,
+	ACTIVITY_TAG_LABELS,
+	getActivityTags,
+	isActivityTagKey,
+	type ActivityTagKey,
+} from '@/lib/strava/activity-tags';
 
 type SortKey = 'date' | 'type' | 'name' | 'distance' | 'elevation' | 'duration';
 type SortDirection = 'asc' | 'desc';
@@ -69,16 +81,25 @@ const DEFAULT_SORT: SortOption = 'date-desc';
 
 const isSortOption = (value: string): value is SortOption => Object.hasOwn(SORT_OPTIONS, value);
 
-type Filters = { type: string; gear: string; sort: SortOption };
+type Filters = { type: string; gear: string; device: string; tag: ActivityTagKey | typeof ALL; sort: SortOption };
 
 const NO_GEAR = 'none';
+const NO_DEVICE = 'none';
 
 // Combined type filter; not a Strava sport type.
 const CYCLING = 'cycling';
 const CYCLING_TYPES = new Set<string>(CYCLING_SPORT_TYPES);
 
-const matchesType = (sportType: string, type: string) =>
-	type === ALL || (type === CYCLING ? CYCLING_TYPES.has(sportType) : sportType === type);
+// Type filter value for API subtypes, e.g. "strava:GravelRide".
+const SUBTYPE_PREFIX = 'strava:';
+
+const matchesType = (a: StravaActivityListItem, type: string) =>
+	type === ALL ||
+	(type === CYCLING
+		? CYCLING_TYPES.has(a.sport_type)
+		: type.startsWith(SUBTYPE_PREFIX)
+			? a.api_sport_type === type.slice(SUBTYPE_PREFIX.length)
+			: a.sport_type === type);
 
 const URL_CHANGE_EVENT = 'strava-filters-change';
 
@@ -97,6 +118,8 @@ function writeFiltersToUrl(filters: Filters, defaultType: string) {
 		value === fallback ? params.delete(key) : params.set(key, value);
 	set('type', filters.type, defaultType);
 	set('gear', filters.gear, ALL);
+	set('device', filters.device, ALL);
+	set('tag', filters.tag, ALL);
 	set('sort', filters.sort, DEFAULT_SORT);
 	const query = params.toString();
 	window.history.replaceState(window.history.state, '', query ? `?${query}` : window.location.pathname);
@@ -169,14 +192,23 @@ function getDetails(a: StravaActivityListItem) {
 	// Export stores foot cadence per leg; Strava shows steps per minute.
 	const cadence = (value: number | null) =>
 		positive(value) ? `${integerFormat.format(isFoot ? value * 2 : value)} ${isFoot ? 'spm' : 'rpm'}` : null;
+	const tags = getActivityTags(a)
+		.map((t) => t.label)
+		.join(', ');
 
 	const groups: DetailGroup[] = [
 		{
 			title: 'Allgemein',
 			items: [
 				{ label: 'Startzeit', value: `${timeFormat.format(new Date(a.start_date))} Uhr` },
+				{
+					label: 'Strava-Sportart',
+					value: a.api_sport_type && isApiSubtype(a.api_sport_type) ? formatApiSportType(a.api_sport_type) : null,
+				},
 				{ label: 'Gesamtzeit', value: a.elapsed_time ? formatDuration(a.elapsed_time) : null },
 				{ label: 'Ausrüstung', value: a.gear_name },
+				{ label: 'Gerät', value: a.device_name },
+				{ label: 'Tags', value: tags },
 				{ label: 'Kalorien', value: positive(a.calories) ? `${integerFormat.format(a.calories)} kcal` : null },
 				{ label: 'Arbeit', value: positive(a.kilojoules) ? `${integerFormat.format(a.kilojoules)} kJ` : null },
 			],
@@ -379,6 +411,8 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 	const yearId = useId();
 	const typeId = useId();
 	const gearId = useId();
+	const deviceId = useId();
+	const tagId = useId();
 	const sortId = useId();
 
 	const types = useMemo(
@@ -386,6 +420,20 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 		[activities],
 	);
 	const hasCycling = useMemo(() => types.some((t) => CYCLING_TYPES.has(t)), [types]);
+	// Finer API types (GravelRide, MountainBikeRide …) that the export stores only as their parent type.
+	const subtypes = useMemo(
+		() =>
+			[
+				...new Set(
+					activities
+						.map((a) => a.api_sport_type)
+						.filter((t): t is string => Boolean(t) && isApiSubtype(t!)),
+				),
+			]
+				.sort(collator.compare)
+				.map((t) => `${SUBTYPE_PREFIX}${t}`),
+		[activities],
+	);
 	// Without `type` in the URL the combined cycling filter applies; "all types" is written as `type=all`.
 	const defaultType = hasCycling ? CYCLING : ALL;
 	const gears = useMemo(
@@ -396,6 +444,23 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 		[activities],
 	);
 	const hasActivitiesWithoutGear = useMemo(() => activities.some((a) => !a.gear_name), [activities]);
+	const devices = useMemo(
+		() =>
+			[...new Set(activities.map((a) => a.device_name).filter((d): d is string => Boolean(d)))].sort(
+				collator.compare,
+			),
+		[activities],
+	);
+	const hasActivitiesWithoutDevice = useMemo(() => activities.some((a) => !a.device_name), [activities]);
+	const tagsById = useMemo(
+		() => new Map(activities.map((a) => [a.id, getActivityTags(a)])),
+		[activities],
+	);
+	// Only tags occurring in the loaded year.
+	const availableTags = useMemo(() => {
+		const present = new Set([...tagsById.values()].flatMap((tags) => tags.map((t) => t.key)));
+		return ACTIVITY_TAG_KEYS.filter((key) => present.has(key));
+	}, [tagsById]);
 
 	// Server snapshot is empty; type, gear and sort are applied after hydration.
 	const search = useSyncExternalStore(
@@ -404,22 +469,44 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 		() => '',
 	);
 
-	const { type, gear, sort } = useMemo<Filters>(() => {
+	const { type, gear, device, tag, sort } = useMemo<Filters>(() => {
 		const params = new URLSearchParams(search);
 		const urlType = params.get('type') ?? '';
 		const urlGear = params.get('gear') ?? '';
+		const urlDevice = params.get('device') ?? '';
+		const urlTag = params.get('tag') ?? '';
 		const urlSort = params.get('sort') ?? '';
 		return {
 			type:
-				urlType === ALL || types.includes(urlType) || (urlType === CYCLING && hasCycling)
+				urlType === ALL ||
+				types.includes(urlType) ||
+				subtypes.includes(urlType) ||
+				(urlType === CYCLING && hasCycling)
 					? urlType
 					: defaultType,
 			gear: gears.includes(urlGear) || (urlGear === NO_GEAR && hasActivitiesWithoutGear) ? urlGear : ALL,
+			device:
+				devices.includes(urlDevice) || (urlDevice === NO_DEVICE && hasActivitiesWithoutDevice)
+					? urlDevice
+					: ALL,
+			tag: isActivityTagKey(urlTag) && availableTags.includes(urlTag) ? urlTag : ALL,
 			sort: isSortOption(urlSort) ? urlSort : DEFAULT_SORT,
 		};
-	}, [search, types, hasCycling, defaultType, gears, hasActivitiesWithoutGear]);
+	}, [
+		search,
+		types,
+		subtypes,
+		hasCycling,
+		defaultType,
+		gears,
+		hasActivitiesWithoutGear,
+		devices,
+		hasActivitiesWithoutDevice,
+		availableTags,
+	]);
 
-	const updateFilters = (next: Partial<Filters>) => writeFiltersToUrl({ type, gear, sort, ...next }, defaultType);
+	const updateFilters = (next: Partial<Filters>) =>
+		writeFiltersToUrl({ type, gear, device, tag, sort, ...next }, defaultType);
 	const onSort = (next: SortOption) => updateFilters({ sort: next });
 
 	// Year changes load new data from the server.
@@ -432,15 +519,23 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 	};
 
 	const hasActiveFilters =
-		selectedYear !== defaultYear || type !== defaultType || gear !== ALL || sort !== DEFAULT_SORT;
+		selectedYear !== defaultYear ||
+		type !== defaultType ||
+		gear !== ALL ||
+		device !== ALL ||
+		tag !== ALL ||
+		sort !== DEFAULT_SORT;
 
 	const resetFilters = () => {
 		if (selectedYear === defaultYear) {
-			writeFiltersToUrl({ type: defaultType, gear: ALL, sort: DEFAULT_SORT }, defaultType);
+			writeFiltersToUrl(
+				{ type: defaultType, gear: ALL, device: ALL, tag: ALL, sort: DEFAULT_SORT },
+				defaultType,
+			);
 			return;
 		}
 		const params = new URLSearchParams(window.location.search);
-		for (const key of ['year', 'type', 'gear', 'sort']) params.delete(key);
+		for (const key of ['year', 'type', 'gear', 'device', 'tag', 'sort']) params.delete(key);
 		const query = params.toString();
 		startTransition(() => router.replace(query ? `${pathname}?${query}` : pathname, { scroll: false }));
 	};
@@ -450,11 +545,13 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 			activities
 				.filter(
 					(a) =>
-						matchesType(a.sport_type, type) &&
-						(gear === ALL || (gear === NO_GEAR ? !a.gear_name : a.gear_name === gear)),
+						matchesType(a, type) &&
+						(gear === ALL || (gear === NO_GEAR ? !a.gear_name : a.gear_name === gear)) &&
+						(device === ALL || (device === NO_DEVICE ? !a.device_name : a.device_name === device)) &&
+						(tag === ALL || Boolean(tagsById.get(a.id)?.some((t) => t.key === tag))),
 				)
 				.sort(compareActivities(sort)),
-		[activities, type, gear, sort],
+		[activities, type, gear, device, tag, tagsById, sort],
 	);
 
 	const totals = useMemo(
@@ -484,8 +581,16 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 
 	const filterLabel = [
 		selectedYear === ALL ? 'alle Jahre' : selectedYear,
-		type === ALL ? 'alle Typen' : type === CYCLING ? 'Radfahren' : type,
+		type === ALL
+			? 'alle Typen'
+			: type === CYCLING
+				? 'Radfahren'
+				: type.startsWith(SUBTYPE_PREFIX)
+					? formatApiSportType(type.slice(SUBTYPE_PREFIX.length))
+					: type,
 		gear === ALL ? null : gear === NO_GEAR ? 'ohne Ausrüstung' : gear,
+		device === ALL ? null : device === NO_DEVICE ? 'Gerät unbekannt' : device,
+		tag === ALL ? null : ACTIVITY_TAG_LABELS[tag],
 	]
 		.filter(Boolean)
 		.join(', ');
@@ -525,6 +630,15 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 								{t}
 							</option>
 						))}
+						{subtypes.length > 0 && (
+							<optgroup label="Strava-Sportart">
+								{subtypes.map((t) => (
+									<option key={t} value={t}>
+										{formatApiSportType(t.slice(SUBTYPE_PREFIX.length))}
+									</option>
+								))}
+							</optgroup>
+						)}
 					</Select>
 				</div>
 				<div className="flex flex-col gap-2">
@@ -542,6 +656,39 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 							</option>
 						))}
 						{hasActivitiesWithoutGear && <option value={NO_GEAR}>Ohne Ausrüstung</option>}
+					</Select>
+				</div>
+				<div className="flex flex-col gap-2">
+					<Label htmlFor={deviceId}>Gerät</Label>
+					<Select
+						id={deviceId}
+						value={device}
+						onChange={(e) => updateFilters({ device: e.target.value })}
+						className="w-48"
+					>
+						<option value={ALL}>Alle Geräte</option>
+						{devices.map((d) => (
+							<option key={d} value={d}>
+								{d}
+							</option>
+						))}
+						{hasActivitiesWithoutDevice && <option value={NO_DEVICE}>Unbekannt</option>}
+					</Select>
+				</div>
+				<div className="flex flex-col gap-2">
+					<Label htmlFor={tagId}>Tag</Label>
+					<Select
+						id={tagId}
+						value={tag}
+						onChange={(e) => updateFilters({ tag: e.target.value as Filters['tag'] })}
+						className="w-44"
+					>
+						<option value={ALL}>Alle</option>
+						{availableTags.map((key) => (
+							<option key={key} value={key}>
+								{ACTIVITY_TAG_LABELS[key]}
+							</option>
+						))}
 					</Select>
 				</div>
 				<div className="flex flex-col gap-2">
@@ -630,6 +777,7 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 						{filtered.map((a) => {
 							const isOpen = expanded.has(a.id);
 							const detailsId = `strava-details-${a.id}`;
+							const tags = tagsById.get(a.id) ?? [];
 							return (
 								<Fragment key={a.id}>
 									<tr
@@ -658,7 +806,17 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 											{dateFormat.format(new Date(a.start_date))}
 										</td>
 										<td className="py-2 pr-4 whitespace-nowrap">{a.sport_type}</td>
-										<td className="min-w-48 py-2 pr-4">{a.name}</td>
+										<td className="min-w-48 py-2 pr-4">
+											{a.name}
+											{tags.map((t) => (
+												<span
+													key={t.key}
+													className="ml-1.5 inline-block rounded-full bg-gray-100 px-1.5 py-px align-middle text-xs whitespace-nowrap text-gray-600 dark:bg-white/10 dark:text-gray-300"
+												>
+													{t.label}
+												</span>
+											))}
+										</td>
 										<td className="py-2 pr-4 text-right whitespace-nowrap tabular-nums">
 											{formatDistance(a.distance)}
 										</td>

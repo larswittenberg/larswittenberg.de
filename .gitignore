@@ -32,6 +32,7 @@ scss-lint-report.xml
 # Folders to ignore
 node_modules
 data/strava-export/
+data/strava-tokens.json
 
 # debug
 npm-debug.log*

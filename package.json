@@ -25,6 +25,9 @@
     "update-stars": "node ./src/scripts/fetch-starred-repos.js",
     "blob:upload": "node scripts/upload-to-blob.mjs",
     "strava:import": "tsx scripts/import-strava.ts",
+    "strava:auth": "tsx scripts/strava-auth.ts",
+    "strava:enrich": "tsx scripts/strava-enrich.ts",
+    "strava:sync": "tsx scripts/strava-sync.ts",
     "verify": "yarn lint && yarn typecheck && yarn format && yarn build"
   },
   "dependencies": {

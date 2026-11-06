@@ -34,9 +34,15 @@ GH_USERNAME=<github-username>
 BLOB_READ_WRITE_TOKEN=<vercel-blob-read-write-token>
 STRAVA_DASHBOARD_PASSWORD=<long-random-password>
 STRAVA_SESSION_SECRET=<random-string-min-32-chars>
+# Strava API (strava:auth / strava:enrich / strava:sync) – not the dashboard login above
+STRAVA_CLIENT_ID=<strava-app-client-id>
+STRAVA_CLIENT_SECRET=<strava-app-client-secret>
+# Optional: fallback/CI refresh token; STRAVA_TOKEN_STORE=env (or CI=true) uses only this, no token file
+STRAVA_REFRESH_TOKEN=<strava-refresh-token>
+STRAVA_TOKEN_STORE=env
 ```
 
-Recommended local file: `.env.local`.
+Recommended local file: `.env.local`. `yarn strava:auth` stores Strava OAuth tokens in `data/strava-tokens.json` (gitignored, mode 0600) – treat it as a secret and never log or commit it.
 
 ## Development Workflow
 
@@ -58,6 +64,12 @@ yarn export
 
 # Upload Twitter media to Vercel Blob
 yarn blob:upload
+
+# Strava: import export CSV, OAuth once, enrich existing activities, sync new ones
+yarn strava:import
+yarn strava:auth
+yarn strava:enrich --dry-run --limit 5
+yarn strava:sync --dry-run
 ```
 
 - Local dev URL: `http://localhost:3000`
@@ -124,6 +136,7 @@ GitHub Actions automation:
 - Purpose: scheduled/manual refresh of `src/data/starred-repositories.json`
 - Trigger: daily cron + manual dispatch
 - Required secrets for workflow: `GH_TOKEN`, `GH_USERNAME`
+- Planned (not yet created): `.github/workflows/strava-sync.yml` running `yarn strava:sync` daily; sketch and required secrets (`STRAVA_CLIENT_ID`, `STRAVA_CLIENT_SECRET`, `STRAVA_REFRESH_TOKEN`) are documented in `README.md`. `strava:enrich` stays local (high request volume).
 
 ## Security Considerations
 

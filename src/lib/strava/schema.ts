@@ -40,14 +40,33 @@ export const ACTIVITY_METRIC_COLUMNS = {
 
 export type ActivityMetricColumn = keyof typeof ACTIVITY_METRIC_COLUMNS;
 
+// Written only by the API scripts (strava:enrich / strava:sync), never by the export import.
+export const ACTIVITY_API_COLUMNS = {
+	api_sport_type: 'TEXT', // raw API sport_type, e.g. "GravelRide"; sport_type keeps the export name ("Ride")
+	device_name: 'TEXT', // e.g. "Garmin Edge 840", "Zwift"
+	workout_type: 'INTEGER', // Run: 0-3, Ride: 10-12, see src/lib/strava/activity-tags.ts
+	trainer: 'INTEGER', // 0/1, indoor
+	visibility: 'TEXT', // everyone | followers_only | only_me
+	external_id: 'TEXT', // original upload file name
+	gear_id: 'TEXT',
+	start_date_local: 'TEXT',
+	timezone: 'TEXT',
+	api_synced_at: 'TEXT', // ISO, UTC; last successful detail fetch
+	api_status: 'TEXT', // ok | not_found
+} as const satisfies Record<string, ColumnType>;
+
+export type ActivityApiColumn = keyof typeof ACTIVITY_API_COLUMNS;
+
 // Nullable non-metric columns added after the initial schema; added via ALTER TABLE when missing.
 export const ACTIVITY_EXTRA_COLUMNS = {
 	filename: 'TEXT', // file in the export's activities/ folder, e.g. "12345.fit.gz"
+	...ACTIVITY_API_COLUMNS,
 } as const satisfies Record<string, ColumnType>;
 
-const metricColumnsSql = Object.entries(ACTIVITY_METRIC_COLUMNS)
-	.map(([name, type]) => `\t${name.padEnd(28)} ${type},`)
-	.join('\n');
+const columnsSql = (columns: Record<string, ColumnType>) =>
+	Object.entries(columns)
+		.map(([name, type]) => `\t${name.padEnd(28)} ${type},`)
+		.join('\n');
 
 export const CREATE_ACTIVITIES_TABLE = `
 CREATE TABLE IF NOT EXISTS activities (
@@ -68,7 +87,8 @@ CREATE TABLE IF NOT EXISTS activities (
 	calories             REAL,
 	gear_name            TEXT,
 	filename             TEXT,
-${metricColumnsSql}
+${columnsSql(ACTIVITY_API_COLUMNS)}
+${columnsSql(ACTIVITY_METRIC_COLUMNS)}
 	commute              INTEGER NOT NULL DEFAULT 0 CHECK (commute IN (0, 1)),
 	source               TEXT    NOT NULL DEFAULT 'export' CHECK (source IN ('export', 'api')),
 	imported_at          TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%SZ', 'now'))

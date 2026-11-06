@@ -75,7 +75,7 @@ yarn blob:upload --force
 
 ## Projekte - Strava Dashboard
 
-Dashboard unter `/projekte/strava` mit allen Strava-Aktivitäten (Filter nach Jahr und Typ, Sortierung, Summen, Direktlink zu Strava). Datenbasis ist eine lokale SQLite-Datenbank, die aus einem Strava-Datenexport erzeugt wird.
+Dashboard unter `/projekte/strava` mit allen Strava-Aktivitäten (Filter nach Jahr, Typ, Ausrüstung, Gerät und Tag, Sortierung, Summen, Direktlink zu Strava). Datenbasis ist eine lokale SQLite-Datenbank, die aus einem Strava-Datenexport erzeugt und über die Strava-API ergänzt wird.
 
 ### Datenfluss
 
@@ -105,11 +105,11 @@ yarn strava:import --only-new
 | ------ | ------------ |
 | `--dry-run` | Parst und validiert nur, zeigt Statistik und eine Beispieltabelle. Schreibt nichts, Exit-Code 1 bei ungültigen Zeilen. |
 | `--limit N` | Nur die ersten N Zeilen der CSV verarbeiten. |
-| `--only-new` | Bereits vorhandene IDs überspringen (statt Upsert). |
+| `--only-new` | Bereits per Export importierte IDs überspringen (statt Upsert). Per `strava:sync` angelegte Zeilen (`source = 'api'`) werden durch die Export-Daten ersetzt. |
 | `--export-dir PATH` | Export-Ordner (Standard: `data/strava-export`). |
 | `--db PATH` | Datenbankdatei (Standard: `src/data/strava.db`). |
 
-Der Import läuft in einer Transaktion (alles oder nichts) und nutzt `ON CONFLICT(id) DO UPDATE`, kann also beliebig oft wiederholt werden.
+Der Import läuft in einer Transaktion (alles oder nichts) und nutzt `ON CONFLICT(id) DO UPDATE`, kann also beliebig oft wiederholt werden. Die API-Spalten (`device_name`, `workout_type`, `trainer` …) schreibt der Import nie – sie bleiben bei einem erneuten Import erhalten.
 
 **Sprache des Exports:** Strava exportiert die CSV in der Sprache des Kontos. Das Skript erkennt englische und deutsche Exporte automatisch (`export language: de` in der Ausgabe). Deutsche Spaltennamen werden über `HEADER_DE`, deutsche Aktivitätsarten (z. B. `Radfahrt` → `Ride`) über `ACTIVITY_TYPE_DE` in `scripts/import-strava.ts` auf die englischen Werte abgebildet, damit Filter und Charts weiter funktionieren. Taucht eine neue deutsche Aktivitätsart auf, meldet der Dry-Run sie als Fehler – dann dort ergänzen.
 
@@ -120,12 +120,153 @@ Der Import läuft in einer Transaktion (alles oder nichts) und nutzt `ON CONFLIC
 3. `yarn strava:import --only-new`
 4. `src/data/strava.db` committen und pushen → Vercel deployt die neue DB.
 
+### Strava-API (Enrichment und Sync)
+
+Drei Skripte ergänzen den Export über die Strava-API v3 (gemeinsamer Client in `scripts/lib/strava-api/`):
+
+| Befehl | Zweck |
+| ------ | ----- |
+| `yarn strava:auth` | Einmaliger OAuth-Flow, speichert Tokens in `data/strava-tokens.json` |
+| `yarn strava:enrich` | Ergänzt **bestehende** Aktivitäten um Gerät, `workout_type` (Wettkampf, Langer Lauf, Training …), Indoor/Rolle, Sichtbarkeit u. a. |
+| `yarn strava:sync` | Holt **neue** Aktivitäten aus Strava (`source = 'api'`) |
+
+#### Einrichtung (einmalig)
+
+1. Unter https://www.strava.com/settings/api eine App anlegen, **Authorization Callback Domain:** `localhost`.
+2. In `.env.local` eintragen:
+
+    ```env
+    STRAVA_CLIENT_ID=12345
+    STRAVA_CLIENT_SECRET="..."
+    ```
+
+3. `yarn strava:auth` ausführen (optional `--open` öffnet den Browser, `--port` ändert den Port 8723) und die angezeigte URL öffnen. Alle Berechtigungen erlauben – `activity:read_all` ist nötig, damit auch private Aktivitäten geliefert werden.
+4. Die Tokens landen in `data/strava-tokens.json` (Dateirechte `0600`, in der `.gitignore`, **nie committen**). Der Access-Token wird automatisch erneuert, ein neuer Refresh-Token wird jeweils gespeichert.
+
+Fehlt die Token-Datei, aber `STRAVA_REFRESH_TOKEN` ist gesetzt, wird damit refresht und die Datei angelegt. Mit `STRAVA_TOKEN_STORE=env` (bzw. automatisch bei `CI=true`) wird keine Datei gelesen/geschrieben, sondern nur `STRAVA_REFRESH_TOKEN` genutzt.
+
+#### Empfohlener Ablauf
+
+1. Export herunterladen → `yarn strava:import` → `yarn strava:enrich` (ggf. über mehrere Tage, bis alles angereichert ist).
+2. Laufend: `git pull`, dann `yarn strava:sync` und `src/data/strava.db` committen. Beim nächsten Export ersetzt `yarn strava:import --only-new` die API-Zeilen durch die Export-Daten (mehr Metriken, z. B. Wetter); die API-Spalten bleiben erhalten.
+
+#### Rate-Limits
+
+Strava erlaubt standardmäßig ca. 100 Read-Requests je 15 Minuten und 1000 pro Tag (Werte werden aus den Response-Headern gelesen). `strava:enrich` braucht einen Request pro Aktivität – bei ~2000 Aktivitäten dauert der erste Komplettlauf also ca. 2 Tage. Das Skript wartet am 15-min-Limit automatisch auf das nächste Fenster (`--no-wait` beendet stattdessen), stoppt am Tageslimit sauber (Exit-Code 0) und setzt beim nächsten Start fort. Jede Aktivität wird sofort gespeichert, Abbruch mit Ctrl+C ist jederzeit möglich.
+
+```bash
+# Testlauf: 5 Aktivitäten abrufen, nichts schreiben
+yarn strava:enrich --dry-run --limit 5
+
+# Alle noch nicht angereicherten Aktivitäten (neueste zuerst)
+yarn strava:enrich
+
+# Neue Aktivitäten seit der letzten in der DB (minus 3 Tage Überlappung)
+yarn strava:sync --dry-run
+yarn strava:sync
+```
+
+| Option (`strava:enrich`) | Beschreibung |
+| ------ | ------------ |
+| `--dry-run` | Ruft die API ab, schreibt nichts, zeigt eine Tabelle mit Gerät/Tags. |
+| `--limit N` | Höchstens N Aktivitäten. |
+| `--ids 123,456` | Nur diese Aktivitäten (unabhängig vom Status). |
+| `--since` / `--until YYYY-MM-DD` | Zeitraum eingrenzen. |
+| `--force` | Auch bereits angereicherte Aktivitäten erneut abrufen. |
+| `--retry-not-found` | Als `not_found` markierte Aktivitäten erneut versuchen. |
+| `--fill-gaps` | Zusätzlich leere Export-Spalten (z. B. `calories`, `average_temp`) befüllen, nie vorhandene Werte überschreiben. |
+| `--no-wait` | Am 15-min-Limit beenden statt warten. |
+| `--db PATH` | Datenbankdatei. |
+
+| Option (`strava:sync`) | Beschreibung |
+| ------ | ------------ |
+| `--dry-run` | Listet neue Aktivitäten (nur Summary-Requests), schreibt nichts. |
+| `--overlap-days N` | Überlappung zur neuesten Aktivität in der DB (Standard: 3). |
+| `--since YYYY-MM-DD` / `--days N` | Alternativer Startzeitpunkt. |
+| `--limit N` | Höchstens N neue Aktivitäten. |
+| `--update-existing` | Vorhandene Aktivitäten im Zeitraum aktualisieren (`name`, `sport_type`, `description`, `commute`, `gear_name`). |
+| `--no-details` | Nur Summary-Daten speichern (spart Requests; Gerät/Beschreibung/Kalorien holt später `strava:enrich`). |
+| `--no-wait` | Am 15-min-Limit beenden statt warten (in CI Standard). |
+| `--db PATH` | Datenbankdatei. |
+
+Nicht über die API verfügbar und daher bei API-Zeilen leer bis zum nächsten Export: Wetter, Höhenverlust, Steigung, max. Trittfrequenz, Training Load, Intensität, GAP, Schritte, Schotter-Distanz, Gewichte, Dateiname (siehe `API_UNAVAILABLE_COLUMNS` in `scripts/lib/strava-api/map-activity.ts`).
+
+### Strava-Sync per GitHub Action (geplant)
+
+Der Workflow ist noch nicht angelegt; `strava:sync` ist aber bereits CI-tauglich: nicht interaktiv, kein Warten auf das 15-min-Fenster bei `CI=true`, Exit-Code `0` auch bei „nichts Neues“ und Tageslimit, `1` bei Fehlern. Ist `GITHUB_STEP_SUMMARY` gesetzt, wird eine Tabelle (ohne Aktivitätsnamen) angehängt; in `GITHUB_OUTPUT` stehen `new_count`, `changed` und `refresh_token_rotated`.
+
+Benötigte Secrets: `STRAVA_CLIENT_ID`, `STRAVA_CLIENT_SECRET`, `STRAVA_REFRESH_TOKEN` (Wert `refresh_token` aus `data/strava-tokens.json`).
+
+**Refresh-Token-Rotation:** Strava kann beim Refresh einen neuen Refresh-Token ausgeben; der alte wird dann irgendwann ungültig. Das Skript erkennt das (Warnung ohne Token-Wert, Output `refresh_token_rotated=true`) und schreibt den neuen Token in die Datei aus `STRAVA_ROTATED_TOKEN_FILE`, falls gesetzt.
+
+- **(a) Empfohlen:** Der Workflow aktualisiert das Secret per `gh secret set STRAVA_REFRESH_TOKEN < datei` (Wert nur über stdin, nie loggen). Benötigt einen Token mit Schreibrecht auf Repository-Secrets (z. B. Fine-grained PAT mit „Secrets: Read and write“ als Secret `GH_SECRETS_TOKEN`).
+- **(b)** Der Job schlägt mit klarer Meldung fehl und das Secret wird manuell erneuert (`yarn strava:auth` lokal, Wert aus `data/strava-tokens.json` eintragen).
+
+Skizze für `.github/workflows/strava-sync.yml`:
+
+```yaml
+name: Strava Sync
+
+on:
+  schedule:
+    - cron: '0 4 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency: strava-sync
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: corepack enable
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+      - run: yarn install --immutable
+      - name: Strava-Aktivitäten synchronisieren
+        id: sync
+        run: yarn strava:sync
+        env:
+          STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
+          STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+          STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+          STRAVA_ROTATED_TOKEN_FILE: ${{ runner.temp }}/strava-refresh-token
+      # always(): also persist a rotated token if the sync step failed afterwards.
+      - name: Refresh-Token-Secret aktualisieren
+        if: always()
+        run: |
+          if [ -s "$RUNNER_TEMP/strava-refresh-token" ]; then
+            gh secret set STRAVA_REFRESH_TOKEN < "$RUNNER_TEMP/strava-refresh-token"
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GH_SECRETS_TOKEN }}
+      - name: Änderungen committen und pushen
+        if: steps.sync.outputs.changed == 'true'
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add src/data/strava.db
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: update strava activities"
+            git push
+          fi
+```
+
+Der Push löst das Vercel-Deployment aus. `concurrency: strava-sync` verhindert, dass sich manueller und geplanter Lauf überschneiden. Lokal vor einem eigenen `strava:sync` immer erst `git pull`, um Merge-Konflikte in der Binärdatei `strava.db` zu vermeiden. `strava:enrich` bleibt bewusst manuell/lokal (hoher Request-Bedarf).
+
 ### Datenmodell
 
 - Typen: `src/types/strava.ts`, Schema: `src/lib/strava/schema.ts`
 - Tabelle `activities`, Primärschlüssel ist die Strava-Aktivitäts-ID.
 - Einheiten wie in der Strava-API: Distanz/Höhe in Metern, Zeiten in Sekunden, Geschwindigkeiten in m/s, `start_date` als ISO-String (UTC).
-- Spaltennamen folgen der Strava-API (`sport_type`, `moving_time`, `total_elevation_gain` …); die Spalte `source` (`export` | `api`) ist für eine spätere API-Anbindung vorbereitet.
+- Spaltennamen folgen der Strava-API (`sport_type`, `moving_time`, `total_elevation_gain` …); die Spalte `source` (`export` | `api`) zeigt, ob eine Zeile aus dem Export oder aus `strava:sync` stammt.
+- API-Spalten (`api_sport_type`, `device_name`, `workout_type`, `trainer`, `visibility`, `external_id`, `gear_id`, `start_date_local`, `timezone`, `api_synced_at`, `api_status`) stehen in `ACTIVITY_API_COLUMNS` und werden nur von `strava:enrich`/`strava:sync` geschrieben. Tags (Wettkampf, Langer Lauf, Training, Indoor, Pendeln) leitet `src/lib/strava/activity-tags.ts` daraus ab.
+- `sport_type` enthält immer den Export-Namen (z. B. `Ride`), damit Filter und Charts für Export- und API-Zeilen gleich funktionieren. Die feinere Strava-Sportart (z. B. `GravelRide`, `MountainBikeRide`, `TrailRun`), die der Export nicht enthält, steht in `api_sport_type` und erscheint im Dashboard als eigene Option im Typ-Filter (`?type=strava:GravelRide`) sowie in den Details.
 - Zusätzliche Metriken (Höhe, Steigung, Trittfrequenz, Leistung, Belastung, Wetter, Laufwerte, Gewicht) sind zentral in `ACTIVITY_METRIC_COLUMNS` (`src/lib/strava/schema.ts`) definiert. Fehlende Spalten ergänzt das Import-Skript automatisch per `ALTER TABLE` – neue Felder also dort und in `METRIC_SOURCES` (`scripts/import-strava.ts`) eintragen und `yarn strava:import` erneut ausführen.
 - Nicht übernommen: private Notizen, GPS-/FIT-Dateien sowie im Export immer leere Spalten (`Max Watts`, `Max Temperature`, `Newly Explored Distance`).
 
@@ -134,6 +275,9 @@ Der Import läuft in einer Transaktion (alles oder nichts) und nutzt `ON CONFLIC
 | Datei | Zweck |
 | ----- | ----- |
 | `scripts/import-strava.ts` | CSV-Import (ausgeführt mit `tsx`) |
+| `scripts/strava-auth.ts`, `scripts/strava-enrich.ts`, `scripts/strava-sync.ts` | Strava-API: OAuth, Enrichment, Sync |
+| `scripts/lib/strava-api/` | API-Client (Tokens, Rate-Limits), Mapping API → DB, Schema-Migration |
+| `src/lib/strava/activity-tags.ts` | Tags aus `workout_type`, `trainer`, `commute` |
 | `src/lib/strava/db.ts` | Read-only Zugriff auf die DB |
 | `src/app/projekte/strava/page.tsx` | Server Component / Seite (öffentliche Summen, Login oder Dashboard) |
 | `src/app/projekte/strava/actions.ts` | Server Actions für Login/Logout inkl. Honeypot und Rate-Limit |
@@ -149,7 +293,7 @@ Der Import läuft in einer Transaktion (alles oder nichts) und nutzt `ON CONFLIC
 
 Öffentlich sichtbar sind nur die vier Gesamtsummen (Aktivitäten, Distanz, Höhenmeter, Bewegungszeit). Liste, Filter, Details und gefilterte Summen erscheinen erst nach Login; ohne gültige Session werden diese Daten serverseitig gar nicht geladen (`getDashboardData()` prüft die Session selbst).
 
-Nach dem Login lädt der Server nur die Aktivitäten des aktuellen Jahres. Andere Jahre werden per URL-Parameter nachgeladen (`?year=2024`, `?year=all` für alle Jahre); Typ und Sortierung (`?type=Ride&sort=distance-desc`) werden clientseitig angewendet. Standard-Typ ist der Sammelfilter „Radfahren“ (Ride, E-Bike Ride, Virtual Ride, `?type=cycling`); alle Typen zeigt `?type=all`.
+Nach dem Login lädt der Server nur die Aktivitäten des aktuellen Jahres. Andere Jahre werden per URL-Parameter nachgeladen (`?year=2024`, `?year=all` für alle Jahre); Typ, Ausrüstung, Gerät, Tag und Sortierung (`?type=Ride&gear=…&device=Zwift&tag=race&sort=distance-desc`) werden clientseitig angewendet; `device=none` zeigt Aktivitäten ohne Gerät (noch nicht angereichert). Standard-Typ ist der Sammelfilter „Radfahren“ (Ride, E-Bike Ride, Virtual Ride, `?type=cycling`); alle Typen zeigt `?type=all`.
 
 Benötigte Variablen in `.env.local` und auf Vercel (**Settings → Environment Variables**):
 

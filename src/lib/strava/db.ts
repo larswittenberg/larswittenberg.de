@@ -1,9 +1,15 @@
 import Database from 'better-sqlite3';
 import { ACTIVITY_METRIC_COLUMNS, STRAVA_DB_FILE } from '@/lib/strava/schema';
 import { isAuthenticated } from '@/lib/strava/session';
-import type { StravaActivity } from '@/types/strava';
+import type { StravaActivity, StravaActivityApiFields } from '@/types/strava';
 
-export type StravaActivityListItem = Omit<StravaActivity, 'commute' | 'source'>;
+export type StravaActivityListItem = Omit<StravaActivity, 'source'> &
+	Pick<StravaActivityApiFields, 'api_sport_type' | 'device_name' | 'workout_type'> & { trainer: boolean };
+
+type StravaActivityListRow = Omit<StravaActivityListItem, 'commute' | 'trainer'> & {
+	commute: 0 | 1;
+	trainer: 0 | 1 | null;
+};
 
 const LIST_COLUMNS = [
 	'id',
@@ -23,6 +29,11 @@ const LIST_COLUMNS = [
 	'gear_name',
 	'description',
 	'filename',
+	'api_sport_type',
+	'device_name',
+	'workout_type',
+	'trainer',
+	'commute',
 	...Object.keys(ACTIVITY_METRIC_COLUMNS),
 ];
 
@@ -161,14 +172,19 @@ export async function getDashboardData(requestedYear: string | undefined): Promi
 				? requestedYear
 				: defaultYear;
 
-		const select = `SELECT ${LIST_COLUMNS.join(', ')} FROM activities`;
-		const activities = (
+		// Columns added by the API scripts may be missing until the DB has been migrated.
+		const existing = new Set(
+			(db.prepare('PRAGMA table_info(activities)').all() as { name: string }[]).map((c) => c.name),
+		);
+		const select = `SELECT ${LIST_COLUMNS.map((c) => (existing.has(c) ? c : `NULL AS ${c}`)).join(', ')} FROM activities`;
+		const rows = (
 			selectedYear === ALL_YEARS
 				? db.prepare(`${select} ORDER BY start_date DESC`).all()
 				: db
 						.prepare(`${select} WHERE start_date >= ? AND start_date < ? ORDER BY start_date DESC`)
 						.all(`${selectedYear}-01-01`, `${Number(selectedYear) + 1}-01-01`)
-		) as StravaActivityListItem[];
+		) as StravaActivityListRow[];
+		const activities = rows.map((r) => ({ ...r, commute: r.commute === 1, trainer: r.trainer === 1 }));
 
 		return { activities, years, selectedYear, defaultYear };
 	} finally {
