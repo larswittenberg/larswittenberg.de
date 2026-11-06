@@ -57,10 +57,23 @@ export const ACTIVITY_API_COLUMNS = {
 
 export type ActivityApiColumn = keyof typeof ACTIVITY_API_COLUMNS;
 
+// Start coordinates, rounded to COORDINATE_DECIMALS (privacy: ignores Strava privacy zones).
+// Written by strava:start-location (export files) and strava:sync (API), never by the export import.
+export const ACTIVITY_LOCATION_COLUMNS = {
+	start_lat: 'REAL', // degrees
+	start_lng: 'REAL', // degrees
+} as const satisfies Record<string, ColumnType>;
+
+export type ActivityLocationColumn = keyof typeof ACTIVITY_LOCATION_COLUMNS;
+
+/** 3 decimals ≈ 110 m (latitude); never store more precise start coordinates. */
+export const COORDINATE_DECIMALS = 3;
+
 // Nullable non-metric columns added after the initial schema; added via ALTER TABLE when missing.
 export const ACTIVITY_EXTRA_COLUMNS = {
 	filename: 'TEXT', // file in the export's activities/ folder, e.g. "12345.fit.gz"
 	...ACTIVITY_API_COLUMNS,
+	...ACTIVITY_LOCATION_COLUMNS,
 } as const satisfies Record<string, ColumnType>;
 
 const columnsSql = (columns: Record<string, ColumnType>) =>
@@ -88,6 +101,7 @@ CREATE TABLE IF NOT EXISTS activities (
 	gear_name            TEXT,
 	filename             TEXT,
 ${columnsSql(ACTIVITY_API_COLUMNS)}
+${columnsSql(ACTIVITY_LOCATION_COLUMNS)}
 ${columnsSql(ACTIVITY_METRIC_COLUMNS)}
 	commute              INTEGER NOT NULL DEFAULT 0 CHECK (commute IN (0, 1)),
 	source               TEXT    NOT NULL DEFAULT 'export' CHECK (source IN ('export', 'api')),

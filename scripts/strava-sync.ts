@@ -23,7 +23,7 @@ import {
 	loadEnv,
 } from './lib/strava-api/client';
 import { errorMessage, fail, isRateLimitStop, parseDate, parsePositiveInt } from './lib/strava-api/cli';
-import { API_COLUMNS, BASE_COLUMNS, hasColumn, openStravaDb, toDbParams } from './lib/strava-api/db';
+import { API_COLUMNS, BASE_COLUMNS, LOCATION_COLUMNS, hasColumn, openStravaDb, toDbParams } from './lib/strava-api/db';
 import { toActivityRecord, type ApiActivityRecord } from './lib/strava-api/map-activity';
 import type { SummaryActivity } from './lib/strava-api/types';
 
@@ -113,13 +113,15 @@ async function main() {
 	const findExisting = db.prepare(
 		`SELECT id, ${hasApiColumns ? 'api_synced_at' : 'NULL AS api_synced_at'} FROM activities WHERE id = ?`,
 	);
-	const insertColumns = [...BASE_COLUMNS, ...API_COLUMNS];
+	const insertColumns = [...BASE_COLUMNS, ...API_COLUMNS, ...LOCATION_COLUMNS];
 	const insert = dryRun
 		? null
 		: db.prepare(
 				`INSERT INTO activities (${insertColumns.join(', ')}) VALUES (${insertColumns.map((c) => `@${c}`).join(', ')})`,
 			);
-	const apiSet = API_COLUMNS.map((c) => `${c} = @${c}`).join(', ');
+	// Coordinates (rounded, see COORDINATE_DECIMALS) never overwrite existing values with NULL.
+	const locationSet = LOCATION_COLUMNS.map((c) => `${c} = COALESCE(@${c}, ${c})`).join(', ');
+	const apiSet = [...API_COLUMNS.map((c) => `${c} = @${c}`), locationSet].join(', ');
 	const updateApi = dryRun ? null : db.prepare(`UPDATE activities SET ${apiSet} WHERE id = @id`);
 	const updateWithDetails = dryRun
 		? null
@@ -131,7 +133,7 @@ async function main() {
 		? null
 		: db.prepare(
 				`UPDATE activities SET name = @name, sport_type = @sport_type, commute = @commute,
-				gear_name = COALESCE(@gear_name, gear_name) WHERE id = @id`,
+				gear_name = COALESCE(@gear_name, gear_name), ${locationSet} WHERE id = @id`,
 			);
 
 	let gearNames: Map<string, string> | null = null;

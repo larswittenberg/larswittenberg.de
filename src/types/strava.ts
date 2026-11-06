@@ -55,6 +55,12 @@ export interface StravaActivityApiFields {
 	api_status: StravaApiStatus | null;
 }
 
+/** Start coordinates in degrees, rounded to COORDINATE_DECIMALS; null without GPS or not yet extracted. */
+export interface StravaActivityLocation {
+	start_lat: number | null;
+	start_lng: number | null;
+}
+
 /** Row shape as stored in SQLite (booleans as 0/1). */
 export type StravaActivityRow = Omit<StravaActivity, 'commute'> & {
 	commute: 0 | 1;

@@ -4,7 +4,7 @@ Dashboard unter `/projekte/strava` mit allen Strava-Aktivitäten: Filter nach Ja
 
 | Thema | Doku |
 | ----- | ---- |
-| Export herunterladen und importieren | [Export-Import.md](Export-Import.md) |
+| Export herunterladen und importieren, Startkoordinaten aus den Dateien | [Export-Import.md](Export-Import.md) |
 | Strava-API: Einrichtung, Enrichment, Sync, Rate-Limits | [Strava-API.md](Strava-API.md) |
 | Automatischer Sync per GitHub Action (geplant) | [GitHub-Action.md](GitHub-Action.md) |
 
@@ -30,6 +30,7 @@ yarn strava:enrich           # wartet automatisch an Rate-Limits, Ctrl+C jederze
 ```bash
 yarn strava:import --dry-run --only-new
 yarn strava:import --only-new
+yarn strava:start-location   # Startkoordinaten aus den Aktivitätsdateien (lokal, keine API)
 ```
 
 **Fehler „Keine Strava-Tokens gefunden“ oder „Token-Anfrage fehlgeschlagen“:** `yarn strava:auth` erneut ausführen.
@@ -42,6 +43,7 @@ yarn strava:import --only-new
 - **Rate-Limits:** ca. 100 Requests je 15 min, 1000 pro Tag. Am 15-min-Limit wartet das Skript bis zum nächsten Fenster (:00/:15/:30/:45) und läuft dann automatisch weiter. Am Tageslimit beendet es sich (Reset 00:00 UTC = 01:00 bzw. 02:00 Uhr deutscher Zeit). Der erste komplette `enrich`-Lauf über ~2000 Aktivitäten dauert ca. 2 Tage.
 - **`sport_type` vs. `api_sport_type`:** `sport_type` enthält immer den Export-Namen (z. B. `Ride`), damit „Radfahren“-Filter und Charts für alle Zeilen gleich funktionieren. Die genaue Strava-Sportart (`GravelRide`, `MountainBikeRide`, `TrailRun` …) steht zusätzlich in `api_sport_type` und erscheint im Typ-Filter unter „Strava-Sportart“, in den Details und in der Typ-Spalte der Tabelle (dort statt `sport_type`, z. B. „Gravel Ride“ statt „Ride“; die Sortierung nach Typ folgt dieser Anzeige). In den „Summen pro Sportart“ und auf der Charts-Seite hat „Gravel Ride“ eine eigene Zeile bzw. ein eigenes Diagramm direkt nach „Ride“; diese Fahrten fehlen dafür in „Ride“, „Radfahren (gesamt)“ bleibt gleich. Weitere Sportarten dafür kommen in `TOTALS_SUBTYPES` (`src/lib/strava/sport-types.ts`).
 - **Erneuter Export-Import** überschreibt die API-Spalten nie. `--only-new` ersetzt per Sync angelegte Zeilen (`source = 'api'`) durch die vollständigeren Export-Daten.
+- **Startkoordinaten** (`start_lat`, `start_lng`) werden nur auf 3 Nachkommastellen gerundet gespeichert (ca. 110 m), weil Export und API (`activity:read_all`) die Privatsphäre-Zonen ignorieren und die DB mit der Website ausgeliefert wird. Quelle: `strava:start-location` (Export-Dateien) bzw. `strava:sync` (API).
 - **Secrets:** `data/strava-export/` und `data/strava-tokens.json` sind in der `.gitignore` und dürfen nie committet werden. `src/data/strava.db` dagegen **muss** eingecheckt werden (Repo ist privat).
 
 ## Datenfluss
@@ -49,6 +51,7 @@ yarn strava:import --only-new
 ```mermaid
 flowchart LR
 	E[Strava-Export<br>data/strava-export/] -->|yarn strava:import| DB[(src/data/strava.db)]
+	E -->|yarn strava:start-location<br>Startkoordinaten| DB
 	A[Strava-API] -->|yarn strava:enrich<br>bestehende Aktivitäten| DB
 	A -->|yarn strava:sync<br>neue Aktivitäten| DB
 	DB -->|git push| V[Vercel]
@@ -79,8 +82,9 @@ Die Seite wird pro Request gerendert (wegen des Login-Cookies) und liest die DB 
   | `api_synced_at` | Zeitpunkt des letzten Detail-Abrufs (UTC); `NULL` = noch nicht angereichert |
   | `api_status` | `ok` oder `not_found` (gelöscht/kein Zugriff) |
 
+- **Startkoordinaten** stehen in `ACTIVITY_LOCATION_COLUMNS`: `start_lat`, `start_lng` in Grad, gerundet auf `COORDINATE_DECIMALS` (3). `NULL` = ohne GPS oder noch nicht ausgelesen. Weder der Export-Import noch `strava:enrich` schreiben sie.
 - **Tags** (Wettkampf/Rennen, Langer Lauf, Training, Indoor, Pendeln) leitet `src/lib/strava/activity-tags.ts` aus `workout_type`, `trainer` und `commute` ab.
-- Nicht übernommen: private Notizen, GPS-/FIT-Dateien, Karten/Strecken sowie im Export immer leere Spalten (`Max Watts`, `Max Temperature`, `Newly Explored Distance`).
+- Nicht übernommen: private Notizen, GPS-/FIT-Dateien (außer dem gerundeten Startpunkt), Karten/Strecken sowie im Export immer leere Spalten (`Max Watts`, `Max Temperature`, `Newly Explored Distance`).
 
 Daten direkt ansehen:
 
@@ -127,6 +131,7 @@ STRAVA_SESSION_SECRET="..."
 | ----- | ----- |
 | `scripts/import-strava.ts` | CSV-Import (`yarn strava:import`) |
 | `scripts/strava-auth.ts`, `strava-enrich.ts`, `strava-sync.ts` | Strava-API: OAuth, Enrichment, Sync |
+| `scripts/strava-start-location.ts`, `scripts/lib/start-location.ts` | Startkoordinaten aus FIT/GPX/TCX lesen und runden |
 | `scripts/lib/strava-api/` | API-Client (Tokens, Rate-Limits), Mapping API → DB, Schema-Migration |
 | `src/lib/strava/schema.ts` | Tabellen-DDL und Spaltendefinitionen |
 | `src/lib/strava/sport-types.ts` | Sport-Typen, Reihenfolge, Mapping API-Sportart → Export-Name |

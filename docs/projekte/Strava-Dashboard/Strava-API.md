@@ -69,7 +69,7 @@ Gelöschte oder nicht zugängliche Aktivitäten bekommen `api_status = 'not_foun
 
 ## `yarn strava:sync` – neue Aktivitäten holen
 
-Fragt alle Aktivitäten ab der neuesten in der DB minus 3 Tage Überlappung ab. Neue Aktivitäten werden mit Details gespeichert (`source = 'api'`). Vorhandene Aktivitäten im Zeitraum ohne API-Daten werden dabei gleich mit angereichert.
+Fragt alle Aktivitäten ab der neuesten in der DB minus 3 Tage Überlappung ab. Neue Aktivitäten werden mit Details gespeichert (`source = 'api'`). Vorhandene Aktivitäten im Zeitraum ohne API-Daten werden dabei gleich mit angereichert. Dabei werden auch die Startkoordinaten (`start_latlng`) gerundet als `start_lat`/`start_lng` gespeichert (siehe Mapping).
 
 ```bash
 git pull
@@ -95,4 +95,5 @@ Danach `src/data/strava.db` committen und pushen.
 - **Sportart:** Die API-Sportart wird auf den Export-Namen abgebildet (`EBikeRide` → `E-Bike Ride`, `VirtualRide` → `Virtual Ride`, `Canoeing` → `Canoe` …, siehe `API_SPORT_TYPES` in `src/lib/strava/sport-types.ts`). Feinere Sportarten wie `GravelRide` oder `MountainBikeRide` landen über den alten API-Wert `type` als `Ride` in `sport_type` – genau wie im Export. Der Originalwert bleibt in `api_sport_type` erhalten. Komplett unbekannte Sportarten werden mit Warnung als Rohwert gespeichert.
 - **Nur im Export, bei API-Zeilen bis zum nächsten Export leer:** Wetter, Höhenverlust, Steigung, max. Trittfrequenz, Training Load, Intensität, GAP, Schritte, Schotter-Distanz, Gewichte, Dateiname (siehe `API_UNAVAILABLE_COLUMNS` in `scripts/lib/strava-api/map-activity.ts`).
 - **Ausrüstungsname:** kommt aus den Aktivitätsdetails. Bei `--no-details` wird `/athlete` gefragt, das Ausrüstung aber nur mit Scope `profile:read_all` liefert – dann bleibt `gear_name` leer.
+- **Startkoordinaten (nur `strava:sync`):** `start_latlng` wird auf 3 Nachkommastellen gerundet (ca. 110 m, `COORDINATE_DECIMALS`) in `start_lat`/`start_lng` gespeichert. Mit `activity:read_all` liefert die API den echten Startpunkt, auch innerhalb von Privatsphäre-Zonen – daher nie genauer speichern. Ohne GPS (leeres `start_latlng`) bleibt die Spalte leer; vorhandene Werte werden nie mit `NULL` überschrieben. `strava:enrich` schreibt keine Koordinaten – für ältere Aktivitäten gibt es `yarn strava:start-location` (lokal aus den Export-Dateien, siehe [Export-Import.md](Export-Import.md)).
 - Karten/Strecken (Polyline, GPS-Streams), Kudos, Fotos und Bestzeiten werden nicht abgerufen.

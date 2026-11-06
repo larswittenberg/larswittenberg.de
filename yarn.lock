@@ -688,6 +688,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@garmin/fitsdk@npm:21.218.0":
+  version: 21.218.0
+  resolution: "@garmin/fitsdk@npm:21.218.0"
+  checksum: 10c0/67edc124fbe2cf8bfe5970ba6824c762a7c46ddbe96971bab9efed123dc002f291d5e12ea8a09634c76e3067ea2501ce6b49d02790fd3076fbffb34fd690233f
+  languageName: node
+  linkType: hard
+
 "@hono/node-server@npm:^1.19.9 || ^2.0.5":
   version: 2.1.6
   resolution: "@hono/node-server@npm:2.1.6"
@@ -5751,6 +5758,7 @@ __metadata:
   dependencies:
     "@eslint/eslintrc": "npm:^3.3.7"
     "@eslint/js": "npm:^9.39.5"
+    "@garmin/fitsdk": "npm:21.218.0"
     "@mdx-js/loader": "npm:^3.1.1"
     "@mdx-js/react": "npm:^3.1.1"
     "@next/eslint-plugin-next": "npm:16.4.5"

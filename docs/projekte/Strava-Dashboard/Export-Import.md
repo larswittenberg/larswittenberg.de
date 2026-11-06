@@ -34,7 +34,7 @@ yarn strava:import --only-new
 | `--db PATH` | Datenbankdatei (Standard: `src/data/strava.db`). |
 
 - Der Import läuft in einer Transaktion (alles oder nichts) und nutzt `ON CONFLICT(id) DO UPDATE`, kann also beliebig oft wiederholt werden.
-- Die API-Spalten (`api_sport_type`, `device_name`, `workout_type`, `trainer` …) schreibt der Import nie – sie bleiben bei einem erneuten Import erhalten.
+- Die API-Spalten (`api_sport_type`, `device_name`, `workout_type`, `trainer` …) und die Startkoordinaten (`start_lat`, `start_lng`) schreibt der Import nie – sie bleiben bei einem erneuten Import erhalten.
 
 ## Aktualisierung (alle paar Monate)
 
@@ -42,8 +42,35 @@ yarn strava:import --only-new
 2. `git pull`
 3. `yarn strava:import --dry-run --only-new` – zeigt, wie viele Aktivitäten neu sind bzw. API-Zeilen ersetzt werden.
 4. `yarn strava:import --only-new`
-5. Optional `yarn strava:enrich` für Aktivitäten ohne API-Daten.
-6. `src/data/strava.db` committen und pushen → Vercel deployt die neue DB.
+5. `yarn strava:start-location` – Startkoordinaten der neuen Aktivitäten aus den Dateien lesen (siehe unten).
+6. Optional `yarn strava:enrich` für Aktivitäten ohne API-Daten.
+7. `src/data/strava.db` committen und pushen → Vercel deployt die neue DB.
+
+## Startkoordinaten aus den Aktivitätsdateien
+
+`yarn strava:start-location` liest den ersten gültigen GPS-Punkt aus den Dateien in `data/strava-export/activities/` (`.fit`, `.gpx`, `.tcx`, jeweils auch `.gz`) und speichert ihn als `start_lat`/`start_lng`. Läuft komplett lokal, **keine API-Requests**. Die Datei je Aktivität kommt aus der Spalte `filename`.
+
+```bash
+# Testlauf, zeigt eine Stichprobe, schreibt nichts
+yarn strava:start-location --dry-run --limit 20
+
+# Alle Aktivitäten ohne Koordinaten
+yarn strava:start-location
+```
+
+| Option | Beschreibung |
+| ------ | ------------ |
+| `--dry-run` | Liest die Dateien, zeigt Statistik und Stichprobe, schreibt nichts. |
+| `--limit N` | Höchstens N Aktivitäten (neueste zuerst). |
+| `--force` | Auch Aktivitäten mit vorhandenen Koordinaten neu auslesen. |
+| `--export-dir PATH` | Export-Ordner (Standard: `data/strava-export`). |
+| `--db PATH` | Datenbankdatei (Standard: `src/data/strava.db`). |
+
+- **Datenschutz:** Die Dateien enthalten den echten Startpunkt, Strava-Privatsphäre-Zonen gelten hier nicht. Gespeichert wird deshalb nur auf **3 Nachkommastellen gerundet** (ca. 110 m, `COORDINATE_DECIMALS` in `src/lib/strava/schema.ts`). Das Dashboard zeigt die Koordinaten derzeit nicht an.
+- FIT: Startposition aus der Session, sonst der erste Track-Punkt mit Position (Garmin FIT SDK `@garmin/fitsdk`, Semicircles → Grad). GPX/TCX: erster Track-Punkt.
+- Aktivitäten ohne GPS (Indoor, Zwift, manuell) bleiben `NULL` und werden bei jedem Lauf erneut geprüft – das ist schnell, da lokal.
+- Am Ende steht eine Statistik: mit Koordinaten, ohne GPS, Datei fehlt, nicht unterstütztes Format, Fehler (defekte Datei → Exit-Code 1).
+- Neue Aktivitäten aus `strava:sync` bekommen die Koordinaten direkt aus der API (siehe [Strava-API.md](Strava-API.md)).
 
 ## Sprache des Exports
 

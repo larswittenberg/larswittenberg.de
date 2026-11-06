@@ -30,6 +30,8 @@ export type SummaryActivity = {
 	start_date: string;
 	start_date_local?: string;
 	timezone?: string;
+	/** [lat, lng] in degrees, exact (ignores privacy zones with activity:read_all); empty without GPS */
+	start_latlng?: [number, number] | [] | null;
 	distance?: number;
 	moving_time?: number;
 	elapsed_time?: number;

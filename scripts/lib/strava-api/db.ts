@@ -2,9 +2,11 @@ import Database from 'better-sqlite3';
 import {
 	ACTIVITY_API_COLUMNS,
 	ACTIVITY_EXTRA_COLUMNS,
+	ACTIVITY_LOCATION_COLUMNS,
 	ACTIVITY_METRIC_COLUMNS,
 	CREATE_ACTIVITIES_TABLE,
 	type ActivityApiColumn,
+	type ActivityLocationColumn,
 	type ActivityMetricColumn,
 } from '../../../src/lib/strava/schema';
 
@@ -12,7 +14,9 @@ export const METRIC_KEYS = Object.keys(ACTIVITY_METRIC_COLUMNS) as ActivityMetri
 
 export const API_COLUMNS = Object.keys(ACTIVITY_API_COLUMNS) as ActivityApiColumn[];
 
-// Written by the export import; API columns are deliberately excluded so a re-import keeps them.
+export const LOCATION_COLUMNS = Object.keys(ACTIVITY_LOCATION_COLUMNS) as ActivityLocationColumn[];
+
+// Written by the export import; API and location columns are deliberately excluded so a re-import keeps them.
 export const BASE_COLUMNS = [
 	'id', 'name', 'sport_type', 'start_date', 'description', 'distance', 'moving_time', 'elapsed_time',
 	'total_elevation_gain', 'average_speed', 'max_speed', 'average_heartrate', 'max_heartrate',

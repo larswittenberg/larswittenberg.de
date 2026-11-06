@@ -79,6 +79,8 @@ yarn strava:import
 yarn strava:auth
 yarn strava:enrich --dry-run --limit 5
 yarn strava:sync --dry-run
+# Strava: start coordinates (rounded to 3 decimals) from export .fit/.gpx/.tcx files, local only
+yarn strava:start-location --dry-run --limit 20
 ```
 
 - Local dev URL: `http://localhost:3000`

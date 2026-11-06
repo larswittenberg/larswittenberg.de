@@ -1,11 +1,17 @@
 import { ACTIVITY_METRIC_COLUMNS, type ActivityMetricColumn } from '../../../src/lib/strava/schema';
 import { API_SPORT_TYPES } from '../../../src/lib/strava/sport-types';
-import type { StravaActivity, StravaActivityApiFields, StravaActivityMetrics } from '../../../src/types/strava';
-import type { DetailedActivity } from './types';
+import type {
+	StravaActivity,
+	StravaActivityApiFields,
+	StravaActivityLocation,
+	StravaActivityMetrics,
+} from '../../../src/types/strava';
+import { toStartLocation } from '../start-location';
+import type { DetailedActivity, SummaryActivity } from './types';
 
 // Units match the export (m, s, m/s), see ACTIVITY_METRIC_COLUMNS in src/lib/strava/schema.ts.
 
-export type ApiActivityRecord = StravaActivity & StravaActivityApiFields;
+export type ApiActivityRecord = StravaActivity & StravaActivityApiFields & StravaActivityLocation;
 
 /** Subtypes fall back to the legacy `type` (e.g. GravelRide -> Ride) like the export; the raw value is kept in api_sport_type. */
 export function mapSportType(sportType: string, legacyType?: string): { sportType: string; known: boolean } {
@@ -62,6 +68,12 @@ function toMetrics(a: DetailedActivity): StravaActivityMetrics {
 	return metrics;
 }
 
+/** Rounded start coordinates (see COORDINATE_DECIMALS); null without GPS. */
+export function toLocationFields(a: SummaryActivity): StravaActivityLocation {
+	const [lat, lng] = a.start_latlng ?? [];
+	return toStartLocation(lat, lng);
+}
+
 const text = (value: string | null | undefined) => value?.trim() || null;
 
 /** syncedAt: null for summary-only data, so strava:enrich fetches the details later. */
@@ -110,5 +122,6 @@ export function toActivityRecord(
 		commute: a.commute ?? false,
 		source: 'api',
 		...toApiFields(a, options.syncedAt),
+		...toLocationFields(a),
 	};
 }
