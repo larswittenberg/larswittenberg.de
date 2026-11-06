@@ -26,12 +26,21 @@ corepack enable
 yarn install
 ```
 
-Environment variables used by GitHub Stars data flow, Vercel Blob and the Strava dashboard login:
+Environment variables used by GitHub Stars (data flow + debugging), Vercel Blob (Twitter media upload), the Strava dashboard login and the Strava API scripts:
+
+Template: `.env.local.example` (copy to `.env.local`). Full reference: `docs/Entwicklung.md`.
 
 ```bash
 GH_TOKEN=<github-personal-access-token>
 GH_USERNAME=<github-username>
 BLOB_READ_WRITE_TOKEN=<vercel-blob-read-write-token>
+# Optional: Blob store ID (reference only, not read by code)
+BLOB_STORE_ID=<vercel-blob-store-id>
+# Optional GitHub Stars debugging (true/1/yes/on/debug); NEXT_PUBLIC_ variant also logs in the browser
+NEXT_PUBLIC_ENABLE_GITHUB_DEBUG=false
+ENABLE_GITHUB_DEBUG=false
+# Currently no effect: data source is hard-coded to mock in src/lib/projects/github-stars/dataClient.ts
+USE_FAKE_API=false
 STRAVA_DASHBOARD_PASSWORD=<long-random-password>
 STRAVA_SESSION_SECRET=<random-string-min-32-chars>
 # Strava API (strava:auth / strava:enrich / strava:sync) – not the dashboard login above
