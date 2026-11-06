@@ -13,6 +13,7 @@ import {
 	formatApiSportType,
 	isApiSubtype,
 } from '@/lib/strava/sport-types';
+import { compareGear } from '@/lib/strava/gear';
 import {
 	ACTIVITY_TAG_KEYS,
 	ACTIVITY_TAG_LABELS,
@@ -399,7 +400,13 @@ function SortableHeader({
 	);
 }
 
-export function StravaDashboard({ activities, years, selectedYear, defaultYear }: StravaDashboardData) {
+export function StravaDashboard({
+	activities,
+	years,
+	selectedYear,
+	defaultYear,
+	gears: allGears,
+}: StravaDashboardData) {
 	const router = useRouter();
 	const pathname = usePathname();
 	const [isLoadingYear, startTransition] = useTransition();
@@ -438,13 +445,8 @@ export function StravaDashboard({ activities, years, selectedYear, defaultYear }
 	);
 	// Without `type` in the URL the combined cycling filter applies; "all types" is written as `type=all`.
 	const defaultType = hasCycling ? CYCLING : ALL;
-	const gears = useMemo(
-		() =>
-			[...new Set(activities.map((a) => a.gear_name).filter((g): g is string => Boolean(g)))].sort(
-				collator.compare,
-			),
-		[activities],
-	);
+	// All gear across all years (e.g. retired bikes), not only gear used in the loaded year; fixed order from GEAR_ORDER.
+	const gears = useMemo(() => [...allGears].sort(compareGear), [allGears]);
 	const hasActivitiesWithoutGear = useMemo(() => activities.some((a) => !a.gear_name), [activities]);
 	const devices = useMemo(
 		() =>

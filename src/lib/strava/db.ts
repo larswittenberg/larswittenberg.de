@@ -166,6 +166,8 @@ export type StravaDashboardData = {
 	years: string[];
 	selectedYear: string;
 	defaultYear: string;
+	/** All gear names across all years, so the gear filter also offers gear not used in the selected year. */
+	gears: string[];
 };
 
 /** Protected: throws without a valid session. Loads only the requested year (default: current year). */
@@ -200,7 +202,13 @@ export async function getDashboardData(requestedYear: string | undefined): Promi
 		) as StravaActivityListRow[];
 		const activities = rows.map((r) => ({ ...r, commute: r.commute === 1, trainer: r.trainer === 1 }));
 
-		return { activities, years, selectedYear, defaultYear };
+		const gears = (
+			db.prepare('SELECT DISTINCT gear_name FROM activities WHERE length(gear_name) > 0').all() as {
+				gear_name: string;
+			}[]
+		).map((r) => r.gear_name);
+
+		return { activities, years, selectedYear, defaultYear, gears };
 	} finally {
 		db.close();
 	}

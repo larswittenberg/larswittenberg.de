@@ -98,7 +98,7 @@ Nach dem Login lädt der Server nur die Aktivitäten des gewählten Jahres. URL-
 | --------- | -------- | ------- |
 | `year` | `2024`, `all` | lädt Daten vom Server nach; Standard: aktuelles Jahr |
 | `type` | `Ride`, `cycling`, `all`, `strava:GravelRide` | Standard: `cycling` (Ride, E-Bike Ride, Virtual Ride) |
-| `gear` | Name, `none` | `none` = ohne Ausrüstung |
+| `gear` | Name, `none` | `none` = ohne Ausrüstung; die Auswahl enthält alle Ausrüstungen aller Jahre (auch ausgemusterte), in fester Reihenfolge aus `src/lib/strava/gear.ts` |
 | `device` | `Zwift`, `none` | `none` = Gerät unbekannt (noch nicht angereichert) |
 | `tag` | `race`, `long-run`, `workout`, `indoor`, `commute` | nur Tags, die im Jahr vorkommen |
 | `sort` | `distance-desc` | |
@@ -130,6 +130,7 @@ STRAVA_SESSION_SECRET="..."
 | `scripts/lib/strava-api/` | API-Client (Tokens, Rate-Limits), Mapping API → DB, Schema-Migration |
 | `src/lib/strava/schema.ts` | Tabellen-DDL und Spaltendefinitionen |
 | `src/lib/strava/sport-types.ts` | Sport-Typen, Reihenfolge, Mapping API-Sportart → Export-Name |
+| `src/lib/strava/gear.ts` | Feste Reihenfolge der Ausrüstung im Filter |
 | `src/lib/strava/activity-tags.ts` | Tags aus `workout_type`, `trainer`, `commute` |
 | `src/lib/strava/db.ts` | Read-only Zugriff auf die DB |
 | `src/lib/strava/auth.ts`, `session.ts` | Dashboard-Login (Passwort, Session) |
