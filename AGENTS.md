@@ -136,7 +136,7 @@ GitHub Actions automation:
 - Purpose: scheduled/manual refresh of `src/data/starred-repositories.json`
 - Trigger: daily cron + manual dispatch
 - Required secrets for workflow: `GH_TOKEN`, `GH_USERNAME`
-- Planned (not yet created): `.github/workflows/strava-sync.yml` running `yarn strava:sync` daily; sketch and required secrets (`STRAVA_CLIENT_ID`, `STRAVA_CLIENT_SECRET`, `STRAVA_REFRESH_TOKEN`) are documented in `README.md`. `strava:enrich` stays local (high request volume).
+- Planned (not yet created): `.github/workflows/strava-sync.yml` running `yarn strava:sync` daily; sketch and required secrets (`STRAVA_CLIENT_ID`, `STRAVA_CLIENT_SECRET`, `STRAVA_REFRESH_TOKEN`) are documented in `docs/projekte/Strava-Dashboard/GitHub-Action.md`. `strava:enrich` stays local (high request volume).
 
 ## Security Considerations
 
@@ -174,5 +174,6 @@ Keep changes focused and descriptive. If you modify data-fetching for GitHub sta
 ## Agent Notes
 
 - Prefer minimal, targeted edits that match existing style.
+- Project documentation (German) lives in `docs/` (`docs/projekte/<Projekt>/`); keep it in sync when changing scripts, env vars or workflows. The root `README.md` only links there.
 - Do not edit generated artifacts (`.next/`, `out/`, `next-env.d.ts`).
 - When changing commands or workflows, keep this file in sync so future agents have accurate instructions.
