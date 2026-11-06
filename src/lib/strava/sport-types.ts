@@ -9,7 +9,7 @@ export function formatApiSportType(apiSportType: string) {
 	return apiSportType.replace(/([a-z])([A-Z])/g, '$1 $2');
 }
 
-// API subtypes shown as their own row in the per-sport totals (taken out of their parent type), mapped to that parent.
+// API subtypes shown as their own row/chart in the per-sport totals and charts (taken out of their parent type), mapped to that parent.
 export const TOTALS_SUBTYPES: Record<string, string> = { GravelRide: 'Ride' };
 
 // Row order of the per-sport totals: main types with the subtypes right after their parent.
@@ -19,6 +19,14 @@ export const TOTALS_SPORT_TYPES = MAIN_SPORT_TYPES.flatMap((type) => [
 		.filter(([, parent]) => parent === type)
 		.map(([subtype]) => formatApiSportType(subtype)),
 ]);
+
+/** Adds the TOTALS_SUBTYPES rows (e.g. "Gravel Ride") whose parent is in `types`, e.g. for the combined cycling group. */
+export const withTotalsSubtypes = (types: readonly string[]) => [
+	...types,
+	...Object.entries(TOTALS_SUBTYPES)
+		.filter(([, parent]) => types.includes(parent))
+		.map(([subtype]) => formatApiSportType(subtype)),
+];
 
 // Display order for sport type lists (e.g. the dashboard type filter); unlisted types follow alphabetically.
 export const SPORT_TYPE_ORDER = [...MAIN_SPORT_TYPES, 'Workout', 'Yoga', 'Canoe', 'Kayaking'];

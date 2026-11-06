@@ -51,6 +51,15 @@ export type StravaTotals = {
 	firstYear: string | null;
 };
 
+/**
+ * SQL expression for the sport type used in totals and charts: subtypes in TOTALS_SUBTYPES (e.g. GravelRide)
+ * get their own group instead of counting towards their parent. Map results with `toTotalsSportType`.
+ */
+const TOTALS_SUBTYPE_KEYS = Object.keys(TOTALS_SUBTYPES);
+const TOTALS_SPORT_TYPE_SQL = `CASE WHEN api_sport_type IN (${TOTALS_SUBTYPE_KEYS.map(() => '?').join(', ') || 'NULL'}) THEN api_sport_type ELSE sport_type END`;
+const toTotalsSportType = (sportType: string) =>
+	Object.hasOwn(TOTALS_SUBTYPES, sportType) ? formatApiSportType(sportType) : sportType;
+
 export type YearlyKilometers = { year: string; kilometers: number; activities: number };
 
 /** Protected: yearly distance in full km and activity count per group of sport types; years without activities in between are filled with 0. */
@@ -61,15 +70,18 @@ export async function getYearlyKilometers<K extends string>(
 	const sportTypes = [...new Set(Object.values<readonly string[]>(groups).flat())];
 	const db = openDb();
 	try {
-		const rows = db
-			.prepare(
-				`SELECT sport_type AS sportType, strftime('%Y', start_date) AS year, COALESCE(SUM(distance), 0) AS meters, COUNT(*) AS count
+		const rows = (
+			db
+				.prepare(
+					`SELECT ${TOTALS_SPORT_TYPE_SQL} AS sportType, strftime('%Y', start_date) AS year, COALESCE(SUM(distance), 0) AS meters, COUNT(*) AS count
 				FROM activities
-				WHERE sport_type IN (${sportTypes.map(() => '?').join(', ')})
-				GROUP BY sport_type, year
+				GROUP BY 1, year
 				ORDER BY year`,
-			)
-			.all(...sportTypes) as { sportType: string; year: string; meters: number; count: number }[];
+				)
+				.all(...TOTALS_SUBTYPE_KEYS) as { sportType: string; year: string; meters: number; count: number }[]
+		)
+			.map((r) => ({ ...r, sportType: toTotalsSportType(r.sportType) }))
+			.filter((r) => sportTypes.includes(r.sportType));
 
 		const result = {} as Record<K, YearlyKilometers[]>;
 		for (const key of Object.keys(groups) as K[]) {
@@ -129,12 +141,9 @@ export async function getSportTypeTotals(): Promise<SportTypeTotals[]> {
 	if (!(await isAuthenticated())) throw new Error('Unauthorized');
 	const db = openDb();
 	try {
-		// Subtypes in TOTALS_SUBTYPES (e.g. GravelRide) get their own row instead of counting towards their parent.
-		const subtypes = Object.keys(TOTALS_SUBTYPES);
-		const placeholders = subtypes.map(() => '?').join(', ') || 'NULL';
 		const rows = db
 			.prepare(
-				`SELECT CASE WHEN api_sport_type IN (${placeholders}) THEN api_sport_type ELSE sport_type END AS sportType,
+				`SELECT ${TOTALS_SPORT_TYPE_SQL} AS sportType,
 					COUNT(*) AS count,
 					COALESCE(SUM(distance), 0) AS distance,
 					COALESCE(SUM(total_elevation_gain), 0) AS elevation,
@@ -143,10 +152,8 @@ export async function getSportTypeTotals(): Promise<SportTypeTotals[]> {
 				GROUP BY 1
 				ORDER BY count DESC, 1`,
 			)
-			.all(...subtypes) as SportTypeTotals[];
-		return rows.map((r) =>
-			Object.hasOwn(TOTALS_SUBTYPES, r.sportType) ? { ...r, sportType: formatApiSportType(r.sportType) } : r,
-		);
+			.all(...TOTALS_SUBTYPE_KEYS) as SportTypeTotals[];
+		return rows.map((r) => ({ ...r, sportType: toTotalsSportType(r.sportType) }));
 	} finally {
 		db.close();
 	}

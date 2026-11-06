@@ -32,6 +32,7 @@ export function YearlyKilometersChart({ title, sportTypes, data }: Props) {
 	const headingId = useId();
 	const [sortOrder, setSortOrder] = useState<SortOrder>('year');
 	const total = data.reduce((sum, d) => sum + d.kilometers, 0);
+	const totalActivities = data.reduce((sum, d) => sum + d.activities, 0);
 	const chartData = useMemo(
 		() =>
 			sortOrder === 'distance'
@@ -55,12 +56,20 @@ export function YearlyKilometersChart({ title, sportTypes, data }: Props) {
 					</p>
 				</div>
 				<div className="flex flex-wrap items-center gap-4">
-					<p className="text-sm text-gray-600 dark:text-gray-400">
-						Gesamt:{' '}
-						<span className="font-semibold text-gray-900 tabular-nums dark:text-white">
-							{integerFormat.format(total)} km
-						</span>
-					</p>
+					<div className="text-sm text-gray-600 dark:text-gray-400">
+						<p>
+							Gesamt:{' '}
+							<span className="font-semibold text-gray-900 tabular-nums dark:text-white">
+								{integerFormat.format(total)} km
+							</span>
+						</p>
+						<p>
+							{totalActivities === 1 ? 'Aktivität: ' : 'Aktivitäten: '}
+							<span className="font-semibold text-gray-900 tabular-nums dark:text-white">
+								{integerFormat.format(totalActivities)}
+							</span>{' '}
+						</p>
+					</div>
 					{data.length > 1 && (
 						<div
 							role="group"

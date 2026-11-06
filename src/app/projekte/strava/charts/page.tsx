@@ -6,17 +6,19 @@ import LayoutDefault from '@/components/LayoutDefault';
 import { YearlyKilometersChart } from '@/components/projects/strava/yearly-kilometers-chart';
 import { getYearlyKilometers } from '@/lib/strava/db';
 import { isAuthenticated } from '@/lib/strava/session';
-import { CYCLING_SPORT_TYPES } from '@/lib/strava/sport-types';
+import { CYCLING_SPORT_TYPES, withTotalsSubtypes } from '@/lib/strava/sport-types';
 
 export const metadata: Metadata = {
 	title: 'Strava Dashboard - Charts',
 	robots: { index: false, follow: false },
 };
 
+// Gravel Ride (TOTALS_SUBTYPES) has its own chart and is not included in "Ride".
 const CHART_GROUPS = {
-	cycling: CYCLING_SPORT_TYPES,
+	cycling: withTotalsSubtypes(CYCLING_SPORT_TYPES),
 	run: ['Run'],
 	ride: ['Ride'],
+	gravel: ['Gravel Ride'],
 	ebike: ['E-Bike Ride'],
 	virtual: ['Virtual Ride'],
 	hike: ['Hike'],
@@ -29,6 +31,7 @@ const CYCLING_CHART: { key: ChartKey; title: string } = { key: 'cycling', title:
 
 const CHARTS: { key: ChartKey; title: string }[] = [
 	{ key: 'ride', title: 'Radfahren' },
+	{ key: 'gravel', title: 'Gravel' },
 	{ key: 'ebike', title: 'E-Bike' },
 	{ key: 'virtual', title: 'Virtuelles Radfahren' },
 	{ key: 'run', title: 'Laufen' },
